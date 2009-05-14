@@ -15,14 +15,10 @@ Rails::Initializer.run do |config|
   # config.load_paths += %W( #{RAILS_ROOT}/extras )
 
   # Specify gems that this application depends on and have them installed with rake gems:install
-  # config.gem "bj"
-  # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
-  # config.gem "sqlite3-ruby", :lib => "sqlite3"
-  config.gem "rubyist-aasm", :source => "http://gems.github.com"
+  config.gem "rubyist-aasm", :lib => "aasm", :source => "http://gems.github.com"
 
   # Only load the plugins named here, in the order given (default is alphabetical).
-  # :all can be used as a placeholder for all plugins not explicitly named
-  # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
+  config.plugins = [ :exception_notification, :all ] # can use :all as a placeholder.
 
   # Skip frameworks you're not going to use. To use Rails without a database,
   # you must remove the Active Record framework.
