@@ -9,10 +9,10 @@
       <link rel="stylesheet" href="/stylesheets/reset.css" type="text/css" media="screen" charset="utf-8"/>
       <link rel="stylesheet" href="/stylesheets/admin.css" type="text/css" media="screen" charset="utf-8"/>
    </head>
-   <body id="<%= @body_id %>">
+   <body id="<%= @body_id || controller.controller_name %>">
       <h1 id="site_name">Cactus Sports Administration <a href="/">View Site &gt;&gt;</a></h1>
       <ul id="primary_navigation" class="navigation">
-         <li class="dashboard"><%= link_to "Dashboard", :controller => "admin" %></li>
+         <li class="admin"><%= link_to "Dashboard", :controller => "admin" %></li>
          <li class="products"><%= link_to "Products", products_path %></li>
          <li class="orders"><a href="orders.html">Orders</a></li>
          <li class="users"><a href="users.html">Users</a></li>

@@ -1619,3 +1619,219 @@ Processing AdminController#dashboard (for 127.0.0.1 at 2009-05-19 00:16:14) [GET
 Rendering template within layouts/admin
 Rendering admin/dashboard
 Completed in 18ms (View: 3, DB: 1) | 200 OK [http://localhost/admin/dashboard]
+
+
+Processing ProductsController#index (for 127.0.0.1 at 2009-05-19 00:17:23) [GET]
+  [4;36;1mCategory Load (0.8ms)[0m   [0;1mSELECT * FROM "categories" [0m
+  [4;35;1mCategorization Load (0.6ms)[0m   [0mSELECT "categorizations".* FROM "categorizations" WHERE ("categorizations".category_id IN (1,2,3,4)) [0m
+  [4;36;1mProduct Load (0.2ms)[0m   [0;1mSELECT * FROM "products" WHERE ("products"."id" = 1) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT count(*) AS count_all FROM "products" [0m
+  [4;36;1mProduct Load (0.4ms)[0m   [0;1mSELECT * FROM "products" [0m
+Rendering template within layouts/admin
+Rendering products/index
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 30ms (View: 6, DB: 2) | 200 OK [http://localhost/products]
+
+
+Processing ProductsController#index (for 127.0.0.1 at 2009-05-19 00:17:24) [GET]
+  Parameters: {"category_id"=>"1"}
+  [4;36;1mCategory Load (0.8ms)[0m   [0;1mSELECT * FROM "categories" [0m
+  [4;35;1mCategorization Load (0.6ms)[0m   [0mSELECT "categorizations".* FROM "categorizations" WHERE ("categorizations".category_id IN (1,2,3,4)) [0m
+  [4;36;1mProduct Load (0.3ms)[0m   [0;1mSELECT * FROM "products" WHERE ("products"."id" = 1) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT count(*) AS count_all FROM "products" [0m
+  [4;36;1mCategory Load (0.2ms)[0m   [0;1mSELECT * FROM "categories" WHERE ("categories"."id" = 1) [0m
+Rendering template within layouts/admin
+Rendering products/index
+  [4;35;1mProduct Load (0.3ms)[0m   [0mSELECT "products".* FROM "products" INNER JOIN "categorizations" ON "products".id = "categorizations".product_id WHERE (("categorizations".category_id = 1)) [0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 30ms (View: 8, DB: 3) | 200 OK [http://localhost/categories/1/products]
+
+
+Processing ProductsController#new (for 127.0.0.1 at 2009-05-19 00:17:30) [GET]
+Rendering template within layouts/admin
+Rendering products/new
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 16ms (View: 9, DB: 0) | 200 OK [http://localhost/products/new]
+
+
+Processing ProductsController#new (for 127.0.0.1 at 2009-05-19 00:18:34) [GET]
+Rendering template within layouts/admin
+Rendering products/new
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 23ms (View: 14, DB: 0) | 200 OK [http://localhost/products/new]
+
+
+Processing AdminController#index (for 127.0.0.1 at 2009-05-19 00:18:38) [GET]
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Redirected to http://localhost:3000/admin/dashboard
+Completed in 6ms (DB: 0) | 302 Found [http://localhost/admin]
+
+
+Processing AdminController#dashboard (for 127.0.0.1 at 2009-05-19 00:18:38) [GET]
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mProduct Load (0.4ms)[0m   [0mSELECT * FROM "products" [0m
+  [4;36;1mCategory Load (0.5ms)[0m   [0;1mSELECT * FROM "categories" [0m
+Rendering template within layouts/admin
+Rendering admin/dashboard
+Completed in 19ms (View: 4, DB: 1) | 200 OK [http://localhost/admin/dashboard]
+
+
+Processing ProductsController#index (for 127.0.0.1 at 2009-05-19 00:19:17) [GET]
+  [4;35;1mCategory Load (0.8ms)[0m   [0mSELECT * FROM "categories" [0m
+  [4;36;1mCategorization Load (0.7ms)[0m   [0;1mSELECT "categorizations".* FROM "categorizations" WHERE ("categorizations".category_id IN (1,2,3,4)) [0m
+  [4;35;1mProduct Load (0.3ms)[0m   [0mSELECT * FROM "products" WHERE ("products"."id" = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT count(*) AS count_all FROM "products" [0m
+  [4;35;1mProduct Load (0.4ms)[0m   [0mSELECT * FROM "products" [0m
+Rendering template within layouts/admin
+Rendering products/index
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 110ms (View: 11, DB: 3) | 200 OK [http://localhost/products]
+
+
+Processing AdminController#index (for 127.0.0.1 at 2009-05-19 00:19:19) [GET]
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Redirected to http://localhost:3000/admin/dashboard
+Completed in 5ms (DB: 0) | 302 Found [http://localhost/admin]
+
+
+Processing AdminController#dashboard (for 127.0.0.1 at 2009-05-19 00:19:19) [GET]
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mProduct Load (0.5ms)[0m   [0mSELECT * FROM "products" [0m
+  [4;36;1mCategory Load (0.5ms)[0m   [0;1mSELECT * FROM "categories" [0m
+Rendering template within layouts/admin
+Rendering admin/dashboard
+Completed in 20ms (View: 3, DB: 1) | 200 OK [http://localhost/admin/dashboard]
+
+
+Processing ProductsController#index (for 127.0.0.1 at 2009-05-19 00:19:22) [GET]
+  [4;35;1mCategory Load (0.8ms)[0m   [0mSELECT * FROM "categories" [0m
+  [4;36;1mCategorization Load (0.7ms)[0m   [0;1mSELECT "categorizations".* FROM "categorizations" WHERE ("categorizations".category_id IN (1,2,3,4)) [0m
+  [4;35;1mProduct Load (0.2ms)[0m   [0mSELECT * FROM "products" WHERE ("products"."id" = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT count(*) AS count_all FROM "products" [0m
+  [4;35;1mProduct Load (0.7ms)[0m   [0mSELECT * FROM "products" [0m
+Rendering template within layouts/admin
+Rendering products/index
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 106ms (View: 7, DB: 3) | 200 OK [http://localhost/products]
+
+
+Processing AdminController#index (for 127.0.0.1 at 2009-05-19 00:21:15) [GET]
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Redirected to http://localhost:3000/admin/dashboard
+Completed in 7ms (DB: 0) | 302 Found [http://localhost/admin]
+
+
+Processing AdminController#dashboard (for 127.0.0.1 at 2009-05-19 00:21:15) [GET]
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mProduct Load (0.4ms)[0m   [0mSELECT * FROM "products" [0m
+  [4;36;1mCategory Load (0.5ms)[0m   [0;1mSELECT * FROM "categories" [0m
+Rendering template within layouts/admin
+Rendering admin/dashboard
+Completed in 20ms (View: 4, DB: 1) | 200 OK [http://localhost/admin/dashboard]
+
+
+Processing ProductsController#index (for 127.0.0.1 at 2009-05-19 00:21:20) [GET]
+  [4;35;1mCategory Load (0.9ms)[0m   [0mSELECT * FROM "categories" [0m
+  [4;36;1mCategorization Load (0.7ms)[0m   [0;1mSELECT "categorizations".* FROM "categorizations" WHERE ("categorizations".category_id IN (1,2,3,4)) [0m
+  [4;35;1mProduct Load (0.3ms)[0m   [0mSELECT * FROM "products" WHERE ("products"."id" = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT count(*) AS count_all FROM "products" [0m
+  [4;35;1mProduct Load (0.3ms)[0m   [0mSELECT * FROM "products" [0m
+Rendering template within layouts/admin
+Rendering products/index
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 112ms (View: 8, DB: 3) | 200 OK [http://localhost/products]
+
+
+Processing AdminController#index (for 127.0.0.1 at 2009-05-19 00:21:22) [GET]
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Redirected to http://localhost:3000/admin/dashboard
+Completed in 5ms (DB: 0) | 302 Found [http://localhost/admin]
+
+
+Processing AdminController#dashboard (for 127.0.0.1 at 2009-05-19 00:21:22) [GET]
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mProduct Load (0.4ms)[0m   [0mSELECT * FROM "products" [0m
+  [4;36;1mCategory Load (0.3ms)[0m   [0;1mSELECT * FROM "categories" [0m
+Rendering template within layouts/admin
+Rendering admin/dashboard
+Completed in 17ms (View: 3, DB: 1) | 200 OK [http://localhost/admin/dashboard]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-05-19 00:21:25) [GET]
+
+ActionController::RoutingError (No route matches "/admin/products.html" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ProductsController#index (for 127.0.0.1 at 2009-05-19 00:21:41) [GET]
+  [4;35;1mCategory Load (0.8ms)[0m   [0mSELECT * FROM "categories" [0m
+  [4;36;1mCategorization Load (0.6ms)[0m   [0;1mSELECT "categorizations".* FROM "categorizations" WHERE ("categorizations".category_id IN (1,2,3,4)) [0m
+  [4;35;1mProduct Load (0.3ms)[0m   [0mSELECT * FROM "products" WHERE ("products"."id" = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT count(*) AS count_all FROM "products" [0m
+  [4;35;1mProduct Load (0.4ms)[0m   [0mSELECT * FROM "products" [0m
+Rendering template within layouts/admin
+Rendering products/index
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 107ms (View: 7, DB: 3) | 200 OK [http://localhost/products]
+
+
+Processing AdminController#index (for 127.0.0.1 at 2009-05-19 00:21:43) [GET]
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Redirected to http://localhost:3000/admin/dashboard
+Completed in 6ms (DB: 0) | 302 Found [http://localhost/admin]
+
+
+Processing AdminController#dashboard (for 127.0.0.1 at 2009-05-19 00:21:43) [GET]
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mProduct Load (0.4ms)[0m   [0mSELECT * FROM "products" [0m
+  [4;36;1mCategory Load (0.4ms)[0m   [0;1mSELECT * FROM "categories" [0m
+Rendering template within layouts/admin
+Rendering admin/dashboard
+Completed in 19ms (View: 4, DB: 1) | 200 OK [http://localhost/admin/dashboard]
+
+
+Processing AdminController#index (for 127.0.0.1 at 2009-05-19 00:21:46) [GET]
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Redirected to http://localhost:3000/admin/dashboard
+Completed in 5ms (DB: 0) | 302 Found [http://localhost/admin]
+
+
+Processing AdminController#dashboard (for 127.0.0.1 at 2009-05-19 00:21:46) [GET]
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mProduct Load (0.4ms)[0m   [0mSELECT * FROM "products" [0m
+  [4;36;1mCategory Load (0.6ms)[0m   [0;1mSELECT * FROM "categories" [0m
+Rendering template within layouts/admin
+Rendering admin/dashboard
+Completed in 20ms (View: 4, DB: 1) | 200 OK [http://localhost/admin/dashboard]
+
+
+Processing AdminController#dashboard (for 127.0.0.1 at 2009-05-19 00:21:51) [GET]
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mProduct Load (0.5ms)[0m   [0;1mSELECT * FROM "products" [0m
+  [4;35;1mCategory Load (0.4ms)[0m   [0mSELECT * FROM "categories" [0m
+Rendering template within layouts/admin
+Rendering admin/dashboard
+Completed in 28ms (View: 4, DB: 1) | 200 OK [http://localhost/admin/dashboard]
+
+
+Processing AdminController#dashboard (for 127.0.0.1 at 2009-05-19 00:21:57) [GET]
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mProduct Load (0.4ms)[0m   [0mSELECT * FROM "products" [0m
+  [4;36;1mCategory Load (0.3ms)[0m   [0;1mSELECT * FROM "categories" [0m
+Rendering template within layouts/admin
+Rendering admin/dashboard
+Completed in 18ms (View: 3, DB: 1) | 200 OK [http://localhost/admin/dashboard]
+
+
+Processing ProductsController#index (for 127.0.0.1 at 2009-05-19 00:21:59) [GET]
+  [4;35;1mCategory Load (0.9ms)[0m   [0mSELECT * FROM "categories" [0m
+  [4;36;1mCategorization Load (0.8ms)[0m   [0;1mSELECT "categorizations".* FROM "categorizations" WHERE ("categorizations".category_id IN (1,2,3,4)) [0m
+  [4;35;1mProduct Load (0.3ms)[0m   [0mSELECT * FROM "products" WHERE ("products"."id" = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT count(*) AS count_all FROM "products" [0m
+  [4;35;1mProduct Load (0.4ms)[0m   [0mSELECT * FROM "products" [0m
+Rendering template within layouts/admin
+Rendering products/index
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 34ms (View: 6, DB: 3) | 200 OK [http://localhost/products]
