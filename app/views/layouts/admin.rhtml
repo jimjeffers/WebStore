@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+   <head>
+      <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+      <title>Cactus Sports</title>
+      <meta name="keywords" content="cactus sports, admin"/>
+      <meta name="description" content="Administrative template for cactus sports."/>
+      <link rel="stylesheet" href="/stylesheets/reset.css" type="text/css" media="screen" charset="utf-8"/>
+      <link rel="stylesheet" href="/stylesheets/admin.css" type="text/css" media="screen" charset="utf-8"/>
+   </head>
+   <body id="<%= @body_id %>">
+      <h1 id="site_name">Cactus Sports Administration <a href="/">View Site &gt;&gt;</a></h1>
+      <ul id="primary_navigation" class="navigation">
+         <li class="dashboard"><%= link_to "Dashboard", :controller => "admin" %></li>
+         <li class="products"><%= link_to "Products", products_path %></li>
+         <li class="orders"><a href="orders.html">Orders</a></li>
+         <li class="users"><a href="users.html">Users</a></li>
+      </ul>
+      <ul id="site_settings_navigation">
+         <li class="site_settings"><a href="site_settings.html">Site Settings</a></li>
+         <li class="profile_settings">
+            <span class="name_label">Logged in as:</span> 
+            <span class="user_name"><%= current_user.name %></span>
+            <%= link_to "Edit Profile", edit_user_path(current_user) %>
+         </li>
+         <li class="logout"><%= link_to "Logout", logout_path %></li>
+      </ul>
+      <div id="primary_content">
+         <%= yield :layout %>
+      </div>
+   </body>
+</html>

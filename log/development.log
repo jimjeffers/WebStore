@@ -109,3 +109,1513 @@ Migrating to ActsAsTaggableMigration (20090514230727)
   [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("tags")[0m
   [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("users")[0m
   [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_info('index_users_on_login')[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20090514222732)
+Migrating to CreateCategories (20090514225750)
+Migrating to ActsAsTaggableMigration (20090514230727)
+Migrating to CreateProducts (20090514232407)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCREATE TABLE "products" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "full_description" text, "price" float, "title" varchar(255), "description" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090514232407')[0m
+Migrating to CreateColors (20090514232733)
+  [4;35;1mSQL (0.5ms)[0m   [0mCREATE TABLE "colors" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090514232733')[0m
+Migrating to CreateGarmentSizes (20090514232902)
+  [4;35;1mSQL (1.1ms)[0m   [0mCREATE TABLE "garment_sizes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090514232902')[0m
+  [4;35;1mSQL (0.4ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("categories")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("colors")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("garment_sizes")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("products")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mPRAGMA index_list("taggings")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_info('index_taggings_on_taggable_id_and_taggable_type')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('index_taggings_on_tag_id')[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("tags")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("users")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_info('index_users_on_login')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateGarmentSizes (20090514232902)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mDROP TABLE "garment_sizes"[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mDELETE FROM schema_migrations WHERE version = '20090514232902'[0m
+  [4;35;1mSQL (0.4ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("categories")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("colors")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("products")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("taggings")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('index_taggings_on_taggable_id_and_taggable_type')[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_info('index_taggings_on_tag_id')[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("tags")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("users")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mPRAGMA index_info('index_users_on_login')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20090514222732)
+Migrating to CreateCategories (20090514225750)
+Migrating to ActsAsTaggableMigration (20090514230727)
+Migrating to CreateProducts (20090514232407)
+Migrating to CreateColors (20090514232733)
+Migrating to CreateGarmentSizes (20090514232902)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mCREATE TABLE "garment_sizes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "color_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090514232902')[0m
+  [4;35;1mSQL (0.4ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("categories")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("colors")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("garment_sizes")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("products")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mPRAGMA index_list("taggings")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_info('index_taggings_on_taggable_id_and_taggable_type')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('index_taggings_on_tag_id')[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("tags")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("users")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_info('index_users_on_login')[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-05-14 21:17:12) [GET]
+
+ActionController::RoutingError (No route matches "/admn" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing AdminController#index (for 127.0.0.1 at 2009-05-14 21:17:15) [GET]
+
+ActionController::UnknownAction (No action responded to index. Actions: dashboard):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing AdminController#dashboard (for 127.0.0.1 at 2009-05-14 21:17:19) [GET]
+Rendering template within layouts/admin
+Rendering admin/dashboard
+Completed in 12ms (View: 10, DB: 0) | 200 OK [http://localhost/admin/dashboard]
+
+
+Processing AdminController#css to css (for 127.0.0.1 at 2009-05-14 21:17:20) [GET]
+  Parameters: {"id"=>"admin"}
+
+ActionController::UnknownAction (No action responded to css. Actions: dashboard):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing AdminController#dashboard (for 127.0.0.1 at 2009-05-14 21:19:20) [GET]
+Rendering template within layouts/admin
+Rendering admin/dashboard
+Completed in 5ms (View: 4, DB: 0) | 200 OK [http://localhost/admin/dashboard]
+
+
+Processing AdminController#dashboard (for 127.0.0.1 at 2009-05-14 21:19:22) [GET]
+Rendering template within layouts/admin
+Rendering admin/dashboard
+Completed in 2ms (View: 1, DB: 0) | 200 OK [http://localhost/admin/dashboard]
+
+
+Processing AdminController#dashboard (for 127.0.0.1 at 2009-05-14 21:19:39) [GET]
+Rendering template within layouts/admin
+Rendering admin/dashboard
+Completed in 6ms (View: 4, DB: 0) | 200 OK [http://localhost/admin/dashboard]
+
+
+Processing AdminController#dashboard (for 127.0.0.1 at 2009-05-14 21:23:10) [GET]
+Redirected to http://localhost:3000/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 93ms (DB: 0) | 302 Found [http://localhost/admin/dashboard]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-05-14 21:23:10) [GET]
+Rendering sessions/new
+Completed in 7ms (View: 6, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-05-14 21:24:33) [GET]
+Rendering sessions/new
+Completed in 3ms (View: 1, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-05-14 21:24:54) [GET]
+
+NoMethodError (undefined method `login' for #<SessionsController:0x245f07c>):
+  
+
+Rendered rescues/_trace (35.2ms)
+Rendered rescues/_request_and_response (1.6ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-05-14 21:25:11) [GET]
+Rendering template within layouts/login
+Rendering sessions/new
+Completed in 9ms (View: 8, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-05-14 21:25:40) [GET]
+Rendering template within layouts/login
+Rendering sessions/new
+Completed in 6ms (View: 4, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-05-14 21:27:29) [GET]
+Rendering template within layouts/login
+Rendering sessions/new
+Completed in 4ms (View: 2, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-05-14 21:27:56) [GET]
+Rendering template within layouts/login
+Rendering sessions/new
+Completed in 3ms (View: 1, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-05-14 21:28:42) [GET]
+Rendering template within layouts/login
+Rendering sessions/new
+Completed in 6ms (View: 4, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-05-14 21:29:20) [GET]
+Rendering template within layouts/login
+Rendering sessions/new
+Completed in 3ms (View: 1, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-05-14 21:29:26) [GET]
+Rendering template within layouts/login
+Rendering sessions/new
+Completed in 3ms (View: 1, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-05-14 21:29:29) [GET]
+Rendering template within layouts/login
+Rendering sessions/new
+Completed in 3ms (View: 2, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-05-14 21:29:37) [GET]
+Rendering template within layouts/login
+Rendering sessions/new
+Completed in 3ms (View: 1, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-05-14 21:30:26) [GET]
+Rendering template within layouts/login
+Rendering sessions/new
+Completed in 72ms (View: 70, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-05-14 21:31:06) [GET]
+Rendering template within layouts/login
+Rendering sessions/new
+Completed in 8ms (View: 5, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-05-14 21:31:30) [GET]
+Rendering template within layouts/login
+Rendering sessions/new
+Completed in 3ms (View: 2, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-05-14 21:31:39) [GET]
+Rendering template within layouts/login
+Rendering sessions/new
+Completed in 3ms (View: 1, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-05-14 21:32:04) [GET]
+Rendering template within layouts/login
+Rendering sessions/new
+Completed in 4ms (View: 1, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-05-14 21:32:25) [GET]
+Rendering template within layouts/login
+Rendering sessions/new
+Completed in 4ms (View: 2, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-05-14 21:32:37) [GET]
+Rendering template within layouts/login
+Rendering sessions/new
+Completed in 3ms (View: 1, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-05-14 21:33:45) [GET]
+Rendering template within layouts/login
+Rendering sessions/new
+Completed in 6ms (View: 4, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-05-14 21:34:08) [GET]
+Rendering template within layouts/login
+Rendering sessions/new
+Completed in 5ms (View: 4, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-05-14 21:34:13) [GET]
+Rendering template within layouts/login
+Rendering sessions/new
+Completed in 6ms (View: 4, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-05-14 21:34:42) [GET]
+Rendering template within layouts/login
+Rendering sessions/new
+Completed in 7ms (View: 5, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-05-14 21:34:47) [GET]
+Rendering template within layouts/login
+Rendering sessions/new
+Completed in 6ms (View: 4, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-05-14 21:35:24) [GET]
+Rendering template within layouts/login
+Rendering sessions/new
+Completed in 4ms (View: 2, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-05-14 21:35:38) [GET]
+Rendering template within layouts/login
+Rendering sessions/new
+Completed in 3ms (View: 1, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-05-14 21:35:45) [GET]
+Rendering template within layouts/login
+Rendering sessions/new
+Completed in 5ms (View: 2, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing UsersController#new (for 127.0.0.1 at 2009-05-14 21:36:07) [GET]
+Rendering users/new
+Completed in 15ms (View: 11, DB: 0) | 200 OK [http://localhost/users/new]
+
+
+Processing UsersController#create (for 127.0.0.1 at 2009-05-14 21:36:28) [POST]
+  Parameters: {"user"=>{"password_confirmation"=>"944turbo", "password"=>"944turbo", "login"=>"jimjeffers", "email"=>"jim@sumocreations.com"}, "commit"=>"Sign up", "authenticity_token"=>"vFPfiTavOKxJt+XkB7K69w20u2iHHBi+xLQzMZkK+Aw="}
+
+NoMethodError (undefined method `aasm_state' for #<User:0x24f872c>):
+  /Library/Ruby/Gems/1.8/gems/rubyist-aasm-2.0.5/lib/persistence/active_record_persistence.rb:231:in `send'
+  /Library/Ruby/Gems/1.8/gems/rubyist-aasm-2.0.5/lib/persistence/active_record_persistence.rb:231:in `aasm_read_state'
+  /Library/Ruby/Gems/1.8/gems/rubyist-aasm-2.0.5/lib/persistence/active_record_persistence.rb:135:in `aasm_current_state'
+  /Library/Ruby/Gems/1.8/gems/rubyist-aasm-2.0.5/lib/persistence/active_record_persistence.rb:156:in `aasm_ensure_initial_state'
+  app/controllers/users_controller.rb:18:in `create'
+
+Rendered rescues/_trace (39.9ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing UsersController#new (for 127.0.0.1 at 2009-05-14 21:51:11) [GET]
+Rendering users/new
+Completed in 8ms (View: 4, DB: 0) | 200 OK [http://localhost/users/new]
+
+
+Processing UsersController#create (for 127.0.0.1 at 2009-05-14 21:51:22) [POST]
+  Parameters: {"user"=>{"password_confirmation"=>"944turbo", "password"=>"944turbo", "login"=>"jimjeffers", "email"=>"jim@sumocreations.com"}, "commit"=>"Sign up", "authenticity_token"=>"veDFYnPTQjnZWdoSV7A1PJeSiySBPV7UeAMDd4OIp10="}
+
+NoMethodError (undefined method `aasm_state' for #<User:0x1f81f8c>):
+  /Library/Ruby/Gems/1.8/gems/rubyist-aasm-2.0.5/lib/persistence/active_record_persistence.rb:231:in `send'
+  /Library/Ruby/Gems/1.8/gems/rubyist-aasm-2.0.5/lib/persistence/active_record_persistence.rb:231:in `aasm_read_state'
+  /Library/Ruby/Gems/1.8/gems/rubyist-aasm-2.0.5/lib/persistence/active_record_persistence.rb:135:in `aasm_current_state'
+  /Library/Ruby/Gems/1.8/gems/rubyist-aasm-2.0.5/lib/persistence/active_record_persistence.rb:156:in `aasm_ensure_initial_state'
+  app/controllers/users_controller.rb:18:in `create'
+
+Rendered rescues/_trace (40.1ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing UsersController#create (for 127.0.0.1 at 2009-05-14 21:53:10) [POST]
+  Parameters: {"user"=>{"password_confirmation"=>"944turbo", "password"=>"944turbo", "login"=>"jimjeffers", "email"=>"jim@sumocreations.com"}, "commit"=>"Sign up", "authenticity_token"=>"veDFYnPTQjnZWdoSV7A1PJeSiySBPV7UeAMDd4OIp10="}
+
+NoMethodError (undefined method `aasm_state' for #<User:0x21174b4>):
+  /Library/Ruby/Gems/1.8/gems/rubyist-aasm-2.0.5/lib/persistence/active_record_persistence.rb:231:in `send'
+  /Library/Ruby/Gems/1.8/gems/rubyist-aasm-2.0.5/lib/persistence/active_record_persistence.rb:231:in `aasm_read_state'
+  /Library/Ruby/Gems/1.8/gems/rubyist-aasm-2.0.5/lib/persistence/active_record_persistence.rb:135:in `aasm_current_state'
+  /Library/Ruby/Gems/1.8/gems/rubyist-aasm-2.0.5/lib/persistence/active_record_persistence.rb:156:in `aasm_ensure_initial_state'
+  app/controllers/users_controller.rb:18:in `create'
+
+Rendered rescues/_trace (120.3ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing UsersController#create (for 127.0.0.1 at 2009-05-14 21:53:28) [POST]
+  Parameters: {"user"=>{"password_confirmation"=>"944turbo", "password"=>"944turbo", "login"=>"jimjeffers", "email"=>"jim@sumocreations.com"}, "commit"=>"Sign up", "authenticity_token"=>"veDFYnPTQjnZWdoSV7A1PJeSiySBPV7UeAMDd4OIp10="}
+
+NoMethodError (undefined method `aasm_state' for #<User:0x217a758>):
+  /Library/Ruby/Gems/1.8/gems/rubyist-aasm-2.0.5/lib/persistence/active_record_persistence.rb:231:in `send'
+  /Library/Ruby/Gems/1.8/gems/rubyist-aasm-2.0.5/lib/persistence/active_record_persistence.rb:231:in `aasm_read_state'
+  /Library/Ruby/Gems/1.8/gems/rubyist-aasm-2.0.5/lib/persistence/active_record_persistence.rb:135:in `aasm_current_state'
+  /Library/Ruby/Gems/1.8/gems/rubyist-aasm-2.0.5/lib/persistence/active_record_persistence.rb:156:in `aasm_ensure_initial_state'
+  app/controllers/users_controller.rb:18:in `create'
+
+Rendered rescues/_trace (39.7ms)
+Rendered rescues/_request_and_response (1.5ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing UsersController#create (for 127.0.0.1 at 2009-05-14 21:53:35) [POST]
+  Parameters: {"user"=>{"password_confirmation"=>"944turbo", "password"=>"944turbo", "login"=>"jimjeffers", "email"=>"jim@sumocreations.com"}, "commit"=>"Sign up", "authenticity_token"=>"veDFYnPTQjnZWdoSV7A1PJeSiySBPV7UeAMDd4OIp10="}
+
+NoMethodError (undefined method `aasm_state' for #<User:0x23b5fe0>):
+  /Library/Ruby/Gems/1.8/gems/rubyist-aasm-2.0.5/lib/persistence/active_record_persistence.rb:231:in `send'
+  /Library/Ruby/Gems/1.8/gems/rubyist-aasm-2.0.5/lib/persistence/active_record_persistence.rb:231:in `aasm_read_state'
+  /Library/Ruby/Gems/1.8/gems/rubyist-aasm-2.0.5/lib/persistence/active_record_persistence.rb:135:in `aasm_current_state'
+  /Library/Ruby/Gems/1.8/gems/rubyist-aasm-2.0.5/lib/persistence/active_record_persistence.rb:156:in `aasm_ensure_initial_state'
+  app/controllers/users_controller.rb:18:in `create'
+
+Rendered rescues/_trace (37.8ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (71.3ms)[0m   [0;1mCREATE TABLE "categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "title" varchar(255), "description" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (2.1ms)[0m   [0;1mCREATE TABLE "colors" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (1.9ms)[0m   [0;1mCREATE TABLE "garment_sizes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "color_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mCREATE TABLE "products" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "full_description" text, "price" float, "title" varchar(255), "description" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.4ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (2.2ms)[0m   [0;1mCREATE TABLE "taggings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "tag_id" integer, "taggable_id" integer, "taggable_type" varchar(255), "created_at" datetime) [0m
+  [4;35;1mSQL (2.7ms)[0m   [0mCREATE INDEX "index_taggings_on_tag_id" ON "taggings" ("tag_id")[0m
+  [4;36;1mSQL (3.5ms)[0m   [0;1mCREATE INDEX "index_taggings_on_taggable_id_and_taggable_type" ON "taggings" ("taggable_id", "taggable_type")[0m
+  [4;35;1mSQL (0.5ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (2.7ms)[0m   [0;1mCREATE TABLE "tags" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255)) [0m
+  [4;35;1mSQL (0.5ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (3.0ms)[0m   [0;1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "login" varchar(40), "name" varchar(100) DEFAULT '', "email" varchar(100), "crypted_password" varchar(40), "salt" varchar(40), "created_at" datetime, "updated_at" datetime, "remember_token" varchar(40), "remember_token_expires_at" datetime, "activation_code" varchar(40), "activated_at" datetime, "state" varchar(255) DEFAULT 'passive', "deleted_at" datetime) [0m
+  [4;35;1mSQL (3.1ms)[0m   [0mCREATE UNIQUE INDEX "index_users_on_login" ON "users" ("login")[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (2.7ms)[0m   [0mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;36;1mSQL (2.6ms)[0m   [0;1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;35;1mSQL (0.4ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT version FROM "schema_migrations"[0m
+  [4;35;1mSQL (2.7ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20090514232902')[0m
+  [4;36;1mSQL (2.6ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20090514222732')[0m
+  [4;35;1mSQL (3.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20090514225750')[0m
+  [4;36;1mSQL (2.7ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20090514230727')[0m
+  [4;35;1mSQL (2.6ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20090514232407')[0m
+  [4;36;1mSQL (2.5ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20090514232733')[0m
+  [4;36;1mCategory Create (0.6ms)[0m   [0;1mINSERT INTO "categories" ("name", "updated_at", "title", "description", "created_at") VALUES('T-Shirts', '2009-05-19 04:35:08', NULL, NULL, '2009-05-19 04:35:08')[0m
+  [4;35;1mCategory Create (0.5ms)[0m   [0mINSERT INTO "categories" ("name", "updated_at", "title", "description", "created_at") VALUES('Jerseys', '2009-05-19 04:35:22', NULL, NULL, '2009-05-19 04:35:22')[0m
+  [4;36;1mProduct Create (0.4ms)[0m   [0;1mINSERT INTO "products" ("name", "full_description", "updated_at", "price", "title", "description", "created_at") VALUES('ASU Tee', NULL, '2009-05-19 04:35:38', NULL, NULL, NULL, '2009-05-19 04:35:38')[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (3.6ms)[0m   [0;1mCREATE TABLE "categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "title" varchar(255), "description" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.4ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (2.3ms)[0m   [0;1mCREATE TABLE "colors" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.4ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mCREATE TABLE "garment_sizes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "color_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (2.2ms)[0m   [0;1mCREATE TABLE "products" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "full_description" text, "price" float, "title" varchar(255), "description" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.4ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (2.3ms)[0m   [0;1mCREATE TABLE "taggings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "tag_id" integer, "taggable_id" integer, "taggable_type" varchar(255), "created_at" datetime) [0m
+  [4;35;1mSQL (2.7ms)[0m   [0mCREATE INDEX "index_taggings_on_tag_id" ON "taggings" ("tag_id")[0m
+  [4;36;1mSQL (2.2ms)[0m   [0;1mCREATE INDEX "index_taggings_on_taggable_id_and_taggable_type" ON "taggings" ("taggable_id", "taggable_type")[0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (1.8ms)[0m   [0;1mCREATE TABLE "tags" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255)) [0m
+  [4;35;1mSQL (0.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (2.2ms)[0m   [0;1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "login" varchar(40), "name" varchar(100) DEFAULT '', "email" varchar(100), "crypted_password" varchar(40), "salt" varchar(40), "created_at" datetime, "updated_at" datetime, "remember_token" varchar(40), "remember_token_expires_at" datetime, "activation_code" varchar(40), "activated_at" datetime, "state" varchar(255) DEFAULT 'passive', "deleted_at" datetime) [0m
+  [4;35;1mSQL (2.5ms)[0m   [0mCREATE UNIQUE INDEX "index_users_on_login" ON "users" ("login")[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (2.4ms)[0m   [0mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;36;1mSQL (2.9ms)[0m   [0;1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;35;1mSQL (0.4ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT version FROM "schema_migrations"[0m
+  [4;35;1mSQL (2.7ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20090514232902')[0m
+  [4;36;1mSQL (2.5ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20090514222732')[0m
+  [4;35;1mSQL (2.8ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20090514225750')[0m
+  [4;36;1mSQL (2.4ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20090514230727')[0m
+  [4;35;1mSQL (2.5ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20090514232407')[0m
+  [4;36;1mSQL (2.6ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20090514232733')[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (3.4ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (2.4ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20090514222732)
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "login" varchar(40), "name" varchar(100) DEFAULT '', "email" varchar(100), "crypted_password" varchar(40), "salt" varchar(40), "created_at" datetime, "updated_at" datetime, "remember_token" varchar(40), "remember_token_expires_at" datetime, "activation_code" varchar(40), "activated_at" datetime, "state" varchar(255) DEFAULT 'passive', "deleted_at" datetime) [0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCREATE UNIQUE INDEX "index_users_on_login" ON "users" ("login")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090514222732')[0m
+Migrating to CreateCategories (20090514225750)
+  [4;36;1mSQL (0.5ms)[0m   [0;1mCREATE TABLE "categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "title" varchar(255), "description" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090514225750')[0m
+Migrating to ActsAsTaggableMigration (20090514230727)
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCREATE TABLE "tags" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255)) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCREATE TABLE "taggings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "tag_id" integer, "taggable_id" integer, "taggable_type" varchar(255), "created_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCREATE INDEX "index_taggings_on_tag_id" ON "taggings" ("tag_id")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCREATE INDEX "index_taggings_on_taggable_id_and_taggable_type" ON "taggings" ("taggable_id", "taggable_type")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090514230727')[0m
+Migrating to CreateProducts (20090514232407)
+  [4;35;1mSQL (0.6ms)[0m   [0mCREATE TABLE "products" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "full_description" text, "price" float, "sku" varchar(255), "title" varchar(255), "description" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090514232407')[0m
+Migrating to CreateColors (20090514232733)
+  [4;35;1mSQL (0.4ms)[0m   [0mCREATE TABLE "colors" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "price" float, "sku" varchar(255), "product_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090514232733')[0m
+Migrating to CreateGarmentSizes (20090514232902)
+  [4;35;1mSQL (0.4ms)[0m   [0mCREATE TABLE "garment_sizes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "price" float, "sku" varchar(255), "color_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090514232902')[0m
+Migrating to CreateCategorizations (20090519042750)
+  [4;35;1mSQL (0.4ms)[0m   [0mCREATE TABLE "categorizations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "category_id" integer, "product_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCREATE INDEX "index_categorizations_on_category_id" ON "categorizations" ("category_id")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCREATE INDEX "index_categorizations_on_product_id" ON "categorizations" ("product_id")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090519042750')[0m
+  [4;35;1mSQL (1.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.4ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("categories")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mPRAGMA index_list("categorizations")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('index_categorizations_on_product_id')[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mPRAGMA index_info('index_categorizations_on_category_id')[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("colors")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("garment_sizes")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("products")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("taggings")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('index_taggings_on_taggable_id_and_taggable_type')[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_info('index_taggings_on_tag_id')[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("tags")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("users")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('index_users_on_login')[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."login" = 'jimjeffers') LIMIT 1[0m
+  [4;36;1mCategory Load (0.1ms)[0m   [0;1mSELECT * FROM "categories" WHERE ("categories"."name" = 'T-Shirts') LIMIT 1[0m
+  [4;35;1mCategory Create (0.4ms)[0m   [0mINSERT INTO "categories" ("name", "updated_at", "title", "description", "created_at") VALUES('T-Shirts', '2009-05-19 04:50:12', NULL, NULL, '2009-05-19 04:50:12')[0m
+  [4;36;1mCategory Load (0.3ms)[0m   [0;1mSELECT * FROM "categories" WHERE ("categories"."name" = 'Jersies') LIMIT 1[0m
+  [4;35;1mCategory Create (0.3ms)[0m   [0mINSERT INTO "categories" ("name", "updated_at", "title", "description", "created_at") VALUES('Jersies', '2009-05-19 04:50:12', NULL, NULL, '2009-05-19 04:50:12')[0m
+  [4;36;1mCategory Load (0.2ms)[0m   [0;1mSELECT * FROM "categories" WHERE ("categories"."name" = 'Clearance') LIMIT 1[0m
+  [4;35;1mCategory Create (0.3ms)[0m   [0mINSERT INTO "categories" ("name", "updated_at", "title", "description", "created_at") VALUES('Clearance', '2009-05-19 04:50:12', NULL, NULL, '2009-05-19 04:50:12')[0m
+  [4;36;1mCategory Load (0.3ms)[0m   [0;1mSELECT * FROM "categories" WHERE ("categories"."name" = 'Shorts') LIMIT 1[0m
+  [4;35;1mCategory Create (0.4ms)[0m   [0mINSERT INTO "categories" ("name", "updated_at", "title", "description", "created_at") VALUES('Shorts', '2009-05-19 04:50:12', NULL, NULL, '2009-05-19 04:50:12')[0m
+  [4;36;1mProduct Load (0.2ms)[0m   [0;1mSELECT * FROM "products" WHERE ("products"."name" = 'ASU-Tee') LIMIT 1[0m
+  [4;35;1mProduct Create (0.3ms)[0m   [0mINSERT INTO "products" ("name", "full_description", "updated_at", "price", "title", "description", "sku", "created_at") VALUES('ASU-Tee', NULL, '2009-05-19 04:50:12', NULL, NULL, NULL, NULL, '2009-05-19 04:50:12')[0m
+  [4;36;1mProduct Load (0.4ms)[0m   [0;1mSELECT * FROM "products" WHERE ("products"."name" = 'Sundevil-Jersey') LIMIT 1[0m
+  [4;35;1mProduct Create (0.3ms)[0m   [0mINSERT INTO "products" ("name", "full_description", "updated_at", "price", "title", "description", "sku", "created_at") VALUES('Sundevil-Jersey', NULL, '2009-05-19 04:50:12', NULL, NULL, NULL, NULL, '2009-05-19 04:50:12')[0m
+  [4;36;1mProduct Load (0.4ms)[0m   [0;1mSELECT * FROM "products" WHERE ("products"."name" = 'Trainer-Short') LIMIT 1[0m
+  [4;35;1mProduct Create (0.3ms)[0m   [0mINSERT INTO "products" ("name", "full_description", "updated_at", "price", "title", "description", "sku", "created_at") VALUES('Trainer-Short', NULL, '2009-05-19 04:50:12', NULL, NULL, NULL, NULL, '2009-05-19 04:50:12')[0m
+  [4;36;1mProduct Load (0.7ms)[0m   [0;1mSELECT * FROM "products" LIMIT 1[0m
+  [4;36;1mProduct Load (0.7ms)[0m   [0;1mSELECT * FROM "products" LIMIT 1[0m
+  [4;35;1mCategory Load (0.3ms)[0m   [0mSELECT "categories".* FROM "categories" INNER JOIN "categorizations" ON "categories".id = "categorizations".category_id WHERE (("categorizations".product_id = 1)) [0m
+  [4;36;1mCategory Load (0.4ms)[0m   [0;1mSELECT * FROM "categories" LIMIT 1[0m
+  [4;35;1mCategorization Create (0.8ms)[0m   [0mINSERT INTO "categorizations" ("updated_at", "product_id", "category_id", "created_at") VALUES('2009-05-19 04:52:49', 1, 1, '2009-05-19 04:52:49')[0m
+  [4;36;1mCategory Load (0.4ms)[0m   [0;1mSELECT * FROM "categories" LIMIT 1[0m
+  [4;35;1mProduct Load (0.3ms)[0m   [0mSELECT "products".* FROM "products" INNER JOIN "categorizations" ON "products".id = "categorizations".product_id WHERE (("categorizations".category_id = 1)) [0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."login" = 'jimjeffers') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."login" = 'jimjeffers') LIMIT 1[0m
+  [4;35;1mUser Exists (0.1ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."login" = 'jimjeffers') LIMIT 1[0m
+  [4;36;1mUser Exists (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."email" = 'jim@sumocreations.com') LIMIT 1[0m
+  [4;35;1mUser Create (0.4ms)[0m   [0mINSERT INTO "users" ("name", "salt", "updated_at", "activated_at", "crypted_password", "deleted_at", "remember_token_expires_at", "activation_code", "remember_token", "login", "email", "created_at", "state") VALUES('Jim Jeffers', '902df11452d4550e76ff79e2b1815037b0e00848', '2009-05-19 05:02:55', NULL, 'a44222690216c6bb82b308e6b4d180b9198c870f', NULL, NULL, NULL, NULL, 'jimjeffers', 'jim@sumocreations.com', '2009-05-19 05:02:55', 'passive')[0m
+Sent mail to jim@sumocreations.com
+
+Date: Mon, 18 May 2009 22:02:56 -0700
+From: ADMINEMAIL
+To: jim@sumocreations.com
+Subject: [YOURSITE] Please activate your new account
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+Your account has been created.
+
+  Username: jimjeffers
+  Password: sumosumo
+
+Visit this url to activate your account:
+
+  http://YOURSITE/activate/
+  [4;36;1mUser Exists (0.2ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."login" = 'jimjeffers' AND "users".id <> 1) LIMIT 1[0m
+  [4;35;1mUser Exists (0.1ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."email" = 'jim@sumocreations.com' AND "users".id <> 1) LIMIT 1[0m
+  [4;36;1mUser Update (0.3ms)[0m   [0;1mUPDATE "users" SET "activation_code" = '9fb12b790a7580eb5d39133ce078636b9236591f', "state" = 'pending', "updated_at" = '2009-05-19 05:02:56' WHERE "id" = 1[0m
+  [4;35;1mUser Exists (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."login" = 'jimjeffers' AND "users".id <> 1) LIMIT 1[0m
+  [4;36;1mUser Exists (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."email" = 'jim@sumocreations.com' AND "users".id <> 1) LIMIT 1[0m
+  [4;35;1mUser Update (0.4ms)[0m   [0mUPDATE "users" SET "activated_at" = '2009-05-19 05:02:56', "activation_code" = NULL, "state" = 'active', "updated_at" = '2009-05-19 05:02:56' WHERE "id" = 1[0m
+Sent mail to jim@sumocreations.com
+
+Date: Mon, 18 May 2009 22:02:56 -0700
+From: ADMINEMAIL
+To: jim@sumocreations.com
+Subject: [YOURSITE] Your account has been activated!
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+jimjeffers, your account has been activated.  Welcome aboard!
+
+  http://YOURSITE/
+  [4;36;1mCategory Load (0.3ms)[0m   [0;1mSELECT * FROM "categories" WHERE ("categories"."name" = 'T-Shirts') LIMIT 1[0m
+  [4;35;1mCategory Load (0.2ms)[0m   [0mSELECT * FROM "categories" WHERE ("categories"."name" = 'Jersies') LIMIT 1[0m
+  [4;36;1mCategory Load (0.3ms)[0m   [0;1mSELECT * FROM "categories" WHERE ("categories"."name" = 'Clearance') LIMIT 1[0m
+  [4;35;1mCategory Load (0.2ms)[0m   [0mSELECT * FROM "categories" WHERE ("categories"."name" = 'Shorts') LIMIT 1[0m
+  [4;36;1mProduct Load (0.2ms)[0m   [0;1mSELECT * FROM "products" WHERE ("products"."name" = 'ASU-Tee') LIMIT 1[0m
+  [4;35;1mProduct Load (0.2ms)[0m   [0mSELECT * FROM "products" WHERE ("products"."name" = 'Sundevil-Jersey') LIMIT 1[0m
+  [4;36;1mProduct Load (0.2ms)[0m   [0;1mSELECT * FROM "products" WHERE ("products"."name" = 'Trainer-Short') LIMIT 1[0m
+
+
+Processing AdminController#index (for 127.0.0.1 at 2009-05-18 22:04:18) [GET]
+Redirected to http://localhost:3000/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 81ms (DB: 0) | 302 Found [http://localhost/admin]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-05-18 22:04:18) [GET]
+Rendering template within layouts/login
+Rendering sessions/new
+Completed in 28ms (View: 26, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-05-18 22:05:34) [GET]
+Rendering template within layouts/login
+Rendering sessions/new
+Completed in 5ms (View: 2, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing SessionsController#create (for 127.0.0.1 at 2009-05-18 22:09:27) [POST]
+  Parameters: {"commit"=>"Log in", "authenticity_token"=>"rWFv6xzc6qAKvN5fT573sbH+lUb6NYK3oP3Qt4D7k4g=", "login"=>"jimjeffers", "password"=>"sumosumo"}
+  [4;36;1mUser Load (0.9ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."login" = 'jimjeffers') AND (users.state = 'active') LIMIT 1[0m
+Redirected to http://localhost:3000/admin
+Completed in 16ms (DB: 1) | 302 Found [http://localhost/session]
+
+
+Processing AdminController#index (for 127.0.0.1 at 2009-05-18 22:09:27) [GET]
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+
+ActionController::UnknownAction (No action responded to index. Actions: dashboard):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-05-18 22:10:10) [GET]
+Rendering template within layouts/login
+Rendering sessions/new
+Completed in 4ms (View: 2, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing AdminController#dashboard (for 127.0.0.1 at 2009-05-18 22:11:23) [GET]
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendering template within layouts/admin
+Rendering admin/dashboard
+Completed in 29ms (View: 24, DB: 0) | 200 OK [http://localhost/admin/dashboard]
+
+
+Processing AdminController#index (for 127.0.0.1 at 2009-05-18 22:11:52) [GET]
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Redirected to http://localhost:3000/admin/dashboard
+Completed in 5ms (DB: 0) | 302 Found [http://localhost/admin/]
+
+
+Processing AdminController#dashboard (for 127.0.0.1 at 2009-05-18 22:11:52) [GET]
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendering template within layouts/admin
+Rendering admin/dashboard
+Completed in 6ms (View: 1, DB: 0) | 200 OK [http://localhost/admin/dashboard]
+
+
+Processing AdminController#dashboard (for 127.0.0.1 at 2009-05-18 22:16:26) [GET]
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mProduct Load (0.5ms)[0m   [0;1mSELECT * FROM "products" [0m
+  [4;35;1mCategory Load (0.5ms)[0m   [0mSELECT * FROM "categories" [0m
+Rendering template within layouts/admin
+Rendering admin/dashboard
+Completed in 93ms (View: 5, DB: 1) | 200 OK [http://localhost/admin/dashboard]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-05-18 22:16:37) [GET]
+
+ActionController::RoutingError (No route matches "/admin/new_product.html" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-05-18 22:17:34) [GET]
+
+ActionController::RoutingError (No route matches "/admin/new_product.html" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing AdminController#dashboard (for 127.0.0.1 at 2009-05-18 22:17:36) [GET]
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mProduct Load (0.5ms)[0m   [0mSELECT * FROM "products" [0m
+  [4;36;1mCategory Load (0.4ms)[0m   [0;1mSELECT * FROM "categories" [0m
+Rendering template within layouts/admin
+Rendering admin/dashboard
+Completed in 21ms (View: 5, DB: 1) | 200 OK [http://localhost/admin/dashboard]
+
+
+Processing ProductsController#new (for 127.0.0.1 at 2009-05-18 22:17:38) [GET]
+
+ActionController::UnknownAction (No action responded to new. Actions: ):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ProductsController#index (for 127.0.0.1 at 2009-05-18 22:17:53) [GET]
+
+ActionController::UnknownAction (No action responded to index. Actions: ):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing AdminController#dashboard (for 127.0.0.1 at 2009-05-18 22:17:55) [GET]
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mProduct Load (0.4ms)[0m   [0;1mSELECT * FROM "products" [0m
+  [4;35;1mCategory Load (0.4ms)[0m   [0mSELECT * FROM "categories" [0m
+Rendering template within layouts/admin
+Rendering admin/dashboard
+Completed in 15ms (View: 1, DB: 1) | 200 OK [http://localhost/admin/dashboard]
+
+
+Processing ProductsController#new (for 127.0.0.1 at 2009-05-18 22:21:24) [GET]
+Rendering template within layouts/admin
+Rendering products/new
+Completed in 26ms (View: 11, DB: 0) | 200 OK [http://localhost/products/new]
+
+
+Processing ProductsController#index (for 127.0.0.1 at 2009-05-18 22:21:29) [GET]
+  [4;36;1mProduct Load (0.8ms)[0m   [0;1mSELECT * FROM "products" [0m
+Rendering template within layouts/admin
+Rendering products/index
+Completed in 79ms (View: 71, DB: 1) | 200 OK [http://localhost/products]
+
+
+Processing ProductsController#index (for 127.0.0.1 at 2009-05-18 22:22:53) [GET]
+  [4;35;1mProduct Load (0.8ms)[0m   [0mSELECT * FROM "products" [0m
+Rendering template within layouts/admin
+Rendering products/index
+Completed in 16ms (View: 8, DB: 1) | 200 OK [http://localhost/products]
+
+
+Processing AdminController#index (for 127.0.0.1 at 2009-05-18 22:22:55) [GET]
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Redirected to http://localhost:3000/admin/dashboard
+Completed in 13ms (DB: 0) | 302 Found [http://localhost/admin]
+
+
+Processing AdminController#dashboard (for 127.0.0.1 at 2009-05-18 22:22:55) [GET]
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mProduct Load (0.5ms)[0m   [0;1mSELECT * FROM "products" [0m
+  [4;35;1mCategory Load (0.4ms)[0m   [0mSELECT * FROM "categories" [0m
+Rendering template within layouts/admin
+Rendering admin/dashboard
+Completed in 87ms (View: 72, DB: 1) | 200 OK [http://localhost/admin/dashboard]
+
+
+Processing AdminController#dashboard (for 127.0.0.1 at 2009-05-18 22:23:22) [GET]
+  [4;36;1mUser Load (0.8ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mProduct Load (0.4ms)[0m   [0mSELECT * FROM "products" [0m
+  [4;36;1mCategory Load (0.6ms)[0m   [0;1mSELECT * FROM "categories" [0m
+Rendering template within layouts/admin
+Rendering admin/dashboard
+Completed in 21ms (View: 5, DB: 2) | 200 OK [http://localhost/admin/dashboard]
+
+
+Processing ProductsController#index (for 127.0.0.1 at 2009-05-18 22:23:24) [GET]
+  [4;35;1mProduct Load (0.8ms)[0m   [0mSELECT * FROM "products" [0m
+Rendering template within layouts/admin
+Rendering products/index
+Completed in 12ms (View: 4, DB: 1) | 200 OK [http://localhost/products]
+
+
+Processing AdminController#index (for 127.0.0.1 at 2009-05-18 22:23:25) [GET]
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Redirected to http://localhost:3000/admin/dashboard
+Completed in 5ms (DB: 0) | 302 Found [http://localhost/admin]
+
+
+Processing AdminController#dashboard (for 127.0.0.1 at 2009-05-18 22:23:25) [GET]
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mProduct Load (0.4ms)[0m   [0;1mSELECT * FROM "products" [0m
+  [4;35;1mCategory Load (0.4ms)[0m   [0mSELECT * FROM "categories" [0m
+Rendering template within layouts/admin
+Rendering admin/dashboard
+Completed in 16ms (View: 1, DB: 1) | 200 OK [http://localhost/admin/dashboard]
+
+
+Processing AdminController#dashboard (for 127.0.0.1 at 2009-05-18 22:24:04) [GET]
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mProduct Load (0.4ms)[0m   [0mSELECT * FROM "products" [0m
+  [4;36;1mCategory Load (0.3ms)[0m   [0;1mSELECT * FROM "categories" [0m
+Rendering template within layouts/admin
+Rendering admin/dashboard
+Completed in 23ms (View: 8, DB: 1) | 200 OK [http://localhost/admin/dashboard]
+
+
+Processing AdminController#dashboard (for 127.0.0.1 at 2009-05-18 22:24:34) [GET]
+  [4;35;1mUser Load (1.1ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mProduct Load (0.4ms)[0m   [0;1mSELECT * FROM "products" [0m
+  [4;35;1mCategory Load (0.3ms)[0m   [0mSELECT * FROM "categories" [0m
+Rendering template within layouts/admin
+Rendering admin/dashboard
+Completed in 23ms (View: 6, DB: 2) | 200 OK [http://localhost/admin/dashboard]
+
+
+Processing AdminController#dashboard (for 127.0.0.1 at 2009-05-18 22:24:45) [GET]
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mProduct Load (0.4ms)[0m   [0mSELECT * FROM "products" [0m
+  [4;36;1mCategory Load (0.9ms)[0m   [0;1mSELECT * FROM "categories" [0m
+Rendering template within layouts/admin
+Rendering admin/dashboard
+Completed in 26ms (View: 9, DB: 2) | 200 OK [http://localhost/admin/dashboard]
+
+
+Processing AdminController#dashboard (for 127.0.0.1 at 2009-05-18 22:25:03) [GET]
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mProduct Load (0.5ms)[0m   [0;1mSELECT * FROM "products" [0m
+  [4;35;1mCategory Load (0.5ms)[0m   [0mSELECT * FROM "categories" [0m
+Rendering template within layouts/admin
+Rendering admin/dashboard
+Completed in 23ms (View: 7, DB: 1) | 200 OK [http://localhost/admin/dashboard]
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2009-05-18 22:25:05) [GET]
+Redirected to http://localhost:3000/
+Completed in 2ms (DB: 0) | 302 Found [http://localhost/logout]
+
+
+Processing AdminController#index (for 127.0.0.1 at 2009-05-18 22:25:09) [GET]
+Redirected to http://localhost:3000/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 1ms (DB: 0) | 302 Found [http://localhost/admin]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-05-18 22:25:09) [GET]
+Rendering template within layouts/login
+Rendering sessions/new
+Completed in 10ms (View: 9, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing SessionsController#create (for 127.0.0.1 at 2009-05-18 22:25:14) [POST]
+  Parameters: {"commit"=>"Log in", "authenticity_token"=>"eXqJMXKXLloSYY9F9OdUzqwnWxejsOHo9ep50bh1EDw=", "login"=>"jimjeffers", "password"=>"sumosumo"}
+  [4;36;1mUser Load (0.9ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."login" = 'jimjeffers') AND (users.state = 'active') LIMIT 1[0m
+Redirected to http://localhost:3000/admin
+Completed in 9ms (DB: 1) | 302 Found [http://localhost/session]
+
+
+Processing AdminController#index (for 127.0.0.1 at 2009-05-18 22:25:14) [GET]
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Redirected to http://localhost:3000/admin/dashboard
+Completed in 6ms (DB: 0) | 302 Found [http://localhost/admin]
+
+
+Processing AdminController#dashboard (for 127.0.0.1 at 2009-05-18 22:25:14) [GET]
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mProduct Load (0.6ms)[0m   [0mSELECT * FROM "products" [0m
+  [4;36;1mCategory Load (0.5ms)[0m   [0;1mSELECT * FROM "categories" [0m
+Rendering template within layouts/admin
+Rendering admin/dashboard
+Completed in 22ms (View: 4, DB: 1) | 200 OK [http://localhost/admin/dashboard]
+
+
+Processing UsersController#edit (for 127.0.0.1 at 2009-05-18 22:25:36) [GET]
+  Parameters: {"id"=>"1"}
+
+ActionController::UnknownAction (No action responded to edit. Actions: activate, create, destroy, new, purge, suspend, and unsuspend):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing AdminController#index (for 127.0.0.1 at 2009-05-18 22:30:37) [GET]
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Redirected to http://localhost:3000/admin/dashboard
+Completed in 5ms (DB: 0) | 302 Found [http://localhost/admin]
+
+
+Processing AdminController#dashboard (for 127.0.0.1 at 2009-05-18 22:30:37) [GET]
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mProduct Load (0.5ms)[0m   [0mSELECT * FROM "products" [0m
+  [4;36;1mCategory Load (0.4ms)[0m   [0;1mSELECT * FROM "categories" [0m
+Rendering template within layouts/admin
+Rendering admin/dashboard
+Completed in 94ms (View: 9, DB: 1) | 200 OK [http://localhost/admin/dashboard]
+
+
+Processing ProductsController#index (for 127.0.0.1 at 2009-05-18 22:30:43) [GET]
+  [4;35;1mProduct Load (0.8ms)[0m   [0mSELECT * FROM "products" [0m
+Rendering template within layouts/admin
+Rendering products/index
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 16ms (View: 9, DB: 1) | 200 OK [http://localhost/products]
+
+
+Processing ProductsController#index (for 127.0.0.1 at 2009-05-18 22:34:10) [GET]
+  [4;35;1mProduct Load (0.8ms)[0m   [0mSELECT * FROM "products" [0m
+Rendering template within layouts/admin
+Rendering products/index
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 23ms (View: 14, DB: 1) | 200 OK [http://localhost/products]
+
+
+Processing ProductsController#index (for 127.0.0.1 at 2009-05-18 22:34:18) [GET]
+  [4;35;1mProduct Load (0.8ms)[0m   [0mSELECT * FROM "products" [0m
+Rendering template within layouts/admin
+Rendering products/index
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 27ms (View: 17, DB: 1) | 200 OK [http://localhost/products]
+
+
+Processing ProductsController#new (for 127.0.0.1 at 2009-05-18 22:34:19) [GET]
+Rendering template within layouts/admin
+Rendering products/new
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 18ms (View: 8, DB: 0) | 200 OK [http://localhost/products/new]
+
+
+Processing ProductsController#index (for 127.0.0.1 at 2009-05-18 22:34:23) [GET]
+  [4;36;1mProduct Load (0.8ms)[0m   [0;1mSELECT * FROM "products" [0m
+Rendering template within layouts/admin
+Rendering products/index
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 16ms (View: 9, DB: 1) | 200 OK [http://localhost/products]
+
+
+Processing ProductsController#index (for 127.0.0.1 at 2009-05-18 22:34:52) [GET]
+  [4;36;1mProduct Load (0.8ms)[0m   [0;1mSELECT * FROM "products" [0m
+Rendering template within layouts/admin
+Rendering products/index
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 96ms (View: 13, DB: 1) | 200 OK [http://localhost/products]
+
+
+Processing ProductsController#index (for 127.0.0.1 at 2009-05-18 22:38:14) [GET]
+  [4;36;1mProduct Load (0.8ms)[0m   [0;1mSELECT * FROM "products" [0m
+Rendering template within layouts/admin
+Rendering products/index
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 21ms (View: 14, DB: 1) | 200 OK [http://localhost/products]
+
+
+Processing ProductsController#index (for 127.0.0.1 at 2009-05-18 22:38:45) [GET]
+  [4;36;1mProduct Load (0.8ms)[0m   [0;1mSELECT * FROM "products" [0m
+Rendering template within layouts/admin
+Rendering products/index
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 21ms (View: 14, DB: 1) | 200 OK [http://localhost/products]
+
+
+Processing ProductsController#index (for 127.0.0.1 at 2009-05-18 22:39:13) [GET]
+  [4;36;1mProduct Load (0.8ms)[0m   [0;1mSELECT * FROM "products" [0m
+Rendering template within layouts/admin
+Rendering products/index
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 20ms (View: 12, DB: 1) | 200 OK [http://localhost/products]
+
+
+Processing ProductsController#edit (for 127.0.0.1 at 2009-05-18 22:39:27) [GET]
+  Parameters: {"id"=>"2"}
+  [4;36;1mProduct Load (0.2ms)[0m   [0;1mSELECT * FROM "products" WHERE ("products"."id" = 2) [0m
+Rendering template within layouts/admin
+Rendering products/edit
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 22ms (View: 10, DB: 1) | 200 OK [http://localhost/products/2/edit]
+
+
+Processing ProductsController#index (for 127.0.0.1 at 2009-05-18 22:40:25) [GET]
+  [4;36;1mProduct Load (1.1ms)[0m   [0;1mSELECT * FROM "products" [0m
+Rendering template within layouts/admin
+Rendering products/index
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 20ms (View: 10, DB: 1) | 200 OK [http://localhost/products]
+
+
+Processing ProductsController#edit (for 127.0.0.1 at 2009-05-18 22:40:28) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mProduct Load (0.2ms)[0m   [0;1mSELECT * FROM "products" WHERE ("products"."id" = 1) [0m
+Rendering template within layouts/admin
+Rendering products/edit
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 18ms (View: 10, DB: 1) | 200 OK [http://localhost/products/1/edit]
+
+
+Processing ProductsController#index (for 127.0.0.1 at 2009-05-18 22:40:30) [GET]
+  [4;36;1mProduct Load (1.1ms)[0m   [0;1mSELECT * FROM "products" [0m
+Rendering template within layouts/admin
+Rendering products/index
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 18ms (View: 10, DB: 1) | 200 OK [http://localhost/products]
+
+
+Processing ProductsController#index (for 127.0.0.1 at 2009-05-18 22:44:27) [GET]
+  [4;36;1mProduct Load (0.9ms)[0m   [0;1mSELECT * FROM "products" [0m
+Rendering template within layouts/admin
+Rendering products/index
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.each) on line #7 of app/views/products/index.html.erb:
+4:  <div id="category_list" class="panel">
+5:     <h2 class="panel_name">Categories <a href="new_category.html" class="secondary">New &gt;&gt;</a></h2>
+6:     <ul id="categories">
+7:        <% @categories.each do |category| %>
+8:         <li class="<%= @category.slug %>"><%= link_to "#{category.name}", category_products_path(category) %> <span class="count"><%= category.products.length %> items</span></li>
+9:        <% end %>
+10:        <li class="all selected"><a href="#">All</a> <span class="count">119 items</span></li>
+
+    app/views/products/index.html.erb:7
+    app/controllers/products_controller.rb:9:in `index'
+
+Rendered rescues/_trace (42.7ms)
+Rendered rescues/_request_and_response (1.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ProductsController#index (for 127.0.0.1 at 2009-05-18 22:44:58) [GET]
+  [4;35;1mCategory Load (0.9ms)[0m   [0mSELECT * FROM "categories" [0m
+
+ActiveRecord::ConfigurationError (Association named 'product' was not found; perhaps you misspelled it?):
+  app/controllers/products_controller.rb:91:in `get_categories'
+  app/controllers/products_controller.rb:7:in `index'
+
+Rendered rescues/_trace (112.4ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ProductsController#index (for 127.0.0.1 at 2009-05-18 22:45:08) [GET]
+  [4;36;1mCategory Load (0.8ms)[0m   [0;1mSELECT * FROM "categories" [0m
+  [4;35;1mCategorization Load (0.7ms)[0m   [0mSELECT "categorizations".* FROM "categorizations" WHERE ("categorizations".category_id IN (1,2,3,4)) [0m
+  [4;36;1mProduct Load (0.3ms)[0m   [0;1mSELECT * FROM "products" WHERE ("products"."id" = 1) [0m
+  [4;35;1mProduct Load (0.4ms)[0m   [0mSELECT * FROM "products" [0m
+Rendering template within layouts/admin
+Rendering products/index
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.slug) on line #8 of app/views/products/index.html.erb:
+5:     <h2 class="panel_name">Categories <a href="new_category.html" class="secondary">New &gt;&gt;</a></h2>
+6:     <ul id="categories">
+7:        <% @categories.each do |category| %>
+8:         <li class="<%= @category.slug %>"><%= link_to "#{category.name}", category_products_path(category) %> <span class="count"><%= category.products.length %> items</span></li>
+9:        <% end %>
+10:        <li class="all selected"><a href="#">All</a> <span class="count">119 items</span></li>
+11:        <li class="t-shirts"><a href="#">T-Shirts</a> <span class="count">22 items</span></li>
+
+    app/views/products/index.html.erb:8
+    app/views/products/index.html.erb:7:in `each'
+    app/views/products/index.html.erb:7
+    app/controllers/products_controller.rb:10:in `index'
+
+Rendered rescues/_trace (113.9ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ProductsController#index (for 127.0.0.1 at 2009-05-18 22:45:29) [GET]
+  [4;36;1mCategory Load (1.2ms)[0m   [0;1mSELECT * FROM "categories" [0m
+  [4;35;1mCategorization Load (0.6ms)[0m   [0mSELECT "categorizations".* FROM "categorizations" WHERE ("categorizations".category_id IN (1,2,3,4)) [0m
+  [4;36;1mProduct Load (0.2ms)[0m   [0;1mSELECT * FROM "products" WHERE ("products"."id" = 1) [0m
+  [4;35;1mProduct Load (0.4ms)[0m   [0mSELECT * FROM "products" [0m
+Rendering template within layouts/admin
+Rendering products/index
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 35ms (View: 11, DB: 3) | 200 OK [http://localhost/products]
+
+
+Processing ProductsController#index (for 127.0.0.1 at 2009-05-18 22:46:53) [GET]
+  [4;35;1mCategory Load (0.9ms)[0m   [0mSELECT * FROM "categories" [0m
+  [4;36;1mCategorization Load (0.8ms)[0m   [0;1mSELECT "categorizations".* FROM "categorizations" WHERE ("categorizations".category_id IN (1,2,3,4)) [0m
+  [4;35;1mProduct Load (0.3ms)[0m   [0mSELECT * FROM "products" WHERE ("products"."id" = 1) [0m
+  [4;36;1mProduct Load (0.4ms)[0m   [0;1mSELECT * FROM "products" [0m
+Rendering template within layouts/admin
+Rendering products/index
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 36ms (View: 9, DB: 3) | 200 OK [http://localhost/products]
+
+
+Processing ProductsController#index (for 127.0.0.1 at 2009-05-18 22:48:15) [GET]
+  [4;36;1mCategory Load (0.8ms)[0m   [0;1mSELECT * FROM "categories" [0m
+  [4;35;1mCategorization Load (0.7ms)[0m   [0mSELECT "categorizations".* FROM "categorizations" WHERE ("categorizations".category_id IN (1,2,3,4)) [0m
+  [4;36;1mProduct Load (0.3ms)[0m   [0;1mSELECT * FROM "products" WHERE ("products"."id" = 1) [0m
+  [4;35;1mProduct Load (0.7ms)[0m   [0mSELECT * FROM "products" [0m
+Rendering template within layouts/admin
+Rendering products/index
+
+ActionView::TemplateError (undefined local variable or method `category' for #<ActionView::Base:0x21e3834>) on line #7 of app/views/products/index.html.erb:
+4:  <div id="category_list" class="panel">
+5:     <h2 class="panel_name">Categories <a href="new_category.html" class="secondary">New &gt;&gt;</a></h2>
+6:     <ul id="categories">
+7:       <li class="<%= category.slug %> <%= 'selected' if @category.nil? %>"><%= link_to "All", products_path %> <span class="count"><%= @products.length %> items</span></li>
+8:        <% @categories.each do |category| %>
+9:         <li class="<%= category.slug %> <%= 'selected' if category == @category %>"><%= link_to "#{category.name}", category_products_path(category) %> <span class="count"><%= category.products.length %> items</span></li>
+10:        <% end %>
+
+    app/views/products/index.html.erb:7
+    app/controllers/products_controller.rb:10:in `index'
+
+Rendered rescues/_trace (51.3ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ProductsController#index (for 127.0.0.1 at 2009-05-18 22:49:03) [GET]
+  [4;36;1mCategory Load (0.8ms)[0m   [0;1mSELECT * FROM "categories" [0m
+  [4;35;1mCategorization Load (0.6ms)[0m   [0mSELECT "categorizations".* FROM "categorizations" WHERE ("categorizations".category_id IN (1,2,3,4)) [0m
+  [4;36;1mProduct Load (0.2ms)[0m   [0;1mSELECT * FROM "products" WHERE ("products"."id" = 1) [0m
+  [4;35;1mSQL (0.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+
+NoMethodError (undefined method `total' for #<Class:0x2014bac>):
+  app/controllers/products_controller.rb:92:in `get_categories'
+  app/controllers/products_controller.rb:7:in `index'
+
+Rendered rescues/_trace (112.9ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ProductsController#index (for 127.0.0.1 at 2009-05-18 22:49:07) [GET]
+  [4;36;1mCategory Load (0.8ms)[0m   [0;1mSELECT * FROM "categories" [0m
+  [4;35;1mCategorization Load (0.8ms)[0m   [0mSELECT "categorizations".* FROM "categorizations" WHERE ("categorizations".category_id IN (1,2,3,4)) [0m
+  [4;36;1mProduct Load (0.2ms)[0m   [0;1mSELECT * FROM "products" WHERE ("products"."id" = 1) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT count(*) AS count_all FROM "products" [0m
+  [4;36;1mProduct Load (0.3ms)[0m   [0;1mSELECT * FROM "products" [0m
+Rendering template within layouts/admin
+Rendering products/index
+
+ActionView::TemplateError (undefined local variable or method `category' for #<ActionView::Base:0x220e458>) on line #7 of app/views/products/index.html.erb:
+4:  <div id="category_list" class="panel">
+5:     <h2 class="panel_name">Categories <a href="new_category.html" class="secondary">New &gt;&gt;</a></h2>
+6:     <ul id="categories">
+7:       <li class="<%= category.slug %> <%= 'selected' if @category.nil? %>"><%= link_to "All", products_path %> <span class="count"><%= @product_total %> items</span></li>
+8:        <% @categories.each do |category| %>
+9:         <li class="<%= category.slug %> <%= 'selected' if category == @category %>"><%= link_to "#{category.name}", category_products_path(category) %> <span class="count"><%= category.products.length %> items</span></li>
+10:        <% end %>
+
+    app/views/products/index.html.erb:7
+    app/controllers/products_controller.rb:10:in `index'
+
+Rendered rescues/_trace (41.0ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ProductsController#index (for 127.0.0.1 at 2009-05-18 22:51:15) [GET]
+  [4;35;1mCategory Load (1.2ms)[0m   [0mSELECT * FROM "categories" [0m
+  [4;36;1mCategorization Load (0.7ms)[0m   [0;1mSELECT "categorizations".* FROM "categorizations" WHERE ("categorizations".category_id IN (1,2,3,4)) [0m
+  [4;35;1mProduct Load (0.3ms)[0m   [0mSELECT * FROM "products" WHERE ("products"."id" = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT count(*) AS count_all FROM "products" [0m
+  [4;35;1mProduct Load (0.3ms)[0m   [0mSELECT * FROM "products" [0m
+Rendering template within layouts/admin
+Rendering products/index
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 39ms (View: 10, DB: 3) | 200 OK [http://localhost/products]
+
+
+Processing ProductsController#index (for 127.0.0.1 at 2009-05-18 22:52:17) [GET]
+  [4;35;1mCategory Load (0.8ms)[0m   [0mSELECT * FROM "categories" [0m
+  [4;36;1mCategorization Load (0.8ms)[0m   [0;1mSELECT "categorizations".* FROM "categorizations" WHERE ("categorizations".category_id IN (1,2,3,4)) [0m
+  [4;35;1mProduct Load (0.2ms)[0m   [0mSELECT * FROM "products" WHERE ("products"."id" = 1) [0m
+  [4;36;1mProduct Load (0.4ms)[0m   [0;1mSELECT * FROM "products" [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "products" [0m
+Rendering template within layouts/admin
+Rendering products/index
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 32ms (View: 6, DB: 3) | 200 OK [http://localhost/products]
+
+
+Processing ProductsController#index (for 127.0.0.1 at 2009-05-18 22:52:37) [GET]
+  [4;35;1mCategory Load (1.2ms)[0m   [0mSELECT * FROM "categories" [0m
+  [4;36;1mCategorization Load (0.6ms)[0m   [0;1mSELECT "categorizations".* FROM "categorizations" WHERE ("categorizations".category_id IN (1,2,3,4)) [0m
+  [4;35;1mProduct Load (0.3ms)[0m   [0mSELECT * FROM "products" WHERE ("products"."id" = 1) [0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT count(*) AS count_all FROM "products" [0m
+  [4;35;1mProduct Load (0.4ms)[0m   [0mSELECT * FROM "products" [0m
+Rendering template within layouts/admin
+Rendering products/index
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 38ms (View: 12, DB: 3) | 200 OK [http://localhost/products]
+
+
+Processing ProductsController#index (for 127.0.0.1 at 2009-05-18 22:52:42) [GET]
+  Parameters: {"category_id"=>"1"}
+  [4;35;1mCategory Load (0.8ms)[0m   [0mSELECT * FROM "categories" [0m
+  [4;36;1mCategorization Load (1.5ms)[0m   [0;1mSELECT "categorizations".* FROM "categorizations" WHERE ("categorizations".category_id IN (1,2,3,4)) [0m
+  [4;35;1mProduct Load (0.4ms)[0m   [0mSELECT * FROM "products" WHERE ("products"."id" = 1) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT count(*) AS count_all FROM "products" [0m
+  [4;35;1mProduct Load (0.4ms)[0m   [0mSELECT * FROM "products" [0m
+Rendering template within layouts/admin
+Rendering products/index
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 108ms (View: 7, DB: 4) | 200 OK [http://localhost/categories/1/products]
+
+
+Processing ProductsController#index (for 127.0.0.1 at 2009-05-18 22:52:56) [GET]
+  Parameters: {"category_id"=>"1"}
+  [4;35;1mCategory Load (0.8ms)[0m   [0mSELECT * FROM "categories" [0m
+  [4;36;1mCategorization Load (0.6ms)[0m   [0;1mSELECT "categorizations".* FROM "categorizations" WHERE ("categorizations".category_id IN (1,2,3,4)) [0m
+  [4;35;1mProduct Load (0.2ms)[0m   [0mSELECT * FROM "products" WHERE ("products"."id" = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT count(*) AS count_all FROM "products" [0m
+  [4;35;1mProduct Load (0.3ms)[0m   [0mSELECT * FROM "products" [0m
+Rendering template within layouts/admin
+Rendering products/index
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 31ms (View: 7, DB: 2) | 200 OK [http://localhost/categories/1/products]
+
+
+Processing ProductsController#index (for 127.0.0.1 at 2009-05-18 22:53:40) [GET]
+  Parameters: {"category_id"=>"1"}
+  [4;35;1mCategory Load (0.8ms)[0m   [0mSELECT * FROM "categories" [0m
+  [4;36;1mCategorization Load (0.6ms)[0m   [0;1mSELECT "categorizations".* FROM "categorizations" WHERE ("categorizations".category_id IN (1,2,3,4)) [0m
+  [4;35;1mProduct Load (0.3ms)[0m   [0mSELECT * FROM "products" WHERE ("products"."id" = 1) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT count(*) AS count_all FROM "products" [0m
+  [4;35;1mProduct Load (0.5ms)[0m   [0mSELECT * FROM "products" [0m
+Rendering template within layouts/admin
+Rendering products/index
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 33ms (View: 7, DB: 3) | 200 OK [http://localhost/categories/1/products]
+
+
+Processing ProductsController#index (for 127.0.0.1 at 2009-05-18 22:53:43) [GET]
+  Parameters: {"category_id"=>"1"}
+  [4;35;1mCategory Load (0.8ms)[0m   [0mSELECT * FROM "categories" [0m
+  [4;36;1mCategorization Load (0.6ms)[0m   [0;1mSELECT "categorizations".* FROM "categorizations" WHERE ("categorizations".category_id IN (1,2,3,4)) [0m
+  [4;35;1mProduct Load (0.2ms)[0m   [0mSELECT * FROM "products" WHERE ("products"."id" = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT count(*) AS count_all FROM "products" [0m
+  [4;35;1mProduct Load (0.4ms)[0m   [0mSELECT * FROM "products" [0m
+Rendering template within layouts/admin
+Rendering products/index
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 33ms (View: 8, DB: 3) | 200 OK [http://localhost/categories/1/products]
+
+
+Processing ProductsController#index (for 127.0.0.1 at 2009-05-18 22:53:52) [GET]
+  Parameters: {"category_id"=>"1"}
+  [4;35;1mCategory Load (0.8ms)[0m   [0mSELECT * FROM "categories" [0m
+  [4;36;1mCategorization Load (0.6ms)[0m   [0;1mSELECT "categorizations".* FROM "categorizations" WHERE ("categorizations".category_id IN (1,2,3,4)) [0m
+  [4;35;1mProduct Load (0.2ms)[0m   [0mSELECT * FROM "products" WHERE ("products"."id" = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT count(*) AS count_all FROM "products" [0m
+  [4;35;1mProduct Load (0.4ms)[0m   [0mSELECT * FROM "products" [0m
+Rendering template within layouts/admin
+Rendering products/index
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 29ms (View: 6, DB: 2) | 200 OK [http://localhost/categories/1/products]
+
+
+Processing ProductsController#index (for 127.0.0.1 at 2009-05-18 22:54:32) [GET]
+  Parameters: {"category_id"=>"1"}
+  [4;35;1mCategory Load (0.8ms)[0m   [0mSELECT * FROM "categories" [0m
+  [4;36;1mCategorization Load (0.7ms)[0m   [0;1mSELECT "categorizations".* FROM "categorizations" WHERE ("categorizations".category_id IN (1,2,3,4)) [0m
+  [4;35;1mProduct Load (0.3ms)[0m   [0mSELECT * FROM "products" WHERE ("products"."id" = 1) [0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT count(*) AS count_all FROM "products" [0m
+  [4;35;1mProduct Load (0.6ms)[0m   [0mSELECT * FROM "products" [0m
+Rendering template within layouts/admin
+Rendering products/index
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 112ms (View: 7, DB: 3) | 200 OK [http://localhost/categories/1/products]
+
+
+Processing ProductsController#index (for 127.0.0.1 at 2009-05-18 22:54:53) [GET]
+  Parameters: {"category_id"=>"1"}
+  [4;35;1mCategory Load (0.8ms)[0m   [0mSELECT * FROM "categories" [0m
+  [4;36;1mCategorization Load (0.7ms)[0m   [0;1mSELECT "categorizations".* FROM "categorizations" WHERE ("categorizations".category_id IN (1,2,3,4)) [0m
+  [4;35;1mProduct Load (0.3ms)[0m   [0mSELECT * FROM "products" WHERE ("products"."id" = 1) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT count(*) AS count_all FROM "products" [0m
+  [4;35;1mCategory Load (0.2ms)[0m   [0mSELECT * FROM "categories" WHERE ("categories"."id" = 1) [0m
+Rendering template within layouts/admin
+Rendering products/index
+  [4;36;1mProduct Load (0.3ms)[0m   [0;1mSELECT "products".* FROM "products" INNER JOIN "categorizations" ON "products".id = "categorizations".product_id WHERE (("categorizations".category_id = 1)) [0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 34ms (View: 8, DB: 3) | 200 OK [http://localhost/categories/1/products]
+
+
+Processing ProductsController#index (for 127.0.0.1 at 2009-05-18 22:54:57) [GET]
+  Parameters: {"category_id"=>"2"}
+  [4;36;1mCategory Load (0.8ms)[0m   [0;1mSELECT * FROM "categories" [0m
+  [4;35;1mCategorization Load (0.6ms)[0m   [0mSELECT "categorizations".* FROM "categorizations" WHERE ("categorizations".category_id IN (1,2,3,4)) [0m
+  [4;36;1mProduct Load (0.3ms)[0m   [0;1mSELECT * FROM "products" WHERE ("products"."id" = 1) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT count(*) AS count_all FROM "products" [0m
+  [4;36;1mCategory Load (0.2ms)[0m   [0;1mSELECT * FROM "categories" WHERE ("categories"."id" = 2) [0m
+Rendering template within layouts/admin
+Rendering products/index
+  [4;35;1mProduct Load (0.1ms)[0m   [0mSELECT "products".* FROM "products" INNER JOIN "categorizations" ON "products".id = "categorizations".product_id WHERE (("categorizations".category_id = 2)) [0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 32ms (View: 6, DB: 2) | 200 OK [http://localhost/categories/2/products]
+
+
+Processing ProductsController#index (for 127.0.0.1 at 2009-05-18 22:54:58) [GET]
+  Parameters: {"category_id"=>"3"}
+  [4;35;1mCategory Load (0.8ms)[0m   [0mSELECT * FROM "categories" [0m
+  [4;36;1mCategorization Load (0.6ms)[0m   [0;1mSELECT "categorizations".* FROM "categorizations" WHERE ("categorizations".category_id IN (1,2,3,4)) [0m
+  [4;35;1mProduct Load (0.3ms)[0m   [0mSELECT * FROM "products" WHERE ("products"."id" = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT count(*) AS count_all FROM "products" [0m
+  [4;35;1mCategory Load (0.2ms)[0m   [0mSELECT * FROM "categories" WHERE ("categories"."id" = 3) [0m
+Rendering template within layouts/admin
+Rendering products/index
+  [4;36;1mProduct Load (0.2ms)[0m   [0;1mSELECT "products".* FROM "products" INNER JOIN "categorizations" ON "products".id = "categorizations".product_id WHERE (("categorizations".category_id = 3)) [0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 31ms (View: 7, DB: 2) | 200 OK [http://localhost/categories/3/products]
+
+
+Processing ProductsController#index (for 127.0.0.1 at 2009-05-18 22:54:59) [GET]
+  Parameters: {"category_id"=>"4"}
+  [4;36;1mCategory Load (0.9ms)[0m   [0;1mSELECT * FROM "categories" [0m
+  [4;35;1mCategorization Load (0.6ms)[0m   [0mSELECT "categorizations".* FROM "categorizations" WHERE ("categorizations".category_id IN (1,2,3,4)) [0m
+  [4;36;1mProduct Load (0.2ms)[0m   [0;1mSELECT * FROM "products" WHERE ("products"."id" = 1) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT count(*) AS count_all FROM "products" [0m
+  [4;36;1mCategory Load (0.2ms)[0m   [0;1mSELECT * FROM "categories" WHERE ("categories"."id" = 4) [0m
+Rendering template within layouts/admin
+Rendering products/index
+  [4;35;1mProduct Load (0.1ms)[0m   [0mSELECT "products".* FROM "products" INNER JOIN "categorizations" ON "products".id = "categorizations".product_id WHERE (("categorizations".category_id = 4)) [0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 31ms (View: 6, DB: 2) | 200 OK [http://localhost/categories/4/products]
+
+
+Processing ProductsController#index (for 127.0.0.1 at 2009-05-18 22:55:00) [GET]
+  [4;35;1mCategory Load (0.8ms)[0m   [0mSELECT * FROM "categories" [0m
+  [4;36;1mCategorization Load (0.6ms)[0m   [0;1mSELECT "categorizations".* FROM "categorizations" WHERE ("categorizations".category_id IN (1,2,3,4)) [0m
+  [4;35;1mProduct Load (0.2ms)[0m   [0mSELECT * FROM "products" WHERE ("products"."id" = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT count(*) AS count_all FROM "products" [0m
+  [4;35;1mProduct Load (0.3ms)[0m   [0mSELECT * FROM "products" [0m
+Rendering template within layouts/admin
+Rendering products/index
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 29ms (View: 7, DB: 2) | 200 OK [http://localhost/products]
+
+
+Processing ProductsController#index (for 127.0.0.1 at 2009-05-18 22:55:02) [GET]
+  Parameters: {"category_id"=>"1"}
+  [4;35;1mCategory Load (0.9ms)[0m   [0mSELECT * FROM "categories" [0m
+  [4;36;1mCategorization Load (0.6ms)[0m   [0;1mSELECT "categorizations".* FROM "categorizations" WHERE ("categorizations".category_id IN (1,2,3,4)) [0m
+  [4;35;1mProduct Load (0.3ms)[0m   [0mSELECT * FROM "products" WHERE ("products"."id" = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT count(*) AS count_all FROM "products" [0m
+  [4;35;1mCategory Load (0.2ms)[0m   [0mSELECT * FROM "categories" WHERE ("categories"."id" = 1) [0m
+Rendering template within layouts/admin
+Rendering products/index
+  [4;36;1mProduct Load (0.4ms)[0m   [0;1mSELECT "products".* FROM "products" INNER JOIN "categorizations" ON "products".id = "categorizations".product_id WHERE (("categorizations".category_id = 1)) [0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 34ms (View: 7, DB: 3) | 200 OK [http://localhost/categories/1/products]
+
+
+Processing ProductsController#index (for 127.0.0.1 at 2009-05-18 22:55:03) [GET]
+  [4;36;1mCategory Load (0.8ms)[0m   [0;1mSELECT * FROM "categories" [0m
+  [4;35;1mCategorization Load (0.8ms)[0m   [0mSELECT "categorizations".* FROM "categorizations" WHERE ("categorizations".category_id IN (1,2,3,4)) [0m
+  [4;36;1mProduct Load (0.2ms)[0m   [0;1mSELECT * FROM "products" WHERE ("products"."id" = 1) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT count(*) AS count_all FROM "products" [0m
+  [4;36;1mProduct Load (0.4ms)[0m   [0;1mSELECT * FROM "products" [0m
+Rendering template within layouts/admin
+Rendering products/index
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 30ms (View: 6, DB: 3) | 200 OK [http://localhost/products]
+
+
+Processing ProductsController#index (for 127.0.0.1 at 2009-05-18 22:55:05) [GET]
+  Parameters: {"category_id"=>"1"}
+  [4;36;1mCategory Load (0.7ms)[0m   [0;1mSELECT * FROM "categories" [0m
+  [4;35;1mCategorization Load (0.7ms)[0m   [0mSELECT "categorizations".* FROM "categorizations" WHERE ("categorizations".category_id IN (1,2,3,4)) [0m
+  [4;36;1mProduct Load (0.3ms)[0m   [0;1mSELECT * FROM "products" WHERE ("products"."id" = 1) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT count(*) AS count_all FROM "products" [0m
+  [4;36;1mCategory Load (0.2ms)[0m   [0;1mSELECT * FROM "categories" WHERE ("categories"."id" = 1) [0m
+Rendering template within layouts/admin
+Rendering products/index
+  [4;35;1mProduct Load (0.4ms)[0m   [0mSELECT "products".* FROM "products" INNER JOIN "categorizations" ON "products".id = "categorizations".product_id WHERE (("categorizations".category_id = 1)) [0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 114ms (View: 7, DB: 3) | 200 OK [http://localhost/categories/1/products]
+
+
+Processing ProductsController#index (for 127.0.0.1 at 2009-05-18 22:55:08) [GET]
+  Parameters: {"category_id"=>"2"}
+  [4;35;1mCategory Load (0.8ms)[0m   [0mSELECT * FROM "categories" [0m
+  [4;36;1mCategorization Load (0.6ms)[0m   [0;1mSELECT "categorizations".* FROM "categorizations" WHERE ("categorizations".category_id IN (1,2,3,4)) [0m
+  [4;35;1mProduct Load (0.3ms)[0m   [0mSELECT * FROM "products" WHERE ("products"."id" = 1) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT count(*) AS count_all FROM "products" [0m
+  [4;35;1mCategory Load (0.2ms)[0m   [0mSELECT * FROM "categories" WHERE ("categories"."id" = 2) [0m
+Rendering template within layouts/admin
+Rendering products/index
+  [4;36;1mProduct Load (0.1ms)[0m   [0;1mSELECT "products".* FROM "products" INNER JOIN "categorizations" ON "products".id = "categorizations".product_id WHERE (("categorizations".category_id = 2)) [0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 30ms (View: 6, DB: 3) | 200 OK [http://localhost/categories/2/products]
+
+
+Processing ProductsController#index (for 127.0.0.1 at 2009-05-18 22:55:09) [GET]
+  Parameters: {"category_id"=>"3"}
+  [4;36;1mCategory Load (0.9ms)[0m   [0;1mSELECT * FROM "categories" [0m
+  [4;35;1mCategorization Load (0.6ms)[0m   [0mSELECT "categorizations".* FROM "categorizations" WHERE ("categorizations".category_id IN (1,2,3,4)) [0m
+  [4;36;1mProduct Load (0.2ms)[0m   [0;1mSELECT * FROM "products" WHERE ("products"."id" = 1) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT count(*) AS count_all FROM "products" [0m
+  [4;36;1mCategory Load (0.4ms)[0m   [0;1mSELECT * FROM "categories" WHERE ("categories"."id" = 3) [0m
+Rendering template within layouts/admin
+Rendering products/index
+  [4;35;1mProduct Load (0.1ms)[0m   [0mSELECT "products".* FROM "products" INNER JOIN "categorizations" ON "products".id = "categorizations".product_id WHERE (("categorizations".category_id = 3)) [0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 31ms (View: 6, DB: 3) | 200 OK [http://localhost/categories/3/products]
+
+
+Processing ProductsController#index (for 127.0.0.1 at 2009-05-18 22:55:10) [GET]
+  Parameters: {"category_id"=>"4"}
+  [4;35;1mCategory Load (0.8ms)[0m   [0mSELECT * FROM "categories" [0m
+  [4;36;1mCategorization Load (0.6ms)[0m   [0;1mSELECT "categorizations".* FROM "categorizations" WHERE ("categorizations".category_id IN (1,2,3,4)) [0m
+  [4;35;1mProduct Load (0.2ms)[0m   [0mSELECT * FROM "products" WHERE ("products"."id" = 1) [0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT count(*) AS count_all FROM "products" [0m
+  [4;35;1mCategory Load (0.2ms)[0m   [0mSELECT * FROM "categories" WHERE ("categories"."id" = 4) [0m
+Rendering template within layouts/admin
+Rendering products/index
+  [4;36;1mProduct Load (0.1ms)[0m   [0;1mSELECT "products".* FROM "products" INNER JOIN "categorizations" ON "products".id = "categorizations".product_id WHERE (("categorizations".category_id = 4)) [0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 33ms (View: 8, DB: 3) | 200 OK [http://localhost/categories/4/products]
+
+
+Processing ProductsController#index (for 127.0.0.1 at 2009-05-19 00:16:08) [GET]
+  [4;36;1mCategory Load (1.1ms)[0m   [0;1mSELECT * FROM "categories" [0m
+  [4;35;1mCategorization Load (0.7ms)[0m   [0mSELECT "categorizations".* FROM "categorizations" WHERE ("categorizations".category_id IN (1,2,3,4)) [0m
+  [4;36;1mProduct Load (0.2ms)[0m   [0;1mSELECT * FROM "products" WHERE ("products"."id" = 1) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT count(*) AS count_all FROM "products" [0m
+  [4;36;1mProduct Load (0.3ms)[0m   [0;1mSELECT * FROM "products" [0m
+Rendering template within layouts/admin
+Rendering products/index
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 34ms (View: 8, DB: 3) | 200 OK [http://localhost/products]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-05-19 00:16:11) [GET]
+
+ActionController::RoutingError (No route matches "/orders.html" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ProductsController#index (for 127.0.0.1 at 2009-05-19 00:16:13) [GET]
+  [4;36;1mCategory Load (0.9ms)[0m   [0;1mSELECT * FROM "categories" [0m
+  [4;35;1mCategorization Load (0.6ms)[0m   [0mSELECT "categorizations".* FROM "categorizations" WHERE ("categorizations".category_id IN (1,2,3,4)) [0m
+  [4;36;1mProduct Load (0.2ms)[0m   [0;1mSELECT * FROM "products" WHERE ("products"."id" = 1) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT count(*) AS count_all FROM "products" [0m
+  [4;36;1mProduct Load (0.3ms)[0m   [0;1mSELECT * FROM "products" [0m
+Rendering template within layouts/admin
+Rendering products/index
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 31ms (View: 6, DB: 3) | 200 OK [http://localhost/products]
+
+
+Processing AdminController#index (for 127.0.0.1 at 2009-05-19 00:16:14) [GET]
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Redirected to http://localhost:3000/admin/dashboard
+Completed in 6ms (DB: 0) | 302 Found [http://localhost/admin]
+
+
+Processing AdminController#dashboard (for 127.0.0.1 at 2009-05-19 00:16:14) [GET]
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mProduct Load (0.4ms)[0m   [0;1mSELECT * FROM "products" [0m
+  [4;35;1mCategory Load (0.4ms)[0m   [0mSELECT * FROM "categories" [0m
+Rendering template within layouts/admin
+Rendering admin/dashboard
+Completed in 18ms (View: 3, DB: 1) | 200 OK [http://localhost/admin/dashboard]

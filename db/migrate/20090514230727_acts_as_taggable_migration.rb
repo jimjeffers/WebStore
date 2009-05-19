@@ -11,7 +11,6 @@ class ActsAsTaggableMigration < ActiveRecord::Migration
       # You should make sure that the column created is
       # long enough to store the required class names.
       t.column :taggable_type, :string, :length => 50
-      
       t.column :created_at, :datetime
     end
     

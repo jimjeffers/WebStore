@@ -1,0 +1,792 @@
+/*  KEEP OUR CSS CLEAN
+    Some guidelines to follow:
+    1. Break code down into sections.
+    2. Keep your rules alphabetically sorted.
+    3. Only put one selector per line for a block of rules that apply to multiple selectors.
+    4. Indent your rules, only one rule per line.
+        
+        example:
+        
+        element#id,
+        element.class {
+            rule1: value;
+            rule2: value;
+            top: value;
+        }
+*/
+
+/* COLORS
+   Burnt Orange:        #EB7F00
+   Beige:               #F3FFE2
+   Light Blue:          #ACF0F2
+   Torqouise:           #1695A3
+   Dark Blue:           #225378
+*/
+
+/*  =BODY
+    ------------------------------------------------------ */
+    body {
+        background: #F3FFE2;
+        font: normal normal normal 1em/1.5em Arial, sans-serif;
+        margin-bottom: 4em;
+    }
+    
+    a {
+        color: #225378;
+    }
+    
+/*  =SITE_NAME
+    ------------------------------------------------------ */
+    h1#site_name {
+        background: #EB7F00;
+        color: #fff;
+        display: block;
+        font-size: 3em;
+        line-height: 1em;
+        padding: 1em 0.25em 0.25em 0.25em;
+    }
+    
+    h1#site_name a {
+        color: #ACF0F2;
+        font-size: 0.5em;
+        font-style: italic;
+        text-decoration: none;
+    }
+
+/*  =SITE_NAVIGATION
+    ------------------------------------------------------ */
+    
+    ul.navigation {
+        display: block;
+        overflow: auto;
+    }
+    
+    ul.navigation li {
+        display: block;
+        float: left;
+        padding: 0.25em;
+    }
+    
+/*  =PRIMARY_NAVIGATION
+    ------------------------------------------------------ */
+    ul#primary_navigation {
+        margin: 0.25em 0 0.5em 0.5em;
+    }
+    
+    ul#primary_navigation li a {
+        border-bottom: 0.25em solid #225378;
+        color: #225378;
+        display: block;
+        font-size: 1em;
+        font-weight: bold;
+        height: 1em;
+        padding: 0.5em 0;
+        text-decoration: none;
+        width: 210px;
+    }
+    
+    ul#primary_navigation li a:hover {
+        border-color: #1695A3;
+        color: #1695A3;
+    }
+    
+    #dashboard ul#primary_navigation li.dashboard a,
+    #products ul#primary_navigation li.products a,
+    #orders ul#primary_navigation li.orders a,
+    #users ul#primary_navigation li.users a {
+        background: #225378;
+        color: #ACF0F2;
+        font-weight: normal;
+        padding-left: 0.25em;
+    }
+
+/*  =SITE_SETTINGS_NAVIGATION
+    ------------------------------------------------------ */
+    ul#site_settings_navigation {
+        border-top: 0.5em solid #000;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 10;
+    }
+    
+    ul#site_settings_navigation  li {
+        background: #000;
+        display: block;
+        position: absolute;
+        padding: 0.5em;
+        top: -0.25em;
+    }
+    
+    ul#site_settings_navigation  li a {
+        color: #fff;
+        display: block;
+        font-weight: bold;
+    }
+    
+    ul#site_settings_navigation li.site_settings {
+        left: 0.5em;
+    }
+    
+    ul#site_settings_navigation li.profile_settings {
+        color: #ACF0F2;
+        padding-top: 0;
+        right: 5em;
+    }
+    
+    ul#site_settings_navigation li.profile_settings span {
+        font-size: 0.75em;
+        line-height: 1em;
+    }
+    
+    ul#site_settings_navigation li.profile_settings a {
+        font-size: 0.875em;
+        line-height: 1em;
+    }
+    
+    ul#site_settings_navigation li.logout {
+        right: 0.25em;
+    }
+    
+    #site_settings ul#site_settings_navigation li.site_settings a,
+    #profile_settings ul#site_settings_navigation li.profile_settings a {
+        color: #ccc;
+        font-weight: normal;
+        text-decoration: none;
+    }
+    
+/*  =PRIMARY_CONTENT
+    ------------------------------------------------------ */
+    div#primary_content {
+        padding-left: 0.75em;
+    }
+
+/*  =PANELS
+    ------------------------------------------------------ */
+    div.panel h2 {
+        font-size: 1.25em;
+        border-bottom: 0.15em solid;
+        margin-bottom: 0.5em;
+        padding: 0.25em 0;
+    }
+    
+    div.panel h2 .secondary {
+        font-size: 0.75em;
+    }
+    
+    div.panel li {
+        border-bottom: 0.1em solid;
+        display: block;
+        min-height: 1.75em;
+        padding-top: 0.25em;
+        position: relative;
+    }
+    
+    div#product_catalog,
+    div#user_index {
+        float: left;
+        width: 27em;
+    }
+    
+    div#open_orders {
+        margin-left: 27.5em;
+        width: 27em;
+    }
+    
+    div#full_open_orders,
+    div#order_detail {
+        width: 54.25em;
+    }
+    
+/*  =PRODUCT_CATALOG
+    ------------------------------------------------------ */
+    
+    div#product_catalog li span.count,
+    div#product_catalog li a {
+        font-size: 1.1em;
+        font-weight: bold;
+    }
+    
+    div#product_catalog span.count {
+        display: block;
+        float: left;
+        width: 2.5em;
+    }
+    
+    div#product_catalog li a.secondary {
+        font-size: 0.75em;
+        position: absolute;
+        left: 18.5em;
+    }
+    
+    div#product_catalog li span.item_number,
+    div#product_catalog li span.price,
+    div#product_catalog li span.original_price,
+    div#user_index li span.user_type {
+        display: block;
+        font-size: 0.75em;
+        left: 0;
+        position: absolute;
+    }
+    
+    div#product_catalog li span.item_number {
+        font-weight: bold;
+    }
+    
+    div#product_catalog li span.price,
+    div#product_catalog li span.original_price,
+    div#user_index li span.user_type {
+        top: 0.25em;
+        left: 32em;
+    }
+    
+    div#product_catalog li span.original_price {
+        text-decoration: line-through;
+        left: 28em;
+    }
+    
+    div#user_index li span.user_type {
+        left: 30em;
+    }
+    
+    div#product_catalog li a.product_name {
+        display: block;
+        margin: 0 6em 0 4em;
+    }
+    
+/*  =OPEN_ORDERS
+    ------------------------------------------------------ */
+    div#open_orders .order_amount,
+    div#open_orders .order_date {
+        font-size: 0.75em;
+        position: absolute;
+    }
+    
+    div#open_orders .order_amount {
+        font-weight: bold;
+        left: 18.5em;
+    }
+    
+    div#open_orders .order_date {
+        left: 25em;
+    }
+    
+    div#open_orders li.action a {
+        border-bottom: none;
+        font-weight: bold;
+        text-align: right;
+        padding-left: 14em;
+    }
+    
+    dl.order dt {
+        display: none;
+        text-transform: lowercase;
+    }
+    
+    dl.order dd {
+        display: block;
+    }
+    
+    dl.order dd.order_id {
+        font-weight: bold;
+    }
+    
+    dl.order dd.order_customer,
+    dl.order dd.order_shipping,
+    dl.order dd.order_amount,
+    dl.order dd.order_date,
+    dl.order dd.order_item_count,
+    dl.order dt {
+        position: absolute;
+        top: 0.25em;
+    }
+    
+    dl.order dd.order_customer {
+        left: 13.5em;
+    }
+    
+    dl.order dd.order_shipping {
+        left: 48em;
+    }
+    
+    dl.order dd.order_amount {
+        left: 5em;
+    }
+    
+    dl.order dd.order_date {
+        left: 27.25em;
+    }
+    
+    dl.order dd.order_item_count {
+        left: 41.25em;
+    }
+    
+    dl.order dt.order_item_count {
+        display: block;
+        left: 43em;
+    }
+
+/*  =ADD_ITEM
+    ------------------------------------------------------ */
+    div#add_item {
+        left: 42em;
+        position: absolute;
+        width: 13em;
+    }
+    
+    div#add_item p {
+        font-size: 0.875em;
+        line-height: 1.25em;
+    }
+    
+    div#add_item a {
+        background: #000;
+        color: #fff;
+        display: block;
+        font-weight: bold;
+        margin-top: 0.5em;
+        line-height: 1.25em;
+        padding: 0.5em;
+        text-align: center;
+    }
+
+/*  =ORDER_DETAIL
+    ------------------------------------------------------ */
+    div#order_detail dl.order {
+        border-bottom: 0.15em solid;
+        display: block;
+        margin-bottom: 2em;
+        padding-top: 0.25em;
+        position: relative;
+        top: 1em;
+    }
+    
+    div#order_detail dl.order dt {
+        color: #999;
+        font-size: 0.875em;
+        display: block !important;
+        top: -1em;
+    }
+    
+    div#order_detail dl.order dt.order_customer {
+        left: 15.4em;
+    }
+    
+    div#order_detail dl.order dt.order_shipping {
+        left: 54em;
+    }
+    
+    div#order_detail dl.order dd.order_shipping {
+        left: 47.25em !important;
+    }
+    
+    div#order_detail dl.order dt.order_amount {
+        left: 5.75em;
+    }
+    
+    div#order_detail dl.order dt.order_date {
+        left: 31.25em;
+    }
+    
+    div#order_detail dl.order dt.order_item_count {
+        left: 47.25em;
+    }
+    
+    table#order_items th {
+        text-align: left;
+    }
+    
+    table#order_items tr {
+        border-bottom: 0.1em solid #000;
+        padding: 0.25em 0;
+    }
+    
+    table#order_items td {
+        padding: 0.25em 0;
+    }
+    
+    table#order_items th.order_item_quantity {
+        width: 5em;
+    }
+    
+    table#order_items th.order_item_description {
+        width: 22.25em;
+    }
+    
+    table#order_items th.order_item_price {
+        width: 7em;
+    }
+    
+    table#order_items th.order_item_extended {
+        width: 6.5em;
+    }
+    
+    table#order_items th.order_item_actions {
+        width: 6em;
+    }
+    
+    table#order_items td span.item_number {
+        color: #999;
+        font-size: 0.75em;
+    }
+    
+    table#order_items tr.ledger td {
+        font-weight: bold;
+        position: relative;
+    }
+    
+    table#order_items tr.ledger select {
+        float: left;
+    }
+    
+    table#order_items ul.actions li {
+        border: none;
+        display: inline;
+        font-size: 0.75em;
+    }
+    
+    table#order_items ul.description_details li {
+        border: none;
+        display: block;
+        line-height: 1em;
+        min-height: 0 !important;
+    }
+    
+    table#order_items ul.description_details li.item_number,
+    table#order_items ul.description_details li.size,
+    table#order_items ul.description_details li.color {
+        font-size: 0.75em;
+        border-right: 0.1em solid #999;
+        display: inline;
+        padding: 0 0.5em 0 0.25em;
+    }
+    
+    table#order_items ul.description_details li.item_number {
+        padding-left: 0;
+    }
+    
+    table#order_items ul.description_details li.color {
+        border-right: none;
+    }
+    
+    table#order_items label {
+        float: left;
+        margin-right: 1em;
+    }
+    
+    div#billing_information,
+    div#shipping_information,
+    div#order_processing {
+        margin-top: 1em;
+    }
+    
+/*  =SEARCH_FORM
+    ------------------------------------------------------ */
+    form.search_form {
+        border-bottom: 0.15em solid;
+        margin-bottom: 0.5em;
+        padding: 0.25em 0;
+        position: relative;
+    }
+    
+    form.search_form label,
+    form.search_form input.search_term {
+        position: absolute;
+        top: 0.2em;
+        left: 0;
+        z-index: 0;
+    }
+    
+    form.search_form input.search_term,
+    form.search_form input.submit {
+        background: #fff;
+        border: none;
+        color: #225378;
+        display: block;
+        font-size: 1em;
+        padding: 0.5em;
+        width: 12.5em;
+        z-index: 2;
+    }
+    
+    form.search_form input.search_term {
+        border: 1px solid #000;
+        padding: 0.48em 0.5em;
+    }
+    
+    form.search_form input.submit {
+        background: #000;
+        color: #fff;
+        height: 2.3em;
+        left: 14em;
+        position: relative;
+        width: 6em;
+    }
+
+/*  =ORDER_SEARCH
+    ------------------------------------------------------ */
+    form#order_search label {
+        top: 0.55em;
+        font-size: 1.25em;
+    }
+    
+    form#order_search input.search_term {
+        left: 27.25em;
+    }
+    
+    form#order_search input.submit {
+        left: 41.25em;
+    }
+
+/*  =ORDER_PROCESSING
+    ------------------------------------------------------ */
+    div#order_processing ul li {
+        float: left;
+        text-align: center;
+        width: 10em;
+        margin-right: 0.25em;
+    }
+
+    div#order_processing ul li a {
+        background: #000;
+        color: #fff;
+        display: block;
+        padding: 0.25em;
+    }
+
+    div#order_processing ul {
+        border-top: 0.1em solid #000;
+        margin-top: 1em;
+        padding-top: 1em;
+    }
+
+    div#order_processing ul li.cancel_order {
+        float: right;
+    }
+
+    div#order_processing ul li.cancel_order a {
+        background: #EB7F00;
+    }
+
+    div#order_processing ul li.process_order a {
+        background: #225378;
+    }
+    
+    div#order_status {
+        background: #000;
+        padding: 0.25em 1em;
+    }
+    
+    div.open_status {
+        color: #F3FFE2;
+        margin-bottom: 1em;
+        position: relative;
+    }
+    
+    div#order_status h2 {
+        border: none;
+        margin: 0;
+    }
+    
+    div.open_status span.open {
+        color: #EB7F00;
+        font-weight: bold;
+    }
+    
+    div.open_status a {
+        color: #EB7F00;
+    }
+
+/*  =SEARCH_PANEL
+    ------------------------------------------------------ */
+    div#search_panel {
+        left: 42em;
+        position: absolute;
+        width: 13em;
+    }
+    
+    div#search_panel form.search_form input.search_term {
+        width: 8em;
+    }
+    
+     div#search_panel form.search_form input.submit {
+         left: 9.5em;
+         width: 3.5em;
+     }
+     
+     div#search_panel form.search_form {
+         border-bottom: none;
+     }
+     
+     div#search_panel form.search_form label {
+         top: 3em;
+     }
+
+/*  =STATUS_PANEL
+    ------------------------------------------------------ */
+    div#status {
+        width: 54.25em;
+    }
+
+/*  =CATEGORY_LIST
+    ------------------------------------------------------ */
+    div#category_list {
+        float: left;
+        margin-right: 0.5em;
+        width: 13em;
+    }
+    
+    div#category_list ul#categories li {
+        position: relative;
+    }
+    
+    div#category_list ul#categories li.selected,
+    div#category_list ul#categories li.selected a {
+        background: #000;
+        color: #fff;
+        font-weight: bold;
+    }
+    
+    div#category_list ul#categories li span.count {
+        color: #999;
+        font-size: 0.875em;
+        font-style: italic;
+        font-weight: normal;
+        right: 1em;
+        position: absolute;
+        top: 0.4em;
+    } 
+    
+    div#category_list ul#categories li.selected a {
+        margin-left: 0.25em;
+        text-decoration: none;
+    }
+
+/*  =SITE_SETTINGS
+    ------------------------------------------------------ */
+    #site_settings_form {
+        width: 54em;
+    }
+    
+    #site_settings_form p {
+        margin: 0.5em 0;
+        width: 40.5em;
+    }
+
+/*  =STANDARD_FORM
+    ------------------------------------------------------ */
+    form.standard_form {
+        width: 40.5em;
+    }
+    
+    ul.form li {
+        border-bottom: none;
+        margin: 0.25em 0;
+        position: relative;
+    }
+    form.standard_form label {
+        margin: 0.5em 0 0.1em 0;
+        font-weight: bold;
+    }
+    
+    form.standard_form input,
+    form.standard_form textarea,
+    form.standard_form select {
+        border: 1px solid #000;
+        color: #225378;
+        display: block;
+        font-size: 1em;
+        font-family: Arial;
+        padding: 0.5em;
+        width: 12em;
+    }
+    
+    form.standard_form input.condensed_length {
+        width: 4em;
+    }
+    
+    form.standard_form input.full_length,
+    form.standard_form textarea.full_length,
+    form.standard_form select.full_length {
+        width: 25.75em;
+    }
+    
+    form.standard_form input.extended_full_length,
+    form.standard_form textarea.extended_full_length,
+    form.standard_form select.extended_full_length {
+        width: 39.25em;
+    }
+    
+    fieldset {
+        padding-bottom: 0.5em;
+        margin-bottom: 0.5em;
+    }
+    
+    legend {
+        border-bottom: 0.15em solid #000;
+        display: block;
+        font-size: 1.1em;
+        font-weight: bold;
+        margin-bottom: 0.5em;
+        padding-bottom: 0.25em;
+        width: 100%;
+    }
+    
+    form.standard_form .optional label {
+        color: #1695A3;
+        font-style: italic;
+    }
+    
+    form.standard_form input.submit {
+        background: #000;
+        color: #fff;
+    }
+    
+    form.standard_form .cancel {
+        color: #666;
+        left: 13em;
+        position: absolute;
+        top: 1em;
+    }
+    
+    form.standard_form .preview_photo {
+        border: 0.5em solid #ACF0F2;
+        display: block;
+        height: 8em;
+        width: 8em;
+    }
+
+/* =LOGIN
+   ------------------------------------------------------ */
+   #login_form {
+      background: #ccc;
+      width: 400px;
+      margin: 100px auto;
+      border: 20px solid #fff;
+      padding: 20px;
+   }
+   
+   #login_form #site_name {
+      font-size: 2em;
+   }
+   
+   #login_form h2 {
+      border-top: 4px solid #000;
+      border-bottom: 1px solid #000;
+      color: #000;
+      margin: 0 0 8px 0;
+      padding: 8px 0;
+   }
+   
+   #login_form input[type="submit"] {
+      background: #000;
+      color: #fff;
+      font-weight: bold;
+      margin-top: 10px;
+   }
+   
+   /* Super specific as to avoid using !important */
+   html body form input[type="hidden"] {
+      display: none;
+   }

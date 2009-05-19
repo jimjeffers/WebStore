@@ -9,10 +9,49 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090514230727) do
+ActiveRecord::Schema.define(:version => 20090519042750) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
+    t.string   "title"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "categorizations", :force => true do |t|
+    t.integer  "category_id"
+    t.integer  "product_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "categorizations", ["category_id"], :name => "index_categorizations_on_category_id"
+  add_index "categorizations", ["product_id"], :name => "index_categorizations_on_product_id"
+
+  create_table "colors", :force => true do |t|
+    t.string   "name"
+    t.float    "price"
+    t.string   "sku"
+    t.integer  "product_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "garment_sizes", :force => true do |t|
+    t.string   "name"
+    t.float    "price"
+    t.string   "sku"
+    t.integer  "color_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "products", :force => true do |t|
+    t.string   "name"
+    t.text     "full_description"
+    t.float    "price"
+    t.string   "sku"
     t.string   "title"
     t.string   "description"
     t.datetime "created_at"

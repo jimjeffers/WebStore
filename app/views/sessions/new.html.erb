@@ -1,7 +1,7 @@
-<h1>Log In</h1>
+<h2>Log In</h2>
 
-<% form_tag session_path do -%>
-<p><%= label_tag 'login' %><br />
+<% form_tag session_path, {:class => 'standard_form'} do -%>
+<p><%= label_tag 'username' %><br />
 <%= text_field_tag 'login', @login %></p>
 
 <p><%= label_tag 'password' %><br/>

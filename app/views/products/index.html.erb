@@ -1,0 +1,28 @@
+<div id="status" class="panel">
+    <h2 class="panel_name">Viewing All Products</h2>
+ </div>
+ <div id="category_list" class="panel">
+    <h2 class="panel_name">Categories <a href="new_category.html" class="secondary">New &gt;&gt;</a></h2>
+    <ul id="categories">
+      <li class="all <%= 'selected' if @category.nil? %>"><%= link_to "All", products_path %> <span class="count"><%= @products_total %> items</span></li>
+       <% @categories.each do |category| %>
+        <li class="<%= category.slug %> <%= 'selected' if category == @category %>"><%= link_to "#{category.name}", category_products_path(category) %> <span class="count"><%= category.products.length %> items</span></li>
+       <% end %>
+    </ul>
+ </div>
+ <div id="product_catalog" class="panel">
+    <h2 class="panel_name">Displaying: <%= @products.length %> Products <%= link_to 'Add a New Product &gt;&gt;', new_product_path, {:class => 'secondary'} %></h2>
+    <ul id="product_catalog_actions" class="action_items">
+      <% @products.each do |product| %>
+        <li><span class="item_number"><%= product.sku %></span> <%= link_to "#{product.name}", edit_product_path(product), {:class => 'product_name'} %> <span class="price"><%= currency(product.price) %></span></li>
+      <% end %>
+    </ul>
+ </div>
+ <div id="search_panel" class="panel">
+    <h2 class="panel_name">Search</h2>
+    <form action="products/search" method="get" accept-charset="utf-8" class="search_form">
+       <label for="product_term">Search for a product by entering in it's name or product number.</label>
+       <input type="text" name="product_term" value="" id="product_term" class="search_term"/>
+       <input type="submit" value="Go" class="submit"/>
+    </form>
+ </div>

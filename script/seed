@@ -1,0 +1,28 @@
+#!/usr/bin/env ruby
+require File.dirname(__FILE__) + '/../config/environment'
+
+# Account
+if (jj = User.find_by_login('jimjeffers')).nil?
+  jj = User.create!(:login => 'jimjeffers', 
+                          :email => 'jim@sumocreations.com', 
+                          :password => 'sumosumo', 
+                          :password_confirmation => 'sumosumo', 
+                          :name => 'Jim Jeffers')
+  jj.register!
+  jj.activate!
+end
+
+# Products & Categories
+
+%w(T-Shirts Jersies Clearance Shorts).each do |name|
+  if (category = Category.find_by_name(name)).nil?
+    category = Category.create!(:name => name)
+  end
+end
+
+%w(ASU-Tee Sundevil-Jersey Trainer-Short).each do |name|
+  if (product = Product.find_by_name(name)).nil?
+    product = Product.create!(:name => name)
+  end
+end
+  
