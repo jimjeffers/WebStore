@@ -1,0 +1,28 @@
+<fieldset>
+  <legend>Product Information</legend>
+  <ul class="form">
+     <li><%= f.label :name, 'Product Name' %><%= f.text_field :name, {:class => 'full_length'} %></li>
+     <li><%= f.label :sku, 'Product Code / SKU:' %><%= f.text_field :sku %></li>
+     <li><%= f.label :price, 'Product Price:' %><%= f.text_field :price %></li>
+  </ul>
+</fieldset>
+<fieldset>
+  <legend>Product Description</legend>
+  <ul class="form">
+     <li>
+        <%= f.label :full_description, 'Full Length Product Description:' %>
+        <%= f.text_area :full_description, {:class => 'full_length'} %>
+     </li>
+  </ul>
+</fieldset>
+<fieldset>
+  <legend>SEO Information</legend>
+  <ul class="form">
+     <li><%= f.label :title, 'SEO Title:' %>
+     <%= f.text_field :title, {:class => 'extended_full_length'} %></li>
+     <li><%= f.label :tag_list, 'Product Keywords:' %>
+     <%= f.text_field :tag_list, {:class => 'extended_full_length'} %></li>
+     <li><%= f.label :product_description, 'Product Description:' %>
+     <%= f.text_area :description, {:class => 'full_length short'} %></li>
+  </ul>
+</fieldset>

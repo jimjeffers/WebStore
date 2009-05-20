@@ -1,12 +1,11 @@
-<h1>Editing product</h1>
-
-<% form_for(@product) do |f| %>
-  <%= f.error_messages %>
-
-  <p>
-    <%= f.submit 'Update' %>
-  </p>
-<% end %>
-
-<%= link_to 'Show', @product %> |
-<%= link_to 'Back', products_path %>
+<div id="site_settings_form" class="panel">
+  <h2 id="panel_name">Editing Details: <%= @product.name %> <%= link_to "Return to Product Info Page", product_path(@product), {:class => 'secondary'} %></h2>  
+  <% form_for(@product, :html => {:class => 'standard_form'}) do |f| %>
+    <%= f.error_messages %>
+    <p>Add a new product and optional SEO information.</p>
+       <%= render :partial => 'product_detail_form', :locals => {:f => f} %>
+       <ul class="form">
+          <li><%= f.submit 'Update Product Details', {:class => 'submit'} %> <%= link_to "Cancel and return to product detail.", product_path(@product), {:class => 'cancel'}%></li>
+       </ul>
+   <% end %>
+ </div>

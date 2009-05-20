@@ -1,3 +1,53 @@
-
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+<div id="site_settings_form" class="panel">
+  <h2 id="panel_name"><%= @product.name %> <%= link_to "Return to products &amp; categories.", products_path, {:class => 'secondary'} %></h2>
+  <fieldset id="product_details_display">
+    <legend>Product Details</legend>
+    <ul class="form">
+      <li>
+        <dl>
+          <dt>Name:</dt>
+          <dd><%= @product.name %></dd>
+          <dt>SKU:</dt>
+          <dd><%= @product.sku %></dd>
+          <dt>Price:</dt>
+          <dd><%= currency(@product.price) %></dd>
+          <dt>Keywords:</dt>
+          <dd><%= @product.tag_list %>&nbsp;</dd>
+        </dl>
+      </li>
+      <li>
+        <dl>
+          <dt>SEO Title:</dt>
+          <dd><%= @product.title %>&nbsp;</dd>
+          <dt>SEO Description:</dt>
+          <dd><%= @product.description %>&nbsp;</dd>
+        </dl>
+      </li>
+    </ul>
+  </fieldset>
+  <fieldset id="product_detail_description">
+    <legend>Product Description</legend>
+    <ul class="form">
+       <li>
+          <%= @product.full_description %>
+       </li>
+    </ul>
+  </fieldset>
+  <%= link_to 'Edit Product Details', edit_product_path(@product), {:class => 'stand_alone'} %>
+  <fieldset id="product_detail_categories">
+    <legend>Product Categories</legend>
+    <ul class="interactive_toggle_list remove_list">
+      <h3>Assigned To:</h3>
+      <% @product.categories.each do |cat| %>
+        <li><%= link_to cat.name, product_remove_category_path(@product,cat), {:class => 'remove'} %></li>
+      <% end %>
+    </ul>
+    <ul class="interactive_toggle_list add_list">
+      <h3>Add More Categories</h3>
+      <% @product.potential_categories.each do |cat| %>
+        <li><%= link_to cat.name, product_add_category_path(@product,cat), {:class => 'add'} %></li>
+      <% end %>
+    </ul>
+  </fieldset>
+  <%= link_to 'Return to products &amp; categories.', products_path %>
+</div>

@@ -90,6 +90,19 @@ class ProductsController < ApplicationController
     end
   end
   
+  def remove_category
+    @product = Product.find(params[:product_id])
+    @product.remove_category(params[:category_id])
+    redirect_to product_path(@product)
+  end
+  
+  def add_category
+    @product = Product.find(params[:product_id])
+    @product.add_category(params[:category_id])
+    redirect_to product_path(@product)
+  end
+  
+  protected
   # Grab all categories with products.
   def get_categories
     @categories = Category.all(:include => :products)

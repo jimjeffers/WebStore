@@ -164,6 +164,10 @@
 
 /*  =PANELS
     ------------------------------------------------------ */
+    div.panel {
+       position: relative;
+    }
+    
     div.panel h2 {
         font-size: 1.25em;
         border-bottom: 0.15em solid;
@@ -718,6 +722,10 @@
         width: 39.25em;
     }
     
+    .short {
+       height: 100px;
+    }
+    
     fieldset {
         padding-bottom: 0.5em;
         margin-bottom: 0.5em;
@@ -756,7 +764,76 @@
         height: 8em;
         width: 8em;
     }
-
+    
+    dt {
+       display: block;
+       font-weight: bold;
+       float: left;
+       width: 200px;
+    }
+    
+    dd {
+       clear: right;
+       display: block;
+       padding-left: 200px;
+       width: 300px; 
+    }
+    
+    #product_details_display {
+       float: left;
+       width: 520px;
+    }
+    
+    #product_detail_categories {
+       margin: 1.5em 0;
+    }
+    
+    a.stand_alone,
+    .add_list li a,
+    .remove_list li a {
+       background: #225378;
+       clear: both;
+       color: #fff;
+       display: block;
+       font-weight: bold;
+       margin: 0.5em 0;
+       padding: 0.25em;
+    }
+    
+    html .add_list li,
+    html .remove_list li {
+       border-bottom: none;
+    }
+    
+    .add_list,
+    .remove_list {
+       float: left;
+       width: 400px;
+    }
+    
+    body .add_list li,
+    body .remove_list li {
+       display: inline-block;
+    }
+     
+    .add_list li a,
+    .remove_list li a {
+       display: inline-block;
+       font-size: 0.875em;
+       margin: 0.25em 0.05em;
+       padding: 0.25em 0.75em 0.25em 25px;
+       -moz-border-radius: 5px;
+       -webkit-border-radius: 5px;
+    }
+    
+    .add_list li a {
+        background: #598527 url(../images/icon_plus.gif) no-repeat 6px center;
+     }
+     
+    .remove_list li a {
+       background: #a0410d url(../images/icon_delete.gif) no-repeat 6px center;
+    }
+    
 /* =LOGIN
    ------------------------------------------------------ */
    #login_form {

@@ -9,6 +9,8 @@ ActionController::Routing::Routes.draw do |map|
   map.login '/login', :controller => 'sessions', :action => 'new'
   map.register '/register', :controller => 'users', :action => 'create'
   map.signup '/signup', :controller => 'users', :action => 'new'
+  map.product_remove_category '/product/:product_id/remove/category/:category_id', :controller => 'products', :action => 'remove_category'
+  map.product_add_category '/product/:product_id/add/category/:category_id', :controller => 'products', :action => 'add_category'
   map.resources :users, :member => { :suspend   => :put,
                                      :unsuspend => :put,
                                      :purge     => :delete }
