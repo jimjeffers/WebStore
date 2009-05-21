@@ -8,7 +8,7 @@
     <ul id="product_catalog_actions" class="action_items">
        <li><span class="count"><%= @products.length %></span> <%= link_to "Products", products_path %> <%= link_to "add a new category", new_product_path, {:class => 'secondary'} %></li>
        <li><span class="count"><%= @categories.length %></span> <%= link_to "Categories", products_path %> <%= link_to "add a new category", new_category_path, {:class => 'secondary'} %></li>
-       <li><a href="products.html" class="secondary">Browse products &amp; categories.</a></li>
+       <li><%= link_to "Browse products &amp; categories.", products_path, {:class => 'secondary'} %></li>
     </ul>
  </div>
  <div id="open_orders" class="panel">

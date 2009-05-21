@@ -2,11 +2,11 @@
     <h2 class="panel_name">Viewing All Products</h2>
  </div>
  <div id="category_list" class="panel">
-    <h2 class="panel_name">Categories <a href="new_category.html" class="secondary">New &gt;&gt;</a></h2>
+    <h2 class="panel_name">Categories <%= link_to "New &gt;&gt;", new_category_path, {:class => 'secondary'} %></h2>
     <ul id="categories">
       <li class="all <%= 'selected' if @category.nil? %>"><%= link_to "All", products_path %> <span class="count"><%= @products_total %> items</span></li>
        <% @categories.each do |category| %>
-        <li class="<%= category.slug %> <%= 'selected' if category == @category %>"><%= link_to "#{category.name}", category_products_path(category) %> <span class="count"><%= category.products.length %> items</span></li>
+        <li class="<%= category.slug %> <%= 'selected' if category == @category %>"><%= link_to "#{category.name}", category_products_path(category) %> <%= link_to "edit", edit_category_path(category), {:class => 'edit_link'} %> <span class="count"><%= category.products.length %> items</span></li>
        <% end %>
     </ul>
  </div>

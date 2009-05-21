@@ -1,0 +1,18 @@
+<fieldset>
+      <legend>Category Info</legend>
+      <ul class="form">
+         <li><%= f.label :name, 'Name:' %>
+         <%= f.text_field :name %></li>
+      </ul>
+    </fieldset>
+    <fieldset>
+      <legend>SEO Information</legend>
+      <ul class="form">
+         <li><%= f.label :title, 'SEO Title:' %>
+         <%= f.text_field :title, {:class => 'extended_full_length'} %></li>
+         <li><%= f.label :tag_list, 'Product Keywords:' %>
+         <%= f.text_field :tag_list, {:class => 'extended_full_length'} %></li>
+         <li><%= f.label :description, 'Product Description:' %>
+         <%= f.text_area :description, {:class => 'full_length short'} %></li>
+      </ul>
+    </fieldset>

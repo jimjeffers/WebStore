@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
   layout  'admin'
+  before_filter :set_body_id
   
   # GET /categories
   # GET /categories.xml
@@ -60,7 +61,7 @@ class CategoriesController < ApplicationController
   # PUT /categories/1.xml
   def update
     @category = Category.find(params[:id])
-
+    
     respond_to do |format|
       if @category.update_attributes(params[:category])
         flash[:notice] = 'Category was successfully updated.'
@@ -78,10 +79,16 @@ class CategoriesController < ApplicationController
   def destroy
     @category = Category.find(params[:id])
     @category.destroy
-
+    
     respond_to do |format|
       format.html { redirect_to(categories_url) }
       format.xml  { head :ok }
     end
+  end
+  
+  protected
+  # Mimicks section so that it appears to the user is in the products section.
+  def set_body_id
+    @body_id = 'products'
   end
 end

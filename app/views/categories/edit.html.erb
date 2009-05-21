@@ -1,12 +1,15 @@
-<h1>Editing category</h1>
-
-<% form_for(@category) do |f| %>
-  <%= f.error_messages %>
-
-  <p>
-    <%= f.submit 'Update' %>
-  </p>
-<% end %>
-
-<%= link_to 'Show', @category %> |
-<%= link_to 'Back', categories_path %>
+<div id="site_settings_form" class="panel">
+  <h2 id="panel_name">Editing Category: <%= @category.name %> <%= link_to "Return to Products &amp; Categories.", products_path, {:class => 'secondary'} %></h2>  
+  <% form_for(@category, :html => {:class => 'standard_form'}) do |f| %>
+    <%= f.error_messages %>
+    <p>Edit a category name and optional SEO information.</p>
+    <%= render :partial => 'category_detail_form', :locals => {:f => f} %>
+    <ul class="form">
+      <li><%= f.submit 'Update Category Details', {:class => 'submit'} %> <%= link_to "Cancel and return to products &amp; categories.", products_path, {:class => 'cancel'}%></li>
+    </ul>
+  <% end %>
+  <div id="destroy_alert">
+    <h2>Wanna Delete this Category?</h2>
+    <p>Hey if you want to delete this category it is possible. But make sure you do. <%= link_to "Yes, I really want to delete this category.", @category, :method => :delete %></p>
+  </div>
+</div>

@@ -10,7 +10,6 @@ class ProductsController < ApplicationController
     else
       @products = Product.all
     end
-    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @products }
@@ -21,7 +20,6 @@ class ProductsController < ApplicationController
   # GET /products/1.xml
   def show
     @product = Product.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @product }
@@ -32,7 +30,6 @@ class ProductsController < ApplicationController
   # GET /products/new.xml
   def new
     @product = Product.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @product }
@@ -48,7 +45,6 @@ class ProductsController < ApplicationController
   # POST /products.xml
   def create
     @product = Product.new(params[:product])
-
     respond_to do |format|
       if @product.save
         flash[:notice] = 'Product was successfully created.'
@@ -65,7 +61,6 @@ class ProductsController < ApplicationController
   # PUT /products/1.xml
   def update
     @product = Product.find(params[:id])
-
     respond_to do |format|
       if @product.update_attributes(params[:product])
         flash[:notice] = 'Product was successfully updated.'
@@ -93,13 +88,19 @@ class ProductsController < ApplicationController
   def remove_category
     @product = Product.find(params[:product_id])
     @product.remove_category(params[:category_id])
-    redirect_to product_path(@product)
+    respond_to do |format|
+      format.html { redirect_to product_path(@product) }
+      format.js { render :json => {:action => "remove"}.to_json }
+    end
   end
   
   def add_category
     @product = Product.find(params[:product_id])
     @product.add_category(params[:category_id])
-    redirect_to product_path(@product)
+    respond_to do |format|
+      format.html { redirect_to product_path(@product) }
+      format.js { render :json => {:action => "add"} }
+    end
   end
   
   protected
