@@ -834,6 +834,12 @@
        background: #a0410d url(../images/icon_delete.gif) no-repeat 6px center;
     }
     
+/* =DELETE_CONTROL
+   ------------------------------------------------------ */
+   #remove_list {
+      color: #a0410d;
+   }
+    
 /* =LOGIN
    ------------------------------------------------------ */
    #login_form {
