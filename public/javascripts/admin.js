@@ -33,4 +33,28 @@ $(document).ready(function() {
    }, function(event){
       $(this).find('.edit_link').hide();
    });
+   
+   // Handle lightbox.
+   $('body').append('<div id="lightbox"></div><div id="lightbox_background"></div>');
+   hideLightbox();
+   
+   $('#lightbox_background, .lightbox_close').click(function() {
+      hideLightbox('slow');
+   });
+   
+   $('.lightbox_enabled').click(function(event) {
+      $('#lightbox, #lightbox_background').show('slow');
+      $.get(this.href, function(html){
+       $('#lightbox').html(html);
+       $('#lightbox .lightbox_close').click(function() {
+         hideLightbox('slow');
+       });
+      });
+      return false;
+   });
 });
+
+
+function hideLightbox(speed) {
+   $('#lightbox_background, #lightbox').hide(speed);
+}

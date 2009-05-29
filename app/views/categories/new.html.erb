@@ -5,7 +5,7 @@
     <p>Edit a category name and optional SEO information.</p>
     <%= render :partial => 'category_detail_form', :locals => {:f => f} %>
     <ul class="form">
-      <li><%= f.submit 'Update Category Details', {:class => 'submit'} %> <%= link_to "Cancel and return to products &amp; categories.", products_path, {:class => 'cancel'}%></li>
+      <li><%= f.submit 'Create Category', {:class => 'submit'} %> <%= link_to "Cancel and return to products &amp; categories.", products_path, {:class => 'cancel'}%></li>
     </ul>
   <% end %>
 </div>

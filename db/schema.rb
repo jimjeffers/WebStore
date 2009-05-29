@@ -31,12 +31,12 @@ ActiveRecord::Schema.define(:version => 20090519042750) do
 
   create_table "colors", :force => true do |t|
     t.string   "name"
-    t.float    "price"
-    t.string   "sku"
     t.integer  "product_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "colors", ["product_id"], :name => "index_colors_on_product_id"
 
   create_table "garment_sizes", :force => true do |t|
     t.string   "name"

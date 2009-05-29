@@ -1,7 +1,8 @@
 class Product < ActiveRecord::Base
   has_many :categories, :through => :categorizations
   has_many :categorizations
-  has_many :colors
+  has_many :colors, :through => :color_options
+  has_many :color_options
   acts_as_taggable
   
   # Removes a category associated to this particular product.

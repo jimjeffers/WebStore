@@ -14,7 +14,6 @@
             top: value;
         }
 */
-
 /* COLORS
    Burnt Orange:        #EB7F00
    Beige:               #F3FFE2
@@ -836,8 +835,58 @@
     
 /* =DELETE_CONTROL
    ------------------------------------------------------ */
-   #remove_list {
-      color: #a0410d;
+   #destroy_alert {
+      margin: 1em 0;
+   }
+   
+   #destroy_alert a {
+      background: #a0410d;
+      color: #fff;
+      display: inline-block;
+      margin: 0.5em 0;
+      padding: 0.5em;
+      -moz-border-radius: 5px;
+      -webkit-border-radius: 5px;
+   }
+
+/* =LIGHT_BOX
+   ------------------------------------------------------ */
+   #lightbox {
+      background: #fff;
+      height: 380px;
+      margin-left: -250px;
+      margin-top: -250px;
+      left: 50%;
+      padding: 10px;
+      position: fixed;
+      width: 480px;
+      top: 50%;
+      z-index: 10;
+      -moz-border-radius: 10px;
+      -webkit-border-radius: 10px;
+   }
+   
+   #lightbox_background {
+      background: rgba(0,0,0,0.35);
+      height: 100%;
+      left: 0;
+      position: fixed;
+      width: 100%;
+      z-index: 9;
+      top: 0;
+   }
+   
+   #lightbox .lightbox_close {
+      background: #000;
+      color: #fff;
+      font-weight: bold;
+      padding: 0.5em;
+      position: absolute;
+      right: 10px;
+      text-decoration: none;
+      top: 10px;
+      -moz-border-radius: 5px;
+      -webkit-border-radius: 5px;
    }
     
 /* =LOGIN

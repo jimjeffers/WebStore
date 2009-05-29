@@ -1,5 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :products
+  map.resources :products do |product|
+    product.resources :colors
+  end
 
   map.resources :categories do |category|
     category.resources :products

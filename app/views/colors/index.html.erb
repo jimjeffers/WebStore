@@ -1,0 +1,10 @@
+<h1>Listing colors for <%= @product.name %></h1>
+
+
+<ul>
+<% @product.colors.each do |color| %>
+  <li><%= link_to color.name, product_color_path(@product,color) %> | <%= link_to 'Edit', edit_product_color_path(@product,color) %> | <%= link_to 'Destroy', product_color_path(@product,color), :confirm => 'Are you sure?', :method => :delete %></li>
+<% end %>
+</ul>
+
+<%= link_to 'New color', new_product_color_path(@product) %>
