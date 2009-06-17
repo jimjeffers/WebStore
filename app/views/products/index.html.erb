@@ -14,7 +14,7 @@
     <h2 class="panel_name">Displaying: <%= @products.length %> Products <%= link_to 'Add a New Product &gt;&gt;', new_product_path, {:class => 'secondary'} %></h2>
     <ul id="product_catalog_actions" class="action_items">
       <% @products.each do |product| %>
-        <li><span class="item_number"><%= product.sku %></span> <%= link_to "#{product.name}", product_path(product), {:class => 'product_name'} %> <span class="price"><%= currency(product.price) %></span></li>
+        <li><span class="item_number"></span> <%= link_to "#{product.name}", product_path(product), {:class => 'product_name'} %> <span class="price"><%= currency(product.price) %></span></li>
       <% end %>
     </ul>
  </div>

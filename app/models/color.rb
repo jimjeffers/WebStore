@@ -1,4 +1,4 @@
 class Color < ActiveRecord::Base
   has_many :garment_sizes
-  belongs_to :product
+  has_many :color_options
 end
