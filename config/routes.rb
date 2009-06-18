@@ -1,12 +1,15 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :products do |product|
-    product.resources :colors
+    product.resources :variations
   end
 
   map.resources :categories do |category|
     category.resources :products
   end
 
+  map.resources :colors
+  map.resources :garment_sizes
+  
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
   map.login '/login', :controller => 'sessions', :action => 'new'
   map.register '/register', :controller => 'users', :action => 'create'

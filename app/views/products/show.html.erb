@@ -48,10 +48,17 @@
     </ul>
   </fieldset>
   <fieldset id="product_detail_colors">
-    <legend>Product Colors <%= link_to "New Color &gt;&gt;", new_product_color_path(@product), {:class => 'secondary lightbox_enabled'} %></legend>
+    <legend>Product Variants <%= link_to "New Variation &gt;&gt;", new_product_variation_path(@product), {:class => 'secondary lightbox_enabled'} %></legend>
     <ul class="form">
-       <% @product.colors.each do |color| %>
-        <li></li>
+       <% @product.variations.each do |variation| %>
+        <li>
+          <span class="color" style="color: <%= variation.color.hex_value %>">
+            <%= variation.color.name %>
+          </span>
+          <span class="gender"><%= variation.garment_size.gender %></span>
+          <span class="size"><%= variation.garment_size.name %></span>
+          <span class="sku"><%= variation.sku %></span>
+        </li>
        <% end %>
     </ul>
   </fieldset>

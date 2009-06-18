@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090617214311) do
+ActiveRecord::Schema.define(:version => 20090618013048) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -31,20 +31,17 @@ ActiveRecord::Schema.define(:version => 20090617214311) do
 
   create_table "colors", :force => true do |t|
     t.string   "name"
-    t.integer  "product_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "hex_value"
   end
-
-  add_index "colors", ["product_id"], :name => "index_colors_on_product_id"
 
   create_table "garment_sizes", :force => true do |t|
     t.string   "name"
-    t.float    "price"
     t.string   "sku"
-    t.integer  "color_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "gender"
   end
 
   create_table "products", :force => true do |t|
@@ -102,12 +99,16 @@ ActiveRecord::Schema.define(:version => 20090617214311) do
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true
 
   create_table "variations", :force => true do |t|
-    t.integer  "product_id_id"
-    t.integer  "color_id_id"
-    t.integer  "garment_size_id_id"
+    t.integer  "product_id"
+    t.integer  "color_id"
+    t.integer  "garment_size_id"
     t.string   "sku"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "variations", ["color_id"], :name => "index_variations_on_color_id"
+  add_index "variations", ["garment_size_id"], :name => "index_variations_on_garment_size_id"
+  add_index "variations", ["product_id"], :name => "index_variations_on_product_id"
 
 end

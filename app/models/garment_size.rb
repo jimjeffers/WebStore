@@ -1,3 +1,4 @@
 class GarmentSize < ActiveRecord::Base
-  belongs_to :color
+  has_many :variations
+  validates_uniqueness_of :name, :scope => :gender
 end

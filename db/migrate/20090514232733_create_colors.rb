@@ -9,7 +9,7 @@ class CreateColors < ActiveRecord::Migration
   end
 
   def self.down
-    #remove_index :colors, :product_id
+    remove_index :colors, :product_id
     drop_table :colors
   end
 end
