@@ -12,7 +12,6 @@ class CreateColorOptions < ActiveRecord::Migration
   def self.down
     remove_index :color_options, :color_id
     remove_index :color_options, :product_id
-    mind
     drop_table :color_options
   end
 end
