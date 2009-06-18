@@ -1,0 +1,18 @@
+<h1>Listing variations</h1>
+
+<table>
+  <tr>
+  </tr>
+
+<% @variations.each do |variation| %>
+  <tr>
+    <td><%= link_to 'Show', variation %></td>
+    <td><%= link_to 'Edit', edit_variation_path(variation) %></td>
+    <td><%= link_to 'Destroy', variation, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New variation', new_variation_path %>
