@@ -1,12 +1,14 @@
-<h1>Editing variation</h1>
+<h1>Editing Variation: <%= @variation.id %></h1>
 
-<% form_for(@variation) do |f| %>
+<% form_for([@product,@variation], :html => {:class => 'standard_form'}) do |f| %>
   <%= f.error_messages %>
-
-  <p>
-    <%= f.submit 'Update' %>
-  </p>
+  <fieldset>
+    <legend>Attributes</legend>
+    <ul class="form">
+      <%= render :partial => 'variant_form', :locals => {:f => f} %>
+    </ul>
+  </fieldset>
+  <%= f.submit 'Update Variant' %>
 <% end %>
 
-<%= link_to 'Show', @variation %> |
-<%= link_to 'Back', variations_path %>
+<%= link_to 'Back', @product, {:class => 'lightbox_ignore'} %>

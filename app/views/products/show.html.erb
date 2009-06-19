@@ -47,17 +47,28 @@
       <% end %>
     </ul>
   </fieldset>
-  <fieldset id="product_detail_colors">
+  <fieldset id="product_detail_variations">
     <legend>Product Variants <%= link_to "New Variation &gt;&gt;", new_product_variation_path(@product), {:class => 'secondary lightbox_enabled'} %></legend>
-    <ul class="form">
+    <ul class="form" id="variations">
+       <% if @product.variations.length > 0 %>
        <% @product.variations.each do |variation| %>
-        <li>
-          <span class="color" style="color: <%= variation.color.hex_value %>">
-            <%= variation.color.name %>
-          </span>
+        <li id="variation_<%= variation.id %>">
+          <span class="color_preview" style="background: <%= variation.color.hex_value %>"></span>
+          <span class="color"><%= variation.color.name %></span>
           <span class="gender"><%= variation.garment_size.gender %></span>
           <span class="size"><%= variation.garment_size.name %></span>
           <span class="sku"><%= variation.sku %></span>
+          <%= link_to "edit", edit_product_variation_path(@product,variation), {:class => 'edit_variation lightbox_enabled'} %>
+        </li>
+       <% end %>
+       <% else %>
+        <li style="display:none">
+          <span class="color_preview"></span>
+          <span class="color"></span>
+          <span class="gender"></span>
+          <span class="size"></span>
+          <span class="sku"></span>
+          <a href="#" class="edit_variation lightbox_enabled">edit</a>
         </li>
        <% end %>
     </ul>

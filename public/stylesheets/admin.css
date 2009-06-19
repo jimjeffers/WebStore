@@ -688,9 +688,28 @@
         margin: 0.25em 0;
         position: relative;
     }
+    
     form.standard_form label {
         margin: 0.5em 0 0.1em 0;
         font-weight: bold;
+    }
+    
+    div.errorExplanation {
+       background: #900;
+       color: #fff;
+       padding: 1em;
+       -moz-border-radius: 10px;
+       -webkit-border-radius: 10px;
+    }
+    
+    form.standard_form .fieldWithErrors input,
+    form.standard_form .fieldWithErrors select,
+    form.standard_form .fieldWithErrors label {
+       color: #900;
+    }
+    form.standard_form .fieldWithErrors input,
+    form.standard_form .fieldWithErrors select {
+       border: 4px solid #900;
     }
     
     form.standard_form input,
@@ -783,6 +802,27 @@
        width: 520px;
     }
     
+    #variations li {
+       border-top: 1px solid #000;
+       display: block;
+       padding: 0.25em 0;
+    }
+    
+    #variations li span {
+       display: inline-block;
+       width: 100px;
+    }
+    
+    #variations li span.color_preview {
+       background: transparent;
+       border: 1px solid #000;
+       display: block;
+       float: left;
+       height: 30px;
+       margin-right: 10px;
+       width: 30px;
+    }
+    
     #product_detail_categories {
        margin: 1.5em 0;
     }
@@ -853,7 +893,6 @@
    ------------------------------------------------------ */
    #lightbox {
       background: #fff;
-      height: 380px;
       margin-left: -250px;
       margin-top: -250px;
       left: 50%;
@@ -885,8 +924,74 @@
       right: 10px;
       text-decoration: none;
       top: 10px;
+   }
+   
+   #lightbox h1,
+   #lightbox .lightbox_close,
+   #lightbox fieldset,
+   #lightbox legend,
+   #lightbox input[type="submit"] {
       -moz-border-radius: 5px;
       -webkit-border-radius: 5px;
+   }
+   
+   #lightbox h1 {
+      background: #225378;
+      color: #fff;
+      padding: 0.5em;
+      margin-right: 34px;
+      margin-bottom: 10px;
+   }
+   
+   #lightbox .lightbox_ignore {
+      display: none;
+   }
+   
+   #lightbox fieldset {
+      border: 1px solid #ccc;
+      padding: 10px;
+      width: 457px;
+   }
+   
+   #lightbox legend {
+      background: #ccc;
+      border: none;
+      font-size: 0.75em;
+      display: block;
+      margin-bottom: 0;
+      padding: 0.5em;
+   }
+   
+   #lightbox input,
+   #lightbox select {
+      padding: 0.25em;
+   }
+   
+   #lightbox input[type="submit"] {
+      background: #598527;
+      border: none;
+      color: #fff;
+   }
+   
+   #lightbox .errorExplanation {
+      font-size: 0.875em;
+      line-height: 1.25em;
+      position: absolute;
+      right: -100px;
+      top: 60px;
+      width: 200px;
+   }
+   
+   #lightbox .errorExplanation ul li {
+      border-top: 1px solid rgba(255,255,255,0.25);
+      display: block;
+      padding: 0.25em 0;
+   }
+   
+   #lightbox .errorExplanation h1 {
+      background: #fff;
+      color: #900;
+      margin-right: 0;
    }
     
 /* =LOGIN

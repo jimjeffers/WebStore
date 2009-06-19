@@ -1,8 +1,11 @@
 class VariationsController < ApplicationController
+  before_filter :get_product
+  layout 'admin'
+  
   # GET /variations
   # GET /variations.xml
   def index
-    @variations = Variation.all
+    @variations = @product.variations.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +16,7 @@ class VariationsController < ApplicationController
   # GET /variations/1
   # GET /variations/1.xml
   def show
-    @variation = Variation.find(params[:id])
+    @variation = @product.variations.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -25,16 +28,22 @@ class VariationsController < ApplicationController
   # GET /variations/new.xml
   def new
     @variation = Variation.new
-
+    
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @variation }
+      format.js { render :layout => 'lightbox'}
     end
   end
 
   # GET /variations/1/edit
   def edit
-    @variation = Variation.find(params[:id])
+    @variation = @product.variations.find(params[:id])
+    
+    respond_to do |format|
+      format.html # new.html.erb
+      format.js { render :layout => 'lightbox'}
+    end
   end
 
   # POST /variations
@@ -43,13 +52,15 @@ class VariationsController < ApplicationController
     @variation = Variation.new(params[:variation])
 
     respond_to do |format|
-      if @variation.save
+      if @product.variations << @variation
         flash[:notice] = 'Variation was successfully created.'
         format.html { redirect_to(@variation) }
         format.xml  { render :xml => @variation, :status => :created, :location => @variation }
+        format.js { render :json => {"variant_info" => @variation, "color_info" =>  @variation.color, "size_info" => @variation.garment_size} }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @variation.errors, :status => :unprocessable_entity }
+        format.js { render :json => {:errors => @variation.errors}.to_json }
       end
     end
   end
@@ -64,9 +75,11 @@ class VariationsController < ApplicationController
         flash[:notice] = 'Variation was successfully updated.'
         format.html { redirect_to(@variation) }
         format.xml  { head :ok }
+        format.js { render :json => {"variant_info" => @variation, "color_info" =>  @variation.color, "size_info" => @variation.garment_size} }
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @variation.errors, :status => :unprocessable_entity }
+        format.js { render :json => {:errors => @variation.errors}.to_json }
       end
     end
   end
@@ -81,5 +94,11 @@ class VariationsController < ApplicationController
       format.html { redirect_to(variations_url) }
       format.xml  { head :ok }
     end
+  end
+  
+  protected
+  
+  def get_product
+    @product = Product.find(params[:product_id])
   end
 end

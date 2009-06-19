@@ -1,8 +1,15 @@
 class Product < ActiveRecord::Base
   has_many :categories, :through => :categorizations
-  has_many :categorizations
-  has_many :variations
+  has_many :categorizations, :dependent => :destroy
+  
+  has_many :colors, :through => :variations
+  has_many :garment_sizes, :through => :variations
+  has_many :variations, :dependent => :destroy
+  
   acts_as_taggable
+  
+  validates_presence_of :name
+  validates_presence_of :price
   
   # Removes a category associated to this particular product.
   def remove_category(category_id)

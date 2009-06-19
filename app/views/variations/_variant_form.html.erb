@@ -1,0 +1,12 @@
+<li>
+        <%= f.label :sku, "Sku" %>
+        <%= f.text_field :sku %>
+      </li>
+      <li>
+        <%= f.label :garment_size_id, "Garment Size" %>
+        <%= f.select :garment_size_id, GarmentSize.all.collect{|gs| ["#{gs.name} (#{gs.gender})",gs.id]} %>
+      </li>
+      <li>
+        <%= f.label :color_id, "Color" %>
+        <%= f.select :color_id, Color.all.collect{|c| [c.name,c.id]} %>
+      </li>
