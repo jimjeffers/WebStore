@@ -1,7 +1,9 @@
 class Category < ActiveRecord::Base
   has_many :products, :through => :categorizations
   has_many :categorizations
+  
   acts_as_taggable
+  acts_as_paranoid
   
   validates_presence_of :name
   validates_uniqueness_of :name

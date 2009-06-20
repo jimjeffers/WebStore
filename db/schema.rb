@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090618013048) do
+ActiveRecord::Schema.define(:version => 20090619224842) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(:version => 20090618013048) do
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "deleted_at"
   end
 
   create_table "categorizations", :force => true do |t|
@@ -52,6 +53,7 @@ ActiveRecord::Schema.define(:version => 20090618013048) do
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "deleted_at"
   end
 
   create_table "roles", :force => true do |t|
@@ -105,6 +107,7 @@ ActiveRecord::Schema.define(:version => 20090618013048) do
     t.string   "sku"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "deleted_at"
   end
 
   add_index "variations", ["color_id"], :name => "index_variations_on_color_id"

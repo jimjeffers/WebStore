@@ -91,7 +91,7 @@ class VariationsController < ApplicationController
     @variation.destroy
 
     respond_to do |format|
-      format.html { redirect_to(variations_url) }
+      format.html { redirect_to(@product) }
       format.xml  { head :ok }
     end
   end

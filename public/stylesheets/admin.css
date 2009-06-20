@@ -856,7 +856,9 @@
     }
      
     .add_list li a,
-    .remove_list li a {
+    .remove_list li a,
+    .action.edit,
+    .action.delete {
        display: inline-block;
        font-size: 0.875em;
        margin: 0.25em 0.05em;
@@ -871,6 +873,18 @@
      
     .remove_list li a {
        background: #a0410d url(../images/icon_delete.gif) no-repeat 6px center;
+    }
+    
+    .action.delete,
+    .action.edit {
+       background: #598527;
+       color: #fff;
+       font-weight: bold;
+       padding: 0.25em 0.5em;
+    }
+    
+    .action.delete {
+       background: #a0410d;
     }
     
 /* =DELETE_CONTROL

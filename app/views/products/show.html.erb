@@ -58,7 +58,8 @@
           <span class="gender"><%= variation.garment_size.gender %></span>
           <span class="size"><%= variation.garment_size.name %></span>
           <span class="sku"><%= variation.sku %></span>
-          <%= link_to "edit", edit_product_variation_path(@product,variation), {:class => 'edit_variation lightbox_enabled'} %>
+          <%= link_to "edit", edit_product_variation_path(@product,variation), {:class => 'edit_variation lightbox_enabled action edit'} %>
+          <%= link_to "delete", [@product,variation], {:class => 'delete_variation action delete'} %>         
         </li>
        <% end %>
        <% else %>
@@ -68,7 +69,8 @@
           <span class="gender"></span>
           <span class="size"></span>
           <span class="sku"></span>
-          <a href="#" class="edit_variation lightbox_enabled">edit</a>
+          <a href="#" class="edit_variation lightbox_enabled edit action">edit</a>
+          <a href="#" class="delete action">delete</a>
         </li>
        <% end %>
     </ul>
