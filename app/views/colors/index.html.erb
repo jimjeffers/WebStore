@@ -1,10 +1,8 @@
-<h1>Listing colors for <%= @product.name %></h1>
-
-
-<ul>
-<% @product.colors.each do |color| %>
-  <li><%= link_to color.name, product_color_path(@product,color) %> | <%= link_to 'Edit', edit_product_color_path(@product,color) %> | <%= link_to 'Destroy', product_color_path(@product,color), :confirm => 'Are you sure?', :method => :delete %></li>
-<% end %>
-</ul>
-
-<%= link_to 'New color', new_product_color_path(@product) %>
+<div id="status" class="panel">
+  <h2>Listing Colors <%= link_to 'New color &gt;&gt;', new_color_path, {:class => 'secondary'} %></h2>
+  <ul id="colors" class="line_item_list">
+  <% @colors.each do |color| %>
+    <li><span class="color_preview" style="background: <%= color.hex_value %>"></span> <span><%= color.name %></span> <%= link_to 'Edit', edit_color_path(color), {:class => 'edit action'} %> <%= link_to 'Destroy', color, {:class => 'action delete'} %></li>
+  <% end %>
+  </ul>
+</div>

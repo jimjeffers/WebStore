@@ -1,19 +1,12 @@
-<h2>New Color</h2>
+<div id="status" class="panel">
+  <h2>New color <%= link_to 'Return to color list &gt;&gt;', colors_path, {:class => 'secondary'} %></h2>
+</div>
 
-<% form_for([@product,@color], :html => {:class => 'standard_form'}) do |f| %>
+<% form_for(@color, :html => {:class => 'standard_form'}) do |f| %>
   <%= f.error_messages %>
-  <fieldset>
-    <legend>Color Details</legend>
-    <ul class="form">
-      <li>
-        <%= f.label :name %>
-        <%= f.text_field :name %>
-      </li>
-    </ul>
-  </fieldset>
+  <%= render :partial => 'color_form', :locals => {:f => f} %>
   <p>
     <%= f.submit 'Create Color' %>
+    <%= link_to 'Cancel', colors_path %>
   </p>
 <% end %>
-
-<%= link_to 'Back', product_colors_path(@product) %>

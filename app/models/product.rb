@@ -9,6 +9,11 @@ class Product < ActiveRecord::Base
   acts_as_paranoid
   acts_as_taggable
   
+  named_scope :search, lambda { |term| {
+    :conditions => ['variations.sku LIKE ? OR products.name LIKE ?',"%#{term}%","%#{term}%"],
+    :include => :variations }
+  }
+  
   validates_presence_of :name
   validates_presence_of :price
   
@@ -31,10 +36,20 @@ class Product < ActiveRecord::Base
     Category.all(:conditions => "id NOT IN (#{category_ids})")
   end
   
+  # Returns the first sku associated with the product. If none we return an empty string.
+  def sku
+    if variations.length > 0
+      return variations.first.sku
+    else
+      return ""
+    end
+  end
+  
   protected
   # return a string containing NULL to prevent MySQL errors from IN () which does
   # not throw a SQL error in sqlite.
   def category_ids
     (categories.length > 0) ? categories.map{|c| c.id}.join(', ') : 'NULL'
   end
+  
 end

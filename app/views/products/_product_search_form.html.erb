@@ -1,0 +1,5 @@
+<% form_tag(product_search_path, {:class => "search_form"}) do %>
+      <%= label_tag :product_term, label %>
+      <%= text_field_tag :product_term, term, {:class => 'search_term'} %>
+      <%= submit_tag action, :class => "submit" %>
+    <% end -%>

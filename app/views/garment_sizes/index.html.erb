@@ -1,0 +1,8 @@
+<div id="status" class="panel">
+  <h2>Listing Garment Sizes <%= link_to 'New Size &gt;&gt;', new_garment_size_path, {:class => 'secondary'} %></h2>
+  <ul id="colors" class="line_item_list">
+  <% @garment_sizes.each do |garment_size| %>
+    <li><span class="gender"><%= garment_size.gender %></span> <span><%= garment_size.name %></span> <%= link_to 'Edit', edit_garment_size_path(garment_size), {:class => 'edit action'} %> <%= link_to 'Destroy', garment_size, {:class => 'action delete'} %></li>
+  <% end %>
+  </ul>
+</div>

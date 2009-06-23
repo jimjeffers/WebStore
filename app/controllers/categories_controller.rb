@@ -1,5 +1,8 @@
 class CategoriesController < ApplicationController
   layout  'admin'
+  before_filter :login_required
+  require_role :categories
+  
   before_filter :set_body_id
   
   # GET /categories

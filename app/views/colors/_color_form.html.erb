@@ -1,0 +1,13 @@
+<fieldset>
+    <legend>Color Details</legend>
+    <ul class="form">
+      <li>
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+      </li>
+      <li>
+        <%= f.label :hex_value %>
+        <%= f.text_field :hex_value, {:class => 'color_tool'} %>
+      </li>
+    </ul>
+  </fieldset>

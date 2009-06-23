@@ -1,26 +1,73 @@
 class UsersController < ApplicationController
   layout 'admin'
-  require_role :admin, :for => [:edit]
+  require_role :admin, :for => [:edit, :add_role, :remove_role]
   
   # Protect these actions behind an admin login
   # before_filter :admin_required, :only => [:suspend, :unsuspend, :destroy, :purge]
   before_filter :find_user, :only => [:suspend, :unsuspend, :destroy, :purge]
-  before_filter :login_required, :only => [:create, :suspend, :destroy]
+  before_filter :login_required, :only => [:create, :suspend, :destroy, :edit, :add_role, :remove_role]
   
+  
+  def index
+    @users = User.with_roles
 
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @users }
+    end
+  end
+  
+  # GET /users/1/edit
+  def edit
+    @user = User.find(params[:id])
+    redirect_to current_user unless current_user == @user || current_user.has_role?(:admin)
+  end
+  
   # render new.rhtml
   def new
     @user = User.new
   end
- 
+  
+  def add_role
+    @user = User.find(params[:user_id])
+    @role = Role.find(params[:role_id])
+    
+    if @user.add_role(@role.name)
+      respond_to do |format|
+        format.html { redirect_to user_path(@user) }
+        format.js { render :json => {:action => "add"} }
+      end
+    end
+  end
+  
+  def add_role
+    @user = User.find(params[:user_id])
+    @role = Role.find(params[:role_id])
+    
+    p "\n\n\n\n =================="+@role.name
+    
+    if @user.remove_role(@role.name)
+      respond_to do |format|
+        format.html { redirect_to user_path(@user) }
+        format.js { render :json => {:action => "add"} }
+      end
+    end
+  end
+  
   def create
-    logout_keeping_session!
+    logout_keeping_session! unless current_user.has_role?(:admin)
     @user = User.new(params[:user])
     @user.register! if @user && @user.valid?
     success = @user && @user.valid?
     if success && @user.errors.empty?
-      redirect_back_or_default('/')
-      flash[:notice] = "Thanks for signing up!  We're sending you an email with your activation code."
+      if current_user.has_role?(:admin)
+        @user.add_role(:user)
+        redirect_to(edit_user_path(@user))
+        flash[:notice] = "New User Created!"
+      else
+        redirect_back_or_default('/')
+        flash[:notice] = "Thanks for signing up! We're sending you an email with your activation code."
+      end
     else
       flash[:error]  = "We couldn't set up that account, sorry.  Please try again, or contact an admin (link is above)."
       render :action => 'new'

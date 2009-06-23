@@ -1,6 +1,9 @@
 class ColorsController < ApplicationController
-  before_filter :get_product
   before_filter :login_required
+  layout 'admin'
+  
+  require_role :admin
+  
   # GET /colors
   # GET /colors.xml
   def index
@@ -45,9 +48,9 @@ class ColorsController < ApplicationController
   def create
     @color = Color.new(params[:color])
     respond_to do |format|
-      if @product.colors << @color
+      if @color.save
         flash[:notice] = 'Color was successfully created.'
-        format.html { redirect_to(@product) }
+        format.html { redirect_to(colors_path) }
         format.xml  { render :xml => @color, :status => :created, :location => @color }
         format.js { render :layout => 'lightbox' }
       else
@@ -66,7 +69,7 @@ class ColorsController < ApplicationController
     respond_to do |format|
       if @color.update_attributes(params[:color])
         flash[:notice] = 'Color was successfully updated.'
-        format.html { redirect_to(@color) }
+        format.html { redirect_to(colors_path) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -87,9 +90,4 @@ class ColorsController < ApplicationController
     end
   end
   
-  protected
-  # Gets the product associated with the color item.
-  def get_product
-    @product = Product.find(params[:product_id])
-  end
 end

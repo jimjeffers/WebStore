@@ -1,4 +1,7 @@
 class ProductsController < ApplicationController
+  before_filter :login_required
+  require_role :products
+  
   layout 'admin'
   
   # GET /products
@@ -85,6 +88,7 @@ class ProductsController < ApplicationController
     end
   end
   
+  # Removes a categorization from an instance of a product.
   def remove_category
     @product = Product.find(params[:product_id])
     @product.remove_category(params[:category_id])
@@ -94,12 +98,21 @@ class ProductsController < ApplicationController
     end
   end
   
+  # Adds a categorization to instance of a product.
   def add_category
     @product = Product.find(params[:product_id])
     @product.add_category(params[:category_id])
     respond_to do |format|
       format.html { redirect_to product_path(@product) }
       format.js { render :json => {:action => "add"} }
+    end
+  end
+  
+  def search
+    get_categories
+    @products = Product.search(params[:product_term])
+    respond_to do |format|
+      format.html { render :action => 'index' }
     end
   end
   

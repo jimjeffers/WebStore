@@ -110,12 +110,21 @@
         z-index: 10;
     }
     
-    ul#site_settings_navigation  li {
+    ul#site_settings_navigation li {
         background: #000;
         display: block;
-        position: absolute;
         padding: 0.5em;
-        top: -0.25em;
+        
+    }
+    
+    ul#site_settings_navigation > li {
+       position: absolute;
+       top: -0.25em;
+    }
+    
+    ul#site_settings_navigation ul.sub_navigation {
+       font-size: 0.875em;
+       line-height: 1.25em;
     }
     
     ul#site_settings_navigation  li a {
@@ -802,18 +811,26 @@
        width: 520px;
     }
     
-    #variations li {
+    .line_item_list li {
        border-top: 1px solid #000;
        display: block;
        padding: 0.25em 0;
     }
     
-    #variations li span {
+    .line_item_list li span {
        display: inline-block;
        width: 100px;
     }
     
-    #variations li span.color_preview {
+    .line_item_list li span.user_email {
+        width: 200px;
+     }
+     
+     .line_item_list li span.user_roles {
+        width: 440px;
+     }
+    
+    .line_item_list li span.color_preview {
        background: transparent;
        border: 1px solid #000;
        display: block;

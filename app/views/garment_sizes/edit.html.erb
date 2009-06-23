@@ -1,0 +1,12 @@
+<div id="status" class="panel">
+  <h2>Editing Garment Size: <%= "#{@garment_size.name} (#{@garment_size.gender})" %> <%= link_to 'Return to size list &gt;&gt;', garment_sizes_path, {:class => 'secondary'} %></h2>
+</div>
+
+<% form_for(@garment_size, :html => {:class => 'standard_form'}) do |f| %>
+  <%= f.error_messages %>
+  <%= render :partial => 'garment_size_form', :locals => {:f => f} %>
+  <p>
+    <%= f.submit 'Update' %>
+    <%= link_to 'Cancel', garment_sizes_path %>
+  </p>
+<% end %>

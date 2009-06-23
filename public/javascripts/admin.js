@@ -3,6 +3,9 @@ jQuery.ajaxSetup({
 });
 
 $(document).ready(function() {
+   // Handle subnavigation.
+   subNavigation(350);
+   
    // Handle add removal of categories.
    $('#product_detail_categories').click(function(event){
       var target = $(event.target);
@@ -55,6 +58,21 @@ $(document).ready(function() {
       sendDelete(this);
       return false;
    });
+   
+   // Add color picker.
+   $('.color_tool').ColorPicker({
+      onSubmit: function(hsb, hex, rgb, el) {
+         $(el).val(hex);
+         $(el).ColorPickerHide();
+      },
+      onBeforeShow: function () {
+         $(this).ColorPickerSetColor(this.value);
+      }
+   })
+   .bind('keyup', function(){
+      $(this).ColorPickerSetColor(this.value);
+   });
+   
 });
 
 function showLightbox(source,speed) {
@@ -131,6 +149,43 @@ function showLightbox(source,speed) {
 
 function hideLightbox(speed) {
    $('#lightbox_background, #lightbox').hide(speed);
+}
+
+function subNavigation(time) {
+   $('.sub_navigation').each(function() {
+          var menu = $(this);
+          menu.hide();
+          var parent = $(menu.parent().get(0));
+          var timeout = false; 
+          parent.hover(function(){
+             if(!timeout && !menu.is(':visible')) {
+                timeout = setTimeout(function(){
+                   menu.show();
+                   parent.addClass('active');
+                   timeout = false;
+                }, time);
+             } else {
+                if(timeout) {
+                   clearTimeout(timeout);
+                }
+                timeout = false;
+             }
+          },
+          function(){
+             if(!timeout && menu.is(':visible')) {
+                 timeout = setTimeout(function(){
+                    menu.hide();
+                    parent.removeClass('active');
+                    timeout = false;
+                 }, time);
+              } else {
+                 if(timeout) {
+                    clearTimeout(timeout);
+                 }
+                 timeout = false;
+              }
+          });
+      });
 }
 
 function sendDelete(el) {

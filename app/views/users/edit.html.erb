@@ -1,0 +1,33 @@
+<div id="status" class="panel">
+  <h2>Editing User: <%= @user.name %> <%= link_to 'Return to user list &gt;&gt;', users_path, {:class => 'secondary'} %></h2>
+</div>
+
+<% form_for (@user, :html => {:class => 'standard_form'}) do |f| -%>
+  <%= error_messages_for :user %>
+  <%= render :partial => 'user_form', :locals => {:f => f} %>
+  <% if current_user.has_role?(:admin) %>
+    <fieldset id="product_detail_categories">
+      <legend>User Roles</legend>
+      <ul class="interactive_toggle_list remove_list">
+        <h3>Assigned To:</h3>
+        <% @user.roles.each do |role| %>
+          <li><%= link_to role.name, user_remove_role_path(@user,role), {:class => 'remove'} %></li>
+        <% end %>
+      </ul>
+      <ul class="interactive_toggle_list add_list">
+        <h3>Add More Roles</h3>
+        <% @user.unassigned_roles.each do |role| %>
+          <li><%= link_to role.name, user_add_role_path(@user,role), {:class => 'add'} %></li>
+        <% end %>
+      </ul>
+    </fieldset>
+  <% end %>
+  <fieldset>
+    <legend>Update User</legend>
+    <ul class="form">
+      <li>
+        <%= submit_tag 'Save Changes' %>
+      </li>
+    </ul>
+  </fieldset>
+<% end -%>

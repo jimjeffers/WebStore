@@ -1,12 +1,12 @@
-<h1>Editing color</h1>
+<div id="status" class="panel">
+  <h2>Editing color: <%= @color.name %> <%= link_to 'Return to color list &gt;&gt;', colors_path, {:class => 'secondary'} %></h2>
+</div>
 
-<% form_for(@color) do |f| %>
+<% form_for(@color, :html => {:class => 'standard_form'}) do |f| %>
   <%= f.error_messages %>
-
+  <%= render :partial => 'color_form', :locals => {:f => f} %>
   <p>
     <%= f.submit 'Update' %>
+    <%= link_to 'Cancel', colors_path %>
   </p>
 <% end %>
-
-<%= link_to 'Show', @color %> |
-<%= link_to 'Back', colors_path %>

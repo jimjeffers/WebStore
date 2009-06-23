@@ -1,10 +1,6 @@
 <div id="product_catalog" class="panel">
     <h2 class="panel_name">Products</h2>
-    <form action="products/search" method="get" accept-charset="utf-8" class="search_form">
-       <label for="product_term">Search for a product:</label>
-       <input type="text" name="product_term" value="" id="product_term" class="search_term"/>
-       <input type="submit" value="Search" class="submit"/>
-    </form>
+    <%= render :partial => 'products/product_search_form', :locals => {:label => '', :term => params[:product_term], :action => 'Search'} %>
     <ul id="product_catalog_actions" class="action_items">
        <li><span class="count"><%= @products.length %></span> <%= link_to "Products", products_path %> <%= link_to "add a new category", new_product_path, {:class => 'secondary'} %></li>
        <li><span class="count"><%= @categories.length %></span> <%= link_to "Categories", products_path %> <%= link_to "add a new category", new_category_path, {:class => 'secondary'} %></li>

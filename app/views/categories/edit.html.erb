@@ -10,6 +10,6 @@
   <% end %>
   <div id="destroy_alert">
     <h2>Wanna Delete this Category?</h2>
-    <p>Hey if you want to delete this category it is possible. But make sure you do. <%= link_to "Yes, I really want to delete this category.", @category, :method => :delete %></p>
+    <p>Hey if you want to delete this category it is possible. But make sure you do. <%= link_to "Yes, I really want to delete this category.", @category, {:class => 'delete'} %></p>
   </div>
 </div>
