@@ -5,6 +5,7 @@ class Product < ActiveRecord::Base
   has_many :colors, :through => :variations
   has_many :garment_sizes, :through => :variations
   has_many :variations, :dependent => :destroy
+  has_many :photos, :dependent => :destroy
   
   acts_as_paranoid
   acts_as_taggable
