@@ -17,12 +17,12 @@
       <ul id="primary_navigation" class="navigation">
          <li class="admin"><%= link_to "Dashboard", :controller => "admin" %></li>
          <li class="products"><%= link_to "Products", products_path %></li>
-         <li class="orders"><a href="orders.html">Orders</a></li>
-         <li class="users"><a href="users.html">Users</a></li>
+         <li class="orders"><a href="#">Orders</a></li>
+         <li class="users"><%= link_to "Users", users_path %></li>
       </ul>
       <ul id="site_settings_navigation">
          <li class="site_settings">
-           <a href="site_settings.html">Site Settings</a>
+           <a href="#">Site Settings</a>
            <ul class="sub_navigation">
               <li><%= link_to "Colors", colors_path %></li>
               <li><%= link_to "Sizes", garment_sizes_path %></li>
