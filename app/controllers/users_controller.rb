@@ -40,11 +40,9 @@ class UsersController < ApplicationController
     end
   end
   
-  def add_role
+  def remove_role
     @user = User.find(params[:user_id])
     @role = Role.find(params[:role_id])
-    
-    p "\n\n\n\n =================="+@role.name
     
     if @user.remove_role(@role.name)
       respond_to do |format|
@@ -88,6 +86,27 @@ class UsersController < ApplicationController
     else 
       flash[:error]  = "We couldn't find a user with that activation code -- check your email? Or maybe you've already activated -- try signing in."
       redirect_back_or_default('/')
+    end
+  end
+  
+  def update
+    @user = User.find(params[:id])
+
+    respond_to do |format|
+      if @user.update_attributes(params[:user])
+        flash[:notice] = 'User was successfully updated.'
+        format.html { 
+          if current_user.has_role?(:admin)
+            redirect_to(users_path) 
+          else
+            redirect_to(edit_user_path(@user))
+          end
+        }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+      end
     end
   end
 

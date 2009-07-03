@@ -89,6 +89,10 @@ class PhotosController < ApplicationController
     end
   end
   
+  def crop
+    @photo = @product.photos.find(params[:id])
+  end
+  
   protected
   
   def find_product

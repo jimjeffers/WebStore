@@ -26,9 +26,7 @@
   <fieldset id="product_detail_description">
     <legend>Product Description</legend>
     <ul class="form">
-       <li>
-          <%= @product.full_description %>
-       </li>
+       <li><%= @product.full_description %></li>
     </ul>
   </fieldset>
   <%= link_to 'Edit Product Details', edit_product_path(@product), {:class => 'stand_alone'} %>
