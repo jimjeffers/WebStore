@@ -60,6 +60,7 @@ class UsersController < ApplicationController
     if success && @user.errors.empty?
       if current_user.has_role?(:admin)
         @user.add_role(:user)
+        @user.activate!
         redirect_to(edit_user_path(@user))
         flash[:notice] = "New User Created!"
       else
