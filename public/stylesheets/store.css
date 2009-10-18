@@ -1,0 +1,194 @@
+/*   
+Theme Name: Cactus Sports
+Theme URI: http://cactussports.com
+Description: The design and theme for Cactus Sports storefront.
+Author: Sumo Creaitons LLC
+Author URI: http://sumocreations.com
+Version: 1.0
+.
+This theme is for exclusive use at http://cactussports.com and 
+may not be reused elsewhere without permission from Cactus Sports 
+and Sumo Creations.
+.
+*/
+/*  KEEP OUR CSS CLEAN
+    Some guidelines to follow:
+    1. Break code down into sections.
+    2. Keep your rules alphabetically sorted.
+    3. Only put one selector per line for a block of rules that apply to multiple selectors.
+    4. Indent your rules, only one rule per line.
+        
+        example:
+        
+        element#id,
+        element.class {
+            rule1: value;
+            rule2: value;
+            top: value;
+        }
+*/
+
+/* =BODY
+   ------------------------------------------------------ */
+   body {
+      background: #fff;
+      color: #000;
+      font: normal normal normal 1em/1.5em Tahoma, Arial, sans-serif;
+   }
+   
+   a.button {
+      background: #000;
+      color: #fff;
+      font-weight: bold;
+      text-decoration: none;
+      padding: 4px 6px;
+      
+      -o-border-radius:5px;
+      -icab-border-radius:5px;
+      -khtml-border-radius:5px;
+      -moz-border-radius:5px;
+      -webkit-border-radius:5px;
+      -moz-border-radius:5px;
+   }
+
+/* =CONTEXTUAL_NAVIGATION
+   ------------------------------------------------------ */
+   ul#contextual_navigation {
+      background: #eee;
+      color: #666;
+      font-size: 0.7em;
+      line-height: 1.5em;
+      padding: 8px 4px;
+      position: relative;
+   }
+   
+   ul#contextual_navigation li#help {
+      width: 960px;
+      margin: 0 auto;
+   }
+   
+   ul#contextual_navigation li#help a,
+   ul#contextual_navigation li.login a {
+      color: #33191F;
+      font-weight: bold;
+   }
+   
+   ul#contextual_navigation li#help span.phone {
+      font-weight: bold;
+   }
+   
+   ul#contextual_navigation #skip_content {
+      bottom: -18px;
+      right: 50%;
+      margin-right: -480px;
+      position: absolute;
+   }
+   
+   ul#contextual_navigation #skip_content a {
+      color: #ddd;
+   }
+   
+   ul#contextual_navigation li.register,
+   ul#contextual_navigation li.login {
+      right: 50%;
+      margin-right: -480px;
+      position: absolute;
+      top: 8px;
+   }
+   
+   ul#contextual_navigation li.login {
+      margin-right: -400px;
+   }
+
+/* =LOGO
+   ------------------------------------------------------ */
+   h1#logo {
+      display: block;
+      margin: 25px auto;
+      position: relative;
+      width: 960px;
+   }
+   
+   h1#logo a,
+   h1#logo a span {
+      display: block;
+      height: 94px;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 171px;
+      z-index: 1;
+   }
+   
+   h1#logo a span {
+      background: url(../images/cactus_sports_logo.png) no-repeat;
+      z-index: 2;
+   }
+
+/* =COMPANY_SPECIFIC_CONTENT
+   ------------------------------------------------------ */
+   div#company_specific_content {
+      background: #331A1F;
+      color: #fff;
+      padding: 20px 0;
+   }
+   
+   div#company_specific_content h2,
+   div#company_specific_content h3,
+   div#company_specific_content p {
+      padding-right: 100px;
+      margin: 5px auto;
+      line-height: 1.5em;
+      width: 770px;
+   }
+   
+   div#company_specific_content h2 {
+      font-size: 1.75em;
+      font-weight: bold;
+   }
+   
+   div#company_specific_content h3 {
+      font-size: 1.25em;
+      font-weight: bold;
+   }
+   
+   div#company_specific_content p {
+      font-size: 0.875em;
+   }
+
+/* =EXTERNAL_PAGE_CONTENT
+   ------------------------------------------------------ */
+   div#external_page_content {
+      background: #eee;
+   }
+   
+   ul#inline_sitemap {
+      margin: 20px auto;
+      overflow: auto;
+      width: 960px;
+   }
+   
+   ul#inline_sitemap > li {
+      display: block;
+      padding-right: 20px;
+      float: left;
+      width: 100px;
+   }
+   
+   ul#footnotes {
+      border-top: 1px solid #ccc;
+      clear: both;
+      color: #999;
+      font-size: 0.7em;
+      line-height: 1.25em;
+      margin: 10px auto;
+      padding: 20px 0;
+      position: relative;
+      width: 960px; 
+   }
+   
+   li#copyright {
+      position: absolute;
+      right: 0;
+      top: 20px;
+   }

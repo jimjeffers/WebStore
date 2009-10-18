@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title></title>
+    <link rel="stylesheet" href="/stylesheets/reset.css" type="text/css" media="screen" charset="utf-8"/>
+    <link rel="stylesheet" href="/stylesheets/store.css" type="text/css" media="screen" charset="utf-8"/>
+  </head>
+  <body id="">
+    <ul id="contextual_navigation">
+      <li id="skip_content"><a href="#primary_content">skip to content</a></li>
+      <li id="help">Need help? Call us at <span class="phone">(480) 921-1278</span> or <a href="http://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=Cactus+Sports,+401+South+Mill+Avenue,+Tempe,+AZ+85281&sll=33.426893,-111.939611&sspn=0.010512,0.019419&g=401+South+Mill+Avenue,+Tempe,+AZ+85281&ie=UTF8&hq=Cactus+Sports,&hnear=401+S+Mill+Ave,+Tempe,+AZ+85281&ll=33.426602,-111.939601&spn=0.002628,0.004855&z=18&iwloc=A" title="Map to 401 S. Mill Ave.">get directions to our store in Tempe</a>.</li>
+      <li class="login">Shopped with us before? <a href="#">login here</a></li>
+      <li class="register"><a href="#" class="button">Register</a></li>
+    </ul>
+    <h1 id="logo"><a href="/" title="Cactus Sports">Cactus Sports<span></span></a></h1>
+    <%= render :partial => 'layouts/search_form' %>
+    <ul id="primary_navigation">
+      <li class="guys"><a href="#">Guys<span></span></a></li>
+      <li class="guys"><a href="#">Girls<span></span></a></li>
+      <li class="guys"><a href="#">Brands<span></span></a></li>
+      <li class="guys"><a href="#">On Sale!<span></span></a></li>
+    </ul>
+    
+    <div id="primary_content">
+      <%= yield %>
+    </div>
+    <div id="company_specific_content">
+      <h2>Go Devils! </h2>
+      <h3>Cactus Sports is ASU’s Independently Alumni Operated Sports Retailer!</h3>
+      <p>Cactus Sports is Arizona State University independently owned and alumni operated and offers one of the largest selections of ASU merchandise from T-shirts, sweatshirts, shorts, hats, baby gear, gifts and much much more. Besides our great selection and quality products, we offer what most stores have forgotten, which is great customer service and a friendly and knowledgeable staff! For over 17 years Cactus Sports has been the place to shop for ASU students, faculty, and fans for the finest quality and best selection of Sun Devils gear. Cactus Sports is alumni and independently owned!</p>
+    </div>
+    <div id="external_page_content">
+      <%= render :partial => 'layouts/search_form' %>
+      <ul id="inline_sitemap">
+        <li class="guys"><a href="#">Guys<span></span></a>
+          <ul>
+            <li><a href="#">Category</a></li>
+            <li><a href="#">Category</a></li>
+            <li><a href="#">Category</a></li>
+            <li><a href="#">Category</a></li>
+          </ul>
+        </li>
+        <li class="girls">
+          <a href="#">Girls<span></span></a>
+          <ul>
+            <li><a href="#">Category</a></li>
+            <li><a href="#">Category</a></li>
+            <li><a href="#">Category</a></li>
+            <li><a href="#">Category</a></li>
+          </ul>
+        </li>
+        <li class="brands">
+          <a href="#">Brands<span></span></a>
+          <ul>
+            <li><a href="#">Category</a></li>
+            <li><a href="#">Category</a></li>
+            <li><a href="#">Category</a></li>
+            <li><a href="#">Category</a></li>
+          </ul>
+        </li>
+        <li class="sale">
+          <a href="#">On Sale<span></span></a>
+          <ul>
+            <li><a href="#">Category</a></li>
+            <li><a href="#">Category</a></li>
+            <li><a href="#">Category</a></li>
+            <li><a href="#">Category</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul id="footnotes">
+        <li id="address">Cactus Sports - 401 S Mill Ave # 106, Tempe, AZ  85281 <a href="http://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=Cactus+Sports,+401+South+Mill+Avenue,+Tempe,+AZ+85281&sll=33.426893,-111.939611&sspn=0.010512,0.019419&g=401+South+Mill+Avenue,+Tempe,+AZ+85281&ie=UTF8&hq=Cactus+Sports,&hnear=401+S+Mill+Ave,+Tempe,+AZ+85281&ll=33.426602,-111.939601&spn=0.002628,0.004855&z=18&iwloc=A" class="button">Map / Directions</a></li>
+        <li id="copyright">&copy; 2009, Cactus Sports. All designs Copyright by owner. </li>
+      </ul>
+    </div>
+  </body>
+</html>
