@@ -36,6 +36,10 @@ and Sumo Creations.
       font: normal normal normal 1em/1.5em Tahoma, Arial, sans-serif;
    }
    
+   a {
+      color: #33191F;
+   }
+   
    a.button {
       background: #000;
       color: #fff;
@@ -440,10 +444,56 @@ and Sumo Creations.
       width: 960px;
    }
 
+/* =SHOWCASE
+   ------------------------------------------------------ */
+   ol.product_showcase {
+      overflow: hidden;
+   }
+   
+   ol.product_showcase > li {
+      float: left;
+      margin: 0 20px 40px 0;
+      position: relative;
+   }
+   
+   ol.product_showcase li.product_photo,
+   ol.product_showcase li.product_price a,
+   ol.product_showcase li.product_photo img {
+      display: block;
+   }
+   
+   ol.product_showcase li.product_price {
+      background: #FD9408;
+      bottom: 0;
+      color: #000;
+      font-size: 1.25em;
+      font-weight: bold;
+      left: 0;
+      padding: 5px;
+      position: absolute;
+      text-align: center;
+   } 
+   
+   ol.product_showcase li.product_name {
+      bottom: -42px;
+      font-size: 0.75em;
+      font-weight: bold;
+      line-height: 1.5em;
+      height: 40px;
+      position: absolute;
+      overflow: hidden;
+      width: 100%;
+   }
+   
+   ol.pagination {
+      clear: both;
+      padding: 40px 0;
+   }
+
 /* =NEWSLETTER_SIGNUP
    ------------------------------------------------------ */
    #newsletter_signup {
-      margin: 0 auto;
+      margin: 20px auto;
       position: relative;
       width: 960px;
    }
@@ -454,7 +504,7 @@ and Sumo Creations.
       top: 0;
    }
    
-   #newsletter_signup form#newsletter_signup {
+   #newsletter_signup form#newsletter_signup_form {
       background: #B33A04;
       border-color: #B33A04;
       position: absolute;
@@ -463,7 +513,7 @@ and Sumo Creations.
       width: 530px;
    }
    
-   #newsletter_signup form#newsletter_signup label {
+   #newsletter_signup form#newsletter_signup_form label {
       color: #B33A04;
       display: block;
       font-size: 0.875em;
@@ -474,12 +524,12 @@ and Sumo Creations.
       left: 0;
    }
    
-   #newsletter_signup form#newsletter_signup input[type="text"] {
+   #newsletter_signup form#newsletter_signup_form input[type="text"] {
       background: #fff;
       padding: 6px;
    }
    
-   #newsletter_signup form#newsletter_signup input[type="submit"] {
+   #newsletter_signup form#newsletter_signup_form input[type="submit"] {
       background: #810101;
       color: #fff;
       width: 150px;

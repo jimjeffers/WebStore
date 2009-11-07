@@ -4,6 +4,7 @@ class StoreController < ApplicationController
   def index
     @guys_categories = Category.all
     @girls_categories = Category.all
+    @products = Product.all
   end
   
 end
