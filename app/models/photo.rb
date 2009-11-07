@@ -1,8 +1,8 @@
 class Photo < ActiveRecord::Base
-  belongs_to :product
-  belongs_to :variation
-  
-  
+  # Plugins
   acts_as_paranoid
   
+  # Relationships
+  belongs_to :product
+  belongs_to :variation  
 end

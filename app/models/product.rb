@@ -1,22 +1,25 @@
 class Product < ActiveRecord::Base
+  # Plugins
+  acts_as_paranoid
+  acts_as_taggable
+  
+  # Relationships
   has_many :categories, :through => :categorizations
   has_many :categorizations, :dependent => :destroy
-  
   has_many :colors, :through => :variations
   has_many :garment_sizes, :through => :variations
   has_many :variations, :dependent => :destroy
   has_many :photos, :dependent => :destroy
   
-  acts_as_paranoid
-  acts_as_taggable
+  # Validations
+  validates_presence_of :name
+  validates_presence_of :price
   
+  # Scopes
   named_scope :search, lambda { |term| {
     :conditions => ['variations.sku LIKE ? OR products.name LIKE ?',"%#{term}%","%#{term}%"],
     :include => :variations }
   }
-  
-  validates_presence_of :name
-  validates_presence_of :price
   
   # Removes a category associated to this particular product.
   def remove_category(category_id)
@@ -34,7 +37,11 @@ class Product < ActiveRecord::Base
   
   # Returns categories that are not assigned to product.
   def potential_categories
-    Category.all(:conditions => "id NOT IN (#{category_ids})")
+    if categories.length > 0
+      Category.all(:conditions => "id NOT IN (#{category_ids})")
+    else
+      Category.all
+    end
   end
   
   # Returns the first sku associated with the product. If none we return an empty string.
