@@ -22,13 +22,18 @@
     <%= render :partial => 'layouts/search_form', :locals => {:form_id => 'primary_search'} %>
     <ul id="primary_navigation">
       <li class="guys"><a href="#">Guys<span></span></a></li>
-      <li class="guys"><a href="#">Girls<span></span></a></li>
-      <li class="guys"><a href="#">Brands<span></span></a></li>
-      <li class="guys"><a href="#">On Sale!<span></span></a></li>
+      <li class="girls"><a href="#">Girls<span></span></a></li>
+      <li class="brands"><a href="#">Brands<span></span></a></li>
+      <li class="on_sale"><a href="#">On Sale!<span></span></a></li>
     </ul>
     
     <div id="primary_content">
       <%= yield %>
+    </div>
+    <div id="newsletter_signup">
+      <img src="/images/tag_get_the_best_deals.png" width="240" height="57" alt="Get The Best Deals!" id="tag_get_best_deals"/>
+      <%= render :partial => 'layouts/newsletter_form', :locals => {:form_id => 'newsletter_signup'} %>
+      <img src="/images/tag_on_sale.png" width="160" height="57" alt="Find Items On Sale" id="tag_items_on_sale"/>
     </div>
     <div id="company_specific_content">
       <h2>Go Devils! </h2>
@@ -36,36 +41,43 @@
       <p>Cactus Sports is Arizona State University independently owned and alumni operated and offers one of the largest selections of ASU merchandise from T-shirts, sweatshirts, shorts, hats, baby gear, gifts and much much more. Besides our great selection and quality products, we offer what most stores have forgotten, which is great customer service and a friendly and knowledgeable staff! For over 17 years Cactus Sports has been the place to shop for ASU students, faculty, and fans for the finest quality and best selection of Sun Devils gear. Cactus Sports is alumni and independently owned!</p>
     </div>
     <div id="external_page_content">
-      <%= render :partial => 'layouts/search_form', :locals => {:form_id => 'primary_search'} %>
+      <h2 id="follow_up"><img src="/images/sub_didnt_see_what_your_looking_for.png" width="269" height="17" alt="Didn't See What You Were Looking For?"/></h2>
+      <%= render :partial => 'layouts/search_form', :locals => {:form_id => 'secondary_search'} %>
+      <h2 id="give_us_a_call"><img src="/images/sub_need_help.png" width="177" height="17" alt="Need help? Give us a call!"></h2>
+      <p id="phone_number"><img src="/images/sub_phone_number.png" width="133" height="24" alt="(480)921-1278"></p>
       <ul id="inline_sitemap">
-        <li class="guys"><a href="#">Guys<span></span></a>
-          <ul>
-            <li><a href="#">Category</a></li>
-            <li><a href="#">Category</a></li>
-            <li><a href="#">Category</a></li>
-            <li><a href="#">Category</a></li>
+        <% if !@guys_categories.blank? %>
+        <li class="guys">
+          <h2><a href="#"><img src="/images/sub_small_heading_guys.png" width="34" height="16" alt="Guys"/></a></h2>
+          <ul>            
+            <% for category in @guys_categories %>
+              <li><%= link_to category.name, category %></li>
+            <% end %>
           </ul>
         </li>
+        <% end %>
+        <% if !@girls_categories.blank? %>
         <li class="girls">
-          <a href="#">Girls<span></span></a>
+          <h2><a href="#"><img src="/images/sub_small_heading_girls.png" width="31" height="14" alt="Girls"/></a></h2>
           <ul>
-            <li><a href="#">Category</a></li>
-            <li><a href="#">Category</a></li>
-            <li><a href="#">Category</a></li>
-            <li><a href="#">Category</a></li>
+            <% for category in @girls_categories %>
+              <li><%= link_to category.name, category %></li>
+            <% end %>
           </ul>
         </li>
+        <% end %>
+        <% if !@brands.blank? %>
         <li class="brands">
-          <a href="#">Brands<span></span></a>
+          <h2><a href="#"><img src="/images/sub_small_heading_brands.png" width="48" height="14" alt="Brands"/></a></h2>
           <ul>
-            <li><a href="#">Category</a></li>
-            <li><a href="#">Category</a></li>
-            <li><a href="#">Category</a></li>
-            <li><a href="#">Category</a></li>
+            <% for category in @brands %>
+              <li><%= link_to category.name, category %></li>
+            <% end %>
           </ul>
         </li>
+        <% end %>
         <li class="sale">
-          <a href="#">On Sale<span></span></a>
+          <h2><a href="#"><img src="/images/sub_small_heading_sale.png" width="62" height="14" alt="On Sale"/></a></h2>
           <ul>
             <li><a href="#">Category</a></li>
             <li><a href="#">Category</a></li>
@@ -76,7 +88,7 @@
       </ul>
       <ul id="footnotes">
         <li id="address">Cactus Sports - 401 S Mill Ave # 106, Tempe, AZ  85281 <a href="http://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=Cactus+Sports,+401+South+Mill+Avenue,+Tempe,+AZ+85281&sll=33.426893,-111.939611&sspn=0.010512,0.019419&g=401+South+Mill+Avenue,+Tempe,+AZ+85281&ie=UTF8&hq=Cactus+Sports,&hnear=401+S+Mill+Ave,+Tempe,+AZ+85281&ll=33.426602,-111.939601&spn=0.002628,0.004855&z=18&iwloc=A" class="button">Map / Directions</a></li>
-        <li id="copyright">&copy; 2009, Cactus Sports. All designs Copyright by owner. </li>
+        <li id="copyright">&copy; 2009, Cactus Sports. All designs Copyright by owner.</li>
       </ul>
     </div>
     <script type="text/javascript" charset="utf-8" src="/javascripts/modernizr.js"></script>

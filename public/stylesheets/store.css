@@ -184,7 +184,7 @@ and Sumo Creations.
    }
    
    form.search input[type="text"] {
-      background: #fff url(../images/search_icon.png) no-repeat 5px 4px;
+      background: #fff url(../images/search_icon.png) no-repeat 5px 5px;
       border: 0;
       border-radius: 5px;
        -o-border-radius:5px;
@@ -224,12 +224,23 @@ and Sumo Creations.
    
    
    /* Form Positioning */
-   form#primary_search.search {
+   form#primary_search.search,
+   form#secondary_search.search {
       left: 50%;
       margin-left: -290px;
       padding: 0;
       position: absolute;
       top: 58px;
+   }
+   
+   form#secondary_search.search {
+      margin-left: 180px;
+      top: 40px;
+      width: 274px;
+   }
+   
+   form#secondary_search.search input[type="text"] {
+      width: 160px;
    }
    
    form.search input[type="text"],
@@ -243,6 +254,23 @@ and Sumo Creations.
       left: 0;
       right: auto;
       top: 0;
+   }
+   
+   #follow_up,
+   #give_us_a_call,
+   #phone_number {
+      position: absolute;
+      top: 15px;
+      left: 50%;
+      margin-left: 180px;
+   }
+   
+   #give_us_a_call {
+      top: 90px;
+   }
+   
+   #phone_number {
+      top: 110px;
    }
    
    /* Strange webkit bug. I'm targeting it in a roundabout sort of way with modernizr */
@@ -326,28 +354,82 @@ and Sumo Creations.
    #primary_navigation {
       position: absolute;
       left: 50%;
-      margin-left: -290px;
-      top: 120px;
+      margin-left: -300px;
+      top: 110px;
    }
    
    #primary_navigation > li {
+      border: 1px solid #FFF;
+      border-radius-topright: 7px;  
+        -o-border-radius-topright: 7px;
+        -icab-border-radius-topright: 7px;
+        -khtml-border-radius-topright: 7px;
+        -moz-border-radius-topright: 7px;
+        -webkit-border-top-right-radius: 7px;
+      border-radius-topleft: 7px;  
+        -o-border-radius-topleft: 7px;
+        -icab-border-radius-topleft: 7px;
+        -khtml-border-radius-topleft: 7px;
+        -moz-border-radius-topleft: 7px;
+        -webkit-border-top-left-radius: 7px;
       float: left;
+      padding: 10px 0 5px 10px;
    }
    
    #primary_navigation > li > a,
    #primary_navigation > li > a > span {
       background: url(../images/nav_guys.png) no-repeat;
+      color: #000;
       display: block;
+      font-weight: bold;
       height: 21px;
       margin-right: 20px;
+      overflow: hidden;
       position: relative;
+      text-decoration: none;
       width: 71px;
+   }
+   
+   #primary_navigation > li.girls > a,
+   #primary_navigation > li.girls > a > span {
+      background: #fff url(../images/nav_girls.png) no-repeat;
+      width: 68px;
+   }
+   
+   #primary_navigation > li.brands > a,
+   #primary_navigation > li.brands > a > span {
+      background: #fff url(../images/nav_brands.png) no-repeat;
+      width: 89px;
+   }
+   
+   #primary_navigation > li.on_sale > a,
+   #primary_navigation > li.on_sale > a > span {
+      background: #fff url(../images/nav_sale.png) no-repeat;
+      width: 106px;
    }
    
    #primary_navigation > li > a > span {
       position: absolute;
       top: 0;
       left: 0;
+   }
+   
+   #primary_navigation > li.active {
+      border-top: 1px solid #FEB95E;
+      border-right: 1px solid #FEB95E;
+      border-left: 1px solid #FEB95E;
+   }
+   
+   #primary_navigation > li.brands.active {
+      border-top: 1px solid #000;
+      border-right: 1px solid #000;
+      border-left: 1px solid #000;
+   }
+   
+   #primary_navigation > li.on_sale.active {
+      border-top: 1px solid #B33A04;
+      border-right: 1px solid #B33A04;
+      border-left: 1px solid #B33A04;
    }
    
 /* =PRIMARY_CONTENT
@@ -357,16 +439,64 @@ and Sumo Creations.
       padding-top: 120px;
       width: 960px;
    }
+
+/* =NEWSLETTER_SIGNUP
+   ------------------------------------------------------ */
+   #newsletter_signup {
+      margin: 0 auto;
+      position: relative;
+      width: 960px;
+   }
+   
+   #newsletter_signup #tag_items_on_sale {
+      position: absolute;
+      right: 0;
+      top: 0;
+   }
+   
+   #newsletter_signup form#newsletter_signup {
+      background: #B33A04;
+      border-color: #B33A04;
+      position: absolute;
+      top: 10px;
+      left: 250px;
+      width: 530px;
+   }
+   
+   #newsletter_signup form#newsletter_signup label {
+      color: #B33A04;
+      display: block;
+      font-size: 0.875em;
+      font-weight: bold;
+      position: absolute;
+      text-transform: lowercase;
+      top: -26px;
+      left: 0;
+   }
+   
+   #newsletter_signup form#newsletter_signup input[type="text"] {
+      background: #fff;
+      padding: 6px;
+   }
+   
+   #newsletter_signup form#newsletter_signup input[type="submit"] {
+      background: #810101;
+      color: #fff;
+      width: 150px;
+   }
    
 /* =EXTERNAL_PAGE_CONTENT
    ------------------------------------------------------ */
    div#external_page_content {
       background: #eee;
+      position: relative;
    }
    
    ul#inline_sitemap {
-      margin: 20px auto;
+      margin: 0 auto;
+      min-height: 140px;
       overflow: auto;
+      padding: 20px 0;
       width: 960px;
    }
    
@@ -374,7 +504,17 @@ and Sumo Creations.
       display: block;
       padding-right: 20px;
       float: left;
+      font-size: 0.7em;
+      line-height: 1.5em;
       width: 100px;
+   }
+   
+   ul#inline_sitemap > li a {
+      color: #000;
+   }
+   
+   ul#inline_sitemap > li.sale a {
+      color: #B33A04;
    }
    
    ul#footnotes {

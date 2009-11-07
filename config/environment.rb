@@ -16,7 +16,10 @@ Rails::Initializer.run do |config|
 
   # Specify gems that this application depends on and have them installed with rake gems:install
   config.gem "rubyist-aasm", :lib => "aasm", :source => "http://gems.github.com"
-
+  config.gem "inherited_resources", :version => ">= 0.9.2", :source => "http://gemcutter.org"
+  config.gem "RedCloth", :lib => 'redcloth', :version => ">= 4.0"
+  config.gem "thoughtbot-factory_girl", :lib    => "factory_girl", :source => "http://gems.github.com"
+  
   # Only load the plugins named here, in the order given (default is alphabetical).
   config.plugins = [ :exception_notification, :all ] # can use :all as a placeholder.
 
