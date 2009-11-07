@@ -2,12 +2,10 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe GarmentSize do
   before(:each) do
-    @valid_attributes = {
-      
-    }
+    @garment_size = Factory.build(:garment_size)
   end
 
   it "should create a new instance given valid attributes" do
-    GarmentSize.create!(@valid_attributes)
+    @garment_size.save.should be(true)
   end
 end
