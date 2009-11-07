@@ -1,7 +1,5 @@
-<% form_tag '/search' do %>
-    <ul>
-      <li><%= label_tag :search, "Search" %></li>
-      <li><%= text_field_tag :search, 'Enter your search query here' %></li>
-      <li><%= submit_tag "Search" %></li>
-    </ul>
-    <% end %>
+<% form_tag '/search', :class => 'search', :id => form_id do %>
+  <%= label_tag :search, "Search" %>
+  <%= text_field_tag :search, '' %>
+  <%= submit_tag "Search" %>
+<% end %>

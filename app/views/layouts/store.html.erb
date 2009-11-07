@@ -15,7 +15,11 @@
       <li class="register"><a href="#" class="button">Register</a></li>
     </ul>
     <h1 id="logo"><a href="/" title="Cactus Sports">Cactus Sports<span></span></a></h1>
-    <%= render :partial => 'layouts/search_form' %>
+    <p id="cart_status">
+      <span class="count">4</span> <span class="description">items in your cart<span></span></span>
+      <a href="#" class="checkout_button">Checkout<span></span></a>
+    </p>
+    <%= render :partial => 'layouts/search_form', :locals => {:form_id => 'primary_search'} %>
     <ul id="primary_navigation">
       <li class="guys"><a href="#">Guys<span></span></a></li>
       <li class="guys"><a href="#">Girls<span></span></a></li>
@@ -32,7 +36,7 @@
       <p>Cactus Sports is Arizona State University independently owned and alumni operated and offers one of the largest selections of ASU merchandise from T-shirts, sweatshirts, shorts, hats, baby gear, gifts and much much more. Besides our great selection and quality products, we offer what most stores have forgotten, which is great customer service and a friendly and knowledgeable staff! For over 17 years Cactus Sports has been the place to shop for ASU students, faculty, and fans for the finest quality and best selection of Sun Devils gear. Cactus Sports is alumni and independently owned!</p>
     </div>
     <div id="external_page_content">
-      <%= render :partial => 'layouts/search_form' %>
+      <%= render :partial => 'layouts/search_form', :locals => {:form_id => 'primary_search'} %>
       <ul id="inline_sitemap">
         <li class="guys"><a href="#">Guys<span></span></a>
           <ul>
@@ -75,5 +79,55 @@
         <li id="copyright">&copy; 2009, Cactus Sports. All designs Copyright by owner. </li>
       </ul>
     </div>
+    <script type="text/javascript" charset="utf-8" src="/javascripts/modernizr.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/javascripts/jquery-1-1.3.2.min.js"></script>
+    <% if ENV["RAILS_ENV"] == "development" %>
+    <ul id="grid">
+       <li>&nbsp;</li>
+       <li>&nbsp;</li>
+       <li>&nbsp;</li>
+       <li>&nbsp;</li>
+
+       <li>&nbsp;</li>
+       <li>&nbsp;</li>
+       <li>&nbsp;</li>
+       <li>&nbsp;</li>
+
+       <li>&nbsp;</li>
+       <li>&nbsp;</li>
+       <li>&nbsp;</li>
+       <li>&nbsp;</li>
+
+       <li>&nbsp;</li>
+       <li>&nbsp;</li>
+       <li>&nbsp;</li>
+       <li>&nbsp;</li>
+    </ul>
+    <script type="text/javascript" charset="utf-8" src="/javascripts/dev.js"></script>
+    <style type="text/css">
+         #grid {
+            background: rgba(255,255,255,0.1);
+            height: 100%;
+            left: 50%;
+            margin-left: -480px;
+            position: fixed;
+            top: 0;
+            width: 960px;
+         }
+
+         #grid li {
+            background: rgba(255,0,0,.25);
+            display: block;
+            height: 100%;
+            width: 40px;
+            float: left;
+            margin-right: 20px;
+         }
+
+         #grid li:last {
+            margin-right: 0;
+         }
+      </style>
+    <% end %>
   </body>
 </html>

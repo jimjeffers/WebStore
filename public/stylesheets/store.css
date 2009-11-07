@@ -136,10 +136,10 @@ and Sumo Creations.
    div#company_specific_content h2,
    div#company_specific_content h3,
    div#company_specific_content p {
-      padding-right: 100px;
+      padding-right: 200px;
       margin: 5px auto;
       line-height: 1.5em;
-      width: 770px;
+      width: 760px;
    }
    
    div#company_specific_content h2 {
@@ -156,6 +156,208 @@ and Sumo Creations.
       font-size: 0.875em;
    }
 
+/* =SEARCH_FORM
+   ------------------------------------------------------ */
+   form.search {
+      border-radius:7px;
+       -o-border-radius:7px;
+       -icab-border-radius:7px;
+       -khtml-border-radius:7px;
+       -moz-border-radius:7px;
+       -webkit-border-radius:7px;
+       -moz-border-radius:7px;
+      background: #FD9408;
+      border: 3px solid #FD9408;
+      display: block;
+      height: 29px;
+      width: 450px;
+   }
+   
+   form.search label,
+   form.search div {
+      display: none;
+   }
+   
+   form.search input[type="text"],
+   form.search input[type="submit"] {
+      display: block;
+   }
+   
+   form.search input[type="text"] {
+      background: #fff url(../images/search_icon.png) no-repeat 5px 4px;
+      border: 0;
+      border-radius: 5px;
+       -o-border-radius:5px;
+       -icab-border-radius:5px;
+       -khtml-border-radius:5px;
+       -moz-border-radius:5px;
+       -webkit-border-radius:5px;
+       -moz-border-radius:5px;
+      font-size: 0.875em;
+      font-weight: bold;
+      padding: 6px 6px 6px 25px;
+      width: 390px;
+   }
+   
+   form.search input[type="submit"] {
+      background: #FEB95E;
+      border: 0;
+      border-radius-topright: 5px;  
+       -o-border-radius-topright: 5px;
+       -icab-border-radius-topright: 5px;
+       -khtml-border-radius-topright: 5px;
+       -moz-border-radius-topright: 5px;
+       -webkit-border-top-right-radius: 5px;
+      border-radius-bottomright: 5px;  
+       -o-border-radius-bottomright: 5px;
+       -icab-border-radius-bottomright: 5px;
+       -khtml-border-radius-bottomright: 5px;
+       -moz-border-radius-bottomright: 5px;
+       -webkit-border-bottom-right-radius: 5px;
+      font-size: 0.875em;
+      font-weight: bold;
+      height: 29px;
+      padding-bottom: 3px;
+      text-align: center;
+      width: 86px;
+   }
+   
+   
+   /* Form Positioning */
+   form#primary_search.search {
+      left: 50%;
+      margin-left: -290px;
+      padding: 0;
+      position: absolute;
+      top: 58px;
+   }
+   
+   form.search input[type="text"],
+   form.search input[type="submit"] {
+      position: absolute;
+      right: 0;
+      top: 0;
+   }
+   
+   form.search input[type="text"] {
+      left: 0;
+      right: auto;
+      top: 0;
+   }
+   
+   /* Strange webkit bug. I'm targeting it in a roundabout sort of way with modernizr */
+   .csstransitions.cssreflections.cssanimations form.search input[type="text"] {
+      top: -2px;
+   }
+
+/* =CART_STATUS
+   ------------------------------------------------------ */
+   #cart_status {
+      background: url(../images/shopping_cart_icon.png) no-repeat;
+      position: absolute;
+      top: 58px;
+      left: 50%;
+      margin-left: 240px;
+      min-height: 40px;
+      width: 220px;
+   }
+   
+   #cart_status span,
+   #cart_status a {
+      display: block;
+      position: absolute;
+      right: 0;
+      top: 0;
+   }
+   
+   #cart_status span span,
+   #cart_status a span {
+      z-index: 10;
+   }
+   
+   #cart_status span.count {
+      color: #999;
+      font-size: 2.25em;
+      font-weight: bold;
+      line-height: 1em;
+      right: 110px;
+      text-align: center;
+      top: -2px;
+      width: 50px;
+   }
+   
+   #cart_status span.description {
+      color: #999;
+      font-size: 0.75em;
+      line-height: 1em;
+      text-align: center;
+      right: -2px;
+      width: 106px;
+   }
+   
+   #cart_status span.description span {
+      background: url(../images/items_in_your_cart.png) no-repeat 0 0;
+      height: 20px;
+      width: 106px;
+   }
+   
+   #cart_status a.checkout_button {
+      text-decoration: none;
+      top: 15px;
+   }
+     
+   #cart_status a.checkout_button,
+   #cart_status a.checkout_button span {
+      background: url(../images/button_checkout.png) no-repeat;
+      height: 20px;
+      width: 106px;
+   }
+   
+   #cart_status a.checkout_button:hover span {
+      background-position: 0 -20px;
+   }
+   
+   #cart_status a.checkout_button:active span {
+      background-position: 0 -40px;
+   }
+
+/* =PRIMARY_NAVIGATION
+   ------------------------------------------------------ */
+   #primary_navigation {
+      position: absolute;
+      left: 50%;
+      margin-left: -290px;
+      top: 120px;
+   }
+   
+   #primary_navigation > li {
+      float: left;
+   }
+   
+   #primary_navigation > li > a,
+   #primary_navigation > li > a > span {
+      background: url(../images/nav_guys.png) no-repeat;
+      display: block;
+      height: 21px;
+      margin-right: 20px;
+      position: relative;
+      width: 71px;
+   }
+   
+   #primary_navigation > li > a > span {
+      position: absolute;
+      top: 0;
+      left: 0;
+   }
+   
+/* =PRIMARY_CONTENT
+   ------------------------------------------------------ */
+   #primary_content {
+      margin: 0 auto;
+      padding-top: 120px;
+      width: 960px;
+   }
+   
 /* =EXTERNAL_PAGE_CONTENT
    ------------------------------------------------------ */
    div#external_page_content {
