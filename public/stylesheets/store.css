@@ -59,6 +59,16 @@ and Sumo Creations.
       display: none;
    }
 
+/* =PRIMARY_CONTENT
+   ------------------------------------------------------ */
+   #primary_content {
+      margin: 0 auto;
+      min-height: 200px;
+      padding-top: 120px;
+      position: relative;
+      width: 960px;
+   }
+  
 /* =ZINDEX_FIX
    ------------------------------------------------------ */
    #primary_search,
@@ -680,14 +690,99 @@ and Sumo Creations.
       text-decoration: none;
    }
 
-/* =PRIMARY_CONTENT
+/* =PRODUCT_GALLERY
    ------------------------------------------------------ */
-   #primary_content {
-      margin: 0 auto;
-      min-height: 200px;
-      padding-top: 120px;
-      position: relative;
-      width: 960px;
+   .product_gallery {
+      margin: 20px 0;
+      position: absolute;
+      top: 160px;
+      left: 0;
+      width: 365px;
+   }
+   
+   .product_gallery img {
+      display: block;
+   }
+   
+   .product_gallery li {
+      border: 2px solid #ddd;
+      overflow: hidden;
+   }
+   
+   .product_gallery li.selected {
+      border-color: #FD9408;
+   }
+   
+   .product_gallery .main {
+      width: 336px;
+   }
+   
+   .product_gallery .thumbnail {
+      display: block;
+      float: left;
+      margin: 20px 20px 0 0;
+      width: 96px;
+   }
+
+/* =PRODUCT_DETAILS
+   ------------------------------------------------------ */
+   #product_details {
+      float: right;
+      min-height: 600px;
+      margin: 20px 80px 0 20px;
+      width:340px;
+   }
+   
+   #product_details h2,
+   #product_details h3 {
+      color: #33191F;
+      font-size: 1.5em;
+      line-height: 1.5em;
+   }
+   
+   #product_details h3 {
+      color: #FD9408;
+      font-weight: normal;
+   }
+   
+   .product_description {
+      font-size: 0.875em;
+      line-height: 1.5em;
+   }
+   
+   .product_description p,
+   .product_description ul,
+   .product_description ol {
+      margin: 1.5em 0;
+   }
+   
+   .product_description blockquote,
+   .product_description pre {
+      margin: 1.5em;
+   }
+   
+   .product_description ul,
+   .product_description ol {
+      list-style: square outside;
+   }
+   
+   .product_description ol {
+      list-style: decimal outside;
+   }
+
+/* =RELATED_ITEMS
+   ------------------------------------------------------ */
+   #related_items {
+      border: 1px solid #ccc;
+      border-left: 0;
+      border-right: 0;
+      margin: 10px 0;
+      padding: 10px 0;
+      clear: both;
+   }
+   
+   #related_items h2 {
+      padding: 0 0 10px 0;
    }
 
 /* =SHOWCASE

@@ -9,6 +9,7 @@ class StoreController < ApplicationController
   # Displays a specific product.
   def product
     @categories = Category.all
+    @products = Product.all(:limit => 5)
   end
   
   protected

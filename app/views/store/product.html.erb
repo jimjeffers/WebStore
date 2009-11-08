@@ -1,2 +1,47 @@
 <%= render :partial => 'breadcrumb' %>
 <%= render :partial => 'category_nav' %>
+
+<div id="product_details">
+  <h2 class="product_name">ASU Men’s Turtleneck</h2>
+  <h3 class="product_price">$49.95</h3>
+  <div class="product_description">
+    <p>This ASU Conference Perforance tee, made by Nike, is 100% polyester and features screen printed graphics and a sized jock tag on the lower left. Made with Nike Fit material, designed to pull moisture away. Cactus Sports is independently owned and alumni operated!</p>
+  </div>
+</div>
+
+<ul class="product_gallery">
+  <li class="main">
+    <img src="/images/sample_full_size.jpg" width="340" height="340" alt="Sample Full Size"/>
+  </li>
+  <li class="selected thumbnail">
+    <a href="#"><img src="/images/sample_thumbnail.jpg" width="98" height="97" alt="Sample Thumbnail"></a>
+  </li>
+  <li class="thumbnail">
+    <a href="#"><img src="/images/sample_thumbnail.jpg" width="98" height="97" alt="Sample Thumbnail"></a>
+  </li>
+  <li class="thumbnail">
+    <a href="#"><img src="/images/sample_thumbnail.jpg" width="98" height="97" alt="Sample Thumbnail"></a>
+  </li>
+  <li class="thumbnail">
+    <a href="#"><img src="/images/sample_thumbnail.jpg" width="98" height="97" alt="Sample Thumbnail"></a>
+  </li>
+</ul>
+
+<div id="related_items">
+  <h2>Items You Might Also Like:</h2>
+  <ol class="product_showcase" id="storefront">
+    <% if !@products.blank? %>
+      <% for product in @products %>
+        <li id="product_<%= product.id %>" class="product">
+          <ul>
+            <li class="product_photo"><a href="#"><img src="/images/sample_asu_guy.jpg" width="160" height="244" alt="ASU Guy"></a></li>
+            <li class="product_price"><%= currency(product.price) %></li>
+            <li class="product_name"><a href="#">ASU T-Shirt</a></li>
+          </ul>
+        </li>
+      <% end %>
+    <% else %>
+      <h2>No Products Were Found!</h2>
+    <% end %>
+  </ol>
+</div>
