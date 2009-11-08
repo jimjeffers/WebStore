@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(:version => 20091108082602) do
     t.string   "datetime"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "categories"
+    t.string   "guid"
   end
 
   create_table "categories", :force => true do |t|
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(:version => 20091108082602) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "hex_value"
+    t.string   "guid"
   end
 
   create_table "garment_sizes", :force => true do |t|
