@@ -3,7 +3,7 @@
     <% for product in products %>
       <li id="product_<%= product.id %>" class="product">
         <ul>
-          <li class="product_photo"><a href="#"><img src="/images/sample_asu_guy.jpg" width="160" height="244" alt="ASU Guy"></a></li>
+          <li class="product_photo"><a href="#"><%= image_tag product.photo.url(:showcase), :alt => product.name %></a></li>
           <li class="product_price"><%= currency(product.price) %></li>
           <li class="product_name"><a href="#"><%= product.name %></a></li>
         </ul>

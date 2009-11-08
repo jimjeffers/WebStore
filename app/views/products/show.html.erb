@@ -75,15 +75,7 @@
   </fieldset>
   <fieldset>
     <legend>Images</legend>
-      <%= error_messages_for :photo %>
-      <% form_for(:photo, :url => product_photos_path(@product), 
-                            :html => { :multipart => true }) do |f| -%>
-        <ul class="form">
-          <li><%= f.label :uploaded_data, "Upload A Photo" %>
-          <%= f.file_field :uploaded_data %></li>
-          <li><%= submit_tag 'Create' %></li>
-        </ul>
-      <% end -%>
+    <%= image_tag @product.photo.url(:display) %>
   </fieldset>
   <div id="destroy_alert">
      <h2>Wanna Delete this Product?</h2>

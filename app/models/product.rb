@@ -1,5 +1,12 @@
 class Product < ActiveRecord::Base
   # Plugins
+  has_attached_file :photo, :styles => { 
+                                          :zoom => "600x600>",
+                                          :display => "340x340#",
+                                          :thumbnail => "100x100#",
+                                          :showcase => "160x244#",
+                                          :featured => "400x244#",
+                                          :micro => "50x50#" }
   acts_as_paranoid
   acts_as_taggable
   
@@ -9,7 +16,6 @@ class Product < ActiveRecord::Base
   has_many :colors, :through => :variations
   has_many :garment_sizes, :through => :variations
   has_many :variations, :dependent => :destroy
-  has_many :photos, :dependent => :destroy
   
   # Validations
   validates_presence_of :name
