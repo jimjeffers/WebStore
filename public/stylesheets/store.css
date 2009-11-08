@@ -305,8 +305,8 @@ and Sumo Creations.
       top: -2px;
    }
    /* Strange input offset in browsers that don't implement border radius. Very odd. */
-   .no-borderradius {
-      
+   .no-borderradius form.search input[type="text"] {
+      height: 17px;
    }
 
 /* =CART_STATUS
@@ -750,14 +750,17 @@ and Sumo Creations.
       line-height: 1.5em;
    }
    
-   .product_description p,
-   .product_description ul,
-   .product_description ol {
+   .product_description p {
       margin: 1.5em 0;
    }
    
    .product_description blockquote,
-   .product_description pre {
+   .product_description pre,
+   .product_description ul,
+   .product_description ol {
+      color: #444;
+      font-size: 0.9em;
+      line-height: 1.5em;
       margin: 1.5em;
    }
    
@@ -770,6 +773,71 @@ and Sumo Creations.
       list-style: decimal outside;
    }
 
+/* =FORMS
+   ------------------------------------------------------ */
+   ul.form li {
+      background: #FD9408;
+      border-radius:7px;
+        -o-border-radius:7px;
+        -icab-border-radius:7px;
+        -khtml-border-radius:7px;
+        -moz-border-radius:7px;
+        -webkit-border-radius:7px;
+        -moz-border-radius:7px;
+      padding: 2px;
+      position: relative;
+      margin-left: 100px;
+   }
+   
+   ul.form li {
+      margin-bottom: 10px;
+   }
+   
+   ul.form li label {
+      font-size: 0.75em;
+      font-weight: bold;
+      line-height: 1.5em;
+      position: absolute;
+      left: -100px;
+      top: 7px;
+   }
+   
+   ul.form li select,
+   ul.form li input[type="text"],
+   ul.form li input[type="submit"] {
+      background: #fff;
+      border: none;
+      border-radius:5px;
+        -o-border-radius:5px;
+        -icab-border-radius:5px;
+        -khtml-border-radius:5px;
+        -moz-border-radius:5px;
+        -webkit-border-radius:5px;
+        -moz-border-radius:5px;
+      display: block;
+      font-size: 1em;
+      line-height: 1.5em;
+      padding: 6px;
+      width: 100%;
+   }
+   
+   ul.form li input[type="submit"] {
+      background: #593731;
+      color: #fff;
+      font-weight: bold;
+      text-align: center;
+   }
+   
+   ul.form li input[type="submit"].add_to_cart {
+      background: #593731 url(../images/cart_on_maroon.jpg) no-repeat 6px 8px;
+      padding: 10px 4px;
+      font-size: 1.05em;
+   }
+   
+   /* Strange webkit bug. I'm targeting it in a roundabout sort of way with modernizr */
+   .csstransitions.cssreflections.cssanimations ul.form li {
+      padding: 1px 3px;
+   }
 /* =RELATED_ITEMS
    ------------------------------------------------------ */
    #related_items {

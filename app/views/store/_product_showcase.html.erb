@@ -1,0 +1,15 @@
+<ol class="product_showcase" id="<%= showcase_id %>">
+  <% if !products.blank? %>
+    <% for product in products %>
+      <li id="product_<%= product.id %>" class="product">
+        <ul>
+          <li class="product_photo"><a href="#"><img src="/images/sample_asu_guy.jpg" width="160" height="244" alt="ASU Guy"></a></li>
+          <li class="product_price"><%= currency(product.price) %></li>
+          <li class="product_name"><a href="#"><%= product.name %></a></li>
+        </ul>
+      </li>
+    <% end %>
+  <% else %>
+    <h2>No Products Were Found!</h2>
+  <% end %>
+</ol>

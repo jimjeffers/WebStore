@@ -12,4 +12,7 @@ class Variation < ActiveRecord::Base
   validates_uniqueness_of :garment_size_id, :scope => [:product_id, :color_id]
   validates_uniqueness_of :sku
   validates_presence_of :sku
+  
+  # Named scopes
+  default_scope :order => "colors.name ASC, garment_sizes.name ASC", :include => [:color, :garment_size]
 end

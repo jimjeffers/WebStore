@@ -1,0 +1,10 @@
+<fieldset>
+  <legend>Brand Details</legend>
+  <%= f.error_messages %>
+  <ul class="form">
+    <li><%= f.label :name, "Name" %>
+      <%= f.text_field :name %></li>
+    <li><%= f.label :logo, "Logo" %>
+      <%= f.file_field :logo %></li>
+  </ul>
+</fieldset>

@@ -15,6 +15,7 @@ ActionController::Routing::Routes.draw do |map|
   end
 
   map.resource  :session
+  map.resources :brands
   map.resources :colors
   map.resources :garment_sizes
   
@@ -23,7 +24,6 @@ ActionController::Routing::Routes.draw do |map|
   map.register  '/register',  :controller => 'users',     :action => 'create'
   map.signup    '/signup',    :controller => 'users',     :action => 'new'
   
-  
   map.resources :users, :member => { :suspend   => :put,
                                      :unsuspend => :put,
                                      :purge     => :delete }
@@ -31,6 +31,10 @@ ActionController::Routing::Routes.draw do |map|
   map.user_add_role '/user/:user_id/add/role/:role_id', :controller => 'users', :action => 'add_role'
   map.user_remove_role '/user/:user_id/remove/role/:role_id', :controller => 'users', :action => 'remove_role'
 
+  map.add_to_cart '/cart/add/:id', :controller => 'store', :action => 'add_to_cart'
+  map.remove_from_card '/cart/remove/:id', :controller => 'store', :action => 'remove_from_cart'
+  map.empty_cart 'cart/empty', :controller => 'store', :action => 'empty'
+  
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
   map.connect '/', :controller => 'store', :action => 'index'

@@ -2,11 +2,29 @@
 <%= render :partial => 'category_nav' %>
 
 <div id="product_details">
-  <h2 class="product_name">ASU Men’s Turtleneck</h2>
-  <h3 class="product_price">$49.95</h3>
+  <h2 class="product_name"><%= @product.name %></h2>
+  <h3 class="product_price"><%= currency(@product.price) %></h3>
   <div class="product_description">
-    <p>This ASU Conference Perforance tee, made by Nike, is 100% polyester and features screen printed graphics and a sized jock tag on the lower left. Made with Nike Fit material, designed to pull moisture away. Cactus Sports is independently owned and alumni operated!</p>
+    <%= RedCloth.new(@product.full_description).to_html %>
   </div>
+  <% form_tag(add_to_cart_path(@product.id)) do %>
+    <ul class="form">
+      <li>
+        <%= label_tag :variation, "Size/Color:" %>
+        <%= select_tag :variation, "<option value="">Please choose...</option>"+ 
+        @product.variations.map { |v| 
+          "<option value=\"#{v.id}\">#{v.color.name} // #{v.garment_size.name}</option>" 
+        }.join(" ")%>
+      </li>
+      <li>
+        <%= label_tag :quantity, "Quantity:" %>
+        <%= select_tag :quantity, "<option value="">Please choose...</option>"+options_for_select((1..4).to_a)%>
+      </li>
+      <li>
+        <%= submit_tag 'Add to Cart!', :class => 'add_to_cart' %>
+      </li>
+    </ul>
+  <% end %>
 </div>
 
 <ul class="product_gallery">
@@ -29,19 +47,5 @@
 
 <div id="related_items">
   <h2>Items You Might Also Like:</h2>
-  <ol class="product_showcase" id="storefront">
-    <% if !@products.blank? %>
-      <% for product in @products %>
-        <li id="product_<%= product.id %>" class="product">
-          <ul>
-            <li class="product_photo"><a href="#"><img src="/images/sample_asu_guy.jpg" width="160" height="244" alt="ASU Guy"></a></li>
-            <li class="product_price"><%= currency(product.price) %></li>
-            <li class="product_name"><a href="#">ASU T-Shirt</a></li>
-          </ul>
-        </li>
-      <% end %>
-    <% else %>
-      <h2>No Products Were Found!</h2>
-    <% end %>
-  </ol>
+  <%= render :partial => 'product_showcase', :locals => {:showcase_id => 'related_items_list', :products => @products} %>
 </div>
