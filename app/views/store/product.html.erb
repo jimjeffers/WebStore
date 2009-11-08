@@ -29,19 +29,13 @@
 
 <ul class="product_gallery">
   <li class="main">
-    <img src="/images/sample_full_size.jpg" width="340" height="340" alt="Sample Full Size"/>
+    <%= link_to image_tag(@product.photo.url(:display)), @product.photo.url(:zoom), {:class => "zoom"} %>
   </li>
   <li class="selected thumbnail">
-    <a href="#"><img src="/images/sample_thumbnail.jpg" width="98" height="97" alt="Sample Thumbnail"></a>
+    <%= link_to image_tag(@product.photo.url(:thumbnail)), @product.photo.url(:zoom), {:class => "zoom"} %>
   </li>
   <li class="thumbnail">
-    <a href="#"><img src="/images/sample_thumbnail.jpg" width="98" height="97" alt="Sample Thumbnail"></a>
-  </li>
-  <li class="thumbnail">
-    <a href="#"><img src="/images/sample_thumbnail.jpg" width="98" height="97" alt="Sample Thumbnail"></a>
-  </li>
-  <li class="thumbnail">
-    <a href="#"><img src="/images/sample_thumbnail.jpg" width="98" height="97" alt="Sample Thumbnail"></a>
+    <%= link_to image_tag(@product.photo.url(:thumbnail)), @product.photo.url(:zoom), {:class => "zoom"} %>
   </li>
 </ul>
 

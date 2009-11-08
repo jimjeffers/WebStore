@@ -35,3 +35,10 @@ $(document).ready(function(){
        });
    });
 });
+
+// Bind fancy box...
+$("a.zoom").fancybox({
+   'overlayShow' : false,
+   'zoomSpeedIn' : 700,
+   'zoomSpeedOut' : 600
+});
