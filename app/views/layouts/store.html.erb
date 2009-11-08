@@ -4,11 +4,9 @@
   <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <title></title>
-    <link rel="stylesheet" href="/stylesheets/reset.css" type="text/css" media="screen" charset="utf-8"/>
-    <link rel="stylesheet" href="/stylesheets/store.css" type="text/css" media="screen" charset="utf-8"/>
     <%= stylesheet_link_tag 'reset','store','jquery.fancybox-1.2.5.css', :cache => 'store_front' %>
-    <%= yield :head %>
     <%= javascript_include_tag 'modernizr.js', :cache => 'dom_tools' %>
+    <%= yield :head %>
   </head>
   <body id="">
     <ul id="contextual_navigation">
