@@ -2,10 +2,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :products do |product|
     product.resources :variations
-    product.resources :photos
   end
-  
-  map.crop_product_photo '/products/:product_id/photos/:id/crop', :controller => 'photos', :action => 'crop'
   map.product_remove_category '/products/:product_id/remove/category/:category_id', :controller => 'products', :action => 'remove_category'
   map.product_add_category    '/products/:product_id/add/category/:category_id', :controller => 'products', :action => 'add_category'
   map.product_search '/products/search/', :controller => 'products', :action => 'search'

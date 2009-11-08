@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091108055658) do
+ActiveRecord::Schema.define(:version => 20091108063954) do
 
   create_table "brands", :force => true do |t|
     t.string   "name"
@@ -57,25 +57,6 @@ ActiveRecord::Schema.define(:version => 20091108055658) do
     t.datetime "updated_at"
     t.string   "gender"
   end
-
-  create_table "photos", :force => true do |t|
-    t.integer  "parent_id"
-    t.string   "content_type"
-    t.string   "filename"
-    t.string   "thumbnail"
-    t.integer  "size"
-    t.integer  "width"
-    t.integer  "height"
-    t.datetime "deleted_at"
-    t.integer  "product_id"
-    t.integer  "variation_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "photos", ["parent_id"], :name => "index_photos_on_parent_id"
-  add_index "photos", ["product_id"], :name => "index_photos_on_product_id"
-  add_index "photos", ["variation_id"], :name => "index_photos_on_variation_id"
 
   create_table "products", :force => true do |t|
     t.string   "name"
