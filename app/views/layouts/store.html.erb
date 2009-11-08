@@ -6,9 +6,9 @@
     <title></title>
     <link rel="stylesheet" href="/stylesheets/reset.css" type="text/css" media="screen" charset="utf-8"/>
     <link rel="stylesheet" href="/stylesheets/store.css" type="text/css" media="screen" charset="utf-8"/>
-    <%= stylesheet_link_tag 'jquery.fancybox-1.2.5.css', :cache => true %>
+    <%= stylesheet_link_tag 'reset','store','jquery.fancybox-1.2.5.css', :cache => 'store_front' %>
     <%= yield :head %>
-    <%= javascript_include_tag 'modernizr.js', :cache => true %>
+    <%= javascript_include_tag 'modernizr.js', :cache => 'dom_tools' %>
   </head>
   <body id="">
     <ul id="contextual_navigation">
@@ -25,7 +25,7 @@
     <%= render :partial => 'layouts/search_form', :locals => {:form_id => 'primary_search'} %>
     <ul id="primary_navigation">
       <li class="guys">
-        <a href="#">Guys<span></span></a>
+        <a href="<%= browse_category_path('guys',@guys_categories.first.guid) %>">Guys<span></span></a>
         <span class="border"></span>
         <% if !@guys_categories.blank? %>
           <ul class="sub_navigation">
@@ -36,7 +36,7 @@
         <% end %>
       </li>
       <li class="girls">
-        <a href="#">Girls<span></span></a>
+        <a href="<%= browse_category_path('girls',@girls_categories.first.guid) %>">Girls<span></span></a>
         <span class="border"></span>
         <% if !@girls_categories.blank? %>
           <ul class="sub_navigation">
@@ -47,7 +47,7 @@
         <% end %>
       </li>
       <li class="brands">
-        <a href="#">Brands<span></span></a>
+        <a href="<%= browse_brand_path(@brands.first.guid) %>">Brands<span></span></a>
         <span class="border"></span>
         <% if !@brands.blank? %>
           <ul class="sub_navigation">
@@ -134,9 +134,7 @@
         <li id="copyright">&copy; 2009, Cactus Sports. All designs Copyright by owner.</li>
       </ul>
     </div>
-    <%= javascript_include_tag 'jquery-1-1.3.2.min', :cache => true %>
-    <%= javascript_include_tag 'jquery.fancybox-1.2.5.pack.js', :cache => true %>
-    <%= javascript_include_tag 'application.js', :cache => true %>
+    <%= javascript_include_tag 'jquery-1-1.3.2.min', 'jquery.fancybox-1.2.5.pack.js','application.js', :cache => 'front_end' %>
     <%= yield :foot %>
     <% if ENV["RAILS_ENV"] == "development" %>
     <ul id="grid">

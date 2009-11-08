@@ -454,6 +454,7 @@ and Sumo Creations.
       position: absolute;
       top: 0;
       left: 0;
+      z-index: 4;
    }
    
    #primary_navigation ul.sub_navigation {
