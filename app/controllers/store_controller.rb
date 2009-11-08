@@ -1,10 +1,20 @@
 class StoreController < ApplicationController
+  before_filter :get_segmented_categories
   
   # Displays default storefront.
   def index
-    @guys_categories = Category.all
-    @girls_categories = Category.all
     @products = Product.all
   end
   
+  # Displays a specific product.
+  def product
+    @categories = Category.all
+  end
+  
+  protected
+  # Returns segmented categories for navigation purposes.
+  def get_segmented_categories
+    @guys_categories = Category.all
+    @girls_categories = Category.all
+  end
 end

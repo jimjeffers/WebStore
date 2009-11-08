@@ -1,0 +1,20 @@
+<ul id="secondary_navigation">
+  <li class="section">
+    <a class="current_section" href="#"><span class="leading_text">Currently in</span> Guys<span class="drop_arrow"></span></a>
+    <ul class="section_nav sub_navigation">
+      <li><a href="#"><span class="leading_text">clothes for</span> Girls</a></li>
+      <li><a href="#"><span class="leading_text">browse all</span> Brands</a></li>
+      <li><a href="#"><span class="leading_text">see what's on</span> Sale</a></li>
+    </ul>
+  </li>
+  <li class="category">
+    <ul class="categories_nav">
+      <% if !@categories.blank? %>
+        <% for category in @categories %>
+          <li><a href="#"><%= category.name %></a></li>
+        <% end %>
+      <% end %>
+      <li class="current"><a href="#">Demo</a></li>
+    </ul>
+  </li>
+</ul>

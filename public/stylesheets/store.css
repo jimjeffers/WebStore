@@ -54,6 +54,19 @@ and Sumo Creations.
       -webkit-border-radius:5px;
       -moz-border-radius:5px;
    }
+   
+   .sub_navigation {
+      display: none;
+   }
+
+/* =ZINDEX_FIX
+   ------------------------------------------------------ */
+   #primary_search,
+   #logo,
+   #cart_status,
+   #primary_navigation {
+      z-index: 10;
+   }
 
 /* =CONTEXTUAL_NAVIGATION
    ------------------------------------------------------ */
@@ -84,7 +97,7 @@ and Sumo Creations.
    ul#contextual_navigation #skip_content {
       bottom: -18px;
       right: 50%;
-      margin-right: -480px;
+      margin-right: -460px;
       position: absolute;
    }
    
@@ -95,13 +108,13 @@ and Sumo Creations.
    ul#contextual_navigation li.register,
    ul#contextual_navigation li.login {
       right: 50%;
-      margin-right: -480px;
+      margin-right: -460px;
       position: absolute;
       top: 8px;
    }
    
    ul#contextual_navigation li.login {
-      margin-right: -400px;
+      margin-right: -380px;
    }
 
 /* =LOGO
@@ -281,6 +294,10 @@ and Sumo Creations.
    .csstransitions.cssreflections.cssanimations form.search input[type="text"] {
       top: -2px;
    }
+   /* Strange input offset in browsers that don't implement border radius. Very odd. */
+   .no-borderradius {
+      
+   }
 
 /* =CART_STATUS
    ------------------------------------------------------ */
@@ -363,6 +380,13 @@ and Sumo Creations.
    }
    
    #primary_navigation > li {
+      float: left;
+      padding: 10px 0 5px 10px;
+      margin-right: 10px;
+      position: relative;
+   }
+   
+   #primary_navigation > li > span.border {
       border: 1px solid #FFF;
       border-radius-topright: 7px;  
         -o-border-radius-topright: 7px;
@@ -376,8 +400,12 @@ and Sumo Creations.
         -khtml-border-radius-topleft: 7px;
         -moz-border-radius-topleft: 7px;
         -webkit-border-top-left-radius: 7px;
-      float: left;
-      padding: 10px 0 5px 10px;
+      height: 34px;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      z-index: 2;
    }
    
    #primary_navigation > li > a,
@@ -387,7 +415,7 @@ and Sumo Creations.
       display: block;
       font-weight: bold;
       height: 21px;
-      margin-right: 20px;
+      margin-right: 10px;
       overflow: hidden;
       position: relative;
       text-decoration: none;
@@ -418,29 +446,247 @@ and Sumo Creations.
       left: 0;
    }
    
-   #primary_navigation > li.active {
+   #primary_navigation ul.sub_navigation {
+      background: #fff;
+      border: 1px solid #FEB95E;
+      border-radius-topright: 7px;  
+        -o-border-radius-topright: 7px;
+        -icab-border-radius-topright: 7px;
+        -khtml-border-radius-topright: 7px;
+        -moz-border-radius-topright: 7px;
+        -webkit-border-top-right-radius: 7px;
+      border-radius-bottomright: 7px;  
+        -o-border-radius-bottomright: 7px;
+        -icab-border-radius-bottomright: 7px;
+        -khtml-border-radius-bottomright: 7px;
+        -moz-border-radius-bottomright: 7px;
+        -webkit-border-bottom-right-radius: 7px;
+      border-radius-bottomleft: 7px;  
+        -o-border-radius-bottomleft: 7px;
+        -icab-border-radius-bottomleft: 7px;
+        -khtml-border-radius-bottomleft: 7px;
+        -moz-border-radius-bottomleft: 7px;
+        -webkit-border-bottom-left-radius: 7px;
+      font-size: 0.875em;
+      left: 0;
+      line-height: 1.25em;
+      min-width: 150px;
+      padding: 6px 10px;
+      position: absolute;
+      top: 38px;
+   }
+   
+   #primary_navigation ul.sub_navigation li {
+      padding: 2px 0;
+   }
+   
+   #primary_navigation > li.active > span.border {
       border-top: 1px solid #FEB95E;
       border-right: 1px solid #FEB95E;
       border-left: 1px solid #FEB95E;
+      height: 37px;
+      z-index: 3;
    }
    
-   #primary_navigation > li.brands.active {
+   #primary_navigation > li.brands.active > span.border {
       border-top: 1px solid #000;
       border-right: 1px solid #000;
       border-left: 1px solid #000;
    }
    
-   #primary_navigation > li.on_sale.active {
+   #primary_navigation > li.brands.active .sub_navigation {
+      border-color: #000;
+   }
+   
+   #primary_navigation > li.on_sale.active > span.border {
       border-top: 1px solid #B33A04;
       border-right: 1px solid #B33A04;
       border-left: 1px solid #B33A04;
    }
    
+   #primary_navigation > li.on_sale.active .sub_navigation {
+      border-color: #B33A04;
+   }
+
+/* =SECONDARY_NAVIGATION
+   ------------------------------------------------------ */
+   #secondary_navigation {
+      background: #ccc;
+      border-radius:10px;
+        -o-border-radius:10px;
+        -icab-border-radius:10px;
+        -khtml-border-radius:10px;
+        -moz-border-radius:10px;
+        -webkit-border-radius:10px;
+        -moz-border-radius:10px;
+      float: right;
+      margin: 20px 20px 0 0;
+      width: 160px;
+   }
+   
+   #secondary_navigation li.section {
+      padding: 4px;
+      position: relative;
+   }
+   
+   a.current_section,
+   #secondary_navigation li.section .sub_navigation {
+      background: #d9d9d9;
+      border-radius:6px;
+        -o-border-radius:6px;
+        -icab-border-radius:6px;
+        -khtml-border-radius:6px;
+        -moz-border-radius:6px;
+        -webkit-border-radius:6px;
+        -moz-border-radius:6px;
+      display: block;
+      font-size: 1.05em;
+      font-weight: bold;
+      line-height: 1.5em;
+      padding: 0 6px;
+      position: relative;
+      text-decoration: none;
+   }
+   
+   #secondary_navigation li.section .sub_navigation {
+      background: #b0b0b0;
+      border-radius:6px;
+        -o-border-radius:6px;
+        -icab-border-radius:6px;
+        -khtml-border-radius:6px;
+        -moz-border-radius:6px;
+        -webkit-border-radius:6px;
+        -moz-border-radius:6px;
+      top: 100%;
+      padding: 2px 5px;
+      position: absolute;
+      width: 142px;
+   }
+   
+   #secondary_navigation li.section .sub_navigation li a {
+      background: #ccc;
+      border-radius:3px;
+        -o-border-radius:3px;
+        -icab-border-radius:3px;
+        -khtml-border-radius:3px;
+        -moz-border-radius:3px;
+        -webkit-border-radius:3px;
+        -moz-border-radius:3px;
+      display: block;
+      margin: 3px 0;
+      padding: 0 3px;
+      text-align: right;
+   }
+   
+   #secondary_navigation li.section .sub_navigation li a:hover {
+      background: #ddd;
+   }
+   
+   #secondary_navigation li.section .sub_navigation li a:active {
+      background: #fff;
+   }
+   
+   #secondary_navigation li.section .sub_navigation li a {
+      text-decoration: none;
+   }
+   
+   .active a.current_section {
+      background: #b0b0b0;
+   }
+   
+   span.leading_text {
+      font-size: 0.7em;
+      font-weight: normal;
+   }
+   
+   span.drop_arrow {
+      background: #E6E6E6 url(../images/arrow_drop.png) no-repeat 5px 6px;
+      border-radius:5px;
+        -o-border-radius:5px;
+        -icab-border-radius:5px;
+        -khtml-border-radius:5px;
+        -moz-border-radius:5px;
+        -webkit-border-radius:5px;
+        -moz-border-radius:5px;
+      height: 11px;
+      padding: 4px;
+      position: absolute;
+      right: 4px;
+      top: 4px;
+      width: 14px;
+   }
+   
+   ul.categories_nav {
+      font-size: 0.9em;
+      line-height: 1.5em;
+      padding: 5px 0 10px 0;
+   }
+   
+   ul.categories_nav > li {
+      padding: 1px 10px;
+   }
+   
+   ul.categories_nav > li.current {
+      background: #FD9408 url(../images/arrow_orange_indicator.png) no-repeat left top;
+      height: 31px;
+      margin-left: -35px;
+      overflow: hidden;
+      padding: 3px 5px 3px 25px;
+      width: 165px;
+   }
+   
+   ul.categories_nav > li.current a {
+      color: #fff;
+      font-size: 1.25em;
+      font-weight: bold;
+      line-height: 1.5em;
+   }
+
+/* =BREADCRUMB
+   ------------------------------------------------------ */
+   ol#breadcrumb {
+      border: 1px solid #ccc;
+      border-left: none;
+      border-right: none;
+      margin-right: 20px;
+      overflow: hidden;
+      padding: 5px 0 6px 0;
+   }
+   
+   ol#breadcrumb li {
+      background: url(../images/arrow_right.png) no-repeat right center;
+      font-size: 0.875em;
+      float: left;
+      line-height: 1.5em;
+      padding: 0 20px 0 14px;
+   }
+   
+   ol#breadcrumb li:first-child {
+      padding-left: 0;
+   }
+   
+   ol#breadcrumb li:last-child {
+      background: none;
+      padding-right: 0;
+   }
+   
+   ol#breadcrumb li a {
+      font-weight: bold;
+   }
+   
+   ol#breadcrumb li:last-child a {
+      color: #999;
+      font-weight: normal;
+      text-decoration: none;
+   }
+
 /* =PRIMARY_CONTENT
    ------------------------------------------------------ */
    #primary_content {
       margin: 0 auto;
+      min-height: 200px;
       padding-top: 120px;
+      position: relative;
       width: 960px;
    }
 
@@ -500,7 +746,7 @@ and Sumo Creations.
    
    #newsletter_signup #tag_items_on_sale {
       position: absolute;
-      right: 0;
+      right: 20px;
       top: 0;
    }
    
@@ -508,9 +754,9 @@ and Sumo Creations.
       background: #B33A04;
       border-color: #B33A04;
       position: absolute;
-      top: 10px;
+      top: 12px;
       left: 250px;
-      width: 530px;
+      width: 515px;
    }
    
    #newsletter_signup form#newsletter_signup_form label {
