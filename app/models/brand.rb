@@ -1,6 +1,7 @@
 class Brand < ActiveRecord::Base
   # Plugins
   has_attached_file :logo, :styles => { :medium => "100x100#", :thumb => "25x25#" }
+  has_guid :name
   
   # Relationships
   has_many :products

@@ -18,5 +18,6 @@ class StoreController < ApplicationController
   def get_segmented_categories
     @guys_categories = Category.all
     @girls_categories = Category.all
+    @brands = Brand.all
   end
 end

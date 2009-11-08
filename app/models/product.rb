@@ -1,5 +1,6 @@
 class Product < ActiveRecord::Base
   # Plugins
+  has_guid :name
   has_attached_file :photo, :styles => { 
                                           :zoom => "600x600>",
                                           :display => "340x340#",
