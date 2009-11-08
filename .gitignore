@@ -3,3 +3,4 @@ log/*
 tmp/*
 config/database.yml
 public/photos
+public/system
