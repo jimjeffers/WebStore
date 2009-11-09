@@ -1,6 +1,10 @@
 require 'digest/sha1'
 
 class User < ActiveRecord::Base
+  # Relationships
+  has_many :carts
+  
+  #Scopes
   named_scope :authors, :conditions => "articles_count > 0"
   named_scope :with_roles, {:conditions => "roles_users.user_id=users.id", :include => :roles}
   named_scope :with_role, lambda { |role| { 

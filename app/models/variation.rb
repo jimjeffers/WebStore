@@ -6,6 +6,7 @@ class Variation < ActiveRecord::Base
   belongs_to :garment_size
   belongs_to :color
   belongs_to :product
+  has_many :line_items
   
   # Validations
   validates_uniqueness_of :color_id, :scope => [:product_id, :garment_size_id]
