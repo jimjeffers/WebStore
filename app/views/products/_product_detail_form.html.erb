@@ -3,6 +3,7 @@
   <ul class="form">
      <li><%= f.label :name, 'Product Name' %><%= f.text_field :name, {:class => 'full_length'} %></li>
      <li><%= f.label :price, 'Product Price:' %><%= f.text_field :price %></li>
+     <li><%= f.label :brand, "Brand" %><%= f.collection_select :brand_id, Brand.all, :id, :name, {:prompt => true} %></li>
   </ul>
 </fieldset>
 <fieldset>

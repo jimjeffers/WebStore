@@ -28,7 +28,7 @@
         <% if !@guys_categories.blank? %>
           <ul class="sub_navigation">
             <% for category in @guys_categories %>
-              <li><%= link_to category.name, category %></li>
+              <li><%= link_to category.name, browse_category_path('guys',category.guid) %></li>
             <% end %>
           </ul>
         <% end %>
@@ -39,18 +39,18 @@
         <% if !@girls_categories.blank? %>
           <ul class="sub_navigation">
             <% for category in @girls_categories %>
-              <li><%= link_to category.name, category %></li>
+              <li><%= link_to category.name, browse_category_path('girls',category.guid) %></li>
             <% end %>
           </ul>
         <% end %>
       </li>
       <li class="brands">
-        <a href="<%= browse_brand_path(@brands.first.guid) %>">Brands<span></span></a>
+        <a href="<%= browse_category_path('brand',@brands.first.guid) %>">Brands<span></span></a>
         <span class="border"></span>
         <% if !@brands.blank? %>
           <ul class="sub_navigation">
             <% for brand in @brands %>
-              <li><%= link_to brand.name, brand %></li>
+              <li><%= link_to brand.name, browse_category_path('brand',brand.guid) %></li>
             <% end %>
           </ul>
         <% end %>
@@ -89,30 +89,30 @@
       <ul id="inline_sitemap">
         <% if !@guys_categories.blank? %>
         <li class="guys">
-          <h2><a href="#"><img src="/images/sub_small_heading_guys.png" width="34" height="16" alt="Guys"/></a></h2>
+          <h2><a href="<%= browse_category_path('guys',@guys_categories.first.guid) %>"><img src="/images/sub_small_heading_guys.png" width="34" height="16" alt="Guys"/></a></h2>
           <ul>            
             <% for category in @guys_categories %>
-              <li><%= link_to category.name, category %></li>
+              <li><%= link_to category.name, browse_category_path('guys',category.guid) %></li>
             <% end %>
           </ul>
         </li>
         <% end %>
         <% if !@girls_categories.blank? %>
         <li class="girls">
-          <h2><a href="#"><img src="/images/sub_small_heading_girls.png" width="31" height="14" alt="Girls"/></a></h2>
+          <h2><a href="<%= browse_category_path('girls',@girls_categories.first.guid) %>"><img src="/images/sub_small_heading_girls.png" width="31" height="14" alt="Girls"/></a></h2>
           <ul>
             <% for category in @girls_categories %>
-              <li><%= link_to category.name, category %></li>
+              <li><%= link_to category.name, browse_category_path('girls',category.guid) %></li>
             <% end %>
           </ul>
         </li>
         <% end %>
         <% if !@brands.blank? %>
         <li class="brands">
-          <h2><a href="#"><img src="/images/sub_small_heading_brands.png" width="48" height="14" alt="Brands"/></a></h2>
+          <h2><a href="<%= browse_category_path('brand',@brands.first.guid) %>"><img src="/images/sub_small_heading_brands.png" width="48" height="14" alt="Brands"/></a></h2>
           <ul>
             <% for brand in @brands %>
-              <li><%= link_to brand.name, brand %></li>
+              <li><%= link_to brand.name, browse_category_path('brand',brand.guid) %></li>
             <% end %>
           </ul>
         </li>

@@ -13,6 +13,7 @@ class Variation < ActiveRecord::Base
   validates_uniqueness_of :sku
   validates_presence_of :sku
   
-  # Named scopes
+  # Scopes
   default_scope :order => "colors.name ASC, garment_sizes.name ASC", :include => [:color, :garment_size]
+  named_scope :all_with_gender, lambda {|gender| {:conditions => ['gender = ?',gender]} }
 end

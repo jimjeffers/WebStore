@@ -28,7 +28,6 @@ ActionController::Routing::Routes.draw do |map|
   map.user_add_role '/user/:user_id/add/role/:role_id', :controller => 'users', :action => 'add_role'
   map.user_remove_role '/user/:user_id/remove/role/:role_id', :controller => 'users', :action => 'remove_role'
   
-  map.browse_brand '/brand/:brand_guid', :controller => 'store', :action => 'brand'
   map.browse_category '/browse/:method/:category_guid', :controller => 'store', :action => 'category'
   map.browse_item '/browse/:method/:category_guid/:product_guid', :controller => 'store', :action => 'product'
   

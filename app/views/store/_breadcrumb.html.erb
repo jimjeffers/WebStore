@@ -1,6 +1,8 @@
 <ol id="breadcrumb">
-  <li><a href="#">Home</a></li>
-  <li><a href="#">Guys</a></li>
-  <li><a href="#">Polos</a></li>
-  <li><a href="#">ASU Men’s Turtleneck</a></li>
+  <li><a href="/">Home</a></li>
+  <% unless method.nil? %>
+    <li><a href="<%= browse_category_path(method,categories.first.guid) %>"><%= method.capitalize %></a></li>
+  <% end %>
+  <% unless category.nil? %><li><a href="<%= browse_category_path(method,category.guid) %>"><%= category.name %></a></li><% end %>
+  <% unless product.nil? %><li><a href="#"><%= product.name %></a></li><% end %>
 </ol>

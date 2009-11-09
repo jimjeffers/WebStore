@@ -1,20 +1,30 @@
 <ul id="secondary_navigation">
   <li class="section">
-    <a class="current_section" href="#"><span class="leading_text">Currently in</span> Guys<span class="drop_arrow"></span></a>
+    <a class="current_section" href="#"><span class="leading_text">Currently in</span> <%= method.capitalize %><span class="drop_arrow"></span></a>
     <ul class="section_nav sub_navigation">
-      <li><a href="#"><span class="leading_text">clothes for</span> Girls</a></li>
-      <li><a href="#"><span class="leading_text">browse all</span> Brands</a></li>
-      <li><a href="#"><span class="leading_text">see what's on</span> Sale</a></li>
+      <% unless method == "guys" %>
+        <li><a href="<%= browse_category_path('guys',guys_categories.first.guid) %>"><span class="leading_text">clothes for</span> Guys</a></li>
+      <% end %>
+      <% unless method == "girls" %>
+        <li><a href="<%= browse_category_path('girls',girls_categories.first.guid) %>"><span class="leading_text">clothes for</span> Girls</a></li>
+      <% end %>
+      <% unless method == "brand" %>
+        <li><a href="<%= browse_category_path('brand',brands.first.guid) %>"><span class="leading_text">browse all</span> Brands</a></li>
+      <% end %>
+      <% unless method == "sale" %>
+        <li><a href="#"><span class="leading_text">see what's on</span> Sale</a></li>
+      <% end %>
     </ul>
   </li>
   <li class="category">
     <ul class="categories_nav">
       <% if !@categories.blank? %>
         <% for category in @categories %>
-          <li><a href="#"><%= category.name %></a></li>
+          <li<%= ' class="current"' if current.id == category.id %>>
+            <%= link_to category.name, browse_category_path(method,category.guid) %>
+          </li>
         <% end %>
       <% end %>
-      <li class="current"><a href="#">Demo</a></li>
     </ul>
   </li>
 </ul>

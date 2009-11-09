@@ -17,6 +17,7 @@ class Product < ActiveRecord::Base
   has_many :colors, :through => :variations
   has_many :garment_sizes, :through => :variations
   has_many :variations, :dependent => :destroy
+  belongs_to :brand
   
   # Validations
   validates_presence_of :name
@@ -26,6 +27,14 @@ class Product < ActiveRecord::Base
   named_scope :search, lambda { |term| {
     :conditions => ['variations.sku LIKE ? OR products.name LIKE ?',"%#{term}%","%#{term}%"],
     :include => :variations }
+  }
+  named_scope :all_with_gender, lambda { |gender| {
+    :conditions => ['garment_sizes.gender = ?',gender],
+    :include => {:variations => :garment_size} }
+  }
+  named_scope :sellable, { 
+    :conditions => 'categorizations.product_id = products.id AND variations.product_id = products.id',
+    :include => [:categorizations, :variations]
   }
   
   # Removes a category associated to this particular product.

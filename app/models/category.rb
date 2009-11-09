@@ -12,6 +12,12 @@ class Category < ActiveRecord::Base
   validates_presence_of :name
   validates_uniqueness_of :name
   
+  # Scopes
+  named_scope :all_with_gender, lambda { |gender| {
+    :conditions => ['garment_sizes.gender = ?',gender],
+    :include => {:products => {:variations => :garment_size}} }
+  }
+  
   # Returns a whitespace free slug for markup or SEO purposes.
   def slug
     name.split(' ').join('-')

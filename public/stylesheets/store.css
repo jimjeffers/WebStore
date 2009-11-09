@@ -568,9 +568,10 @@ and Sumo Creations.
         -moz-border-radius:6px;
         -webkit-border-radius:6px;
         -moz-border-radius:6px;
-      top: 100%;
+      display: none;
       padding: 2px 5px;
       position: absolute;
+      top: 100%;
       width: 142px;
    }
    
@@ -858,11 +859,18 @@ and Sumo Creations.
    ------------------------------------------------------ */
    ol.product_showcase {
       overflow: hidden;
+      width: 960px;
+   }
+   
+   ol#brand_showcase,
+   ol#category_showcase {
+      margin-top: 20px;
+      width: 760px;
    }
    
    ol.product_showcase > li {
       float: left;
-      margin: 0 20px 40px 0;
+      margin: 0 20px 60px 0;
       position: relative;
    }
    

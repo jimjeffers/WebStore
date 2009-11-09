@@ -1,1 +1,6 @@
-<%= render :partial => 'product_showcase', :locals => {:showcase_id => 'storefront', :products => @products} %>
+<%= render :partial => 'product_showcase', :locals => {
+  :showcase_id => 'storefront', 
+  :products => @products,
+  :method => @method,
+  :category => @category
+} %>

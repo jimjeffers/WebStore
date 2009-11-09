@@ -1,5 +1,12 @@
-<%= render :partial => 'breadcrumb' %>
-<%= render :partial => 'category_nav' %>
+<%= render :partial => 'secondary_navigation', :locals => {
+  :current => @category, 
+  :categories => @categories, 
+  :method => @method,
+  :guys_categories => @guys_categories,
+  :girls_categories => @girls_categories,
+  :brands => @brands,
+  :product => @product
+} %>
 
 <div id="product_details">
   <h2 class="product_name"><%= @product.name %></h2>
@@ -12,8 +19,8 @@
       <li>
         <%= label_tag :variation, "Size/Color:" %>
         <%= select_tag :variation, "<option value="">Please choose...</option>"+ 
-        @product.variations.map { |v| 
-          "<option value=\"#{v.id}\">#{v.color.name} // #{v.garment_size.name}</option>" 
+        @variations.map { |v| 
+          "<option value=\"#{v.id}\">#{v.color.name} (#{v.garment_size.gender} #{v.garment_size.name})</option>" 
         }.join(" ")%>
       </li>
       <li>
@@ -41,5 +48,10 @@
 
 <div id="related_items">
   <h2>Items You Might Also Like:</h2>
-  <%= render :partial => 'product_showcase', :locals => {:showcase_id => 'related_items_list', :products => @products} %>
+  <%= render :partial => 'product_showcase', :locals => {
+    :showcase_id => 'related_items_list', 
+    :products => @products,
+    :method => @method,
+    :category => @category
+  } %>
 </div>
