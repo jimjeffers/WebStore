@@ -1,3 +1,6 @@
+<% if params[:search] %>
+<h2>Showing all products that match "<%= params[:search] %>"</h2>
+<% end %>
 <%= render :partial => 'product_showcase', :locals => {
   :showcase_id => 'storefront', 
   :products => @products,

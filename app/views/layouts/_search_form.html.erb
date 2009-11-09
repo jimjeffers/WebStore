@@ -1,4 +1,4 @@
-<% form_tag '/search', :class => 'search', :id => form_id do %>
+<% form_tag search_path, :class => 'search', :id => form_id, :method => :get do %>
   <%= label_tag :search, "Search" %>
   <%= text_field_tag :search, '' %>
   <%= submit_tag "Search" %>

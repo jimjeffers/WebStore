@@ -8,6 +8,12 @@ class StoreController < ApplicationController
     @products = Product.sellable.limited(20)
   end
   
+  # Displays search results.
+  def search
+    @products = Product.find_tagged_with(params[:search])
+    render :action => "index"
+  end
+  
   # Displays a specific product.
   def product
     # Incase you're confused about @product it's happening with a before filter: get_items_from_params
