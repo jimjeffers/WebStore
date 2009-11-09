@@ -1,0 +1,15 @@
+<%= render :partial => 'secondary_navigation', :locals => {
+  :current => @category, 
+  :categories => @categories, 
+  :method => @method,
+  :guys_categories => @guys_categories,
+  :girls_categories => @girls_categories,
+  :brands => @brands,
+  :product => @product
+} %>
+<%= render :partial => 'product_showcase', :locals => {
+  :showcase_id => 'category_showcase', 
+  :products => @products,
+  :method => @method,
+  :category => @category
+} %>

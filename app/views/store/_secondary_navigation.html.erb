@@ -1,0 +1,14 @@
+<%= render :partial => 'breadcrumb', :locals => {
+  :method => @method,
+  :categories => @categories, 
+  :category => @category,
+  :product => @product
+} %>
+<%= render :partial => 'category_nav', :locals => { 
+  :current => @category, 
+  :categories => @categories, 
+  :method => @method,
+  :guys_categories => @guys_categories,
+  :girls_categories => @girls_categories,
+  :brands => @brands
+} %>
