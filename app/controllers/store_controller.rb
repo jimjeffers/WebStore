@@ -17,18 +17,19 @@ class StoreController < ApplicationController
   # Displays a specific product.
   def product
     # Incase you're confused about @product it's happening with a before filter: get_items_from_params
-    if @method == "brand"
+    if @method == Store::METHODS[:brand]
       @products = @category.products.sellable.limited(5)
       @variations = @product.variations
     else
       @products = @category.products.all_with_gender(@method.capitalize).sellable.limited(5)
       @variations = @product.variations.all_with_gender(@method.capitalize)
     end
+    @line_item = LineItem.new
   end
   
   # Displays all products of a specific category.
   def category
-    unless @method == "brand"
+    unless @method == Store::METHODS[:brand]
       @products = @category.products.all_with_gender(@method.capitalize).sellable
     else
       @products = @category.products.sellable
@@ -42,7 +43,7 @@ class StoreController < ApplicationController
       param.downcase! unless param.nil?
     end
     @method = params[:method] || nil
-    if @method == "brand"
+    if @method == Store::METHODS[:brand]
       @category = Brand.find_by_guid(params[:category_guid]) || nil
     else
       @category = Category.find_by_guid(params[:category_guid]) || nil
@@ -60,9 +61,9 @@ class StoreController < ApplicationController
   # Returns a list of categories dependent on the search method (a string) stored in @method
   def get_categories_by_method
     @categories = case @method
-      when "guys" then @guys_categories
-      when "girls" then @girls_categories
-      when "brand" then Brand.all
+      when Store::METHODS[:guys] then @guys_categories
+      when Store::METHODS[:girls] then @girls_categories
+      when Store::METHODS[:brand] then Brand.all
       when nil then Category.all
     end
   end

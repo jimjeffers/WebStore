@@ -14,18 +14,17 @@
   <div class="product_description">
     <%= RedCloth.new(@product.full_description).to_html %>
   </div>
-  <% form_tag(add_to_cart_path(@product.id)) do %>
+  <% form_for(:line_item, @line_item, add_to_cart_path(@product.id)) do |f| %>
     <ul class="form">
       <li>
-        <%= label_tag :variation, "Size/Color:" %>
-        <%= select_tag :variation, "<option value="">Please choose...</option>"+ 
-        @variations.map { |v| 
-          "<option value=\"#{v.id}\">#{v.color.name} (#{v.garment_size.gender} #{v.garment_size.name})</option>" 
-        }.join(" ")%>
+        <%= f.label :variation, "Size/Color:" %>
+        <%= f.select :variation, @variations.map { |v| 
+              ["#{v.color.name} (#{v.garment_size.gender} #{v.garment_size.name})",v.id]
+        } %>
       </li>
       <li>
         <%= label_tag :quantity, "Quantity:" %>
-        <%= select_tag :quantity, "<option value="">Please choose...</option>"+options_for_select((1..4).to_a)%>
+        <%= select_tag :quantity, "<option value="">Please choose...</option>"+options_for_select((1..Store::MAX_QUANTITY).to_a)%>
       </li>
       <li>
         <%= submit_tag 'Add to Cart!', :class => 'add_to_cart' %>
