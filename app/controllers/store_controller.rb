@@ -45,7 +45,7 @@ class StoreController < ApplicationController
     end
     @line_item = LineItem.new(params[:line_item])
     if @line_item.valid? and @cart.line_items << @line_item
-      redirect_to '/'
+      redirect_to :action => 'cart'
     else
       render :action => product
     end
@@ -58,6 +58,12 @@ class StoreController < ApplicationController
     if @cart and @cart.line_items.include?(@line_item)
       @cart.line_items.delete(@line_item)
     end
+    redirect_to :action => 'cart'
+  end
+  
+  # Displays the items in the current users shopping cart.
+  def cart
+    @line_items = @cart.line_items(:include => {:variation => [:product, :garment_size, :color]})
   end
   
   protected

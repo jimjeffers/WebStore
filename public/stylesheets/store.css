@@ -654,6 +654,88 @@ and Sumo Creations.
       line-height: 1.5em;
    }
 
+/* =SHOPPING_CART
+   ------------------------------------------------------ */
+   #cart h2 {
+      font-size: 1.5em;
+      line-height: 1.25em;
+      margin: 10px 0;
+   }
+   
+   #cart h2 a {
+      background: #FD9408;
+      border-radius:5px;
+        -o-border-radius:5px;
+        -icab-border-radius:5px;
+        -khtml-border-radius:5px;
+        -moz-border-radius:5px;
+        -webkit-border-radius:5px;
+        -moz-border-radius:5px;
+      color: #000;
+      display: inline-block;
+      padding: 4px 6px 8px 6px;
+      text-decoration: none;
+   }
+   
+   #cart ol {
+      padding-right: 20px;
+   }
+   
+   #cart ol > li {
+      border-top: 1px dotted #ddd;
+   }
+   
+   #cart ol > li > ul {
+      overflow: hidden;
+   }
+   
+   #cart ol > li > ul > li {
+      display: block;
+      float: left;
+      margin-right: 20px;
+      padding: 20px 0;
+      position: relative;
+      width: 100px;
+   }
+   
+   #cart ol > li > ul > li.photo {
+      margin-right: 0;
+      padding: 10px 0;
+      width: 60px;
+   }
+   
+   #cart ol > li > ul > li.size {
+      width: 60px;
+   }
+   
+   #cart ol > li > ul > li.photo img {
+      display: block;
+   }
+   
+   #cart ol > li > ul > li.name {
+      width: 200px;
+   }
+   
+   #cart ol > li > ul > li.remove {
+      margin-right: 0;
+      width: 90px;
+   }
+   
+   #cart ol > li > ul > li.color .preview {
+      border: 1px solid #000;
+      display: block;
+      position: absolute;
+      left: -30px;
+      height: 23px;
+      width: 23px;
+      top: 20px;
+   }
+   
+   #cart ol > li.title_bar > ul.line_item > li {
+      font-weight: bold;
+      padding: 5px 0;
+   }
+
 /* =BREADCRUMB
    ------------------------------------------------------ */
    ol#breadcrumb {

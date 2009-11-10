@@ -1,0 +1,40 @@
+<ol id="breadcrumb">
+  <li><a href="/">Home</a></li>
+  <li><%= link_to "Shopping Cart", cart_path %></li>
+</ol>
+<div id="cart">
+    <% if !@line_items.blank? %>
+    <h2>You have <%= @cart.item_count %> item<%= 's' if @cart.item_count != 1 %> in your cart. <%= link_to 'Checkout now &gt;', checkout_path %></h2>
+    <ol id="lineitems" class="line_item_list">
+      <li class="title_bar">
+        <ul class="line_item">
+          <li class="photo"</li>
+          <li class="name">Item</li>
+          <li class="size">Size</li>
+          <li class="color">Color</li>
+          <li class="price">Price</li>
+          <li class="quantity">Qty</li>
+          <li class="total_price">Total</li>
+          <li class="remove"></li>
+        </ul>
+      </li>
+      <% for line_item in @line_items %>
+        <li>
+          <ul class="line_item" id="line_item_<%= line_item.id %>">
+            <li class="photo"><%= image_tag(line_item.variation.product.photo(:micro)) %></li>
+            <li class="name"><%= line_item.variation.product.name %></li>
+            <li class="size"><%= line_item.variation.garment_size.name %></li>
+            <li class="color"><%= line_item.variation.color.name %> <span class="preview" style="background: <%= line_item.variation.color.hex_value %>;"></span></li>
+            <li class="price"><%= currency(line_item.price) %></li>
+            <li class="quantity"><%= line_item.quantity %> item<%= 's' if @cart.item_count != 1 %></li>
+            <li class="total_price"><%= currency(line_item.price * line_item.quantity) %></li>
+            <li class="remove"><%= link_to "Remove", remove_from_cart_path(line_item.id) %></li>
+          </ul>
+        </li>
+      <% end %>
+    </ol>
+    <% else %>
+      <h2>Whoops!</h2>
+      <p>Hey it looks like your cart is empty!</p>
+    <% end %>
+</div>
