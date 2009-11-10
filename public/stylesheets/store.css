@@ -662,7 +662,8 @@ and Sumo Creations.
       margin: 10px 0;
    }
    
-   #cart h2 a {
+   #cart h2 a,
+   #cart a.primary_action {
       background: #FD9408;
       border-radius:5px;
         -o-border-radius:5px;
@@ -673,8 +674,19 @@ and Sumo Creations.
         -moz-border-radius:5px;
       color: #000;
       display: inline-block;
-      padding: 4px 6px 8px 6px;
+      font-size: 0.875em;
+      font-weight: bold;
+      line-height: 1.5em;
+      padding: 2px 6px 6px 6px;
       text-decoration: none;
+   }
+   
+   #cart a.secondary_action {
+      color: #999;
+      font-size: 0.875em;
+      font-style: italic;
+      font-weight: normal;
+      line-height: 1.5em;
    }
    
    #cart ol {
@@ -683,6 +695,20 @@ and Sumo Creations.
    
    #cart ol > li {
       border-top: 1px dotted #ddd;
+   }
+   
+   #cart ol > li.footer {
+      border-top: 2px solid #ccc;
+      font-weight: bold;
+      margin: 20px 0 40px 0;
+   }
+   
+   #cart ul.action_list {
+      overflow: hidden;
+   }
+   
+   #cart ul.action_list li {
+      float: right;
    }
    
    #cart ol > li > ul {

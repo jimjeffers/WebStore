@@ -8,7 +8,7 @@
     <ol id="lineitems" class="line_item_list">
       <li class="title_bar">
         <ul class="line_item">
-          <li class="photo"</li>
+          <li class="photo"></li>
           <li class="name">Item</li>
           <li class="size">Size</li>
           <li class="color">Color</li>
@@ -26,12 +26,24 @@
             <li class="size"><%= line_item.variation.garment_size.name %></li>
             <li class="color"><%= line_item.variation.color.name %> <span class="preview" style="background: <%= line_item.variation.color.hex_value %>;"></span></li>
             <li class="price"><%= currency(line_item.price) %></li>
-            <li class="quantity"><%= line_item.quantity %> item<%= 's' if @cart.item_count != 1 %></li>
+            <li class="quantity"><%= line_item.quantity %> item<%= 's' if line_item.quantity != 1 %></li>
             <li class="total_price"><%= currency(line_item.price * line_item.quantity) %></li>
             <li class="remove"><%= link_to "Remove", remove_from_cart_path(line_item.id) %></li>
           </ul>
         </li>
       <% end %>
+      <li class="footer">
+        <ul class="line_item">
+          <li class="photo"></li>
+          <li class="name"><%= link_to "&lt;&lt; Continue Shopping", '/', :class => "secondary_action" %></li>
+          <li class="size"></li>
+          <li class="color"></li>
+          <li class="price"></li>
+          <li class="quantity"><%= @cart.item_count %> item<%= 's' if @cart.item_count != 1 %></li>
+          <li class="total_price"><%= @cart.running_total %></li>
+          <li class="remove"><%= link_to 'Checkout', checkout_path, :class => "primary_action" %></li>
+        </ul>
+      </li>
     </ol>
     <% else %>
       <h2>Whoops!</h2>
