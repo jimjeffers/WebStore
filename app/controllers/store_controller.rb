@@ -73,7 +73,7 @@ class StoreController < ApplicationController
       @category = Category.find_by_guid(params[:category_guid]) || nil
     end
     @product = Product.find_by_guid(params[:product_guid]) || nil
-    @cart = Cart.find_by_cart_token(params[:cart_token]) || nil
+    @cart = Cart.find_by_cart_token(cookies[:cart_token]) || nil
   end
   
   # Returns segmented categories for navigation purposes.
