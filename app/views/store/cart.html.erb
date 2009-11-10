@@ -40,7 +40,7 @@
           <li class="color"></li>
           <li class="price"></li>
           <li class="quantity"><%= @cart.item_count %> item<%= 's' if @cart.item_count != 1 %></li>
-          <li class="total_price"><%= @cart.running_total %></li>
+          <li class="total_price"><%= currency(@cart.running_total) %></li>
           <li class="remove"><%= link_to 'Checkout', checkout_path, :class => "primary_action" %></li>
         </ul>
       </li>
