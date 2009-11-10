@@ -14,17 +14,18 @@
   <div class="product_description">
     <%= RedCloth.new(@product.full_description).to_html %>
   </div>
-  <% form_for(:line_item, @line_item, add_to_cart_path(@product.id)) do |f| %>
+  <% form_for(:line_item, @line_item, :url => add_to_cart_path(@method,@category.guid,@product.guid)) do |f| %>
+    <%= f.error_messages %>
     <ul class="form">
       <li>
-        <%= f.label :variation, "Size/Color:" %>
-        <%= f.select :variation, @variations.map { |v| 
+        <%= f.label :variation_id, "Size/Color:" %>
+        <%= f.select :variation_id, @variations.map { |v| 
               ["#{v.color.name} (#{v.garment_size.gender} #{v.garment_size.name})",v.id]
         } %>
       </li>
       <li>
-        <%= label_tag :quantity, "Quantity:" %>
-        <%= select_tag :quantity, "<option value="">Please choose...</option>"+options_for_select((1..Store::MAX_QUANTITY).to_a)%>
+        <%= f.label :quantity, "Quantity:" %>
+        <%= f.select :quantity, (1..Store::MAX_QUANTITY).to_a %>
       </li>
       <li>
         <%= submit_tag 'Add to Cart!', :class => 'add_to_cart' %>
@@ -35,13 +36,10 @@
 
 <ul class="product_gallery">
   <li class="main">
-    <%= link_to image_tag(@product.photo.url(:display)), @product.photo.url(:zoom), {:class => "zoom"} %>
+    <%= link_to image_tag(@product.photo.url(:display), :height => 340, :width => 340, :alt => @product.name), @product.photo.url(:zoom), {:class => "zoom"} %>
   </li>
   <li class="selected thumbnail">
-    <%= link_to image_tag(@product.photo.url(:thumbnail)), @product.photo.url(:zoom), {:class => "zoom"} %>
-  </li>
-  <li class="thumbnail">
-    <%= link_to image_tag(@product.photo.url(:thumbnail)), @product.photo.url(:zoom), {:class => "zoom"} %>
+    <%= link_to image_tag(@product.photo.url(:thumbnail), :height => 100, :width => 100, :alt => @product.name), @product.photo.url(:zoom), {:class => "zoom"} %>
   </li>
 </ul>
 

@@ -31,7 +31,7 @@ ActionController::Routing::Routes.draw do |map|
   map.browse_category '/browse/:method/:category_guid', :controller => 'store', :action => 'category'
   map.browse_item '/browse/:method/:category_guid/:product_guid', :controller => 'store', :action => 'product'
   
-  map.add_to_cart '/cart/add/:id', :controller => 'store', :action => 'add_to_cart'
+  map.add_to_cart '/cart/add/:method/:category_guid/:product_guid', :controller => 'store', :action => 'add_to_cart'
   map.remove_from_card '/cart/remove/:id', :controller => 'store', :action => 'remove_from_cart'
   map.empty_cart 'cart/empty', :controller => 'store', :action => 'empty'
   

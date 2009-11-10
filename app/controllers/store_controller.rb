@@ -36,6 +36,30 @@ class StoreController < ApplicationController
     end
   end
   
+  # Adds a line_item to the user's cart. Creates a cart if
+  # the user does not have one in their session.
+  def add_to_cart
+    if cookies[:cart_token].nil? || cookies[:cart_token].blank?
+      @cart = Cart.create
+      cookies[:cart_token] = {:value => @cart.cart_token, :expires => 1.month.from_now}
+    end
+    @line_item = LineItem.new(params[:line_item])
+    if @line_item.valid? and @cart.line_items << @line_item
+      redirect_to '/'
+    else
+      render :action => product
+    end
+  end
+  
+  # Removes a specific line item from the current user's cart.
+  def remove_from_cart
+    @line_item = LineItem.find(params[:id])
+    @cart = Cart.find_by_cart_token(params[:cart_token])
+    if @cart and @cart.line_items.include?(@line_item)
+      @cart.line_items.delete(@line_item)
+    end
+  end
+  
   protected
   # Retrieves the users search method, category, brand, or product if it exists.
   def get_items_from_params
@@ -49,6 +73,7 @@ class StoreController < ApplicationController
       @category = Category.find_by_guid(params[:category_guid]) || nil
     end
     @product = Product.find_by_guid(params[:product_guid]) || nil
+    @cart = Cart.find_by_cart_token(params[:cart_token]) || nil
   end
   
   # Returns segmented categories for navigation purposes.

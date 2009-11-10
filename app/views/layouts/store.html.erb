@@ -17,7 +17,7 @@
     </ul>
     <h1 id="logo"><a href="/" title="Cactus Sports">Cactus Sports<span></span></a></h1>
     <p id="cart_status">
-      <span class="count">4</span> <span class="description">items in your cart<span></span></span>
+      <span class="count"><%= (@cart.nil?) ? 0 : @cart.item_count %></span> <span class="description">items in your cart<span></span></span>
       <a href="#" class="checkout_button">Checkout<span></span></a>
     </p>
     <%= render :partial => 'layouts/search_form', :locals => {:form_id => 'primary_search'} %>
