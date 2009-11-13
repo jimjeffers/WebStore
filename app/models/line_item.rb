@@ -7,6 +7,9 @@ class LineItem < ActiveRecord::Base
   validates_presence_of :variation_id
   validates_presence_of :quantity
   
+  # Scopes
+  default_scope :include => {:variation => [:product, :garment_size, :color]}
+  
   # Hooks
   def before_create
     self.price = variation.product.price

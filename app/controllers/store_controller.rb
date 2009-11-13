@@ -54,7 +54,6 @@ class StoreController < ApplicationController
   # Removes a specific line item from the current user's cart.
   def remove_from_cart
     @line_item = LineItem.find(params[:id])
-    @cart = Cart.find_by_cart_token(params[:cart_token])
     if @cart and @cart.line_items.include?(@line_item)
       @cart.line_items.delete(@line_item)
     end
@@ -63,7 +62,12 @@ class StoreController < ApplicationController
   
   # Displays the items in the current users shopping cart.
   def cart
-    @line_items = @cart.line_items(:include => {:variation => [:product, :garment_size, :color]})
+    @line_items = @cart.line_items
+  end
+  
+  # Displays checkout form.
+  def checkout
+    @line_items = @cart.line_items
   end
   
   protected
