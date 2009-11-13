@@ -68,6 +68,7 @@ class StoreController < ApplicationController
   # Displays checkout form.
   def checkout
     @line_items = @cart.line_items
+    @order = Order.new
   end
   
   protected

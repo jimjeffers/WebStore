@@ -8,7 +8,6 @@ class Product < ActiveRecord::Base
                                           :showcase => "160x244#",
                                           :featured => "400x244#",
                                           :micro => "50x50#" }
-  acts_as_paranoid
   acts_as_taggable
   
   # Relationships
@@ -24,6 +23,7 @@ class Product < ActiveRecord::Base
   validates_presence_of :price
   
   # Scopes
+  default_scope :conditions => ["deleted_at=?",nil]
   named_scope :search, lambda { |term| {
     :conditions => ['variations.sku LIKE ? OR products.name LIKE ?',"%#{term}%","%#{term}%"],
     :include => :variations }
@@ -67,6 +67,11 @@ class Product < ActiveRecord::Base
     else
       return ""
     end
+  end
+  
+  # Paranoid destroy behavior.
+  def destroy
+    self.update_attribute(:deleted_at, Time.now.utc)
   end
   
   protected

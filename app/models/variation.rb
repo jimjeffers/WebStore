@@ -15,6 +15,11 @@ class Variation < ActiveRecord::Base
   validates_presence_of :sku
   
   # Scopes
-  default_scope :order => "colors.name ASC, garment_sizes.name ASC", :include => [:color, :garment_size]
+  default_scope :conditions => ["deleted_at=?",nil], :order => "colors.name ASC, garment_sizes.name ASC", :include => [:color, :garment_size]
   named_scope :all_with_gender, lambda {|gender| {:conditions => ['gender = ?',gender]} }
+  
+  # Paranoid destroy behavior.
+  def destroy
+    self.update_attribute(:deleted_at, Time.now.utc)
+  end
 end

@@ -19,7 +19,8 @@ Rails::Initializer.run do |config|
   config.gem "inherited_resources", :version => ">= 0.9.2", :source => "http://gemcutter.org"
   config.gem "RedCloth", :lib => 'redcloth', :version => ">= 4.0"
   config.gem "thoughtbot-factory_girl", :lib    => "factory_girl", :source => "http://gems.github.com"
-  config.gem "yfactorial-utility_scopes", :lib => 'utility_scopes', :source => "http://gems.github.com/"
+  config.gem "yfactorial-utility_scopes", :lib => "utility_scopes", :source => "http://gems.github.com/"
+  config.gem "openrain-action_mailer_tls", :lib => "smtp_tls.rb", :source => "http://gems.github.com"
   
   # Only load the plugins named here, in the order given (default is alphabetical).
   config.plugins = [ :exception_notification, :all ] # can use :all as a placeholder.

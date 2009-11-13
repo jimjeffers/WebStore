@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091110064756) do
+ActiveRecord::Schema.define(:version => 20091113133041) do
 
   create_table "brands", :force => true do |t|
     t.string   "name"
@@ -77,6 +77,46 @@ ActiveRecord::Schema.define(:version => 20091110064756) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.float    "price"
+  end
+
+  create_table "order_transactions", :force => true do |t|
+    t.integer  "amount"
+    t.boolean  "success"
+    t.string   "reference"
+    t.string   "message"
+    t.string   "action"
+    t.text     "params"
+    t.boolean  "test"
+    t.integer  "order_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "order_transactions", ["order_id"], :name => "index_order_transactions_on_order_id"
+
+  create_table "orders", :force => true do |t|
+    t.string   "ip"
+    t.string   "error_message"
+    t.string   "aasm_state",     :default => "pending"
+    t.string   "email"
+    t.string   "shipping_first"
+    t.string   "shipping_last"
+    t.string   "shipping_1"
+    t.string   "shipping_2"
+    t.string   "shipping_city"
+    t.string   "shipping_state"
+    t.string   "shipping_zip"
+    t.string   "billing_first"
+    t.string   "billing_last"
+    t.string   "billing_1"
+    t.string   "billing_2"
+    t.string   "billing_city"
+    t.string   "billing_state"
+    t.string   "billing_zip"
+    t.integer  "amount"
+    t.integer  "cart_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "products", :force => true do |t|
