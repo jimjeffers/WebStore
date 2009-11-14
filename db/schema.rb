@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091114122922) do
+ActiveRecord::Schema.define(:version => 20091114134528) do
 
   create_table "brands", :force => true do |t|
     t.string   "name"
@@ -79,6 +79,17 @@ ActiveRecord::Schema.define(:version => 20091114122922) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.float    "price"
+  end
+
+  create_table "logged_exceptions", :force => true do |t|
+    t.string   "exception_class"
+    t.string   "controller_name"
+    t.string   "action_name"
+    t.text     "message"
+    t.text     "backtrace"
+    t.text     "environment"
+    t.text     "request"
+    t.datetime "created_at"
   end
 
   create_table "order_transactions", :force => true do |t|

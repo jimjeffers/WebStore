@@ -39,6 +39,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.search '/search', :controller => 'store', :action => 'search'
   
+  map.connect "logged_exceptions/:action/:id", :controller => "logged_exceptions"
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
   map.connect '/', :controller => 'store', :action => 'index'
