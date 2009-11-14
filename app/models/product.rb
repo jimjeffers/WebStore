@@ -23,7 +23,8 @@ class Product < ActiveRecord::Base
   validates_presence_of :price
   
   # Scopes
-  default_scope :conditions => ["deleted_at=?",nil]
+  default_scope :conditions => ["products.deleted_at IS ?",nil]
+  named_scope :deleted, :conditions => ['products.deleted_at IS NOT ?',nil]
   named_scope :search, lambda { |term| {
     :conditions => ['variations.sku LIKE ? OR products.name LIKE ?',"%#{term}%","%#{term}%"],
     :include => :variations }

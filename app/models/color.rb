@@ -8,7 +8,8 @@ class Color < ActiveRecord::Base
   validates_presence_of :hex_value
   
   # Scopes
-  default_scope :conditions => ["deleted_at=?",nil]
+  default_scope :conditions => ["colors.deleted_at IS ?",nil]
+  named_scope :deleted, :conditions => ['colors.deleted_at IS NOT ?',nil]
   
   # Prefixes the assigned value with a hash symbol (#) when assigned (only if it doesn't have one already!) 
   def hex_value=(val)

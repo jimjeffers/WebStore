@@ -10,7 +10,8 @@ class GarmentSize < ActiveRecord::Base
   validates_presence_of :name
   
   # Scopes
-  default_scope :conditions => ["deleted_at=?",nil]
+  default_scope :conditions => ["garment_sizes.deleted_at IS ?",nil]
+  named_scope :deleted, :conditions => ['garment_sizes.deleted_at IS NOT ?',nil]
   
   # Paranoid destroy behavior.
   def destroy

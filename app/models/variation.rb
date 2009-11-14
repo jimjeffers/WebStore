@@ -15,7 +15,8 @@ class Variation < ActiveRecord::Base
   validates_presence_of :sku
   
   # Scopes
-  default_scope :conditions => ["deleted_at=?",nil], :order => "colors.name ASC, garment_sizes.name ASC", :include => [:color, :garment_size]
+  default_scope :conditions => ["variations.deleted_at IS ?",nil], :order => "colors.name ASC, garment_sizes.name ASC", :include => [:color, :garment_size]
+  named_scope :deleted, {:conditions => ['variations.deleted_at IS NOT ?',nil]}
   named_scope :all_with_gender, lambda {|gender| {:conditions => ['gender = ?',gender]} }
   
   # Paranoid destroy behavior.
