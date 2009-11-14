@@ -21,6 +21,7 @@ Rails::Initializer.run do |config|
   config.gem "thoughtbot-factory_girl", :lib    => "factory_girl", :source => "http://gems.github.com"
   config.gem "yfactorial-utility_scopes", :lib => "utility_scopes", :source => "http://gems.github.com/"
   config.gem "openrain-action_mailer_tls", :lib => "smtp_tls.rb", :source => "http://gems.github.com"
+  config.gem "activemerchant", :lib => "active_merchant", :version => "1.4.2"
   
   # Only load the plugins named here, in the order given (default is alphabetical).
   config.plugins = [ :exception_notification, :all ] # can use :all as a placeholder.
