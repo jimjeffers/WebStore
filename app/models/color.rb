@@ -1,6 +1,6 @@
 class Color < ActiveRecord::Base
   # Relationships
-  has_many :variations
+  has_many :variations, :dependent => :destroy
   
   # Validations
   validates_uniqueness_of :name

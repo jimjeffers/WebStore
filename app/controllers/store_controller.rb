@@ -54,6 +54,7 @@ class StoreController < ApplicationController
   # Removes a specific line item from the current user's cart.
   def remove_from_cart
     @line_item = LineItem.find(params[:id])
+    debugger
     if @cart and @cart.line_items.include?(@line_item)
       @cart.line_items.delete(@line_item)
     end

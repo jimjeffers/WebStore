@@ -3,7 +3,7 @@ class GarmentSize < ActiveRecord::Base
   has_guid :name
   
   # Relationships
-  has_many :variations
+  has_many :variations, :dependent => :destroy
   
   # Validations
   validates_uniqueness_of :name, :scope => :gender

@@ -34,7 +34,7 @@ class Product < ActiveRecord::Base
     :include => {:variations => :garment_size} }
   }
   named_scope :sellable, { 
-    :conditions => 'categorizations.product_id = products.id AND variations.product_id = products.id',
+    :conditions => ['categorizations.product_id = products.id AND variations.product_id = products.id AND variations.deleted_at IS NOT ?',nil],
     :include => [:categorizations, :variations]
   }
   
