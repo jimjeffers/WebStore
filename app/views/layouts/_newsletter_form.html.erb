@@ -1,5 +1,5 @@
-<form class="search" id="<%= form_id %>" action="/newsletter" method="post">
+<% form_tag '/newsletter', :class => 'search', :id => form_id do %>
   <%= label_tag :email, "Enter your email address:" %>
   <%= text_field_tag :email, '' %>
   <%= submit_tag "Sign Up Now!" %>
-</form>
+<% end %>
