@@ -24,6 +24,10 @@ task :before_symlink do
   run "ln -nfs #{shared_path}/tmp #{release_path}/tmp"
 end
 
+task :migrate do
+  run "export GEM_HOME=/home/cactus/.rvm/gems/ruby/1.8.7"
+end
+
 [:start, :restart, :stop].each do |action|
   desc "Restarts passenger."
   deploy.task action do
