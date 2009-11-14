@@ -30,11 +30,11 @@ class Product < ActiveRecord::Base
     :include => :variations }
   }
   named_scope :all_with_gender, lambda { |gender| {
-    :conditions => ['garment_sizes.gender = ?',gender],
+    :conditions => ['garment_sizes.gender = ? AND garment_sizes.deleted_at IS ?',gender,nil],
     :include => {:variations => :garment_size} }
   }
   named_scope :sellable, { 
-    :conditions => ['categorizations.product_id = products.id AND variations.product_id = products.id AND variations.deleted_at IS NOT ?',nil],
+    :conditions => ['categorizations.product_id = products.id AND variations.product_id = products.id AND variations.deleted_at IS ?',nil],
     :include => [:categorizations, :variations]
   }
   

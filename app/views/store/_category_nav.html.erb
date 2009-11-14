@@ -3,13 +3,13 @@
     <a class="current_section" href="#"><span class="leading_text">Currently in</span> <%= method.capitalize %><span class="drop_arrow"></span></a>
     <ul class="section_nav sub_navigation">
       <% unless method == Store::METHODS[:guys] %>
-        <li><a href="<%= browse_category_path(Store::METHODS[:guys],guys_categories.first.guid) %>"><span class="leading_text">clothes for</span> Guys</a></li>
+        <li><a href="<%= browse_category_path(Store::METHODS[:guys],guys_categories.first.guid) unless guys_categories.first.nil? %>"><span class="leading_text">clothes for</span> Guys</a></li>
       <% end %>
       <% unless method == Store::METHODS[:girls] %>
-        <li><a href="<%= browse_category_path(Store::METHODS[:girls],girls_categories.first.guid) %>"><span class="leading_text">clothes for</span> Girls</a></li>
+        <li><a href="<%= browse_category_path(Store::METHODS[:girls],girls_categories.first.guid) unless girls_categories.first.nil? %>"><span class="leading_text">clothes for</span> Girls</a></li>
       <% end %>
       <% unless method == Store::METHODS[:brand] %>
-        <li><a href="<%= browse_category_path(Store::METHODS[:brand],brands.first.guid) %>"><span class="leading_text">browse all</span> Brands</a></li>
+        <li><a href="<%= browse_category_path(Store::METHODS[:brand],brands.first.guid) unless brands.first.nil? %>"><span class="leading_text">browse all</span> Brands</a></li>
       <% end %>
       <% unless method == "sale" %>
         <li><a href="#"><span class="leading_text">see what's on</span> Sale</a></li>

@@ -14,7 +14,7 @@ class Category < ActiveRecord::Base
   
   # Scopes
   named_scope :all_with_gender, lambda { |gender| {
-    :conditions => ['garment_sizes.gender = ?',gender],
+    :conditions => ['garment_sizes.gender = ? AND garment_sizes.deleted_at IS ?',gender,nil],
     :include => {:products => {:variations => :garment_size}} }
   }
   

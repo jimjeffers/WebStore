@@ -22,39 +22,39 @@
     </p>
     <%= render :partial => 'layouts/search_form', :locals => {:form_id => 'primary_search'} %>
     <ul id="primary_navigation">
+      <% if !@guys_categories.blank? %>
       <li class="guys">
         <a href="<%= browse_category_path('guys',@guys_categories.first.guid) %>">Guys<span></span></a>
         <span class="border"></span>
-        <% if !@guys_categories.blank? %>
           <ul class="sub_navigation">
             <% for category in @guys_categories %>
               <li><%= link_to category.name, browse_category_path('guys',category.guid) %></li>
             <% end %>
           </ul>
-        <% end %>
       </li>
+      <% end %>
+      <% if !@girls_categories.blank? %>
       <li class="girls">
         <a href="<%= browse_category_path('girls',@girls_categories.first.guid) %>">Girls<span></span></a>
         <span class="border"></span>
-        <% if !@girls_categories.blank? %>
           <ul class="sub_navigation">
             <% for category in @girls_categories %>
               <li><%= link_to category.name, browse_category_path('girls',category.guid) %></li>
             <% end %>
           </ul>
-        <% end %>
       </li>
+      <% end %>
+      <% if !@brands.blank? %>
       <li class="brands">
         <a href="<%= browse_category_path('brand',@brands.first.guid) %>">Brands<span></span></a>
         <span class="border"></span>
-        <% if !@brands.blank? %>
           <ul class="sub_navigation">
             <% for brand in @brands %>
               <li><%= link_to brand.name, browse_category_path('brand',brand.guid) %></li>
             <% end %>
           </ul>
-        <% end %>
       </li>
+      <% end %>
       <li class="on_sale">
         <a href="#">On Sale!<span></span></a>
         <span class="border"></span>
