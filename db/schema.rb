@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091113133041) do
+ActiveRecord::Schema.define(:version => 20091114122922) do
 
   create_table "brands", :force => true do |t|
     t.string   "name"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(:version => 20091113133041) do
     t.datetime "updated_at"
     t.string   "hex_value"
     t.string   "guid"
+    t.datetime "deleted_at"
   end
 
   create_table "garment_sizes", :force => true do |t|
@@ -68,6 +69,7 @@ ActiveRecord::Schema.define(:version => 20091113133041) do
     t.datetime "updated_at"
     t.string   "gender"
     t.string   "guid"
+    t.datetime "deleted_at"
   end
 
   create_table "line_items", :force => true do |t|
@@ -127,13 +129,13 @@ ActiveRecord::Schema.define(:version => 20091113133041) do
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.datetime "deleted_at"
     t.integer  "brand_id"
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
     t.string   "guid"
+    t.datetime "deleted_at"
   end
 
   create_table "roles", :force => true do |t|
