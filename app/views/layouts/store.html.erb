@@ -106,16 +106,20 @@
     <div id="primary_content">
       <%= yield :layout %>
     </div>
+    <% if @newsletter_toggle.blank? %>
     <div id="newsletter_signup">
       <img src="/images/tag_get_the_best_deals.png" width="240" height="57" alt="Get The Best Deals!" id="tag_get_best_deals"/>
       <%= render :partial => 'layouts/newsletter_form', :locals => {:form_id => 'newsletter_signup_form'} %>
       <img src="/images/tag_on_sale.png" width="160" height="57" alt="Find Items On Sale" id="tag_items_on_sale"/>
     </div>
+    <% end %>
+    <% if @seo_content_toggle.blank? %>
     <div id="company_specific_content">
       <h2>Go Devils! </h2>
       <h3>Cactus Sports is ASU’s Independently Alumni Operated Sports Retailer!</h3>
       <p>Cactus Sports is Arizona State University independently owned and alumni operated and offers one of the largest selections of ASU merchandise from T-shirts, sweatshirts, shorts, hats, baby gear, gifts and much much more. Besides our great selection and quality products, we offer what most stores have forgotten, which is great customer service and a friendly and knowledgeable staff! For over 17 years Cactus Sports has been the place to shop for ASU students, faculty, and fans for the finest quality and best selection of Sun Devils gear. Cactus Sports is alumni and independently owned!</p>
     </div>
+    <% end %>
     <div id="external_page_content">
       <h2 id="follow_up"><img src="/images/sub_didnt_see_what_your_looking_for.png" width="269" height="17" alt="Didn't See What You Were Looking For?"/></h2>
       <%= render :partial => 'layouts/search_form', :locals => {:form_id => 'secondary_search'} %>

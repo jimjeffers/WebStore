@@ -1,0 +1,138 @@
+<ol id="breadcrumb">
+  <li><a href="/">Home</a></li>
+  <li><%= link_to "Shopping Cart", cart_path %></li>
+  <li><%= link_to "Checkout Form", checkout_path %></li>
+</ol>
+<% form_for :order, @order, :url => purchase_path, :html => {:class => "checkout"} do |f| -%>
+  <%= f.error_messages %>
+  <% if !@order.transactions.blank? %>
+  <div class="errorExplanation">
+    <h2>There was a problem processing this order!</h2>
+    <%= @order.transactions.last.message %>
+  </div>
+  <% end %>
+  <fieldset>
+    <legend>Contact Info</legend>
+    <ul class="form">
+      <li class="long">
+        <%= f.label :email, "Email Address" %>
+        <%= f.text_field :email %>
+      </li>
+    </ul>
+  </fieldset>
+  <fieldset>
+    <legend>Shipping Address</legend>
+    <ul class="form">
+      <li class="medium">
+        <%= f.label :shipping_first, "First Name" %>
+        <%= f.text_field :shipping_first %>
+      </li>
+      <li class="medium">
+        <%= f.label :shipping_last, "Last Name" %>
+        <%= f.text_field :shipping_last %>
+      </li>
+      <li class="long">
+        <%= f.label :shipping_1, "Street Address" %>
+        <%= f.text_field :shipping_1 %>
+      </li>
+      <li class="long unidentified">
+         <%= f.label :shipping_2, "Street Address (continued)" %>
+        <%= f.text_field :shipping_2 %>
+      </li>
+      <li class="medium">
+        <%= f.label :shipping_city, "City" %>
+        <%= f.text_field :shipping_city %>
+      </li>
+      <li class="short">
+        <%= f.label :shipping_state, "State" %>
+        <%= f.text_field :shipping_state %>
+      </li>
+      <li class="short">
+        <%= f.label :shipping_zip, "Zip" %>
+        <%= f.text_field :shipping_zip %>
+      </li>
+    </ul>
+  </fieldset>
+  <fieldset>
+    <legend>Billing Address</legend>
+    <div class="toggle">
+      <label for="same_as_shipping">Same as shipping?</label>
+      <input type="checkbox" name="same_as_shipping" value="1" id="same_as_shipping"/>
+    </div>
+    <ul class="form">
+      <li class="medium">
+        <%= f.label :billing_first, "First Name" %>
+        <%= f.text_field :billing_first %>
+      </li>
+      <li class="medium">
+        <%= f.label :billing_last, "Last Name" %>
+        <%= f.text_field :billing_last %>
+      </li>
+      <li class="long">
+        <%= f.label :billing_1, "Street Address" %>
+        <%= f.text_field :billing_1 %>
+      </li>
+      <li class="long unidentified">
+         <%= f.label :billing_2, "Street Address (continued)" %>
+        <%= f.text_field :billing_2 %>
+      </li>
+      <li class="medium">
+        <%= f.label :billing_city, "City" %>
+        <%= f.text_field :billing_city %>
+      </li>
+      <li class="short">
+        <%= f.label :billing_state, "State" %>
+        <%= f.text_field :billing_state %>
+      </li>
+      <li class="short">
+        <%= f.label :billing_zip, "Zip" %>
+        <%= f.text_field :billing_zip %>
+      </li>
+    </ul>
+  </fieldset>
+  <fieldset>
+    <legend>Credit Card Info</legend>
+    <ul class="form">
+      <li class="long">
+        <%= f.label :card_number, "Card Number" %>
+        <%= f.text_field :card_number %>
+      </li>
+      <li class="medium">
+        <%= f.label :verification_number, "Verification Number" %>
+        <%= f.text_field :verification_number %>
+      </li>
+      <li class="short">
+        <%= f.label :expiration_month, "Exp. Month" %>
+        <%= f.select :expiration_month, (1..12).to_a %>
+      </li>
+      <li class="short">
+        <%= f.label :expiration_year, "Exp. Year" %>
+        <%= f.select :expiration_year, (2009..2022).to_a %>
+      </li>
+    </ul>
+  </fieldset>
+  <ul class="form">
+    <li><%= f.submit "Make Your Purchase (click only once!)" %></li>
+  </ul>
+  <%= hidden_field_tag :cart_token, @cart.cart_token %>
+<% end -%>
+
+<div id="checkout_cart">
+  <h2>You are Purchasing <%= @cart.item_count %> Item<%= 's' if @cart.item_count != 1 %>:</h2>
+  <ol id="lineitems" class="line_item_list">
+    <% for line_item in @line_items %>
+      <li>
+        <ul class="line_item" id="line_item_<%= line_item.id %>">
+          <li class="quantity"><%= line_item.quantity %>x</li>
+          <li class="name"><%= line_item.variation.product.name %></li>
+          <li class="total_price"><%= currency(line_item.price * line_item.quantity) %></li>
+        </ul>
+      </li>
+    <% end %>
+    <li class="footer">
+      <ul class="line_item">
+       <li>Total:</li>  <li class="total_price"><%= currency(@cart.running_total) %></li>
+      </ul>
+    </li>
+  </ol>
+</div>

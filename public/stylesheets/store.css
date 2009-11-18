@@ -949,6 +949,11 @@ and Sumo Creations.
       width: 100%;
    }
    
+   ul.form li .fieldWithErrors input {
+      background: #fcc;
+      color: #f00;
+   }
+   
    ul.form li input[type="submit"] {
       background: #593731;
       color: #fff;
@@ -966,6 +971,134 @@ and Sumo Creations.
    .csstransitions.cssreflections.cssanimations ul.form li {
       padding: 1px 3px;
    }
+   
+   div.errorExplanation {
+      color: #900;
+      padding: 10px;
+   }
+
+/* =CHECKOUT_FORM
+   ------------------------------------------------------ */
+   form.checkout {
+      display: block;
+      margin: 20px 0;
+      width: 460px;
+   }
+   
+   fieldset {
+      border-bottom: 1px dotted #ddd;
+      margin-bottom: 10px;
+      padding: 20px 0 10px 0;
+      position: relative;
+   }
+   
+   legend {
+      display: block;
+      font-weight: bold;
+      position: absolute;
+      top: 0px;
+   }
+   
+   form.checkout ul.form li {
+      margin-left: 0;
+      margin-bottom: 0;
+      margin-top: 22px;
+   }
+   
+   form.checkout ul.form label {
+      top: -20px;
+      left: 4px;
+   }
+   
+   form.checkout ul.form li input,
+   form.checkout ul.form li select {
+      font-size: 0.675em;
+      padding: 4px;
+   }
+   
+   form.checkout ul.form li input {
+      width: 458px;
+   }
+   
+   form.checkout ul.form li.unidentified {
+      margin-top: 2px;
+   }
+   
+   form.checkout ul.form li.unidentified label {
+      display: none;
+   }
+   
+   form.checkout ul.form li.medium {
+      width: 220px;
+   }
+   
+   form.checkout ul.form li.medium input {
+      width: 212px;
+   }
+   
+   form.checkout ul.form li.short {
+      width: 100px;
+   }
+   
+   form.checkout ul.form li.short input {
+      width: 92px;
+   }
+   
+   form.checkout ul.form li.date select {
+      display: inline-block;
+      width: 60px;
+   }
+   
+   form.checkout ul.form li.date {
+      width: 108px;
+   }
+   
+   form.checkout ul.form li.date select#order_expiration_month {
+      width: 40px;
+   }
+   
+   div.toggle {
+      position: absolute;
+      top: -23px;
+      right: 0;
+   }
+
+/* =CHECKOUT_CART
+   ------------------------------------------------------ */
+   div#checkout_cart {
+      position: absolute;
+      top: 174px;
+      right: 20px;
+      width: 300px;
+   }
+   
+   div#checkout_cart ul.line_item {
+      border-top: 1px solid #ddd;
+      padding: 2px 0;
+      overflow: hidden;
+   }
+   
+   div#checkout_cart ol {
+      padding: 10px 0;
+   }
+   
+   div#checkout_cart ul.line_item li {
+      font-size: 0.75em;
+      display: block;
+      float: left;
+      line-height: 1.5em;
+      padding: 2px 4px;
+   }
+   
+   div#checkout_cart ul.line_item li.total_price {
+      float: right;
+      width: 100px;
+   }
+   
+   div#checkout_cart li.footer ul.line_item {
+      font-weight: bold;
+   }
+   
 /* =RELATED_ITEMS
    ------------------------------------------------------ */
    #related_items {

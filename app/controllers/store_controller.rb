@@ -64,13 +64,35 @@ class StoreController < ApplicationController
   # Displays the items in the current users shopping cart.
   def cart
     @cart.purge!
-    @line_items = @cart.line_items
+    @line_items = @cart.line_items.not_deleted
   end
   
   # Displays checkout form.
   def checkout
-    @line_items = @cart.line_items
+    @cart.purge!
+    @line_items = @cart.line_items.not_deleted
     @order = Order.new
+    
+    @seo_content_toggle, @newsletter_toggle = [true,true]
+  end
+  
+  # Creates order and authorizes payment.
+  def purchase
+    @cart.purge!
+    @line_items = @cart.line_items.not_deleted
+    @order = Order.new(params[:order])
+    
+    if @order.valid?
+      if @order.process_cart(@cart)
+        redirect_to '/'
+      else
+        render :action => "checkout"
+        @seo_content_toggle, @newsletter_toggle = [true,true]
+      end
+    else
+      render :action => "checkout"
+      @seo_content_toggle, @newsletter_toggle = [true,true]
+    end
   end
   
   protected
@@ -87,6 +109,10 @@ class StoreController < ApplicationController
     end
     @product = Product.find_by_guid(params[:product_guid]) || nil
     @cart = Cart.find_by_cart_token(cookies[:cart_token]) || nil
+    if @cart and @cart.ordered?
+      @cart = nil
+      cookies[:cart_token] = {:value => "nil", :expires => 1.day.from_now}
+    end
   end
   
   # Returns segmented categories for navigation purposes.

@@ -11,6 +11,7 @@ class LineItem < ActiveRecord::Base
   
   # Scopes
   default_scope :conditions => ["line_items.deleted_at IS ?",nil]
+  named_scope :not_deleted, :conditions => ["line_items.deleted_at IS ?",nil]
   
   # States (via aasm)
   aasm_initial_state :new

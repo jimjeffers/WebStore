@@ -35,7 +35,8 @@ ActionController::Routing::Routes.draw do |map|
   map.remove_from_cart '/cart/remove/:id', :controller => 'store', :action => 'remove_from_cart'
   map.empty_cart 'cart/empty', :controller => 'store', :action => 'empty_cart'
   map.cart '/cart', :controller => 'store', :action => 'cart'
-  map.checkout '/checkout', :controller => 'store', :action => 'cart'
+  map.checkout '/checkout', :controller => 'store', :action => 'checkout'
+  map.purchase '/purchase', :controller => 'store', :action => 'purchase'
   
   map.search '/search', :controller => 'store', :action => 'search'
   

@@ -6,6 +6,7 @@ class Cart < ActiveRecord::Base
   # Relationships
   belongs_to :user
   has_many :line_items
+  has_one :order
   
   # States (via aasm)
   aasm_initial_state :new

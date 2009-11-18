@@ -8,14 +8,12 @@ class Order < ActiveRecord::Base
   validates_presence_of :shipping_first
   validates_presence_of :shipping_last
   validates_presence_of :shipping_1
-  validates_presence_of :shipping_2
   validates_presence_of :shipping_city
   validates_presence_of :shipping_state
   validates_presence_of :shipping_zip
   validates_presence_of :billing_first
   validates_presence_of :billing_last
   validates_presence_of :billing_1
-  validates_presence_of :billing_2
   validates_presence_of :billing_city
   validates_presence_of :billing_state
   validates_presence_of :billing_zip
@@ -94,35 +92,31 @@ class Order < ActiveRecord::Base
   end
 
   def setup_order(options)
-    options[:description] = "USAEnergyGuide Order: #{id}"
-    
+    options[:description] = "CS Order ID: #{id}"
     options[:order_id] = "#{number}"
-    unless billing_address.nil?
-      options[:billing_address] = {
-        :name => "#{billing_address.first_name} #{billing_address.last_name}",
-        :address1 => "#{billing_address.street_1}",
-        :address2 => "#{billing_address.street_2}",
-        :city => "#{billing_address.city}",
-        :state => "#{billing_address.state}",
-        :zip => "#{billing_address.zip}",
-        :country => "#{billing_address.country}"
-      }
-    end
+    options[:billing_address] = {
+      :name => "#{billing_first} #{billing_last}",
+      :address1 => "#{billing_1}",
+      :address2 => "#{billing_2}",
+      :city => "#{billing_city}",
+      :state => "#{billing_state}",
+      :zip => "#{billing_zip}",
+      :country => "US"
+    }
+  
+    options[:shipping_address] = {
+      :name => "#{shipping_first} #{shipping_last}",
+      :address1 => "#{shipping_1}",
+      :address2 => "#{shipping_2}",
+      :city => "#{shipping_city}",
+      :state => "#{shipping_state}",
+      :zip => "#{shipping_zip}",
+      :country => "US"
+    }
     
-    unless shipping_address.nil?
-      options[:shipping_address] = {
-        :name => "#{first_name} #{last_name}",
-        :address1 => "#{address_1}",
-        :address2 => "#{address_2}",
-        :city => "#{city}",
-        :state => "#{shipping_state}",
-        :zip => "#{zip}"
-      }
-    end
-    
-    options[:merchant] = "USAEnergyGuide.com"
+    #options[:email] = email
+    options[:merchant] = "Cactus Sports.com"
     options
-    #options[:email] = user.email
   end
 
   # BEGIN capture_payment
@@ -161,8 +155,8 @@ class Order < ActiveRecord::Base
   # Creates a new active merchant credit card object given stored parameters.
   def credit_card
     credit_card = ActiveMerchant::Billing::CreditCard.new(
-      :first_name         => first_name,
-      :last_name          => last_name,
+      :first_name         => billing_first,
+      :last_name          => billing_last,
       :number             => card_number,
       :month              => expiration_month,
       :year               => expiration_year,
@@ -170,17 +164,23 @@ class Order < ActiveRecord::Base
     )
   end
   
-  def billing_address
-    #ProfileAddress.find_with_deleted(read_attribute(:billing_address_id))
-    nil
-  end
-  
-  def shipping_address
-    #ProfileAddress.find_with_deleted(read_attribute(:shipping_address_id))
-    nil
-  end
-  
+  # Creates amount recognizeable by payment gateways.
   def amount
-    (invoice.amount*100).to_i
+    (cart.running_total*100).to_i
+  end
+  
+  # Assigns cart to order and attempts to authorize payment.
+  def process_cart(cart)
+    self.cart = cart
+    cart.authorize! if cart.new?
+    self.save
+    self.authorize_payment
+    if authorized?
+      @cart.close!
+      @cart.line_items.not_deleted.each { |i| i.close! }
+      return true
+    else
+      return false
+    end
   end
 end

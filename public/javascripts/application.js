@@ -1,5 +1,5 @@
-// Handle any drop down navigation systems.
 $(document).ready(function(){
+   // Handle any drop down navigation systems.
    $('.sub_navigation').each(function() {
        var menu = $(this);
        menu.hide();
@@ -33,6 +33,21 @@ $(document).ready(function(){
               timeout = false;
            }
        });
+   });
+   
+   // Handle the toggle form.
+   $("div.toggle input[type='checkbox']").change(function() {
+      var toggle = $(this);
+      var fields = ['first','last','1','2','city','state','zip'];
+      if(toggle.is(':checked')){
+         for (var i = fields.length - 1; i >= 0; i--){
+            $('#order_billing_'+fields[i]).val($('#order_shipping_'+fields[i]).val());
+         };
+      } else {
+         for (var i = fields.length - 1; i >= 0; i--){
+            $('#order_billing_'+fields[i]).val("");
+         };
+      }
    });
 });
 
