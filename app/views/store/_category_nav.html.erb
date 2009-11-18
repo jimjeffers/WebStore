@@ -20,9 +20,7 @@
       <% unless method == Store::METHODS[:brand] %>
         <li><a href="<%= browse_category_path(Store::METHODS[:brand],brands.first.guid) unless brands.first.nil? %>"><span class="leading_text">browse all</span> Brands</a></li>
       <% end %>
-      <% unless method == "sale" %>
-        <li><a href="#"><span class="leading_text">see what's on</span> Sale</a></li>
-      <% end %>
+        <!-- <li><a href="#"><span class="leading_text">see what's on</span> Sale</a></li> -->
     </ul>
   </li>
   <li class="category">

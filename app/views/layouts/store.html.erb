@@ -88,7 +88,7 @@
           </ul>
       </li>
       <% end %>
-      <% if @sales.blank? %>
+      <% if !@sales.blank? %>
       <li class="on_sale">
         <a href="#">On Sale!<span></span></a>
         <span class="border"></span>
@@ -138,36 +138,6 @@
           <ul>
             <% for category in @girls_categories %>
               <li><%= link_to category.name, browse_category_path(Store::METHODS[:girls],category.guid) %></li>
-            <% end %>
-          </ul>
-        </li>
-        <% end %>
-        <% if !@kids_categories.blank? %>
-        <li class="kids">
-          <h2><a href="<%= browse_category_path(Store::METHODS[:kids],@kids_categories.first.guid) %>"><img src="/images/sub_small_heading_kids.png" width="31" height="14" alt="Girls"/></a></h2>
-          <ul>
-            <% for category in @kids_categories %>
-              <li><%= link_to category.name, browse_category_path(Store::METHODS[:kids],category.guid) %></li>
-            <% end %>
-          </ul>
-        </li>
-        <% end %>
-        <% if !@pets_categories.blank? %>
-        <li class="pets">
-          <h2><a href="<%= browse_category_path(Store::METHODS[:pets],@pets_categories.first.guid) %>"><img src="/images/sub_small_heading_pets.png" width="31" height="14" alt="Girls"/></a></h2>
-          <ul>
-            <% for category in @pets_categories %>
-              <li><%= link_to category.name, browse_category_path(Store::METHODS[:pets],category.guid) %></li>
-            <% end %>
-          </ul>
-        </li>
-        <% end %>
-        <% if !@gifts_categories.blank? %>
-        <li class="gifts">
-          <h2><a href="<%= browse_category_path(Store::METHODS[:gifts],@gifts_categories.first.guid) %>"><img src="/images/sub_small_heading_gifts.png" width="31" height="14" alt="Girls"/></a></h2>
-          <ul>
-            <% for category in @gifts_categories %>
-              <li><%= link_to category.name, browse_category_path(Store::METHODS[:gifts],category.guid) %></li>
             <% end %>
           </ul>
         </li>
