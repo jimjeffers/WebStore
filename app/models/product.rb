@@ -1,4 +1,6 @@
 class Product < ActiveRecord::Base
+  include AASM
+  
   # Plugins
   has_guid :name
   has_attached_file :photo, :styles => { 
@@ -34,9 +36,25 @@ class Product < ActiveRecord::Base
     :include => {:variations => :garment_size} }
   }
   named_scope :sellable, { 
-    :conditions => ['categorizations.product_id = products.id AND variations.product_id = products.id AND variations.deleted_at IS ?',nil],
+    :conditions => [' products.aasm_state="in_stock" AND 
+                      categorizations.product_id = products.id AND 
+                      variations.product_id = products.id AND 
+                      variations.deleted_at IS ?',nil],
     :include => [:categorizations, :variations]
   }
+  
+  # States (via aasm)
+  aasm_initial_state :in_stock
+  aasm_state :in_stock
+  aasm_state :out_of_stock
+  
+  aasm_event :ran_out do
+    transitions :to => :out_of_stock, :from => [:in_stock]
+  end
+  
+  aasm_event :got_in do
+    transitions :to => :in_stock, :from => [:out_of_stock]
+  end
   
   # Removes a category associated to this particular product.
   def remove_category(category_id)
@@ -68,6 +86,11 @@ class Product < ActiveRecord::Base
     else
       return ""
     end
+  end
+  
+  # Returns the default method for the product
+  def method
+    @method || @method = self.variations.first.garment_size.gender.downcase if self.variations.length > 0 && !self.variations.first.garment_size.nil?
   end
   
   # Paranoid destroy behavior.

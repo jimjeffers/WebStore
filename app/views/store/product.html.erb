@@ -4,6 +4,9 @@
   :method => @method,
   :guys_categories => @guys_categories,
   :girls_categories => @girls_categories,
+  :kids_categories => @kids_categories,
+  :gifts_categories => @gifts_categories,
+  :pets_categories => @pets_categories,
   :brands => @brands,
   :product => @product
 } %>
@@ -20,7 +23,7 @@
       <li>
         <%= f.label :variation_id, "Size/Color:" %>
         <%= f.select :variation_id, @variations.map { |v| 
-              ["#{v.color.name} (#{v.garment_size.gender} #{v.garment_size.name})",v.id]
+              ["#{v.color.name} // #{v.garment_size.gender} // #{v.garment_size.name}",v.id]
         } %>
       </li>
       <li>

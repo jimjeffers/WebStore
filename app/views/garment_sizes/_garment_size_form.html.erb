@@ -1,9 +1,9 @@
 <fieldset>
-    <legend>Size Details</legend>
-    <ul class="form">
-      <li><%= f.label :gender, "Gender" %>
-         <%= f.select :gender, ["Guys","Girls","Kids"] %></li>
-      <li><%= f.label :name, "Name" %>
-        <%= f.text_field :name %></li>
-    </ul>
-  </fieldset>
+  <legend>Size Details</legend>
+  <ul class="form">
+    <li><%= f.label :gender, "Gender" %>
+      <%= f.select :gender, genders %></li>
+    <li><%= f.label :name, "Name" %>
+      <%= f.text_field :name %></li>
+  </ul>
+</fieldset>

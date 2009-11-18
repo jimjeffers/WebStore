@@ -2,5 +2,12 @@
 class Store
   # Constants
   MAX_QUANTITY = 10
-  METHODS = {:brand => "brand", :girls => "girls", :guys => "guys", :gifts => "gifts"}
+  METHODS = {
+    :brand => "brand", 
+    :girls => "girls", 
+    :guys => "guys", 
+    :gifts => "gifts", 
+    :kids => "kids",
+    :pets => "pets"
+  }
 end

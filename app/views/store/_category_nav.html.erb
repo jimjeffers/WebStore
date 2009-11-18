@@ -8,6 +8,15 @@
       <% unless method == Store::METHODS[:girls] %>
         <li><a href="<%= browse_category_path(Store::METHODS[:girls],girls_categories.first.guid) unless girls_categories.first.nil? %>"><span class="leading_text">clothes for</span> Girls</a></li>
       <% end %>
+      <% unless method == Store::METHODS[:kids] %>
+        <li><a href="<%= browse_category_path(Store::METHODS[:kids],kids_categories.first.guid) unless kids_categories.first.nil? %>"><span class="leading_text">stuff for</span> Kids</a></li>
+      <% end %>
+      <% unless method == Store::METHODS[:gifts] %>
+        <li><a href="<%= browse_category_path(Store::METHODS[:gifts],gifts_categories.first.guid) unless gifts_categories.first.nil? %>"><span class="leading_text">great for</span> Gifts</a></li>
+      <% end %>
+      <% unless method == Store::METHODS[:pets] %>
+        <li><a href="<%= browse_category_path(Store::METHODS[:pets],pets_categories.first.guid) unless pets_categories.first.nil? %>"><span class="leading_text">just for</span> Pets</a></li>
+      <% end %>
       <% unless method == Store::METHODS[:brand] %>
         <li><a href="<%= browse_category_path(Store::METHODS[:brand],brands.first.guid) unless brands.first.nil? %>"><span class="leading_text">browse all</span> Brands</a></li>
       <% end %>

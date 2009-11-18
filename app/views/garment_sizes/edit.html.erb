@@ -4,7 +4,7 @@
 
 <% form_for(@garment_size, :html => {:class => 'standard_form'}) do |f| %>
   <%= f.error_messages %>
-  <%= render :partial => 'garment_size_form', :locals => {:f => f} %>
+  <%= render :partial => 'garment_size_form', :locals => {:f => f, :genders => @genders} %>
   <p>
     <%= f.submit 'Update' %>
     <%= link_to 'Cancel', garment_sizes_path %>

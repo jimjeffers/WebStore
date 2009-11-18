@@ -8,7 +8,7 @@ class LineItem < ActiveRecord::Base
   validates_presence_of :quantity
   
   # Scopes
-  default_scope :include => {:variation => [:product, :garment_size, :color]}
+  #default_scope :include => {:variations => [:product, :garment_size, :color]}
   
   # Hooks
   def before_create

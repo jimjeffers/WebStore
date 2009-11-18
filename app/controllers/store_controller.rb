@@ -30,7 +30,7 @@ class StoreController < ApplicationController
   # Displays all products of a specific category.
   def category
     unless @method == Store::METHODS[:brand]
-      @products = @category.products.all_with_gender(@method.capitalize).sellable
+      @products = @category.products.all_with_gender(@method).sellable
     else
       @products = @category.products.sellable
     end
@@ -56,7 +56,7 @@ class StoreController < ApplicationController
     @line_item = LineItem.find(params[:id])
     debugger
     if @cart and @cart.line_items.include?(@line_item)
-      @cart.line_items.delete(@line_item)
+      @cart.remove_line_item(@line_item)
     end
     redirect_to :action => 'cart'
   end
@@ -90,16 +90,22 @@ class StoreController < ApplicationController
   
   # Returns segmented categories for navigation purposes.
   def get_segmented_categories
-    @guys_categories = Category.all_with_gender('Guys')
-    @girls_categories = Category.all_with_gender('Girls')
+    @guys_categories = Category.all_with_gender(Store::METHODS[:guys])
+    @girls_categories = Category.all_with_gender(Store::METHODS[:girls])
+    @kids_categories = Category.all_with_gender(Store::METHODS[:kids])
+    @pets_categories = Category.all_with_gender(Store::METHODS[:pets])
+    @gifts_categories = Category.all_with_gender(Store::METHODS[:gifts])
     @brands = Brand.all
   end
   
   # Returns a list of categories dependent on the search method (a string) stored in @method
   def get_categories_by_method
     @categories = case @method
-      when Store::METHODS[:guys] then @guys_categories
+      when Store::METHODS[:guys]  then @guys_categories
       when Store::METHODS[:girls] then @girls_categories
+      when Store::METHODS[:kids]  then @kids_categories
+      when Store::METHODS[:pets]  then @pets_categories
+      when Store::METHODS[:gifts] then @gifts_categories
       when Store::METHODS[:brand] then Brand.all
       when nil then Category.all
     end

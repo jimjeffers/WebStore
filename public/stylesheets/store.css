@@ -438,6 +438,24 @@ and Sumo Creations.
       width: 68px;
    }
    
+   #primary_navigation > li.pets > a,
+   #primary_navigation > li.pets > a > span {
+      background: #fff url(../images/nav_pets.png) no-repeat;
+      width: 65px;
+   }
+   
+   #primary_navigation > li.kids > a,
+   #primary_navigation > li.kids > a > span {
+      background: #fff url(../images/nav_kids.png) no-repeat;
+      width: 68px;
+   }
+   
+   #primary_navigation > li.gifts > a,
+   #primary_navigation > li.gifts > a > span {
+      background: #fff url(../images/nav_gifts.png) no-repeat;
+      width: 68px;
+   }
+   
    #primary_navigation > li.brands > a,
    #primary_navigation > li.brands > a > span {
       background: #fff url(../images/nav_brands.png) no-repeat;

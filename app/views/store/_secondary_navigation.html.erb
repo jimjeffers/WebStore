@@ -1,14 +1,17 @@
 <%= render :partial => 'breadcrumb', :locals => {
-  :method => @method,
-  :categories => @categories, 
-  :category => @category,
-  :product => @product
+  :method => method,
+  :categories => categories, 
+  :category => current,
+  :product => product
 } %>
 <%= render :partial => 'category_nav', :locals => { 
-  :current => @category, 
-  :categories => @categories, 
-  :method => @method,
-  :guys_categories => @guys_categories,
-  :girls_categories => @girls_categories,
-  :brands => @brands
+  :current => current, 
+  :categories => categories, 
+  :method => method,
+  :guys_categories => guys_categories,
+  :girls_categories => girls_categories,
+  :kids_categories => kids_categories,
+  :gifts_categories => gifts_categories,
+  :pets_categories => pets_categories,
+  :brands => brands
 } %>

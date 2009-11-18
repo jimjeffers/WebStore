@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091114134528) do
+ActiveRecord::Schema.define(:version => 20091118055757) do
 
   create_table "brands", :force => true do |t|
     t.string   "name"
@@ -147,6 +147,7 @@ ActiveRecord::Schema.define(:version => 20091114134528) do
     t.datetime "photo_updated_at"
     t.string   "guid"
     t.datetime "deleted_at"
+    t.string   "aasm_state",         :default => "in_stock"
   end
 
   create_table "roles", :force => true do |t|

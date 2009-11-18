@@ -1,6 +1,7 @@
 <ol class="product_showcase" id="<%= showcase_id %>">
   <% if !products.blank? %>
     <% for product in products %>
+      <% unless method.nil? && product.method.nil? %>
       <li id="product_<%= product.id %>" class="product">
         <ul>
             <li class="product_photo"><%= link_to image_tag(product.photo.url(:showcase), :alt => product.name, :width => 160, :height => 244), item_path_or_default(method,category,product) %></li>
@@ -8,6 +9,7 @@
             <li class="product_name"><%= link_to product.name, item_path_or_default(method,category,product) %></li>
         </ul>
       </li>
+      <% end %>
     <% end %>
   <% else %>
     <h2>No Products Were Found!</h2>

@@ -1,12 +1,9 @@
 class GarmentSize < ActiveRecord::Base
-  # Plugins
-  has_guid :name
-  
   # Relationships
   has_many :variations, :dependent => :destroy
   
   # Validations
-  validates_uniqueness_of :name, :scope => :gender
+  validates_uniqueness_of :name, :scope => [:gender, :deleted_at]
   validates_presence_of :name
   
   # Scopes
@@ -15,6 +12,10 @@ class GarmentSize < ActiveRecord::Base
   
   # Paranoid destroy behavior.
   def destroy
-    self.update_attribute(:deleted_at, Time.now.utc)
+    if self.variations.length > 0
+      errors.add_to_base("You cannoy delete this item yet. There are #{self.variations.length} product variations that depend on it.")
+    else
+      self.update_attribute(:deleted_at, Time.now.utc)
+    end
   end
 end

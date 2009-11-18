@@ -24,37 +24,71 @@
     <ul id="primary_navigation">
       <% if !@guys_categories.blank? %>
       <li class="guys">
-        <a href="<%= browse_category_path('guys',@guys_categories.first.guid) %>">Guys<span></span></a>
+        <a href="<%= browse_category_path(Store::METHODS[:guys],@guys_categories.first.guid) %>">Guys<span></span></a>
         <span class="border"></span>
           <ul class="sub_navigation">
             <% for category in @guys_categories %>
-              <li><%= link_to category.name, browse_category_path('guys',category.guid) %></li>
+              <li><%= link_to category.name, browse_category_path(Store::METHODS[:guys],category.guid) %></li>
             <% end %>
           </ul>
       </li>
       <% end %>
       <% if !@girls_categories.blank? %>
       <li class="girls">
-        <a href="<%= browse_category_path('girls',@girls_categories.first.guid) %>">Girls<span></span></a>
+        <a href="<%= browse_category_path(Store::METHODS[:girls],@girls_categories.first.guid) %>">Girls<span></span></a>
         <span class="border"></span>
           <ul class="sub_navigation">
             <% for category in @girls_categories %>
-              <li><%= link_to category.name, browse_category_path('girls',category.guid) %></li>
+              <li><%= link_to category.name, browse_category_path(Store::METHODS[:girls],category.guid) %></li>
+            <% end %>
+          </ul>
+      </li>
+      <% end %>
+      <% if !@kids_categories.blank? %>
+      <li class="kids">
+        <a href="<%= browse_category_path(Store::METHODS[:kids],@kids_categories.first.guid) %>">Girls<span></span></a>
+        <span class="border"></span>
+          <ul class="sub_navigation">
+            <% for category in @kids_categories %>
+              <li><%= link_to category.name, browse_category_path(Store::METHODS[:kids],category.guid) %></li>
+            <% end %>
+          </ul>
+      </li>
+      <% end %>
+      <% if !@gifts_categories.blank? %>
+      <li class="gifts">
+        <a href="<%= browse_category_path(Store::METHODS[:gifts],@gifts_categories.first.guid) %>">Girls<span></span></a>
+        <span class="border"></span>
+          <ul class="sub_navigation">
+            <% for category in @gifts_categories %>
+              <li><%= link_to category.name, browse_category_path(Store::METHODS[:gifts],category.guid) %></li>
+            <% end %>
+          </ul>
+      </li>
+      <% end %>
+      <% if !@pets_categories.blank? %>
+      <li class="pets">
+        <a href="<%= browse_category_path(Store::METHODS[:pets],@pets_categories.first.guid) %>">Girls<span></span></a>
+        <span class="border"></span>
+          <ul class="sub_navigation">
+            <% for category in @pets_categories %>
+              <li><%= link_to category.name, browse_category_path(Store::METHODS[:pets],category.guid) %></li>
             <% end %>
           </ul>
       </li>
       <% end %>
       <% if !@brands.blank? %>
       <li class="brands">
-        <a href="<%= browse_category_path('brand',@brands.first.guid) %>">Brands<span></span></a>
+        <a href="<%= browse_category_path(Store::METHODS[:brand],@brands.first.guid) %>">Brands<span></span></a>
         <span class="border"></span>
           <ul class="sub_navigation">
             <% for brand in @brands %>
-              <li><%= link_to brand.name, browse_category_path('brand',brand.guid) %></li>
+              <li><%= link_to brand.name, browse_category_path(Store::METHODS[:brand],brand.guid) %></li>
             <% end %>
           </ul>
       </li>
       <% end %>
+      <% if @sales.blank? %>
       <li class="on_sale">
         <a href="#">On Sale!<span></span></a>
         <span class="border"></span>
@@ -66,6 +100,7 @@
           </ul>
         <% end %>
       </li>
+      <% end %>
     </ul>
     
     <div id="primary_content">
@@ -89,35 +124,66 @@
       <ul id="inline_sitemap">
         <% if !@guys_categories.blank? %>
         <li class="guys">
-          <h2><a href="<%= browse_category_path('guys',@guys_categories.first.guid) %>"><img src="/images/sub_small_heading_guys.png" width="34" height="16" alt="Guys"/></a></h2>
+          <h2><a href="<%= browse_category_path(Store::METHODS[:guys],@guys_categories.first.guid) %>"><img src="/images/sub_small_heading_guys.png" width="34" height="16" alt="Guys"/></a></h2>
           <ul>            
             <% for category in @guys_categories %>
-              <li><%= link_to category.name, browse_category_path('guys',category.guid) %></li>
+              <li><%= link_to category.name, browse_category_path(Store::METHODS[:guys],category.guid) %></li>
             <% end %>
           </ul>
         </li>
         <% end %>
         <% if !@girls_categories.blank? %>
         <li class="girls">
-          <h2><a href="<%= browse_category_path('girls',@girls_categories.first.guid) %>"><img src="/images/sub_small_heading_girls.png" width="31" height="14" alt="Girls"/></a></h2>
+          <h2><a href="<%= browse_category_path(Store::METHODS[:girls],@girls_categories.first.guid) %>"><img src="/images/sub_small_heading_girls.png" width="31" height="14" alt="Girls"/></a></h2>
           <ul>
             <% for category in @girls_categories %>
-              <li><%= link_to category.name, browse_category_path('girls',category.guid) %></li>
+              <li><%= link_to category.name, browse_category_path(Store::METHODS[:girls],category.guid) %></li>
+            <% end %>
+          </ul>
+        </li>
+        <% end %>
+        <% if !@kids_categories.blank? %>
+        <li class="kids">
+          <h2><a href="<%= browse_category_path(Store::METHODS[:kids],@kids_categories.first.guid) %>"><img src="/images/sub_small_heading_kids.png" width="31" height="14" alt="Girls"/></a></h2>
+          <ul>
+            <% for category in @kids_categories %>
+              <li><%= link_to category.name, browse_category_path(Store::METHODS[:kids],category.guid) %></li>
+            <% end %>
+          </ul>
+        </li>
+        <% end %>
+        <% if !@pets_categories.blank? %>
+        <li class="pets">
+          <h2><a href="<%= browse_category_path(Store::METHODS[:pets],@pets_categories.first.guid) %>"><img src="/images/sub_small_heading_pets.png" width="31" height="14" alt="Girls"/></a></h2>
+          <ul>
+            <% for category in @pets_categories %>
+              <li><%= link_to category.name, browse_category_path(Store::METHODS[:pets],category.guid) %></li>
+            <% end %>
+          </ul>
+        </li>
+        <% end %>
+        <% if !@gifts_categories.blank? %>
+        <li class="gifts">
+          <h2><a href="<%= browse_category_path(Store::METHODS[:gifts],@gifts_categories.first.guid) %>"><img src="/images/sub_small_heading_gifts.png" width="31" height="14" alt="Girls"/></a></h2>
+          <ul>
+            <% for category in @gifts_categories %>
+              <li><%= link_to category.name, browse_category_path(Store::METHODS[:gifts],category.guid) %></li>
             <% end %>
           </ul>
         </li>
         <% end %>
         <% if !@brands.blank? %>
         <li class="brands">
-          <h2><a href="<%= browse_category_path('brand',@brands.first.guid) %>"><img src="/images/sub_small_heading_brands.png" width="48" height="14" alt="Brands"/></a></h2>
+          <h2><a href="<%= browse_category_path(Store::METHODS[:brand],@brands.first.guid) %>"><img src="/images/sub_small_heading_brands.png" width="48" height="14" alt="Brands"/></a></h2>
           <ul>
             <% for brand in @brands %>
-              <li><%= link_to brand.name, browse_category_path('brand',brand.guid) %></li>
+              <li><%= link_to brand.name, browse_category_path(Store::METHODS[:brand],brand.guid) %></li>
             <% end %>
           </ul>
         </li>
         <% end %>
         <li class="sale">
+          <% if !@sales.blank? %>
           <h2><a href="#"><img src="/images/sub_small_heading_sale.png" width="62" height="14" alt="On Sale"/></a></h2>
           <ul>
             <li><a href="#">Category</a></li>
@@ -125,6 +191,7 @@
             <li><a href="#">Category</a></li>
             <li><a href="#">Category</a></li>
           </ul>
+          <% end %>
         </li>
       </ul>
       <ul id="footnotes">

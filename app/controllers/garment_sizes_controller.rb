@@ -1,5 +1,6 @@
 class GarmentSizesController < ApplicationController
   before_filter :login_required
+  before_filter :get_genders
   layout 'admin'
   
   # GET /garment_sizes
@@ -28,7 +29,7 @@ class GarmentSizesController < ApplicationController
   # GET /garment_sizes/new.xml
   def new
     @garment_size = GarmentSize.new
-
+    
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @garment_size }
@@ -81,8 +82,20 @@ class GarmentSizesController < ApplicationController
     @garment_size.destroy
 
     respond_to do |format|
-      format.html { redirect_to(garment_sizes_url) }
-      format.xml  { head :ok }
+      if @garment_size.valid?
+        format.html { redirect_to garment_sizes_path }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "variations" }
+        format.xml  { render :xml => @garment_size.errors, :status => :unprocessable_entity }
+      end
     end
+  end
+  
+  protected
+  # Returns all genders from the Store::METHODS constant.
+  def get_genders
+    @genders = Store::METHODS.map { |k,v| [k.to_s.capitalize,v] unless k == :brand }
+    @genders.delete(nil)
   end
 end

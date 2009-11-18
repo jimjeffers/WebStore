@@ -3,7 +3,7 @@
 </div>
 <% form_for(@garment_size, :html => {:class => 'standard_form'}) do |f| %>
   <%= f.error_messages %>
-  <%= render :partial => 'garment_size_form', :locals => {:f => f} %>
+  <%= render :partial => 'garment_size_form', :locals => {:f => f, :genders => @genders} %>
   <p>
     <%= f.submit 'Create' %>
     <%= link_to 'Back', garment_sizes_path %>
