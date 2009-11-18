@@ -19,6 +19,22 @@ class Variation < ActiveRecord::Base
   named_scope :deleted, {:conditions => ['variations.deleted_at IS NOT ?',nil]}
   named_scope :all_with_gender, lambda {|gender| {:conditions => ['gender = ?',gender]} }
   
+  # ----------------------------------------------------------
+  # Class Methods
+    
+  # Find all items included those that have been deleted.
+  def self.all_including_deleted
+    self.with_exclusive_scope { find(:all) }
+  end
+  
+  # Show only items that have already been deleted
+  def self.deleted
+    self.with_exclusive_scope { find(:all, :conditions => ["deleted_at IS NOT ?",nil]) }
+  end
+  
+  # ----------------------------------------------------------
+  # Instance Methods
+  
   # Paranoid destroy behavior.
   def destroy
     self.update_attribute(:deleted_at, Time.now.utc)

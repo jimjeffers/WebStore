@@ -1,0 +1,18 @@
+<div id="status" class="panel">
+  <h2>You Can't Delete This Color! <%= link_to 'Go Back &gt;&gt;', colors_path, {:class => 'secondary'} %></h2>
+<% if !@color.variations.blank? %>
+  <h2><%= @color.variations.length %> Variations Depend on This Size!</h2>
+  <ul class="form line_item_list" id="variations">
+  <% for variation in @color.variations %>
+        <li id="variation_<%= variation.id %>">
+          <span class="color_preview" style="background: <%= variation.color.hex_value %>"></span>
+          <span class="color"><%= variation.color.name %></span>
+          <span class="gender"><%= variation.garment_size.gender %></span>
+          <span class="size"><%= variation.garment_size.name %></span>
+          <span class="sku"><%= variation.sku %></span>
+          <%= link_to variation.product.name, product_path(variation.product), {:class => 'edit_product action edit'} %>        
+        </li>
+  <% end %>
+  </ul>
+<% end %>
+</div>

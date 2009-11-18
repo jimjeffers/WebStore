@@ -83,10 +83,15 @@ class ColorsController < ApplicationController
   def destroy
     @color = Color.find(params[:id])
     @color.destroy
-
+    
     respond_to do |format|
-      format.html { redirect_to(colors_url) }
-      format.xml  { head :ok }
+      if !@color.errors
+        format.html { redirect_to colors_path }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "variations" }
+        format.xml  { render :xml => @color.errors, :status => :unprocessable_entity }
+      end
     end
   end
   

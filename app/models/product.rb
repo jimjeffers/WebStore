@@ -25,16 +25,22 @@ class Product < ActiveRecord::Base
   validates_presence_of :price
   
   # Scopes
-  default_scope :conditions => ["products.deleted_at IS ?",nil]
+  default_scope :conditions => ["products.deleted_at IS ?",nil], 
+                :include => [:variations], 
+                :order => "variations.sku ASC"
+                
   named_scope :deleted, :conditions => ['products.deleted_at IS NOT ?',nil]
+  
   named_scope :search, lambda { |term| {
     :conditions => ['variations.sku LIKE ? OR products.name LIKE ?',"%#{term}%","%#{term}%"],
     :include => :variations }
   }
+  
   named_scope :all_with_gender, lambda { |gender| {
     :conditions => ['garment_sizes.gender = ? AND garment_sizes.deleted_at IS ?',gender,nil],
     :include => {:variations => :garment_size} }
   }
+  
   named_scope :sellable, { 
     :conditions => [' products.aasm_state="in_stock" AND 
                       categorizations.product_id = products.id AND 
@@ -55,6 +61,22 @@ class Product < ActiveRecord::Base
   aasm_event :got_in do
     transitions :to => :in_stock, :from => [:out_of_stock]
   end
+  
+  # ----------------------------------------------------------
+  # Class Methods
+    
+  # Find all items included those that have been deleted.
+  def self.all_including_deleted
+    self.with_exclusive_scope { find(:all) }
+  end
+  
+  # Show only items that have already been deleted
+  def self.deleted
+    self.with_exclusive_scope { find(:all, :conditions => ["deleted_at IS NOT ?",nil]) }
+  end
+  
+  # ----------------------------------------------------------
+  # Instance Methods
   
   # Removes a category associated to this particular product.
   def remove_category(category_id)
