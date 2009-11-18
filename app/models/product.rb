@@ -103,8 +103,8 @@ class Product < ActiveRecord::Base
   
   # Returns the first sku associated with the product. If none we return an empty string.
   def sku
-    if variations.length > 0
-      return variations.first.sku
+    if variations.not_deleted.length > 0
+      return variations.not_deleted.first.sku
     else
       return ""
     end

@@ -9,6 +9,7 @@ class Cart < ActiveRecord::Base
   
   # States (via aasm)
   aasm_initial_state :new
+  aasm_state :new
   aasm_state :pending
   aasm_state :ordered
   
@@ -40,16 +41,18 @@ class Cart < ActiveRecord::Base
   end
   
   # Removes the specified line item from the cart.
-  def remove_line_item(item)
+  def remove_line_item(line_item)
     unless self.ordered?
-      item.destroy
+      line_item.destroy
     end
   end
   
   # Removes any line items that are no longer available for purchase.
   def purge!
     unless self.ordered?
-      self.line_items.deleted
+      self.line_items.each do |line_item|
+        remove_line_item(line_item) if line_item.invalid?
+      end
     end
   end
   

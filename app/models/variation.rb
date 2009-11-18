@@ -1,7 +1,4 @@
 class Variation < ActiveRecord::Base
-  # Plugins
-  acts_as_paranoid
-  
   # Relationships
   belongs_to :garment_size
   belongs_to :color
@@ -15,8 +12,12 @@ class Variation < ActiveRecord::Base
   validates_presence_of :sku
   
   # Scopes
-  default_scope :conditions => ["variations.deleted_at IS ?",nil], :order => "colors.name ASC, garment_sizes.name ASC", :include => [:color, :garment_size]
-  named_scope :deleted, {:conditions => ['variations.deleted_at IS NOT ?',nil]}
+  default_scope :conditions => ["variations.deleted_at IS ?",nil], 
+                :order => "colors.name ASC, garment_sizes.name ASC", 
+                :include => [:color, :garment_size]
+  
+  named_scope :not_deleted, {:conditions => ['variations.deleted_at IS ?',nil]}
+  
   named_scope :all_with_gender, lambda {|gender| {:conditions => ['gender = ?',gender]} }
   
   # ----------------------------------------------------------
@@ -30,6 +31,10 @@ class Variation < ActiveRecord::Base
   # Show only items that have already been deleted
   def self.deleted
     self.with_exclusive_scope { find(:all, :conditions => ["deleted_at IS NOT ?",nil]) }
+  end
+  
+  def self.find_even_if_deleted(id)
+    self.with_exclusive_scope { find(id) }
   end
   
   # ----------------------------------------------------------

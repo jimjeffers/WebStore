@@ -1,4 +1,6 @@
 class LineItem < ActiveRecord::Base
+  include AASM
+  
   # Relationships
   belongs_to :cart
   belongs_to :variation
@@ -9,6 +11,15 @@ class LineItem < ActiveRecord::Base
   
   # Scopes
   default_scope :conditions => ["line_items.deleted_at IS ?",nil]
+  
+  # States (via aasm)
+  aasm_initial_state :new
+  aasm_state :new
+  aasm_state :ordered
+  
+  aasm_event :close do
+    transitions :to => :ordered, :from => [:new]
+  end
   
   # ----------------------------------------------------------
   # Hooks
@@ -34,10 +45,28 @@ class LineItem < ActiveRecord::Base
   # ----------------------------------------------------------
   # Instance Methods
   
+  # Find the variation even if it was deleted if this line item was part of a closed order.
+  def variation
+    if ordered?
+      Variation.find_even_if_deleted(variation_id)
+    else
+      begin
+        Variation.find(variation_id)
+      rescue
+        nil
+      end
+    end
+  end
+  
   # Safe destroy the item if it is not on an ordered cart.
   def destroy
-    unless cart.nil? || cart.ordered?
+    unless cart.nil? || cart.ordered? || ordered?
       self.update_attribute(:deleted_at, Time.now.utc)
     end
+  end
+  
+  # Returns true if the line item is not closed but is missing a variation.
+  def invalid?
+    (new? && variation.nil?)
   end
 end
