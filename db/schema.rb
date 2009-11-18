@@ -87,12 +87,11 @@ ActiveRecord::Schema.define(:version => 20091118103957) do
     t.datetime "updated_at"
     t.float    "price"
     t.datetime "deleted_at"
-    t.string   "aasm_state"
+    t.string   "aasm_state",   :default => "new"
   end
 
   add_index "line_items", ["aasm_state"], :name => "index_line_items_on_aasm_state"
   add_index "line_items", ["cart_id"], :name => "index_line_items_on_cart_id"
-  add_index "line_items", ["deleted_at"], :name => "index_line_items_on_deleted_at"
   add_index "line_items", ["variation_id"], :name => "index_line_items_on_variation_id"
 
   create_table "logged_exceptions", :force => true do |t|

@@ -1,7 +1,7 @@
 class AddDeletedAtAndAasmStateToLineItem < ActiveRecord::Migration
   def self.up
     add_column :line_items, :deleted_at, :datetime
-    add_column :line_items, :aasm_state, :string
+    add_column :line_items, :aasm_state, :string, :default => "new"
   end
 
   def self.down
