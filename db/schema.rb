@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091118055757) do
+ActiveRecord::Schema.define(:version => 20091118103957) do
 
   create_table "brands", :force => true do |t|
     t.string   "name"
@@ -32,6 +32,9 @@ ActiveRecord::Schema.define(:version => 20091118055757) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "carts", ["aasm_state"], :name => "index_carts_on_aasm_state"
+  add_index "carts", ["user_id"], :name => "index_carts_on_user_id"
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -62,6 +65,8 @@ ActiveRecord::Schema.define(:version => 20091118055757) do
     t.datetime "deleted_at"
   end
 
+  add_index "colors", ["deleted_at"], :name => "index_colors_on_deleted_at"
+
   create_table "garment_sizes", :force => true do |t|
     t.string   "name"
     t.string   "sku"
@@ -72,6 +77,8 @@ ActiveRecord::Schema.define(:version => 20091118055757) do
     t.datetime "deleted_at"
   end
 
+  add_index "garment_sizes", ["deleted_at"], :name => "index_garment_sizes_on_deleted_at"
+
   create_table "line_items", :force => true do |t|
     t.integer  "variation_id"
     t.integer  "cart_id"
@@ -79,7 +86,14 @@ ActiveRecord::Schema.define(:version => 20091118055757) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.float    "price"
+    t.datetime "deleted_at"
+    t.string   "aasm_state"
   end
+
+  add_index "line_items", ["aasm_state"], :name => "index_line_items_on_aasm_state"
+  add_index "line_items", ["cart_id"], :name => "index_line_items_on_cart_id"
+  add_index "line_items", ["deleted_at"], :name => "index_line_items_on_deleted_at"
+  add_index "line_items", ["variation_id"], :name => "index_line_items_on_variation_id"
 
   create_table "logged_exceptions", :force => true do |t|
     t.string   "exception_class"
@@ -132,6 +146,9 @@ ActiveRecord::Schema.define(:version => 20091118055757) do
     t.datetime "updated_at"
   end
 
+  add_index "orders", ["aasm_state"], :name => "index_orders_on_aasm_state"
+  add_index "orders", ["cart_id"], :name => "index_orders_on_cart_id"
+
   create_table "products", :force => true do |t|
     t.string   "name"
     t.text     "full_description"
@@ -149,6 +166,10 @@ ActiveRecord::Schema.define(:version => 20091118055757) do
     t.datetime "deleted_at"
     t.string   "aasm_state",         :default => "in_stock"
   end
+
+  add_index "products", ["aasm_state"], :name => "index_products_on_aasm_state"
+  add_index "products", ["brand_id"], :name => "index_products_on_brand_id"
+  add_index "products", ["deleted_at"], :name => "index_products_on_deleted_at"
 
   create_table "roles", :force => true do |t|
     t.string "name"
@@ -205,6 +226,7 @@ ActiveRecord::Schema.define(:version => 20091118055757) do
   end
 
   add_index "variations", ["color_id"], :name => "index_variations_on_color_id"
+  add_index "variations", ["deleted_at"], :name => "index_variations_on_deleted_at"
   add_index "variations", ["garment_size_id"], :name => "index_variations_on_garment_size_id"
   add_index "variations", ["product_id"], :name => "index_variations_on_product_id"
 

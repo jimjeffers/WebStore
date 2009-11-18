@@ -14,4 +14,9 @@ class LineItem < ActiveRecord::Base
   def before_create
     self.price = variation.product.price
   end
+  
+  def destroy
+    unless cart.nil? || cart.ordered?
+    end
+  end
 end

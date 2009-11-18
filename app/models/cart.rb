@@ -39,6 +39,7 @@ class Cart < ActiveRecord::Base
     self.line_items.inject(0) { |total, line_item| total + line_item.quantity }
   end
   
+  # Removes the specified line item from the cart.
   def remove_line_item(item)
     unless self.ordered?
       item.destroy
@@ -47,7 +48,9 @@ class Cart < ActiveRecord::Base
   
   # Removes any line items that are no longer available for purchase.
   def purge!
-    self.line_items.deleted
+    unless self.ordered?
+      self.line_items.deleted
+    end
   end
   
   protected
