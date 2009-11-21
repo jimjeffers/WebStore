@@ -15,6 +15,9 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :brands
   map.resources :colors
   map.resources :garment_sizes
+  map.resources :orders
+  
+  map.capture_order '/orders/capture/:id', :controller => 'orders', :action => 'capture'
   
   map.logout    '/logout',    :controller => 'sessions',  :action => 'destroy'
   map.login     '/login',     :controller => 'sessions',  :action => 'new'

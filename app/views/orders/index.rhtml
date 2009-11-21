@@ -1,0 +1,35 @@
+<div id="status" class="panel">
+    <h2 class="panel_name">Order Lookup</h2>
+    <form action="orders/search" method="get" accept-charset="utf-8" class="search_form" id="order_search">
+       <label for="order_term">Enter an order ID number or customer name:</label>
+       <input type="text" name="order_term" value="" id="order_term" class="search_term"/>
+       <input type="submit" value="Search" class="submit"/>
+    </form>
+ </div>
+ <div id="full_open_orders" class="panel">
+    <h2 id="panel_name">Open Orders</h2>
+    <% if !@orders.blank? %>
+    <ol id="order_list">
+      <% for order in @orders %>
+        <li>
+            <dl class="order">
+               <dt class="order_id">ID</dt>
+               <dd class="order_id"><%= link_to order.id, order %></dd>
+               <dt class="order_customer">Customer</dt>
+               <dd class="order_customer"><%= order.billing_first %> <%= order.billing_last %></dd>
+               <dt class="order_shipping">Shipping Method</dt>
+               <dd class="order_shipping"><%= order.shipping_method %></dd>
+               <dt class="order_amount">Amount</dt>
+               <dd class="order_amount"><%= currency(order.amount/100.to_f) %></dd>
+               <dt class="order_date">Date</dt>
+               <dd class="order_date"><%= order.created_at.strftime("%h %d, %Y") %></dd>
+               <dt class="order_item_count">Items</dt>
+               <dd class="order_item_count"><%= order.cart.item_count %></dd>
+            </dl>
+         </li>
+      <% end %>
+    </ol>
+    <% else %>
+      <p>Currently no open orders pending processing!</p>
+    <% end %>
+ </div>

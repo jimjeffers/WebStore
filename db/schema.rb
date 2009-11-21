@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091118103957) do
+ActiveRecord::Schema.define(:version => 20091121110831) do
 
   create_table "brands", :force => true do |t|
     t.string   "name"
@@ -123,7 +123,7 @@ ActiveRecord::Schema.define(:version => 20091118103957) do
   create_table "orders", :force => true do |t|
     t.string   "ip"
     t.string   "error_message"
-    t.string   "aasm_state",     :default => "pending"
+    t.string   "aasm_state",      :default => "pending"
     t.string   "email"
     t.string   "shipping_first"
     t.string   "shipping_last"
@@ -143,6 +143,11 @@ ActiveRecord::Schema.define(:version => 20091118103957) do
     t.integer  "cart_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "shipping_method"
+    t.integer  "shipping_cost"
+    t.integer  "sales_tax"
+    t.integer  "sub_total"
+    t.string   "tracking_number"
   end
 
   add_index "orders", ["aasm_state"], :name => "index_orders_on_aasm_state"

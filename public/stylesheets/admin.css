@@ -168,6 +168,8 @@
     ------------------------------------------------------ */
     div#primary_content {
         padding-left: 0.75em;
+        width: 960px;
+        overflow: hidden;
     }
 
 /*  =PANELS
@@ -802,7 +804,6 @@
     dd {
        clear: right;
        display: block;
-       padding-left: 200px;
        width: 300px; 
     }
     

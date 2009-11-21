@@ -10,4 +10,6 @@ class Store
     :kids => "kids",
     :pets => "pets"
   }
+  SALES_TAX_RATE = 0.078
+  SALES_TAX_STATE = "AZ"
 end

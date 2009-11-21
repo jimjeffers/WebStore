@@ -14,14 +14,17 @@
        <input type="text" name="order_term" value="" id="order_term" class="search_term"/>
        <input type="submit" value="Search" class="submit"/>
     </form>
-    <ol id="orders">
-       <li><a href="#">Bart Simpson</a> <span class="order_amount">$243.15</span> <span class="order_date">Sep 30th, 2008</span></li>
-       <li><a href="#">Montgomery Burns</a> <span class="order_amount">$20.38</span> <span class="order_date">Oct 1st, 2008</span></li>
-       <li><a href="#">Abraham Simpson</a> <span class="order_amount">$43.40</span> <span class="order_date">Oct 1st, 2008</span></li>
-       <li><a href="#">Marjorie Simpson</a> <span class="order_amount">$19.89</span> <span class="order_date">Oct 3rd, 2008</span></li>
-       <li><a href="#">Ned Flanders</a> <span class="order_amount">$43.40</span> <span class="order_date">Oct 3rd, 2008</span></li>
-       <li><a href="#">Kent Brockman</a> <span class="order_amount">$15.01</span> <span class="order_date">Oct 3rd, 2008</span></li>
-       <li><a href="#">Edna Kraboppel</a> <span class="order_amount">$199.23</span> <span class="order_date">Oct 3rd, 2008</span></li>
-       <li class="action"><a href="#">View all 18 Open Orders.</a></li>
-    </ol>
+    <% if !@orders.blank? %>
+      <ol id="orders">
+      <% for order in @orders %>
+        <li>
+          <%= link_to "#{order.billing_first} #{order.billing_last}", order_path(order) %> 
+          <span class="order_amount"><%= currency(order.amount/100.to_f) %></span>
+          <span class="order_date"><%= order.created_at.strftime("%h %d, %Y") %></span>
+        </li>
+      <% end %>
+       </ol>
+    <% else %>
+      <p>There are no authorized orders pending capture.</p>
+    <% end %>
  </div>

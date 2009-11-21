@@ -22,6 +22,12 @@ class Order < ActiveRecord::Base
   validates_presence_of :expiration_month
   validates_presence_of :expiration_year
   
+  # Named Scope
+  named_scope :currently, lambda { |state| {
+      :conditions => ['aasm_state=?',state]
+    }
+  }
+  
   # Accessors
   attr_accessor :verification_number, :card_number, :card_type, :same_as_billing, :expiration_month, :expiration_year, :credit_card, :first_name, :last_name
   

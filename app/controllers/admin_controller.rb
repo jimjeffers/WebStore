@@ -9,6 +9,7 @@ class AdminController < ApplicationController
   def dashboard
     @products = Product.all
     @categories = Category.all
+    @orders = Order.currently('authorized').ordered('updated_at ASC')
   end
   
 end

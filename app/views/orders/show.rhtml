@@ -1,0 +1,127 @@
+<div id="order_detail" class="panel">
+  <h2 class="panel_name">Currently Viewing Order: <%= @order.id %> <%= link_to "Return to order list &gt;&gt;", orders_path, :class => 'secondary' %></h2>
+  <dl class="order">
+     <dt class="order_id">ID</dt>
+     <dd class="order_id"><strong><%= @order.id %></strong></dd>
+     <dt class="order_customer">Customer</dt>
+     <dd class="order_customer"><%= @order.shipping_first %> <%= @order.shipping_last %></dd>
+     <dt class="order_shipping">Shipping Method</dt>
+     <dd class="order_shipping"><%= @order.shipping_method %></dd>
+     <dt class="order_amount">Amount</dt>
+     <dd class="order_amount"><strong><%= currency(@order.amount/100.to_f) %></strong></dd>
+     <dt class="order_date">Date</dt>
+     <dd class="order_date"><%= @order.created_at.strftime("%h, %d %Y") %></dd>
+     <dt class="order_item_count">Items</dt>
+     <dd class="order_item_count"><%= @order.cart.item_count %></dd>
+  </dl>
+  <div id="order_status" class="open_status">
+     <h2>This order needs to be processed; it has not shipped and is currently <span class="open">open</span>.</h2>
+     <!-- <a href="#" class="cancel_order">You may <strong>cancel</strong> this order if you do not wish to process it.</a> -->
+  </div>
+  <!-- <div id="add_item">
+       <p>If you need to make alterations to this order you may: <a href="#">Add Another Line Item</a></p>
+    </div> -->
+  <% form_for @order, :html => {:class => "standard_form"} do |f| -%>
+    <table border="0" id="order_items">
+        <tr>
+           <th class="order_item_quantity">Quantity</th> 
+           <th class="order_item_description">Description</th>
+           <th class="order_item_price">Price</th>
+           <th class="order_item_extended">Extended</th>
+           <th class="order_item_actions">&nbsp;</th>
+        </tr>
+          <% if !@order.cart.line_items.blank? %>
+            <% for line_item in @order.cart.line_items %>
+            <tr>
+              <td><%= line_item.quantity %></td>
+               <td>
+                  <ul class="description_details">
+                     <li><%= line_item.variation.product.name %></li>
+                     <li class="item_number"><%= line_item.variation.sku %></li>
+                     <li class="size"><%= line_item.variation.garment_size.name %> (<%= line_item.variation.garment_size.gender %>)
+                     </li>
+                     <li class="color"><%= line_item.variation.color.name %></li>
+                  </ul>
+               </td>
+               <td><%= currency(line_item.price) %></td>
+               <td><%= currency(line_item.price*line_item.quantity.to_f) %></td>
+               <td>
+                  <!-- <ul class="actions">
+                     <li><a href="#edit">edit</a></li>
+                     <li><a href="#edit">remove</a></li>
+                  </ul> -->
+               </td>
+            </tr>
+            <% end %>
+          <% else %>
+            <tr>
+              <td colspan="4">No line items found for this order!</td>
+            </tr>
+          <% end %>
+        <tr class="ledger">
+           <td colspan="3">Subtotal:</td>
+           <td colspan="2"><%= currency(@order.amount / 100.to_f) %></td>
+        </tr>
+        <tr class="ledger">
+           <td colspan="3">Sales Tax:</td>
+           <td colspan="2">
+           <% if @order.billing_state == Store::SALES_TAX_STATE %>
+             <%= currency(@order.amount / 100.to_f * Store::SALES_TAX_RATE) %>
+           <% else %>
+             <%= currency(0) %>
+           <% end %></td>
+        </tr>
+        <tr class="ledger">
+           <td colspan="3">
+              <label for="order_shipping_method">Shipping:</label>
+              <select id="order_shipping_method" name="order_shipping_method">
+                 <option value="standard">Standard</option>
+                 <option value="2nd Day">2nd Day</option>
+                 <option value="overnight">Overnight</option>
+              </select>
+           </td>
+           <td colspan="2">
+              <input type="text" name="order_shipping_cost" value="$26.00" id="order_shipping_cost" class="condensed_length"/>
+           </td>
+        </tr>
+        <tr class="ledger">
+           <td colspan="3">Total:</td>
+           <td colspan="2"><%= currency(@order.amount / 100.to_f) %></td>
+        </tr>
+     </table>
+     <div id="shipping_information" class="panel">
+        <h2 class="panel_name">Shipping Information <a href="#" class="secondary">Modify shipping address.</a></h2>
+        <div id="hcard-Bart-Simpson" class="vcard">
+           <span class="fn"><%= @order.shipping_first %> <%= @order.shipping_last %></span>
+            <div class="adr">
+               <div class="street-address"><%= @order.shipping_1 %><%= "<br/>#{@order.shipping_2}" unless @order.shipping_2.nil? %></div>
+               <span class="locality"><%= @order.shipping_city %></span>, 
+               <span class="region"><%= @order.shipping_state %></span>, 
+               <span class="postal-code"><%= @order.shipping_zip %></span>
+            </div>
+        </div>
+     </div>
+     <div id="billing_information" class="panel">
+        <h2 class="panel_name">Billing Information <!-- <a href="#" class="secondary">Modify billing address.</a> --></h2>
+        <div id="hcard-Bart-Simpson" class="vcard">
+           <span class="fn"><%= @order.billing_first %> <%= @order.billing_last %></span>
+           <div class="adr">
+              <div class="street-address"><%= @order.billing_1 %><%= "<br/>#{@order.billing_2}" unless @order.billing_2.nil? %></div>
+              <span class="locality"><%= @order.billing_city %></span>, 
+              <span class="region"><%= @order.billing_state %></span>, 
+              <span class="postal-code"><%= @order.billing_zip %></span>
+           </div>
+        </div>
+     </div>
+     <div id="order_processing" class="panel">
+        <h2 class="panel_name">Process This Order</h2>
+        <label for="tracking_number">Tracking Number:</label>
+        <input type="text" name="tracking_number" value="" id="tracking_number"/>
+        <ul>
+           <li class="process_order"><a href="#">Process Order</a></li>
+           <!-- <li class="print_order"><a href="#">Print Order</a></li> -->
+           <li class="cancel_order"><a href="#">Cancel This Order</a></li>
+        </ul>
+     </div>
+  <% end -%>
+</div>
