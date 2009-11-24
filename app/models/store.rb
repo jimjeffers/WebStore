@@ -12,4 +12,6 @@ class Store
   }
   SALES_TAX_RATE = 0.078
   SALES_TAX_STATE = "AZ"
+  SHIPPING_METHODS = ["Standard", "Expedited"]
+  SHIPPING_RATES = {"Standard" => 9.99, "Expedited" => 19.99}
 end

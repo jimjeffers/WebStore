@@ -39,7 +39,7 @@ class StoreController < ApplicationController
   # Adds a line_item to the user's cart. Creates a cart if
   # the user does not have one in their session.
   def add_to_cart
-    if cookies[:cart_token].nil? || cookies[:cart_token].blank?
+    if cookies[:cart_token].nil? || cookies[:cart_token].blank? || @cart.nil?
       @cart = Cart.create
       cookies[:cart_token] = {:value => @cart.cart_token, :expires => 1.month.from_now}
     end
@@ -62,18 +62,24 @@ class StoreController < ApplicationController
   end
   
   # Displays the items in the current users shopping cart.
-  def cart
-    @cart.purge!
-    @line_items = @cart.line_items.not_deleted
+  def cart 
+    @cart.purge! if !@cart.nil?
+    @line_items = @cart.line_items.not_deleted if !@cart.nil?
   end
   
   # Displays checkout form.
   def checkout
+    redirect_to '/' if @cart.nil?
     @cart.purge!
     @line_items = @cart.line_items.not_deleted
-    @order = Order.new
+    @order = Order.new(params[:order])
     
     @seo_content_toggle, @newsletter_toggle = [true,true]
+  end
+  
+  # Displays order with sales tax and allows for the selection of a shipping method.
+  def confirm
+    @order = Order.new(params[:order])
   end
   
   # Creates order and authorizes payment.
@@ -84,7 +90,7 @@ class StoreController < ApplicationController
     
     if @order.valid?
       if @order.process_cart(@cart)
-        redirect_to '/'
+        render :action => "purchase"
       else
         render :action => "checkout"
         @seo_content_toggle, @newsletter_toggle = [true,true]

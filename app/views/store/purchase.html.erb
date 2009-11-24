@@ -1,10 +1,10 @@
 <ol id="breadcrumb">
   <li><a href="/">Home</a></li>
-  <li><%= link_to "Shopping Cart", cart_path %></li>
+  <li><%= link_to "Order Confirm", '/' %></li>
 </ol>
 <div id="cart">
-    <% if !@line_items.blank? || !@cart.nil? %>
-    <h2>You have <%= @cart.item_count %> item<%= 's' if @cart.item_count != 1 %> in your cart. <%= link_to 'Checkout now &gt;', checkout_path %></h2>
+    <% if !@line_items.blank? %>
+    <h2>Your confirmation number is: <%= @order.id %></h2>
     <ol id="lineitems" class="line_item_list">
       <li class="title_bar">
         <ul class="line_item">
@@ -15,7 +15,6 @@
           <li class="price">Price</li>
           <li class="quantity">Qty</li>
           <li class="total_price">Total</li>
-          <li class="remove"></li>
         </ul>
       </li>
       <% for line_item in @line_items %>
@@ -28,7 +27,6 @@
             <li class="price"><%= currency(line_item.price) %></li>
             <li class="quantity"><%= line_item.quantity %> item<%= 's' if line_item.quantity != 1 %></li>
             <li class="total_price"><%= currency(line_item.price * line_item.quantity) %></li>
-            <li class="remove"><%= link_to "Remove", remove_from_cart_path(line_item.id) %></li>
           </ul>
         </li>
       <% end %>
@@ -41,7 +39,6 @@
           <li class="price"></li>
           <li class="quantity"><%= @cart.item_count %> item<%= 's' if @cart.item_count != 1 %></li>
           <li class="total_price"><%= currency(@cart.running_total) %></li>
-          <li class="remove"><%= link_to 'Checkout', checkout_path, :class => "primary_action" %></li>
         </ul>
       </li>
     </ol>
