@@ -1,4 +1,5 @@
 class StoreController < ApplicationController
+  ssl_required :checkout, :confirm, :purchase unless ENV["RAILS_ENV"] == "development"
   before_filter :get_items_from_params
   before_filter :get_segmented_categories
   before_filter :get_categories_by_method
