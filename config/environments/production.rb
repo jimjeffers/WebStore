@@ -46,6 +46,6 @@ ActionMailer::Base.smtp_settings = {
   :port           => 587,
   :domain         => 'jimjeffers.com',
   :authentication => :plain,
-  :user_name      => 'shout@jimjeffers.com',
-  :password       => '944turbo'
+  :user_name      => 'test@jimjeffers.com',
+  :password       => 't3st3r'
 }
