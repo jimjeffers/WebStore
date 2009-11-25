@@ -1005,6 +1005,8 @@ and Sumo Creations.
       margin-top: 22px;
    }
    
+   
+   
    form.checkout ul.form label {
       top: -20px;
       left: 4px;
@@ -1095,8 +1097,38 @@ and Sumo Creations.
       width: 100px;
    }
    
+   div#checkout_cart ul.line_item li.name {
+      width: 155px;
+   } 
+   
    div#checkout_cart li.footer ul.line_item {
       font-weight: bold;
+   }
+
+/* =ORDER_ADDRESSES
+   ------------------------------------------------------ */
+   div#order_addresses {
+      font-size: 0.875em;
+      line-height: 1.5em;
+      margin-top: 10px;
+   }
+   
+   div#order_addresses h3 {
+      margin-top: 10px;
+   }
+   
+   div#order_addresses ul.address_list {
+      overflow: hidden;
+   }
+   
+   div#order_addresses ul.address_list li#email_address.address {
+      width: 240px;
+   }
+   
+   div#order_addresses ul.address_list li.address {
+      display: block;
+      float: left;
+      width: 180px;
    }
    
 /* =RELATED_ITEMS
@@ -1210,6 +1242,13 @@ and Sumo Creations.
       background: #810101;
       color: #fff;
       width: 150px;
+   }
+   
+   ul.form li input[type="submit"].confirmation {
+      background: #FD9408;
+      color: #000;
+      font-size: 1.15em;
+      line-height: 1.5em;
    }
    
 /* =EXTERNAL_PAGE_CONTENT

@@ -17,10 +17,10 @@ class Order < ActiveRecord::Base
   validates_presence_of :billing_city
   validates_presence_of :billing_state
   validates_presence_of :billing_zip
-  validates_presence_of :card_number
-  validates_presence_of :verification_number
-  validates_presence_of :expiration_month
-  validates_presence_of :expiration_year
+  validates_presence_of :card_number, :if => :ready_for_processing?
+  validates_presence_of :verification_number, :if => :ready_for_processing?
+  validates_presence_of :expiration_month, :if => :ready_for_processing?
+  validates_presence_of :expiration_year, :if => :ready_for_processing?
   
   # Named Scope
   named_scope :currently, lambda { |state| {
@@ -74,6 +74,34 @@ class Order < ActiveRecord::Base
 
     transitions :from => :authorized, 
                 :to   => :authorized
+  end
+  
+  # Constants
+  PREORDER_FIELDS = [ :shipping_first,:shipping_last,:shipping_1,:shipping_2,:shipping_city,:shipping_state,:shipping_zip,
+                      :billing_first,:billing_last,:billing_1,:billing_2,:billing_city,:billing_state,:billing_zip,
+                      :shipping_method ]
+  
+  # Boolean test to determine if a given set of attributes are throwing errors on the order.
+  def has_problems_with?(attributes)
+    unless valid?
+      attributes.each do |attribute|
+        return true if errors.invalid?(attribute)
+      end
+    end
+    return false
+  end
+  
+  # Only retrieves errors for specified attributes.
+  def errors_only_for(attributes)
+    valid?
+    filtered_errors = []
+    errors.each do |error_name, error_message|
+      if attributes.include?(error_name.to_sym)
+        filtered_errors << [error_name, error_message]
+      end
+    end
+    filtered_errors
+    return filtered_errors
   end
   
   # BEGIN authorize_payment
@@ -172,7 +200,14 @@ class Order < ActiveRecord::Base
   
   # Creates amount recognizeable by payment gateways.
   def amount
-    (cart.running_total*100).to_i
+    self.sub_total = (cart.running_total*100).to_i
+    if Store::SALES_TAX_STATES.include?(self.billing_state)
+      self.sales_tax = (cart.running_total*Store::SALES_TAX_RATE*100).to_i
+    else
+      self.sales_tax = 0
+    end
+    self.shipping_cost = (Store::SHIPPING_RATES[self.shipping_method]*100).to_i
+    self.amount = self.sub_total + self.sales_tax + self.shipping_cost
   end
   
   # Assigns cart to order and attempts to authorize payment.
@@ -188,5 +223,15 @@ class Order < ActiveRecord::Base
     else
       return false
     end
+  end
+  
+  # Assigns cart to order and determines sales tax and shipping costs.
+  def calculate_cart(cart)
+    self.cart = cart
+    amount
+  end
+  
+  def ready_for_processing?
+    !self.cart.nil?
   end
 end

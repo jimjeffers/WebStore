@@ -40,7 +40,7 @@ ActionController::Routing::Routes.draw do |map|
   map.cart '/cart', :controller => 'store', :action => 'cart'
   map.checkout '/checkout', :controller => 'store', :action => 'checkout'
   map.purchase '/purchase', :controller => 'store', :action => 'purchase'
-  
+  map.confirm '/confirm', :controller => 'store', :action => 'confirm'
   map.search '/search', :controller => 'store', :action => 'search'
   
   map.connect "logged_exceptions/:action/:id", :controller => "logged_exceptions"

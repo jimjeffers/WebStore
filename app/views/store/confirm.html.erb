@@ -1,0 +1,64 @@
+<ol id="breadcrumb">
+  <li><%= link_to "Confirm Order", "#" %></li>
+</ol>
+
+<div id="order_addresses">
+  <ul class="address_list">
+    <li id="email_address" class="address">
+      <h3>Email Address:</h3>
+      <p><%= @order.email %></p>
+    </li>
+    <li id="shipping_address" class="address">
+      <h3>Shipping Address:</h3>
+      <p><%= @order.shipping_1 %><%= "<br/>#{@order.shipping_2}" unless @order.shipping_2.nil? %></p>
+      <p><%= @order.shipping_city %>, <%= @order.shipping_state %> <%= @order.shipping_zip %></p>
+    </li>
+    <li id="billing_address" class="address">
+      <h3>Billing Address:</h3>
+      <p><%= @order.billing_1 %><%= "<br/>#{@order.billing_2}" unless @order.billing_2.nil? %></p>
+      <p><%= @order.billing_city %>, <%= @order.billing_state %> <%= @order.billing_zip %></p>
+    </li>
+  </ul>
+  <% form_for :order, @order, :url => checkout_path, :html => {:class => "checkout"} do |f| -%>
+    <%= render :partial => 'hidden_order_form', :locals => {:f => f} %>
+    <%= f.submit "Change Billing / Contact Info" %>
+  <% end -%>
+</div>
+
+<% form_for :order, @order, :url => purchase_path, :html => {:class => "checkout"} do |f| -%>
+  <%= f.error_messages %>
+  <% if !@order.transactions.blank? %>
+  <div class="errorExplanation">
+    <h2>There was a problem processing this order!</h2>
+    <%= @order.transactions.last.message %>
+  </div>
+  <% end %>
+  <fieldset>
+    <legend>Credit Card Info</legend>
+    <ul class="form">
+      <li class="long">
+        <%= f.label :card_number, "Card Number" %>
+        <%= f.text_field :card_number %>
+      </li>
+      <li class="medium">
+        <%= f.label :verification_number, "Verification Number" %>
+        <%= f.text_field :verification_number %>
+      </li>
+      <li class="short">
+        <%= f.label :expiration_month, "Exp. Month" %>
+        <%= f.select :expiration_month, (1..12).to_a %>
+      </li>
+      <li class="short">
+        <%= f.label :expiration_year, "Exp. Year" %>
+        <%= f.select :expiration_year, (Time.now.strftime("%Y").to_i..2022).to_a %>
+      </li>
+    </ul>
+  </fieldset>
+  <ul class="form">
+    <li><%= f.submit "Make Your Purchase (click only once!)", :class => "confirmation" %></li>
+  </ul>
+  <%= render :partial => 'hidden_order_form', :locals => {:f => f} %>
+  <%= hidden_field_tag :cart_token, @cart.cart_token %>
+<% end -%>
+
+<%= render :partial => 'checkout_cart', :locals => {:line_items => @line_items, :cart => @cart, :order => @order} %>

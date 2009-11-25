@@ -11,7 +11,7 @@ class Store
     :pets => "pets"
   }
   SALES_TAX_RATE = 0.078
-  SALES_TAX_STATE = "AZ"
-  SHIPPING_METHODS = ["Standard", "Expedited"]
-  SHIPPING_RATES = {"Standard" => 9.99, "Expedited" => 19.99}
+  SALES_TAX_STATES = ["AZ","Arizona"]
+  SHIPPING_METHODS = {"Standard ($9.99)" => "standard", "Expedited  ($19.99)" => "expedited"}
+  SHIPPING_RATES = {"standard" => 9.99, "expedited" => 19.99}
 end

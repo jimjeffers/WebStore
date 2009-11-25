@@ -1,9 +1,7 @@
 <ol id="breadcrumb">
-  <li><a href="/">Home</a></li>
-  <li><%= link_to "Shopping Cart", cart_path %></li>
-  <li><%= link_to "Checkout Form", checkout_path %></li>
+  <li><%= link_to "Checkout Form", "#" %></li>
 </ol>
-<% form_for :order, @order, :url => purchase_path, :html => {:class => "checkout"} do |f| -%>
+<% form_for :order, @order, :url => confirm_path, :html => {:class => "checkout"} do |f| -%>
   <%= f.error_messages %>
   <% if !@order.transactions.blank? %>
   <div class="errorExplanation">
@@ -90,49 +88,18 @@
       </li>
     </ul>
   </fieldset>
-  <fieldset>
-    <legend>Credit Card Info</legend>
+  <fieldset id="shipping_method">
+    <legend>Shipping Method</legend>
     <ul class="form">
-      <li class="long">
-        <%= f.label :card_number, "Card Number" %>
-        <%= f.text_field :card_number %>
-      </li>
       <li class="medium">
-        <%= f.label :verification_number, "Verification Number" %>
-        <%= f.text_field :verification_number %>
-      </li>
-      <li class="short">
-        <%= f.label :expiration_month, "Exp. Month" %>
-        <%= f.select :expiration_month, (1..12).to_a %>
-      </li>
-      <li class="short">
-        <%= f.label :expiration_year, "Exp. Year" %>
-        <%= f.select :expiration_year, (2009..2022).to_a %>
+        <%= f.label :shipping_method, "Shipping Method" %>
+        <%= f.select :shipping_method, Store::SHIPPING_METHODS %>
       </li>
     </ul>
   </fieldset>
   <ul class="form">
-    <li><%= f.submit "Make Your Purchase (click only once!)" %></li>
+    <li><%= f.submit "Confirm Your Order (click only once!)", :class => "confirmation" %></li>
   </ul>
   <%= hidden_field_tag :cart_token, @cart.cart_token %>
 <% end -%>
-
-<div id="checkout_cart">
-  <h2>You are Purchasing <%= @cart.item_count %> Item<%= 's' if @cart.item_count != 1 %>:</h2>
-  <ol id="lineitems" class="line_item_list">
-    <% for line_item in @line_items %>
-      <li>
-        <ul class="line_item" id="line_item_<%= line_item.id %>">
-          <li class="quantity"><%= line_item.quantity %>x</li>
-          <li class="name"><%= line_item.variation.product.name %></li>
-          <li class="total_price"><%= currency(line_item.price * line_item.quantity) %></li>
-        </ul>
-      </li>
-    <% end %>
-    <li class="footer">
-      <ul class="line_item">
-       <li>Total:</li>  <li class="total_price"><%= currency(@cart.running_total) %></li>
-      </ul>
-    </li>
-  </ol>
-</div>
+<%= render :partial => 'checkout_cart', :locals => {:line_items => @line_items, :cart => @cart, :order => nil} %>

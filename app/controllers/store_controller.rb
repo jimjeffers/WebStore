@@ -3,6 +3,7 @@ class StoreController < ApplicationController
   before_filter :get_items_from_params
   before_filter :get_segmented_categories
   before_filter :get_categories_by_method
+  before_filter :hide_newsletter_form, :only => [:checkout,:confirm]
   
   # Displays default storefront.
   def index
@@ -74,13 +75,23 @@ class StoreController < ApplicationController
     @cart.purge!
     @line_items = @cart.line_items.not_deleted
     @order = Order.new(params[:order])
-    
-    @seo_content_toggle, @newsletter_toggle = [true,true]
   end
   
   # Displays order with sales tax and allows for the selection of a shipping method.
   def confirm
+    redirect_to '/' if @cart.nil?
+    @cart.purge!
+    @line_items = @cart.line_items.not_deleted
     @order = Order.new(params[:order])
+        
+    @seo_content_toggle, @newsletter_toggle = [true,true]
+    if @order.has_problems_with?(Order::PREORDER_FIELDS)
+      @order.errors_only_for(Order::PREORDER_FIELDS)
+      render :action => "checkout" 
+    else
+      @order.errors.clear
+      @order.calculate_cart(@cart)
+    end
   end
   
   # Creates order and authorizes payment.
@@ -93,11 +104,11 @@ class StoreController < ApplicationController
       if @order.process_cart(@cart)
         render :action => "purchase"
       else
-        render :action => "checkout"
+        render :action => "confirm"
         @seo_content_toggle, @newsletter_toggle = [true,true]
       end
     else
-      render :action => "checkout"
+      render :action => "confirm"
       @seo_content_toggle, @newsletter_toggle = [true,true]
     end
   end
@@ -143,5 +154,10 @@ class StoreController < ApplicationController
       when Store::METHODS[:brand] then Brand.all
       when nil then Category.all
     end
+  end
+  
+  # Sets boolean values ot hide the newsletter form incase it could become distracting.
+  def hide_newsletter_form
+    @seo_content_toggle, @newsletter_toggle = [true,true]
   end
 end

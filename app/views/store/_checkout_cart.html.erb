@@ -1,0 +1,41 @@
+<div id="checkout_cart">
+  <h2>You are Purchasing <%= cart.item_count %> Item<%= 's' if cart.item_count != 1 %>:</h2>
+  <ol id="lineitems" class="line_item_list">
+    <% for line_item in line_items %>
+      <li>
+        <ul class="line_item" id="line_item_<%= line_item.id %>">
+          <li class="quantity"><%= line_item.quantity %>x</li>
+          <li class="name"><%= line_item.variation.product.name %></li>
+          <li class="total_price"><%= currency(line_item.price * line_item.quantity) %></li>
+        </ul>
+      </li>
+    <% end %>
+    <li class="footer">
+      <% if order.nil? || order.billing_state.nil? %>
+      <ul class="line_item">
+       <li>Subtotal:</li>
+       <li class="total_price"><%= currency(cart.running_total) %></li>
+      </ul>
+      <% else %>
+      <ul class="line_item">
+       <li>Subtotal:</li>
+       <li class="total_price"><%= currency(order.sub_total/100.to_f) %></li>
+      </ul>
+      <% if !order.sales_tax.blank? %>
+      <ul class="line_item">
+       <li>Sales Tax:</li>
+       <li class="total_price"><%= currency(order.sales_tax/100.to_f) %></li>
+      </ul>
+      <% end %>
+      <ul class="line_item">
+       <li>Shipping: <%= order.shipping_method.capitalize %></li>
+       <li class="total_price"><%= currency(order.shipping_cost/100.to_f) %></li>
+      </ul>
+      <ul class="line_item">
+       <li>Total:</li>
+       <li class="total_price"><%= currency(order.amount/100.to_f) %></li>
+      </ul>
+      <% end %>
+    </li>
+  </ol>
+</div>
