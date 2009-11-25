@@ -111,7 +111,7 @@ class Order < ActiveRecord::Base
     transaction do
       puts "-"*100+"\n"
       puts "ATTEMPTING TO AUTHORIZE"
-      authorization = OrderTransaction.authorize(amount, credit_card, options)
+      authorization = OrderTransaction.authorize(calculate_amount, credit_card, options)
       transactions.push(authorization)
 
       if authorization.success?
@@ -199,7 +199,7 @@ class Order < ActiveRecord::Base
   end
   
   # Creates amount recognizeable by payment gateways.
-  def amount
+  def calculate_amount
     self.sub_total = (cart.running_total*100).to_i
     if Store::SALES_TAX_STATES.include?(self.billing_state)
       self.sales_tax = (cart.running_total*Store::SALES_TAX_RATE*100).to_i
@@ -228,7 +228,7 @@ class Order < ActiveRecord::Base
   # Assigns cart to order and determines sales tax and shipping costs.
   def calculate_cart(cart)
     self.cart = cart
-    amount
+    calculate_amount
   end
   
   def ready_for_processing?

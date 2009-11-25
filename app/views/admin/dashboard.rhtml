@@ -19,7 +19,7 @@
       <% for order in @orders %>
         <li>
           <%= link_to "#{order.billing_first} #{order.billing_last}", order_path(order) %> 
-          <span class="order_amount"><%= currency(order.amount/100.to_f) %></span>
+          <span class="order_amount"><%= currency(order.amount/100.to_f) unless order.amount.nil? %></span>
           <span class="order_date"><%= order.created_at.strftime("%h %d, %Y") %></span>
         </li>
       <% end %>

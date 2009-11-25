@@ -60,28 +60,20 @@
           <% end %>
         <tr class="ledger">
            <td colspan="3">Subtotal:</td>
-           <td colspan="2"><%= currency(@order.amount / 100.to_f) %></td>
+           <td colspan="2"><%= currency(@order.sub_total/100.to_f) %></td>
         </tr>
         <tr class="ledger">
            <td colspan="3">Sales Tax:</td>
            <td colspan="2">
-           <% if @order.billing_state == Store::SALES_TAX_STATE %>
-             <%= currency(@order.amount / 100.to_f * Store::SALES_TAX_RATE) %>
-           <% else %>
-             <%= currency(0) %>
-           <% end %></td>
+             <%= currency(@order.sales_tax/100.to_f) %>
+           </td>
         </tr>
         <tr class="ledger">
            <td colspan="3">
-              <label for="order_shipping_method">Shipping:</label>
-              <select id="order_shipping_method" name="order_shipping_method">
-                 <option value="standard">Standard</option>
-                 <option value="2nd Day">2nd Day</option>
-                 <option value="overnight">Overnight</option>
-              </select>
+              <label for="order_shipping_method"><%= @order.shipping_method.capitalize %> Shipping:</label>
            </td>
            <td colspan="2">
-              <input type="text" name="order_shipping_cost" value="$26.00" id="order_shipping_cost" class="condensed_length"/>
+              <%= currency(@order.shipping_cost/100.to_f) %>
            </td>
         </tr>
         <tr class="ledger">
