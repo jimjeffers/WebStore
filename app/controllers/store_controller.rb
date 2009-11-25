@@ -102,6 +102,7 @@ class StoreController < ApplicationController
     
     if @order.valid?
       if @order.process_cart(@cart)
+        CRM.deliver_order_confirm(@order)
         render :action => "purchase"
       else
         render :action => "confirm"

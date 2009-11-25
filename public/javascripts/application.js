@@ -49,11 +49,17 @@ $(document).ready(function(){
          };
       }
    });
-});
-
-// Bind fancy box...
-$("a.zoom").fancybox({
-   'overlayShow' : false,
-   'zoomSpeedIn' : 700,
-   'zoomSpeedOut' : 600
+   
+   // Bind fancy box...
+   $("a.zoom").fancybox({
+      'overlayShow' : false,
+      'zoomSpeedIn' : 700,
+      'zoomSpeedOut' : 600
+   });
+   
+   $("input[type='submit'].confirmation").click(function() {
+      $(this).hide();
+      $(this).after("<p>One Moment Please...</p>");
+      return true;
+   });
 });

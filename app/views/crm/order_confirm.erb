@@ -1,0 +1,37 @@
+CACTUS SPORTS :: Order #CS-<%= @order.id %>
+---------------------------------------
+Save this for your records!
+
+---------------------------------------
+Email Address:
+<%= @order.email %>
+
+---------------------------------------
+Shipping Address:
+<%= @order.shipping_1 %><%= "\n#{@order.shipping_2}" unless @order.shipping_2.nil? %>
+<%= @order.shipping_city %>, <%= @order.shipping_state %> <%= @order.shipping_zip %>
+
+---------------------------------------
+Billing Address:
+<%= @order.billing_1 %><%= "\n#{@order.billing_2}" unless @order.billing_2.nil? %>
+<%= @order.billing_city %>, <%= @order.billing_state %> <%= @order.billing_zip %>
+
+---------------------------------------
+Order Details:
+
+<% if !@line_items.blank? %>
+  <% for line_item in @line_items %>
+---------------------------------------
+<%= line_item.quantity %>x <%= line_item.variation.product.name %> 
+[$<%= format("%.2f",line_item.price) %> a piece]
+[$<%= format("%.2f",line_item.price*line_item.quantity.to_f) %> total]
+  <% end %>
+<% end %>
+
+---------------------------------------
+Subtotal: $<%= format("%.2f",@order.sub_total/100.to_f) %>
+---------------------------------------
+Sales Tax: $<%= format("%.2f",@order.sales_tax/100.to_f) %>
+Shipping: $<%= format("%.2f",@order.sales_tax/100.to_f) %>
+---------------------------------------
+Total: $<%= format("%.2f",@order.amount/100.to_f) %>

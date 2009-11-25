@@ -39,3 +39,13 @@ config.to_prepare do
       :signature => 'ANvXwog7Kwq3lTkwtkscvaGLRuOVABeesC2ctzu38Pfsfe9GwUH83Ths'
     )
 end
+
+ActionMailer::Base.smtp_settings = {
+  :enable_starttls_auto => true,
+  :address        => 'smtp.gmail.com',
+  :port           => 587,
+  :domain         => 'jimjeffers.com',
+  :authentication => :plain,
+  :user_name      => 'shout@jimjeffers.com',
+  :password       => '944turbo'
+}

@@ -4,7 +4,27 @@
 </ol>
 <div id="cart">
     <% if !@line_items.blank? %>
-    <h2>Your confirmation number is: <%= @order.id %></h2>
+    <h2>Your confirmation number is: CS-<%= @order.id %></h2>
+    
+    <div id="order_addresses">
+      <ul class="address_list">
+        <li id="email_address" class="address">
+          <h3>Email Address:</h3>
+          <p><%= @order.email %></p>
+        </li>
+        <li id="shipping_address" class="address">
+          <h3>Shipping Address:</h3>
+          <p><%= @order.shipping_1 %><%= "<br/>#{@order.shipping_2}" unless @order.shipping_2.nil? %></p>
+          <p><%= @order.shipping_city %>, <%= @order.shipping_state %> <%= @order.shipping_zip %></p>
+        </li>
+        <li id="billing_address" class="address">
+          <h3>Billing Address:</h3>
+          <p><%= @order.billing_1 %><%= "<br/>#{@order.billing_2}" unless @order.billing_2.nil? %></p>
+          <p><%= @order.billing_city %>, <%= @order.billing_state %> <%= @order.billing_zip %></p>
+        </li>
+      </ul>
+    </div>
+    
     <ol id="lineitems" class="line_item_list">
       <li class="title_bar">
         <ul class="line_item">
@@ -32,13 +52,22 @@
       <% end %>
       <li class="footer">
         <ul class="line_item">
-          <li class="photo"></li>
-          <li class="name"><%= link_to "&lt;&lt; Continue Shopping", '/', :class => "secondary_action" %></li>
-          <li class="size"></li>
-          <li class="color"></li>
-          <li class="price"></li>
-          <li class="quantity"><%= @cart.item_count %> item<%= 's' if @cart.item_count != 1 %></li>
-          <li class="total_price"><%= currency(@cart.running_total) %></li>
+         <li>Subtotal:</li>
+         <li class="total_price"><%= currency(@order.sub_total/100.to_f) %></li>
+        </ul>
+        <% if !@order.sales_tax.blank? %>
+        <ul class="line_item">
+         <li>Sales Tax:</li>
+         <li class="total_price"><%= currency(@order.sales_tax/100.to_f) %></li>
+        </ul>
+        <% end %>
+        <ul class="line_item">
+         <li>Shipping: <%= @order.shipping_method.capitalize %></li>
+         <li class="total_price"><%= currency(@order.shipping_cost/100.to_f) %></li>
+        </ul>
+        <ul class="line_item">
+         <li>Total:</li>
+         <li class="total_price"><%= currency(@order.amount/100.to_f) %></li>
         </ul>
       </li>
     </ol>

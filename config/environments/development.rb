@@ -14,7 +14,7 @@ config.action_view.debug_rjs                         = true
 config.action_controller.perform_caching             = false
 
 # Don't care if the mailer can't send
-config.action_mailer.raise_delivery_errors = false
+#config.action_mailer.raise_delivery_errors = false
 
 config.after_initialize do
   ActiveMerchant::Billing::Base.mode = :test
@@ -28,3 +28,13 @@ config.to_prepare do
       :signature => 'ANvXwog7Kwq3lTkwtkscvaGLRuOVABeesC2ctzu38Pfsfe9GwUH83Ths'
     )
 end
+
+ActionMailer::Base.smtp_settings = {
+  :enable_starttls_auto => true,
+  :address        => 'smtp.gmail.com',
+  :port           => 587,
+  :domain         => 'jimjeffers.com',
+  :authentication => :plain,
+  :user_name      => 'shout@jimjeffers.com',
+  :password       => '944turbo'
+}
