@@ -22,7 +22,6 @@ class OrderTransaction < ActiveRecord::Base
     end
     
     private
-    
     def process(action, amount = nil)
       result = OrderTransaction.new
       result.amount = amount

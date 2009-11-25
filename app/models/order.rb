@@ -109,13 +109,10 @@ class Order < ActiveRecord::Base
     options = setup_order(options)
     
     transaction do
-      puts "-"*100+"\n"
-      puts "ATTEMPTING TO AUTHORIZE"
       authorization = OrderTransaction.authorize(calculate_amount, credit_card, options)
       transactions.push(authorization)
 
       if authorization.success?
-        puts "-"*100+" \n Payment Authorized"
         payment_authorized!
       else
         transaction_declined!
@@ -217,9 +214,14 @@ class Order < ActiveRecord::Base
     self.save
     self.authorize_payment
     if authorized?
-      @cart.close!
-      @cart.line_items.not_deleted.each { |i| i.close! }
-      return true
+      self.capture_payment
+      if self.paid?
+        @cart.close!
+        @cart.line_items.not_deleted.each { |i| i.close! }
+        return true
+      else
+        return false
+      end
     else
       return false
     end
