@@ -64,6 +64,7 @@ and Sumo Creations.
    #primary_content {
       margin: 0 auto;
       min-height: 200px;
+      overflow: hidden;
       padding-top: 120px;
       position: relative;
       width: 960px;
@@ -1110,7 +1111,7 @@ and Sumo Creations.
    div#order_addresses {
       font-size: 0.875em;
       line-height: 1.5em;
-      margin-top: 10px;
+      margin-top: 155px0px;
    }
    
    div#order_addresses h3 {
