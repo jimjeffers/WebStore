@@ -91,19 +91,6 @@ class Order < ActiveRecord::Base
     return false
   end
   
-  # Only retrieves errors for specified attributes.
-  def errors_only_for(attributes)
-    valid?
-    filtered_errors = []
-    errors.each do |error_name, error_message|
-      if attributes.include?(error_name.to_sym)
-        filtered_errors << [error_name, error_message]
-      end
-    end
-    filtered_errors
-    return filtered_errors
-  end
-  
   # BEGIN authorize_payment
   def authorize_payment(options = {:ip => '127.0.0.1'})
     options = setup_order(options)
@@ -198,12 +185,12 @@ class Order < ActiveRecord::Base
   # Creates amount recognizeable by payment gateways.
   def calculate_amount
     self.sub_total = (cart.running_total*100).to_i
-    if Store::SALES_TAX_STATES.include?(self.billing_state)
+    if Store::SALES_TAX_STATES.include?(self.billing_state) && Store::SALES_TAX_STATES.include?(self.shipping_state)
       self.sales_tax = (cart.running_total*Store::SALES_TAX_RATE*100).to_i
     else
       self.sales_tax = 0
     end
-    self.shipping_cost = (Store::SHIPPING_RATES[self.shipping_method]*100).to_i
+    self.shipping_cost = (Store.calculate_shipping_cost(self.sub_total/100.to_f,self.shipping_method)*100).to_i
     self.amount = self.sub_total + self.sales_tax + self.shipping_cost
   end
   
