@@ -43,7 +43,7 @@
       </li>
       <li class="short">
         <%= f.label :shipping_state, "State" %>
-        <%= state_select(:order, :shipping_state, :country => 'US', :options => {:prompt => 'Select State'}) %>
+        <%= state_select(:order, :shipping_state, :country => 'US', :options => {:include_blank => true}) %>
       </li>
       <li class="short">
         <%= f.label :shipping_zip, "Zip" %>
