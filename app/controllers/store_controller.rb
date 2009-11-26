@@ -86,7 +86,6 @@ class StoreController < ApplicationController
         
     @seo_content_toggle, @newsletter_toggle = [true,true]
     if @order.has_problems_with?(Order::PREORDER_FIELDS)
-      @order.errors_only_for(Order::PREORDER_FIELDS)
       render :action => "checkout" 
     else
       @order.errors.clear
