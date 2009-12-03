@@ -15,7 +15,11 @@
      <dd class="order_item_count"><%= @order.cart.item_count %></dd>
   </dl>
   <div id="order_status" class="open_status">
-     <h2>This order needs to be processed; it has not shipped and is currently <span class="open">open</span>.</h2>
+      <% if @order.aasm_state == "" %>
+     <h2>This order needs to be processed; it has not shipped and is currently <span class="open"><%= @order.aasm_state %></span>.</h2>
+     <% else %>
+     <h2>This order has been shipped.</h2>
+     <% end %>
      <!-- <a href="#" class="cancel_order">You may <strong>cancel</strong> this order if you do not wish to process it.</a> -->
   </div>
   <!-- <div id="add_item">
@@ -110,9 +114,9 @@
         <%= f.label :tracking_number, "Tracking Number" %>
         <%= f.text_field :tracking_number %>
         <ul>
-           <li class="process_order"><a href="#">Process Order</a></li>
+           <li class="process_order"><%= f.submit "Process Order" %></li>
            <!-- <li class="print_order"><a href="#">Print Order</a></li> -->
-           <li class="cancel_order"><a href="#">Cancel This Order</a></li>
+           <!-- <li class="cancel_order"><a href="#">Cancel This Order</a></li> -->
         </ul>
      </div>
   <% end -%>
