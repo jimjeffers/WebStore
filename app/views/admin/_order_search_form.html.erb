@@ -1,0 +1,5 @@
+<% form_tag(search_order_path, {:class => "search_form"}) do %>
+      <%= label_tag :order_term, "Search for an order:" %>
+      <%= text_field_tag :order_term, "", {:class => "search_term", :id => "order_term"} %>
+      <%= submit_tag "Search", :class => "submit" %>
+    <% end %>

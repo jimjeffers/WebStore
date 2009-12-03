@@ -1,10 +1,6 @@
 <div id="status" class="panel">
     <h2 class="panel_name">Order Lookup</h2>
-    <form action="orders/search" method="get" accept-charset="utf-8" class="search_form" id="order_search">
-       <label for="order_term">Enter an order ID number or customer name:</label>
-       <input type="text" name="order_term" value="" id="order_term" class="search_term"/>
-       <input type="submit" value="Search" class="submit"/>
-    </form>
+    <%= render :partial => 'admin/order_search_form' %>
  </div>
  <div id="full_open_orders" class="panel">
     <h2 id="panel_name">Open Orders</h2>

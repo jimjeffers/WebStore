@@ -21,7 +21,7 @@
   <!-- <div id="add_item">
        <p>If you need to make alterations to this order you may: <a href="#">Add Another Line Item</a></p>
     </div> -->
-  <% form_for @order, :html => {:class => "standard_form"} do |f| -%>
+  <% form_for @order, :url => ship_order_path(@order), :html => {:class => "standard_form"} do |f| -%>
     <table border="0" id="order_items">
         <tr>
            <th class="order_item_quantity">Quantity</th> 
@@ -107,8 +107,8 @@
      </div>
      <div id="order_processing" class="panel">
         <h2 class="panel_name">Process This Order</h2>
-        <label for="tracking_number">Tracking Number:</label>
-        <input type="text" name="tracking_number" value="" id="tracking_number"/>
+        <%= f.label :tracking_number, "Tracking Number" %>
+        <%= f.text_field :tracking_number %>
         <ul>
            <li class="process_order"><a href="#">Process Order</a></li>
            <!-- <li class="print_order"><a href="#">Print Order</a></li> -->

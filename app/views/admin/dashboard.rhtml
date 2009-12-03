@@ -9,11 +9,7 @@
  </div>
  <div id="open_orders" class="panel">
     <h2 id="panel_name">Open Orders</h2>
-    <form action="#" method="get" accept-charset="utf-8" class="search_form">
-       <label for="order_term">Search for an order:</label>
-       <input type="text" name="order_term" value="" id="order_term" class="search_term"/>
-       <input type="submit" value="Search" class="submit"/>
-    </form>
+    <%= render :partial => 'order_search_form' %>
     <% if !@orders.blank? %>
       <ol id="orders">
       <% for order in @orders %>

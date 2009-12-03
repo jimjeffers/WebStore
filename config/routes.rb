@@ -18,6 +18,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :orders
   
   map.capture_order '/orders/capture/:id', :controller => 'orders', :action => 'capture'
+  map.ship_order '/orders/ship/:id', :controller => 'orders', :action => 'ship'
+  map.search_order '/orders/search/', :controller => 'orders', :action => 'search'
   
   map.logout    '/logout',    :controller => 'sessions',  :action => 'destroy'
   map.login     '/login',     :controller => 'sessions',  :action => 'new'

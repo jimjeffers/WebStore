@@ -24,8 +24,8 @@ ActionMailer::Base.smtp_settings = {
   :enable_starttls_auto => true,
   :address        => 'smtp.gmail.com',
   :port           => 587,
-  :domain         => 'jimjeffers.com',
+  :domain         => 'cactussports.com',
   :authentication => :plain,
-  :user_name      => 'test@jimjeffers.com',
-  :password       => 't3st3r'
+  :user_name      => 'site@cactussports.com',
+  :password       => 'sparky96'
 }

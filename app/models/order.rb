@@ -80,6 +80,16 @@ class Order < ActiveRecord::Base
   PREORDER_FIELDS = [ :shipping_first,:shipping_last,:shipping_1,:shipping_2,:shipping_city,:shipping_state,:shipping_zip,
                       :billing_first,:billing_last,:billing_1,:billing_2,:billing_city,:billing_state,:billing_zip,
                       :shipping_method ]
+    
+  # Searches orders
+  def self.search(term)
+    terms = term.split(" ")
+    if terms.length > 1
+      Order.find(:all, :conditions => ['billing_first LIKE ? AND billing_last LIKE ?',"%#{terms[0]}%","%#{terms[1]}%"])
+    else
+      Order.find(:all, :conditions => ['billing_first LIKE ? OR billing_last LIKE ? OR id=?',"%#{term}%","%#{term}%",term.gsub('CS-','')])
+    end
+  end
   
   # Boolean test to determine if a given set of attributes are throwing errors on the order.
   def has_problems_with?(attributes)
