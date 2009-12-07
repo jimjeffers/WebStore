@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091121110831) do
+ActiveRecord::Schema.define(:version => 20091207090258) do
 
   create_table "brands", :force => true do |t|
     t.string   "name"
@@ -148,6 +148,7 @@ ActiveRecord::Schema.define(:version => 20091121110831) do
     t.integer  "sales_tax"
     t.integer  "sub_total"
     t.string   "tracking_number"
+    t.string   "phone"
   end
 
   add_index "orders", ["aasm_state"], :name => "index_orders_on_aasm_state"

@@ -85,9 +85,16 @@
            <td colspan="2"><%= currency(@order.amount / 100.to_f) %></td>
         </tr>
      </table>
+     <div id="contact_information" class="panel">
+         <h2 class="panel_name">Contact Information<!-- <a href="#" class="secondary">Modify shipping address.</a> --></h2>
+         <div id="hcard-<%= @order.shipping_first %>-<%= @order.shipping_last %>-contact" class="vcard">
+            <span class="fn"><%= link_to @order.email, "mailto:#{@order.email}" %></span>
+            <span class="fn"><%= @order.phone %></span>
+         </div>
+      </div>
      <div id="shipping_information" class="panel">
         <h2 class="panel_name">Shipping Information<!-- <a href="#" class="secondary">Modify shipping address.</a> --></h2>
-        <div id="hcard-Bart-Simpson" class="vcard">
+        <div id="hcard-<%= @order.shipping_first %>-<%= @order.shipping_last %>" class="vcard">
            <span class="fn"><%= @order.shipping_first %> <%= @order.shipping_last %></span>
             <div class="adr">
                <div class="street-address"><%= @order.shipping_1 %><%= "<br/>#{@order.shipping_2}" unless @order.shipping_2.nil? %></div>
@@ -99,7 +106,7 @@
      </div>
      <div id="billing_information" class="panel">
         <h2 class="panel_name">Billing Information <!-- <a href="#" class="secondary">Modify billing address.</a> --></h2>
-        <div id="hcard-Bart-Simpson" class="vcard">
+        <div id="hcard-<%= @order.billing_first %>-<%= @order.billing_last %>-billing" class="vcard">
            <span class="fn"><%= @order.billing_first %> <%= @order.billing_last %></span>
            <div class="adr">
               <div class="street-address"><%= @order.billing_1 %><%= "<br/>#{@order.billing_2}" unless @order.billing_2.nil? %></div>

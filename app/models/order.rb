@@ -17,10 +17,12 @@ class Order < ActiveRecord::Base
   validates_presence_of :billing_city
   validates_presence_of :billing_state
   validates_presence_of :billing_zip
+  validates_presence_of :phone
   validates_presence_of :card_number, :if => :ready_for_processing?
   validates_presence_of :verification_number, :if => :ready_for_processing?
   validates_presence_of :expiration_month, :if => :ready_for_processing?
   validates_presence_of :expiration_year, :if => :ready_for_processing?
+  validates_length_of :phone, :within => 7..15
   
   # Named Scope
   named_scope :currently, lambda { |state| {
@@ -77,7 +79,7 @@ class Order < ActiveRecord::Base
   end
   
   # Constants
-  PREORDER_FIELDS = [ :shipping_first,:shipping_last,:shipping_1,:shipping_2,:shipping_city,:shipping_state,:shipping_zip,
+  PREORDER_FIELDS = [ :email,:phone,:shipping_first,:shipping_last,:shipping_1,:shipping_2,:shipping_city,:shipping_state,:shipping_zip,
                       :billing_first,:billing_last,:billing_1,:billing_2,:billing_city,:billing_state,:billing_zip,
                       :shipping_method ]
     
