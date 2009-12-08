@@ -18,15 +18,11 @@ Billing Address:
 
 ---------------------------------------
 Order Details:
-
-<% if !@line_items.blank? %>
-  <% for line_item in @line_items %>
+<% if !@line_items.blank? %><% for line_item in @line_items %>
 ---------------------------------------
 <%= line_item.quantity %>x <%= line_item.variation.product.name %> 
 [$<%= format("%.2f",line_item.price) %> a piece]
-[$<%= format("%.2f",line_item.price*line_item.quantity.to_f) %> total]
-  <% end %>
-<% end %>
+[$<%= format("%.2f",line_item.price*line_item.quantity.to_f) %> total]<% end %><% end %>
 
 ---------------------------------------
 Subtotal: $<%= format("%.2f",@order.sub_total/100.to_f) %>
