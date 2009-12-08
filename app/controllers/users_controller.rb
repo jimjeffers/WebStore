@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   layout 'admin'
   require_role :admin, :for => [:edit, :add_role, :remove_role]
+  ssl_required :new, :create unless ENV["RAILS_ENV"] == "development"
   
   # Protect these actions behind an admin login
   # before_filter :admin_required, :only => [:suspend, :unsuspend, :destroy, :purge]

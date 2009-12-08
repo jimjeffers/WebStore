@@ -1,5 +1,7 @@
 # This controller handles the login/logout function of the site.  
 class SessionsController < ApplicationController
+  ssl_required :new, :create unless ENV["RAILS_ENV"] == "development"
+  
   layout 'login'
   
   # render new.rhtml
