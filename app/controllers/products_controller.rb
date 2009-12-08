@@ -112,7 +112,7 @@ class ProductsController < ApplicationController
   
   def search
     get_categories
-    @products = Product.search(params[:product_term])
+    @products = Product.search(params[:product_term]).paginate :page => params[:page], :per_page => 30
     respond_to do |format|
       format.html { render :action => 'index' }
     end

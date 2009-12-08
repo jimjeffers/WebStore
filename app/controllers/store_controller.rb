@@ -13,7 +13,7 @@ class StoreController < ApplicationController
   
   # Displays search results.
   def search
-    @products = Product.find_tagged_with(params[:search])
+    @products = Product.search(params[:search]).paginate :page => params[:page], :per_page => 30
     render :action => "index"
   end
   

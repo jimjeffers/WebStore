@@ -112,7 +112,7 @@ class Product < ActiveRecord::Base
   
   # Returns the default method for the product
   def method
-    @method || @method = self.variations.first.garment_size.gender.downcase if self.variations.length > 0 && !self.variations.first.garment_size.nil?
+    @method || @method = self.variations.not_deleted.first.garment_size.gender.downcase if self.variations.not_deleted.length > 0 && !self.variations.not_deleted.first.garment_size.nil?
   end
   
   # Paranoid destroy behavior.
