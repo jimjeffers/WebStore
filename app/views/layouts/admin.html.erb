@@ -20,6 +20,7 @@
          <li class="orders"><%= link_to "Orders", orders_path %></li>
          <li class="users"><%= link_to "Users", users_path %></li>
       </ul>
+      <% if current_user.has_role?(:manager) %>
       <ul id="site_settings_navigation">
          <li class="site_settings">
            <a href="#">Site Settings</a>
@@ -37,6 +38,7 @@
          </li>
          <li class="logout"><%= link_to "Logout", logout_path %></li>
       </ul>
+      <% end %>
       <div id="primary_content">
          <%= yield :layout %>
       </div>

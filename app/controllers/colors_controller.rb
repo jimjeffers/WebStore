@@ -1,6 +1,7 @@
 class ColorsController < ApplicationController
   before_filter :login_required
   layout 'admin'
+  require_role :manager
   
   require_role :admin
   

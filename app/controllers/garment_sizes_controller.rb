@@ -1,6 +1,7 @@
 class GarmentSizesController < ApplicationController
   before_filter :login_required
   before_filter :get_genders
+  require_role :manager
   layout 'admin'
   
   # GET /garment_sizes

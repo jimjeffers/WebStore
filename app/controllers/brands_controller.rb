@@ -1,5 +1,6 @@
 class BrandsController < ApplicationController
   before_filter :login_required
+  require_role :manager
   layout 'admin'
   
   # GET /brands

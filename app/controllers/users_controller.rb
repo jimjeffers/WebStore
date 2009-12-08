@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   
   
   def index
-    @users = User.with_roles
+    @users = User.with_roles.not_deleted
 
     respond_to do |format|
       format.html # index.html.erb
