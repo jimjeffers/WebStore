@@ -14,6 +14,7 @@ Rails::Initializer.run do |config|
   config.gem "thoughtbot-factory_girl", :lib    => "factory_girl", :source => "http://gems.github.com"
   config.gem "yfactorial-utility_scopes", :lib => "utility_scopes", :source => "http://gems.github.com/"
   config.gem "activemerchant", :lib => "active_merchant", :version => "1.4.2"
+  config.gem 'will_paginate', :version => '>= 2.3.11', :source => 'http://gemcutter.org'
   
   # Only load the plugins named here, in the order given (default is alphabetical).
   config.plugins = [ :exception_notification, :all ] # can use :all as a placeholder.

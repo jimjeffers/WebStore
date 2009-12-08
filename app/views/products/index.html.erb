@@ -17,6 +17,7 @@
         <li><span class="item_number"><%= product.sku %></span> <%= link_to "#{product.name}", product_path(product), {:class => 'product_name'} %> <span class="price"><%= currency(product.price) %></span></li>
       <% end %>
     </ul>
+    <%= will_paginate @products %>
  </div>
  <div id="search_panel" class="panel">
     <h2 class="panel_name">Search</h2>
