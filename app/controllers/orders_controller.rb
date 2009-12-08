@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   before_filter :login_required
+  require_role :user
   layout 'admin'
   
   def index
