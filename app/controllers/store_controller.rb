@@ -4,6 +4,7 @@ class StoreController < ApplicationController
   before_filter :get_segmented_categories
   before_filter :get_categories_by_method
   before_filter :hide_newsletter_form, :only => [:checkout,:confirm]
+  filter_parameter_logging :card_number, :verification_number, :expiration_month, :expiration_year
   
   # Displays default storefront.
   def index
