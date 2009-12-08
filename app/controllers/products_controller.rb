@@ -9,9 +9,9 @@ class ProductsController < ApplicationController
   def index
     get_categories
     if @category
-      @products = @category.products.paginate :page => params[:page]
+      @products = @category.products.paginate :page => params[:page], :per_page => 30
     else
-      @products = Product.paginate :page => params[:page]
+      @products = Product.paginate :page => params[:page], :per_page => 30
     end
     respond_to do |format|
       format.html # index.html.erb

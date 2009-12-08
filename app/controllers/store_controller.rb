@@ -8,7 +8,7 @@ class StoreController < ApplicationController
   
   # Displays default storefront.
   def index
-    @products = Product.sellable.limited(20)
+    @products = Product.sellable.paginate :page => params[:page], :per_page => 30
   end
   
   # Displays search results.
@@ -33,9 +33,9 @@ class StoreController < ApplicationController
   # Displays all products of a specific category.
   def category
     unless @method == Store::METHODS[:brand]
-      @products = @category.products.all_with_gender(@method).sellable
+      @products = @category.products.all_with_gender(@method).sellable.paginate :page => params[:page], :per_page => 30
     else
-      @products = @category.products.sellable
+      @products = @category.products.sellable.paginate :page => params[:page], :per_page => 30
     end
   end
   
