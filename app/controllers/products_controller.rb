@@ -9,9 +9,9 @@ class ProductsController < ApplicationController
   def index
     get_categories
     if @category
-      @products = @category.products.paginate :page => params[:page], :per_page => 30
+      @products = @category.products.paginate :page => params[:page], :per_page => @site_settings.products_per_page
     else
-      @products = Product.paginate :page => params[:page], :per_page => 30
+      @products = Product.paginate :page => params[:page], :per_page => @site_settings.products_per_page
     end
     respond_to do |format|
       format.html # index.html.erb
@@ -112,7 +112,7 @@ class ProductsController < ApplicationController
   
   def search
     get_categories
-    @products = Product.search(params[:product_term]).paginate :page => params[:page], :per_page => 30
+    @products = Product.search(params[:product_term]).paginate :page => params[:page], :per_page => @site_settings.products_per_page
     respond_to do |format|
       format.html { render :action => 'index' }
     end
