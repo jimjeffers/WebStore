@@ -76,3 +76,45 @@
       <p>Hey it looks like your cart is empty!</p>
     <% end %>
 </div>
+
+<!-- Google Code for Purchase/Sale Conversion Page -->
+<script type="text/javascript">
+<!--
+var google_conversion_id = 1070560067;
+var google_conversion_language = "en";
+var google_conversion_format = "1";
+var google_conversion_color = "ffffff";
+var google_conversion_label = "purchase";
+var google_conversion_value = 0;
+if (<%= @order.amount/100.to_f %>) {
+  google_conversion_value = <%= @order.amount/100.to_f %>;
+}
+//-->
+</script>
+<script type="text/javascript" src="https://www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="https://www.googleadservices.com/pagead/conversion/1070560067/?value=<%= @order.amount/100.to_f %>&amp;label=purchase&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
+
+<SCRIPT language="JavaScript" type="text/javascript">
+<!-- // Yahoo! Inc.
+window.ysm_customData = new Object();
+window.ysm_customData.conversion = "transId=,currency=,amount=<%= @order.amount/100.to_f %>";
+var ysm_accountid  = "1FV6AK824V3PQ5PCCVV7IPNE71G";
+document.write("<SCR" + "IPT language='JavaScript' type='text/javascript' " 
++ "SRC=//" + "srv2.wa.marketingsolutions.yahoo.com" + "/script/ScriptServlet" + "?aid=" + ysm_accountid 
++ "></SCR" + "IPT>");
+// -->
+</SCRIPT>
+<SCRIPT>
+ microsoft_adcenterconversion_domainid = 668876;
+ microsoft_adcenterconversion_cp = 5050;
+ microsoft_adcenterconversionparams = new Array();
+ microsoft_adcenterconversionparams[0] = "dedup=1";
+</SCRIPT>
+
+<SCRIPT SRC="https://0.r.msn.com/scripts/microsoft_adcenterconversion.js"></SCRIPT>
+<NOSCRIPT><IMG width=1 height=1 SRC="https://668876.r.msn.com/?type=1&cp=1&dedup=1"/></NOSCRIPT><a href="http://advertising.microsoft.com/MSNadCenter/LearningCenter/adtracker.asp" target="_blank">::adCenter::</a>
