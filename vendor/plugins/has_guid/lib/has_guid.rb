@@ -15,7 +15,7 @@ module ActiveRecord
           end
           self.has_guid_field = field.to_sym
           define_method("#{has_guid_field.to_s}=".to_sym) do |method_name, *args|
-            super
+            super(method_name,*args)
             update_guid
           end
         end
@@ -24,7 +24,7 @@ module ActiveRecord
       module InstanceMethods  
         
         def update_guid
-          write_attribute(:guid, make_guid(has_guid_field)) unless read_attribute(has_guid_field).nil?
+          write_attribute(:guid, make_guid(has_guid_field)) if !read_attribute(has_guid_field).nil? && read_attribute(:guid).nil?
         end
         
         protected

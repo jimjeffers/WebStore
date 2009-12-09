@@ -1,0 +1,31 @@
+<div id="site_settings_form" class="panel">
+  <h2 id="panel_name">Editing Site Settings</h2>  
+  <% form_for(@site_settings, :url => update_site_settings_path, :html => {:class => 'standard_form'}) do |f| %>
+    <%= f.error_messages %>
+    <fieldset>
+      <legend>Product Display Settings</legend>
+      <ul class="form">
+        <li>
+          <%= f.label :products_per_page, "Products Per Page" %>
+          <%= f.select :products_per_page, (1..12).map{|i| i*4} %>
+        </li>
+      </ul>
+    </fieldset>
+    <fieldset>
+      <legend>SEO Information</legend>
+      <ul class="form">
+         <li><%= f.label :site_title, 'Homepage (default) Title:' %>
+         <%= f.text_field :site_title, {:class => 'extended_full_length'} %></li>
+         <li><%= f.label :seo_keywords, 'SEO Keywords:' %>
+         <%= f.text_field :seo_keywords, {:class => 'extended_full_length'} %></li>
+         <li><%= f.label :seo_description, 'SEO Description:' %>
+         <%= f.text_area :seo_description, {:class => 'full_length short'} %></li>
+         <li><%= f.label :optimized_content, 'SEO Optimized Content:' %>
+           <%= f.text_area :optimized_content, {:class => 'full_length short'} %></li>
+      </ul>
+    </fieldset>
+    <ul class="form">
+      <li><%= f.submit 'Update Site Settings', {:class => 'submit'} %> <%= link_to "Cancel - do not make any of the above changes.", edit_site_settings_path, {:class => 'cancel'}%></li>
+    </ul>
+   <% end %>
+</div>

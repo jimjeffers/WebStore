@@ -29,7 +29,9 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users, :member => { :suspend   => :put,
                                      :unsuspend => :put,
                                      :purge     => :delete }
-                                     
+  
+  map.edit_site_settings '/site_settings/edit', :controller => 'site_settings', :action => 'edit'
+  map.update_site_settings '/site_settings/update', :controller => 'site_settings', :action => 'update'
   map.user_add_role '/user/:user_id/add/role/:role_id', :controller => 'users', :action => 'add_role'
   map.user_remove_role '/user/:user_id/remove/role/:role_id', :controller => 'users', :action => 'remove_role'
   

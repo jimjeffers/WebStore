@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091208221106) do
+ActiveRecord::Schema.define(:version => 20091209112619) do
 
   create_table "brands", :force => true do |t|
     t.string   "name"
@@ -23,6 +23,11 @@ ActiveRecord::Schema.define(:version => 20091208221106) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "guid"
+    t.string   "seo_description"
+    t.string   "title"
+    t.string   "seo_keywords"
+    t.string   "description"
+    t.text     "optimized_content"
   end
 
   create_table "carts", :force => true do |t|
@@ -44,6 +49,7 @@ ActiveRecord::Schema.define(:version => 20091208221106) do
     t.datetime "updated_at"
     t.datetime "deleted_at"
     t.string   "guid"
+    t.text     "optimized_content"
   end
 
   create_table "categorizations", :force => true do |t|
@@ -172,6 +178,7 @@ ActiveRecord::Schema.define(:version => 20091208221106) do
     t.datetime "deleted_at"
     t.string   "aasm_state",         :default => "in_stock"
     t.integer  "position",           :default => 0
+    t.text     "optimized_content"
   end
 
   add_index "products", ["aasm_state"], :name => "index_products_on_aasm_state"
@@ -189,6 +196,16 @@ ActiveRecord::Schema.define(:version => 20091208221106) do
 
   add_index "roles_users", ["role_id"], :name => "index_roles_users_on_role_id"
   add_index "roles_users", ["user_id"], :name => "index_roles_users_on_user_id"
+
+  create_table "site_settings", :force => true do |t|
+    t.string   "site_title"
+    t.string   "seo_keywords"
+    t.string   "seo_description"
+    t.string   "optimized_content"
+    t.integer  "products_per_page"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"

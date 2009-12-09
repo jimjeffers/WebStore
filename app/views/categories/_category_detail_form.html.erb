@@ -8,11 +8,20 @@
     <fieldset>
       <legend>SEO Information</legend>
       <ul class="form">
+          <% unless category.new_record? %>
+          <li>
+            <%= f.label :guid, "Custom URL" %>
+            <%= f.text_field :guid %>
+            <span class="example">i.e. /browse/mens/[custom-url]</span>
+          </li>
+          <% end %>
          <li><%= f.label :title, 'SEO Title:' %>
          <%= f.text_field :title, {:class => 'extended_full_length'} %></li>
-         <li><%= f.label :tag_list, 'Product Keywords:' %>
+         <li><%= f.label :tag_list, 'SEO Keywords:' %>
          <%= f.text_field :tag_list, {:class => 'extended_full_length'} %></li>
-         <li><%= f.label :description, 'Product Description:' %>
+         <li><%= f.label :description, 'SEO Description:' %>
          <%= f.text_area :description, {:class => 'full_length short'} %></li>
+         <li><%= f.label :optimized_content, 'SEO Optimized Content:' %>
+          <%= f.text_area :optimized_content, {:class => 'full_length short'} %></li>
       </ul>
     </fieldset>

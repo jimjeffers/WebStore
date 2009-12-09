@@ -3,7 +3,7 @@
   <% form_for(@category, :html => {:class => 'standard_form'}) do |f| %>
     <%= f.error_messages %>
     <p>Edit a category name and optional SEO information.</p>
-    <%= render :partial => 'category_detail_form', :locals => {:f => f} %>
+    <%= render :partial => 'category_detail_form', :locals => {:f => f, :category => @category} %>
     <ul class="form">
       <li><%= f.submit 'Create Category', {:class => 'submit'} %> <%= link_to "Cancel and return to products &amp; categories.", products_path, {:class => 'cancel'}%></li>
     </ul>

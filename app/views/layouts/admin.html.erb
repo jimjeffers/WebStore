@@ -23,8 +23,9 @@
       <ul id="site_settings_navigation">
          <% if current_user.has_role?(:manager) %>
          <li class="site_settings">
-           <a href="#">Site Settings</a>
+           <%= link_to "Site Settings", edit_site_settings_path %>
            <ul class="sub_navigation">
+              <li><%= link_to "Global Site Settings", edit_site_settings_path %></li>
               <li><%= link_to "Colors", colors_path %></li>
               <li><%= link_to "Sizes", garment_sizes_path %></li>
               <li><%= link_to "Users", users_path %></li>

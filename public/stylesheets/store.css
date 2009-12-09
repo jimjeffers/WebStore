@@ -161,9 +161,22 @@ and Sumo Creations.
       padding: 20px 0;
    }
    
+   div#company_specific_content a {
+      color: #fff;
+      font-weight: bold;
+      text-decoration: underline;
+   }
+   
+   div#company_specific_content h1,
    div#company_specific_content h2,
    div#company_specific_content h3,
-   div#company_specific_content p {
+   div#company_specific_content h4,
+   div#company_specific_content h5,
+   div#company_specific_content p,
+   div#company_specific_content ul,
+   div#company_specific_content ol,
+   div#company_specific_content pre,
+   div#company_specific_content blockquote {
       padding-right: 200px;
       margin: 5px auto;
       line-height: 1.5em;

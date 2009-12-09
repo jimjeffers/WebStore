@@ -1,0 +1,12 @@
+<div id="status" class="panel">
+  <h2>Editing Brand: <%= @brand.name %> <%= link_to 'Return to brand list &gt;&gt;', brands_path, {:class => 'secondary'} %></h2>
+</div>
+<h3>Current Logo</h3>
+<%= image_tag @brand.logo.url(:thumb), {:class => 'logo'} %>
+<% form_for @brand, :html => { :multipart => true, :class => 'standard_form' } do |f| %>
+<%= render :partial => 'brand_form', :locals => {:f => f} %>
+<p>
+  <%= f.submit 'Create' %>
+  <%= link_to 'Back', brands_path %>
+</p>
+<% end %>

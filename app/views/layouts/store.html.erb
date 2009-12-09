@@ -3,7 +3,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
   <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-    <title></title>
+    <% debugger %>
+    <title>
+    <%= (@product.title unless @product.nil? || @product.title.blank?) || (@category.title unless @category.nil? || @category.title.blank?) || @site_settings.site_title %>
+    </title>
+    <meta name="keywords" content="<%= (@product.tag_list.join(", ") unless @product.nil? || @product.tags.blank?) || (@category.tags.join(", ") unless @category.nil? || @category.tags.blank?) || @site_settings.seo_keywords %>"/>
+    <meta name="description" content="<%= (@product.description unless @product.nil? || @product.description.blank?) || (@category.description unless @category.nil? || @category.description.blank?) || @site_settings.seo_description %>"/>
     <%= stylesheet_link_tag 'reset','store','jquery.fancybox-1.2.5.css', :cache => 'store_front' %>
     <%= javascript_include_tag 'modernizr.js', :cache => 'dom_tools' %>
     <%= yield :head %>
@@ -118,9 +123,8 @@
     <% end %>
     <% if @seo_content_toggle.blank? %>
     <div id="company_specific_content">
-      <h2>Go Devils! </h2>
-      <h3>Cactus Sports is ASU’s Independently Alumni Operated Sports Retailer!</h3>
-      <p>Cactus Sports is Arizona State University independently owned and alumni operated and offers one of the largest selections of ASU merchandise from T-shirts, sweatshirts, shorts, hats, baby gear, gifts and much much more. Besides our great selection and quality products, we offer what most stores have forgotten, which is great customer service and a friendly and knowledgeable staff! For over 17 years Cactus Sports has been the place to shop for ASU students, faculty, and fans for the finest quality and best selection of Sun Devils gear. Cactus Sports is alumni and independently owned!</p>
+      <% @optimized_content = (@product.optimized_content unless @product.nil? || @product.optimized_content.blank?) || (@category.optimized_content unless @category.nil? || @category.optimized_content.blank?) || @site_settings.optimized_content %>
+      <%= RedCloth.new(@optimized_content).to_html %>
     </div>
     <% end %>
     <div id="external_page_content">

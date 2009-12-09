@@ -8,3 +8,16 @@
       <%= f.file_field :logo %></li>
   </ul>
 </fieldset>
+<fieldset>
+  <legend>SEO Information</legend>
+  <ul class="form">
+     <li><%= f.label :title, 'SEO Title:' %>
+     <%= f.text_field :title, {:class => 'extended_full_length'} %></li>
+     <li><%= f.label :tag_list, 'SEO Keywords:' %>
+     <%= f.text_field :tag_list, {:class => 'extended_full_length'} %></li>
+     <li><%= f.label :description, 'SEO Description:' %>
+     <%= f.text_area :description, {:class => 'full_length short'} %></li>
+     <li><%= f.label :optimized_content, 'SEO Optimized Content:' %>
+       <%= f.text_area :optimized_content, {:class => 'full_length short'} %></li>
+  </ul>
+</fieldset>
