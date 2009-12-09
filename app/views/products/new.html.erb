@@ -3,7 +3,7 @@
   <% form_for(@product, :html => {:class => 'standard_form', :multipart => true}) do |f| %>
     <%= f.error_messages %>
     <p>Add a new product and optional SEO information.</p>
-       <%= render :partial => 'product_detail_form', :locals => {:f => f} %>
+       <%= render :partial => 'product_detail_form', :locals => {:f => f, :product => @product} %>
        <ul class="form">
           <li><%= f.submit 'Create Product', {:class => 'submit'} %> <%= link_to "Cancel and return to products.", products_path, {:class => 'cancel'}%></li>
        </ul>

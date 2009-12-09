@@ -27,6 +27,10 @@ module ActiveRecord
           write_attribute(:guid, make_guid(has_guid_field)) if !read_attribute(has_guid_field).nil? && read_attribute(:guid).nil?
         end
         
+        def guid=(value)
+          write_attribute(:guid, value.split(" ").each{|i| i.downcase!; i.gsub!(/[^a-zA-Z0-9]/,'') }.join("-"))
+        end
+        
         protected
         # Creates a guid based off an attrbute
         def make_guid(attribute)

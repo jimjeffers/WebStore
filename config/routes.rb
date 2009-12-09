@@ -5,8 +5,9 @@ ActionController::Routing::Routes.draw do |map|
   end
   map.product_remove_category '/products/:product_id/remove/category/:category_id', :controller => 'products', :action => 'remove_category'
   map.product_add_category    '/products/:product_id/add/category/:category_id', :controller => 'products', :action => 'add_category'
+  map.product_toggle_availability '/products/:product_id/toggle_availability', :controller => 'products', :action => 'toggle_availability'
+  map.product_variation_toggle_availability '/products/:product_id/variations/:variation_id/toggle_availability', :controller => 'products', :action => 'toggle_availability'
   map.product_search '/products/search/', :controller => 'products', :action => 'search'
-  
   map.resources :categories do |category|
     category.resources :products
   end

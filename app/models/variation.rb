@@ -18,7 +18,8 @@ class Variation < ActiveRecord::Base
   
   named_scope :not_deleted, {:conditions => ['variations.deleted_at IS ?',nil]}
   
-  named_scope :all_with_gender, lambda {|gender| {:conditions => ['gender = ?',gender]} }
+  named_scope :all_with_gender, lambda {|gender| {:conditions => ['variations.gender = ?',gender]} }
+  named_scope :available, {:conditions => ['variations.aasm_state = "in_stock"']}
   
   # ----------------------------------------------------------
   # Class Methods

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091209112619) do
+ActiveRecord::Schema.define(:version => 20091209132604) do
 
   create_table "brands", :force => true do |t|
     t.string   "name"
@@ -247,8 +247,10 @@ ActiveRecord::Schema.define(:version => 20091209112619) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "deleted_at"
+    t.string   "aasm_state",      :default => "in_stock"
   end
 
+  add_index "variations", ["aasm_state"], :name => "index_variations_on_aasm_state"
   add_index "variations", ["color_id"], :name => "index_variations_on_color_id"
   add_index "variations", ["deleted_at"], :name => "index_variations_on_deleted_at"
   add_index "variations", ["garment_size_id"], :name => "index_variations_on_garment_size_id"

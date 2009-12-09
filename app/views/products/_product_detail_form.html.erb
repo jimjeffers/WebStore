@@ -24,6 +24,13 @@
 <fieldset>
   <legend>SEO Information</legend>
   <ul class="form">
+    <% unless product.new_record? %>
+    <li>
+      <%= f.label :guid, "Custom URL" %>
+      <%= f.text_field :guid %>
+      <span class="example">i.e. /browse/mens/[custom-url]</span>
+    </li>
+    <% end %>
      <li><%= f.label :title, 'SEO Title:' %>
      <%= f.text_field :title, {:class => 'extended_full_length'} %></li>
      <li><%= f.label :tag_list, 'Product Keywords:' %>

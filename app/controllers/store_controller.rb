@@ -22,10 +22,10 @@ class StoreController < ApplicationController
     # Incase you're confused about @product it's happening with a before filter: get_items_from_params
     if @method == Store::METHODS[:brand]
       @products = @category.products.sellable.limited(5)
-      @variations = @product.variations.not_deleted
+      @variations = @product.variations.not_deleted.available
     else
       @products = @category.products.all_with_gender(@method).sellable.limited(5)
-      @variations = @product.variations.not_deleted.all_with_gender(@method)
+      @variations = @product.variations.not_deleted.available.all_with_gender(@method)
     end
     @line_item = LineItem.new
   end
