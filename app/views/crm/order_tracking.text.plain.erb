@@ -6,15 +6,11 @@ We just wanted to inform you that your order has been shipped to the following a
 <%= @order.shipping_city %>, <%= @order.shipping_state %> <%= @order.shipping_zip %>
 
 Order Details:
-
-<% if !@line_items.blank? %>
-  <% for line_item in @line_items %>
+<% if !@line_items.blank? %><% for line_item in @line_items %>
 ---------------------------------------
 <%= line_item.quantity %>x <%= line_item.variation.product.name %> 
 [$<%= format("%.2f",line_item.price) %> a piece]
-[$<%= format("%.2f",line_item.price*line_item.quantity.to_f) %> total]
-  <% end %>
-<% end %>
+[$<%= format("%.2f",line_item.price*line_item.quantity.to_f) %> total]<% end %><% end %>
 ---------------------------------------
 
 Thanks for shopping with Cactus Sports! We look forward to serving you again in the future!
