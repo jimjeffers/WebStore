@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091207090258) do
+ActiveRecord::Schema.define(:version => 20091208221106) do
 
   create_table "brands", :force => true do |t|
     t.string   "name"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(:version => 20091207090258) do
     t.integer  "product_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "position",    :default => 0
   end
 
   add_index "categorizations", ["category_id"], :name => "index_categorizations_on_category_id"
@@ -170,6 +171,7 @@ ActiveRecord::Schema.define(:version => 20091207090258) do
     t.string   "guid"
     t.datetime "deleted_at"
     t.string   "aasm_state",         :default => "in_stock"
+    t.integer  "position",           :default => 0
   end
 
   add_index "products", ["aasm_state"], :name => "index_products_on_aasm_state"
