@@ -29,6 +29,31 @@ $(document).ready(function() {
       }
    });
    
+   // Handle in stock toggles.
+   $('.in_stock, .out_of_stock').click(function(event){
+      var target = $(event.target);
+      target.hide();
+      $.getJSON(target.get(0).href, function(data) {
+         var status;
+         $.each(data, function(item,value){
+            status = value;
+         });
+         if(target.find('span').length > 0) {
+            target.find('span').html(status);
+         } else {
+            target.html(status);
+         }
+         var anticlass = "in_stock";
+         if(status == "in_stock") {
+            anticlass = "out_of_stock"
+         }
+         target.addClass(status);
+         target.removeClass(anticlass);
+         target.show('normal');
+      });
+      return false;
+   });
+   
    // Handle inline editing of categories.
    $('.edit_link').hide();
    $('#categories li').hover(function(event){
