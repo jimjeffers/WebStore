@@ -1,5 +1,9 @@
 ActionController::Routing::Routes.draw do |map|
-
+  
+  map.sort_products '/products/sort', :controller => 'products', :action => 'sort'
+  map.sort_products_in_category '/products/sort/category/:category_id', :controller => 'products', :action => 'sort'
+  map.update_order_of_products '/products/update_order', :controller => 'products', :action => 'update_order'
+  map.update_order_of_categorizations '/categorizations/update_order', :controller => 'products', :action => 'update_order'
   map.resources :products do |product|
     product.resources :variations
   end
@@ -7,7 +11,7 @@ ActionController::Routing::Routes.draw do |map|
   map.product_add_category    '/products/:product_id/add/category/:category_id', :controller => 'products', :action => 'add_category'
   map.product_toggle_availability '/products/:product_id/toggle_availability', :controller => 'products', :action => 'toggle_availability'
   map.product_variation_toggle_availability '/products/:product_id/variations/:variation_id/toggle_availability', :controller => 'variations', :action => 'toggle_availability'
-  map.product_search '/products/search/', :controller => 'products', :action => 'search'
+  map.product_search '/products/search/', :controller => 'products', :action => 'search' 
   map.resources :categories do |category|
     category.resources :products
   end

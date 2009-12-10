@@ -22,4 +22,11 @@
  <div id="search_panel" class="panel">
     <h2 class="panel_name">Search</h2>
     <%= render :partial => 'product_search_form', :locals => {:label => "Search for a product by entering in it's name or product number.", :term => params[:product_term], :action => 'Go'} %>
+    <div id="sort">
+      <% if @category.nil? %>
+      <h2><%= link_to "Sort Products", sort_products_path %></h2>
+      <% else %>
+      <h2><%= link_to "Sort Products", sort_products_in_category_path(@category.id) %></h2>
+      <% end %>
+    </div>
  </div>

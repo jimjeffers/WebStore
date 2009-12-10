@@ -1050,7 +1050,25 @@
       color: #900;
       margin-right: 0;
    }
-    
+
+/* =SORTING
+   ------------------------------------------------------ */
+   #sort h2 {
+      border: none;
+   }
+   
+   #sort h2 a {
+      background: #000 url(../images/admin_side_pointer.png) no-repeat;
+      color: #fff;
+      font-size: 0.875em;
+      display: block;
+      margin-top: 80px;
+      padding: 12px 0 14px 30px;
+   }
+   
+   #sort h2.active {
+      background: #000 url(../images/admin_side_pointer.png) no-repeat;
+   }
 /* =LOGIN
    ------------------------------------------------------ */
    #login_form {

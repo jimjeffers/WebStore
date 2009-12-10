@@ -98,6 +98,23 @@ $(document).ready(function() {
       $(this).ColorPickerSetColor(this.value);
    });
    
+   // Add list sorting for admin.
+   $(".sorted_list").sortable({
+      update: function(event, ui) {
+         var list = $(this);
+         list.css("opacity",0.25);
+         var current = $(event.target);
+         console.log(current.sortable('serialize'));
+         $.post('/'+current.attr('id')+'/update_order', current.sortable('serialize'),
+            function(data) {
+               alert(data);
+               list.css("opacity",1);
+            },
+         "text");
+      }
+   });
+   $(".sorted_list").disableSelection();
+   
 });
 
 function showLightbox(source,speed) {

@@ -28,7 +28,14 @@ class Product < ActiveRecord::Base
   default_scope :conditions => ["products.deleted_at IS ?",nil], 
                 :include => [:variations], 
                 :order => "variations.sku ASC"
-                
+
+  named_scope :ordered, :order => "products.position ASC"
+  
+  named_scope :category_ordered, lambda { |category| { 
+    :conditions => ["categories.id=?",category.id],
+    :include => [:categorizations => :category], :order => "categorizations.position ASC" }
+  }
+  
   named_scope :deleted, :conditions => ['products.deleted_at IS NOT ?',nil]
   
   named_scope :search, lambda { |term| {
@@ -123,6 +130,10 @@ class Product < ActiveRecord::Base
   # Paranoid destroy behavior.
   def destroy
     self.update_attribute(:deleted_at, Time.now.utc)
+  end
+  
+  def categorization_id_for(category)
+    self.categorizations.find_by_category_id(category.id).id
   end
   
   protected

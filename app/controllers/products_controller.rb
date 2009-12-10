@@ -127,6 +127,32 @@ class ProductsController < ApplicationController
     end
   end
   
+  def sort
+    @category = Category.find(params[:category_id]) unless params[:category_id].nil?
+    if !@category.nil?
+      @products = Product.category_ordered(@category)
+    else
+      @products = Product.ordered
+    end
+  end
+  
+  # XHR /questions/update_order
+  # Updates the order of the questions supplied in a post request.
+  def update_order
+    if params[:product]
+      params[:product].each_with_index do |id,index|
+        Product.find(id).update_attribute(:position,index)
+      end
+    elsif params[:categorization]
+      params[:categorization].each_with_index do |id,index|
+        Categorization.find(id).update_attribute(:position,index)
+      end
+    end
+    respond_to do |format|
+      format.js { render :text => 'Order successfully updated!' }
+    end
+  end
+  
   protected
   # Grab all categories with products.
   def get_categories
