@@ -1,0 +1,16 @@
+<div id="status" class="panel">
+    <% if !@category.nil? %>
+    <h2 class="panel_name">Sorting Products in "<%= @category.name %>" <%= link_to "Return to products &amp; categories.", category_products_path(@category), {:class => 'secondary'} %></h2>
+    <% else %>
+    <h2 class="panel_name">Sorting All Products (this affects homepage) <%= link_to "Return to products &amp; categories.", products_path, {:class => 'secondary'} %></h2>
+    <% end %>
+    <ul class="sorted_list" id="<%= (@category.nil?) ? 'products' : 'categorizations' %>">
+      <% if !@products.blank? %>
+        <% for product in @products %>
+          <li id="<%= (@category.nil?) ? 'product' : 'categorization' %>_<%= (@category.nil?) ? product.id : product.categorization_id_for(@category) %>"><a href="#" class="drag"><%= product.name %></a></li>
+        <% end %>
+      <% else %>
+        No products were found to sort!
+      <% end %>
+    </ul>
+</div>
