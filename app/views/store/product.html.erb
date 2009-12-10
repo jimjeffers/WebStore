@@ -17,6 +17,7 @@
   <div class="product_description">
     <%= RedCloth.new(@product.full_description).to_html %>
   </div>
+  <% if !@variations.blank? && @product.in_stock? %>
   <% form_for(:line_item, @line_item, :url => add_to_cart_path(@method,@category.guid,@product.guid)) do |f| %>
     <%= f.error_messages %>
     <ul class="form">
@@ -34,6 +35,9 @@
         <%= submit_tag 'Add to Cart!', :class => 'add_to_cart' %>
       </li>
     </ul>
+  <% end %>
+  <% else %>
+  <p class="sorry">Sorry this item is currently out of stock!</p>
   <% end %>
 </div>
 

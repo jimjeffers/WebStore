@@ -118,6 +118,15 @@ class ProductsController < ApplicationController
     end
   end
   
+  def toggle_availability
+    @product = Product.find(params[:product_id])
+    @product.toggle_availability!
+    respond_to do |format|
+      format.html { redirect_to @product}
+      format.js { render :json => {:status => @product.aasm_state}}
+    end
+  end
+  
   protected
   # Grab all categories with products.
   def get_categories

@@ -196,6 +196,11 @@ and Sumo Creations.
    div#company_specific_content p {
       font-size: 0.875em;
    }
+   
+   p.sorry {
+      color: #900;
+      font-weight: bold;
+   }
 
 /* =SEARCH_FORM
    ------------------------------------------------------ */

@@ -62,6 +62,11 @@ class Product < ActiveRecord::Base
     transitions :to => :in_stock, :from => [:out_of_stock]
   end
   
+  aasm_event :toggle_availability do
+    transitions :to => :in_stock, :from => :out_of_stock
+    transitions :to => :out_of_stock, :from => :in_stock
+  end
+  
   # ----------------------------------------------------------
   # Class Methods
     

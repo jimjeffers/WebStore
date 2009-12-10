@@ -30,6 +30,7 @@
     </ul>
   </fieldset>
   <%= link_to 'Edit Product Details', edit_product_path(@product), {:class => 'stand_alone'} %>
+  <%= link_to "Currently #{humanize(@product.aasm_state)}.", product_toggle_availability_path(@product.id), {:class => "stand_alone #{@product.aasm_state}"} %>
   <fieldset id="product_detail_categories">
     <legend>Product Categories</legend>
     <ul class="interactive_toggle_list remove_list">
@@ -57,7 +58,8 @@
           <span class="size"><%= variation.garment_size.name %></span>
           <span class="sku"><%= variation.sku %></span>
           <%= link_to "edit", edit_product_variation_path(@product,variation), {:class => 'edit_variation lightbox_enabled action edit'} %>
-          <%= link_to "delete", [@product,variation], {:class => 'delete_variation action delete'} %>         
+          <%= link_to "delete", [@product,variation], {:class => 'delete_variation action delete'} %>
+          <span class="availability"><%= link_to "#{humanize(variation.aasm_state)}", product_variation_toggle_availability_path(@product.id,variation.id), {:class => "stand_alone #{variation.aasm_state}"} %></span>
         </li>
        <% end %>
        <% else %>

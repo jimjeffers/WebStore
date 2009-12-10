@@ -100,6 +100,22 @@ class VariationsController < ApplicationController
     end
   end
   
+  
+  def toggle_availability
+    @product = Product.find(params[:product_id])
+    if !@product.nil?
+      @variation = @product.variations.find(params[:variation_id])
+      @variation.toggle_availability!
+      respond_to do |format|
+        format.html { redirect_to @product}
+        format.js { render :json => {:status => @variation.aasm_state}}
+      end
+    else
+      flash[:error] = "Product was not found!"
+      redirect_to products_path
+    end
+  end
+  
   protected
   
   def get_product

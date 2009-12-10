@@ -3,7 +3,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
   <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-    <% debugger %>
     <title>
     <%= (@product.title unless @product.nil? || @product.title.blank?) || (@category.title unless @category.nil? || @category.title.blank?) || @site_settings.site_title %>
     </title>

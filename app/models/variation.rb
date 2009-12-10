@@ -1,4 +1,6 @@
 class Variation < ActiveRecord::Base
+  include AASM
+  
   # Relationships
   belongs_to :garment_size
   belongs_to :color
@@ -20,6 +22,24 @@ class Variation < ActiveRecord::Base
   
   named_scope :all_with_gender, lambda {|gender| {:conditions => ['gender = ?',gender]} }
   named_scope :available, {:conditions => ['variations.aasm_state = "in_stock"']}
+  
+  # States (via aasm)
+  aasm_initial_state :in_stock
+  aasm_state :in_stock
+  aasm_state :out_of_stock
+  
+  aasm_event :ran_out do
+    transitions :to => :out_of_stock, :from => [:in_stock]
+  end
+  
+  aasm_event :got_in do
+    transitions :to => :in_stock, :from => [:out_of_stock]
+  end
+  
+  aasm_event :toggle_availability do
+    transitions :to => :in_stock, :from => :out_of_stock
+    transitions :to => :out_of_stock, :from => :in_stock
+  end
   
   # ----------------------------------------------------------
   # Class Methods
