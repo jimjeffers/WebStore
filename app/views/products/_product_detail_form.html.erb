@@ -7,6 +7,13 @@
   </ul>
 </fieldset>
 <fieldset>
+  <legend>On Sale?</legend>
+  <ul class="form">
+    <li><%= f.label :on_sale, "On Sale?" %><%= f.check_box :on_sale %></li>
+    <li><%= f.label :sale_price, "Sale Price" %><%= f.text_field :sale_price %></li>
+  </ul>
+</fieldset>
+<fieldset>
   <legend>Primary Product Photo</legend>
   <ul class="form">
      <li><%= f.label :photo, 'Product Photo' %><%= f.file_field :photo %></li>

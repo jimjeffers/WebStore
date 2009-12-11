@@ -2,8 +2,11 @@
   <% if !products.blank? %>
     <% for product in products %>
       <% unless method.nil? && product.method.nil? %>
-      <li id="product_<%= product.id %>" class="product">
+      <li id="product_<%= product.id %>" class="product<%= ' on_sale' if product.on_sale? %>">
         <ul>
+            <% if product.on_sale? %>
+            <li class="product_sale">On Sale!</li>
+            <% end %>
             <li class="product_photo"><%= link_to image_tag(product.photo.url(:showcase), :alt => product.name, :width => 160, :height => 244), item_path_or_default(method,category,product) %></li>
             <li class="product_price"><%= currency(product.price) %></li>
             <li class="product_name"><%= link_to product.name, item_path_or_default(method,category,product) %></li>

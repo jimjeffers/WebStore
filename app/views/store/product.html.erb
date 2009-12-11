@@ -13,7 +13,12 @@
 
 <div id="product_details">
   <h2 class="product_name"><%= @product.name %></h2>
+  <% if @product.on_sale? %>
+  <h3 class="old_price"><%= currency(@product.original_price) %></h3>
+  <h3 class="sale_price"><%= currency(@product.price) %> <span class="savings">Save <%= currency(@product.savings) %> if you buy it now!</span></h3>
+  <% else %>
   <h3 class="product_price"><%= currency(@product.price) %></h3>
+  <% end %>
   <div class="product_description">
     <%= RedCloth.new(@product.full_description).to_html %>
   </div>

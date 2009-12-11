@@ -23,6 +23,7 @@ class Product < ActiveRecord::Base
   # Validations
   validates_presence_of :name
   validates_presence_of :price
+  validates_presence_of :sale_price, :if => :on_sale?
   
   # Scopes
   default_scope :conditions => ["products.deleted_at IS ?",nil], 
@@ -141,6 +142,21 @@ class Product < ActiveRecord::Base
   def toggle_featured!
     self.update_attribute(:featured, !self.featured?)
     self.featured?
+  end
+  
+  # Return the sale price if on sale. Otherwise return the standard price.
+  def price
+    (read_attribute(:sale_price) if on_sale?) || read_attribute(:price)
+  end
+  
+  # Shows the original price for the product.
+  def original_price
+    read_attribute(:price)
+  end
+  
+  # Shows the amount saved from the sale price.
+  def savings
+    read_attribute(:price) - read_attribute(:sale_price)
   end
   
   protected

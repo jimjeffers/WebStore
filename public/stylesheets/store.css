@@ -887,6 +887,27 @@ and Sumo Creations.
       line-height: 1.5em;
    }
    
+   #product_details h3.old_price {
+      color: #999;
+      float: left;
+      margin-right: 10px;
+      text-decoration: line-through;
+   }
+   
+   #product_details h3.sale_price {
+      color: #900;
+      margin-bottom: 10px;
+   }
+   
+   #product_details h3 span.savings {
+      color: #666;
+      display: block;
+      font-size: 0.575em;
+      font-style: italic;
+      line-height: 1.25em;
+      text-transform: lowercase;
+   }
+   
    #product_details h3 {
       color: #FD9408;
       font-weight: normal;
@@ -1190,7 +1211,8 @@ and Sumo Creations.
       display: block;
    }
    
-   ol.product_showcase li.product_price {
+   ol.product_showcase li.product_price,
+   ol.product_showcase li.product_sale {
       background: #FD9408;
       bottom: 0;
       color: #000;
@@ -1201,6 +1223,22 @@ and Sumo Creations.
       position: absolute;
       text-align: center;
    } 
+   
+   ol.product_showcase .on_sale li.product_price,
+   ol.product_showcase li.product_sale {
+      background: #900;
+      color: #fff;
+   }
+   
+   ol.product_showcase li.product_sale {
+      bottom: auto;
+      left: auto;
+      font-size: 0.875em;
+      line-height: 1.25em;
+      right: 0;
+      text-transform: uppercase;
+      top: 0;
+   }
    
    ol.product_showcase li.product_name {
       bottom: -42px;
