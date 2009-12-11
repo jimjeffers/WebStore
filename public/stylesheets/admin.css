@@ -870,6 +870,14 @@
        background: #598527;
     }
     
+    a.remove_featured {
+       color: #900;
+       position: absolute;
+       right: 0;
+       text-decoration: none;
+       top: 5px;
+    }
+    
     a.stand_alone.out_of_stock {
        background: #900;
     }

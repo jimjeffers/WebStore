@@ -75,6 +75,20 @@ $(document).ready(function() {
       return false;
    });
    
+   $('.remove_featured').click(function(event) {
+      var target = $(event.target);
+      $.getJSON(target.get(0).href, function(data) {
+         var status;
+         $.each(data, function(item,value){
+            status = value;
+         });
+         if(status=="not_featured") {
+            target.parent().remove();
+         }
+      });
+      return false;
+   });
+   
    // Handle inline editing of categories.
    $('.edit_link').hide();
    $('#categories li').hover(function(event){

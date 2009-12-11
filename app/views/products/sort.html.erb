@@ -9,7 +9,7 @@
     <ul class="sorted_list" id="<%= (@category.nil?) ? 'products' : 'categorizations' %>">
       <% if !@products.blank? %>
         <% for product in @products %>
-          <li id="<%= (@category.nil?) ? 'product' : 'categorization' %>_<%= (@category.nil?) ? product.id : product.categorization_id_for(@category) %>"><span class="item_number"><%= product.sku %></span><a href="#" class="drag product_name"><%= product.name %></a></li>
+          <li id="<%= (@category.nil?) ? 'product' : 'categorization' %>_<%= (@category.nil?) ? product.id : product.categorization_id_for(@category) %>"><span class="item_number"><%= product.sku %></span><a href="#" class="drag product_name"><%= product.name %></a><%= link_to "X", product_toggle_featured_path(product), {:class => "remove_featured"} %></li>
         <% end %>
       <% else %>
         No products were found to sort!
