@@ -28,7 +28,7 @@ module ActiveRecord
         end
         
         def guid=(value)
-          write_attribute(:guid, value.split(" ").each{|i| i.downcase!; i.gsub!(/[^a-zA-Z0-9]/,'') }.join("-"))
+          write_attribute(:guid, value.split(/\s|\-/).each{|i| i.downcase!; i.gsub!(/[^a-zA-Z0-9]/,'') }.join("-"))
         end
         
         protected
