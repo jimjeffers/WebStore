@@ -7,7 +7,7 @@
       <ul class="form">
         <li>
           <%= f.label :products_per_page, "Products Per Page" %>
-          <%= f.select :products_per_page, (1..12).map{|i| i*4} %>
+          <%= f.select :products_per_page, (1..5).to_a %>
         </li>
       </ul>
     </fieldset>

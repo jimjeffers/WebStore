@@ -54,6 +54,27 @@ $(document).ready(function() {
       return false;
    });
    
+   // Handle featured toggles.
+   $('.featured, .not_featured').click(function(event){
+      var target = $(event.target);
+      target.hide();
+      $.getJSON(target.get(0).href, function(data) {
+         var status;
+         $.each(data, function(item,value){
+            status = value;
+         });
+         target.html(status);
+         var anticlass = "featured";
+         if(status == anticlass) {
+            anticlass = "not_featured"
+         }
+         target.addClass(status);
+         target.removeClass(anticlass);
+         target.show('normal');
+      });
+      return false;
+   });
+   
    // Handle inline editing of categories.
    $('.edit_link').hide();
    $('#categories li').hover(function(event){

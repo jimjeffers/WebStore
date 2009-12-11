@@ -30,7 +30,7 @@ class Product < ActiveRecord::Base
                 :order => "variations.sku ASC"
 
   named_scope :ordered, :order => "products.position ASC"
-  
+  named_scope :featured, :conditions => ["products.featured = ?",true]
   named_scope :category_ordered, lambda { |category| { 
     :conditions => ["categories.id=?",category.id],
     :include => [:categorizations => :category], :order => "categorizations.position ASC" }
@@ -132,8 +132,15 @@ class Product < ActiveRecord::Base
     self.update_attribute(:deleted_at, Time.now.utc)
   end
   
+  # Returns ID of the categorization associated to the product and a given category.
   def categorization_id_for(category)
     self.categorizations.find_by_category_id(category.id).id
+  end
+  
+  # Updates the featured attribute.
+  def toggle_featured!
+    self.update_attribute(:featured, !self.featured?)
+    self.featured?
   end
   
   protected

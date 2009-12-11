@@ -10,6 +10,12 @@ class Store
     :kids => "kids",
     :pets => "pets"
   }
+  ROW_SIZE = {
+    :home => 5,
+    :search => 5,
+    :category => 4,
+    :brand => 4
+  }
   SALES_TAX_RATE = 0.081
   SALES_TAX_STATES = ["AZ","Arizona"]
   SHIPPING_METHODS = {"Standard" => "standard", "2nd Day  (add $18)" => "2nd day"}

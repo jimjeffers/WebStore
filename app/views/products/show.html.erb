@@ -30,7 +30,13 @@
     </ul>
   </fieldset>
   <%= link_to 'Edit Product Details', edit_product_path(@product), {:class => 'stand_alone'} %>
-  <%= link_to "Currently <span>#{humanize(@product.aasm_state)}</span>.", product_toggle_availability_path(@product.id), {:class => "stand_alone #{@product.aasm_state}"} %>
+  <fieldset id="product_detail_description">
+    <legend>Product Status Toggles</legend>
+    <ul class="toggles">
+      <li><%= link_to "#{humanize(@product.aasm_state)}", product_toggle_availability_path(@product.id), {:class => "stand_alone #{@product.aasm_state}"} %></li>
+      <li><%= link_to "#{(@product.featured?) ? 'Featured' : 'Not featured'}", product_toggle_featured_path(@product.id), {:class => "stand_alone #{(@product.featured?) ? 'featured' : 'not_featured'}"} %></li>
+  </ul>
+  </fieldset>
   <fieldset id="product_detail_categories">
     <legend>Product Categories</legend>
     <ul class="interactive_toggle_list remove_list">

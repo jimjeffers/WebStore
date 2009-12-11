@@ -4,10 +4,12 @@
     <% else %>
     <h2 class="panel_name">Sorting All Products (this affects homepage) <%= link_to "Return to products &amp; categories.", products_path, {:class => 'secondary'} %></h2>
     <% end %>
+</div>
+<div id="product_catalog" class="panel">
     <ul class="sorted_list" id="<%= (@category.nil?) ? 'products' : 'categorizations' %>">
       <% if !@products.blank? %>
         <% for product in @products %>
-          <li id="<%= (@category.nil?) ? 'product' : 'categorization' %>_<%= (@category.nil?) ? product.id : product.categorization_id_for(@category) %>"><a href="#" class="drag"><%= product.name %></a></li>
+          <li id="<%= (@category.nil?) ? 'product' : 'categorization' %>_<%= (@category.nil?) ? product.id : product.categorization_id_for(@category) %>"><span class="item_number"><%= product.sku %></span><a href="#" class="drag product_name"><%= product.name %></a></li>
         <% end %>
       <% else %>
         No products were found to sort!

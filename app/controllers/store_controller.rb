@@ -8,12 +8,12 @@ class StoreController < ApplicationController
   
   # Displays default storefront.
   def index
-    @products = Product.ordered.sellable.paginate :page => params[:page], :per_page => @site_settings.products_per_page
+    @products = Product.featured.ordered.sellable.paginate :page => params[:page], :per_page => @site_settings.products_per_page * Store::ROW_SIZE[:home]
   end
   
   # Displays search results.
   def search
-    @products = Product.search(params[:search]).ordered.paginate :page => params[:page], :per_page => @site_settings.products_per_page
+    @products = Product.search(params[:search]).ordered.paginate :page => params[:page], :per_page => @site_settings.products_per_page* Store::ROW_SIZE[:search]
     render :action => "index"
   end
   
@@ -33,9 +33,9 @@ class StoreController < ApplicationController
   # Displays all products of a specific category.
   def category
     unless @method == Store::METHODS[:brand]
-      @products = Product.category_ordered(@category).all_with_gender(@method).sellable.paginate :page => params[:page], :per_page => @site_settings.products_per_page
+      @products = Product.category_ordered(@category).all_with_gender(@method).sellable.paginate :page => params[:page], :per_page => @site_settings.products_per_page * Store::ROW_SIZE[:category]
     else
-      @products = @category.products.ordered.sellable.paginate :page => params[:page], :per_page => @site_settings.products_per_page
+      @products = @category.products.ordered.sellable.paginate :page => params[:page], :per_page => @site_settings.products_per_page * Store::ROW_SIZE[:brand]
     end
   end
   

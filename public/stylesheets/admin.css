@@ -858,14 +858,24 @@
     }
     
     a.stand_alone.in_stock,
-    a.stand_alone.out_of_stock {
+    a.stand_alone.out_of_stock,
+    a.featured,
+    a.not_featured {
        background: #000;
        width: auto;
        text-transform: uppercase;
     }
     
+    a.featured {
+       background: #598527;
+    }
+    
     a.stand_alone.out_of_stock {
        background: #900;
+    }
+    
+    a.not_featured {
+       background: #666;
     }
     
     html .add_list li,
@@ -889,7 +899,9 @@
     .action.edit,
     .action.delete,
     .in_stock,
-    .out_of_stock {
+    .out_of_stock,
+    .featured,
+    .not_featured {
        display: inline-block;
        font-size: 0.875em;
        margin: 0.25em 0.05em;
@@ -928,6 +940,17 @@
     
     .action.delete {
        background: #a0410d;
+    }
+    
+    ul.toggles li {
+       float: left;
+       margin: 2px 4px;
+       border: none;
+    }
+    
+    ul.toggles {
+       clear: both;
+       overflow: hidden;
     }
     
 /* =DELETE_CONTROL

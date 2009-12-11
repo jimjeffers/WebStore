@@ -9,9 +9,9 @@ class ProductsController < ApplicationController
   def index
     get_categories
     if @category
-      @products = @category.products.paginate :page => params[:page], :per_page => @site_settings.products_per_page
+      @products = @category.products.paginate :page => params[:page], :per_page => 75
     else
-      @products = Product.paginate :page => params[:page], :per_page => @site_settings.products_per_page
+      @products = Product.paginate :page => params[:page], :per_page => 75
     end
     respond_to do |format|
       format.html # index.html.erb
@@ -127,12 +127,21 @@ class ProductsController < ApplicationController
     end
   end
   
+  def toggle_featured
+    @product = Product.find(params[:product_id])
+    @product.toggle_featured!
+    respond_to do |format|
+      format.html { redirect_to @product}
+      format.js { render :json => {:status => (@product.featured?) ? "featured" : "not_featured"}}
+    end
+  end
+  
   def sort
     @category = Category.find(params[:category_id]) unless params[:category_id].nil?
     if !@category.nil?
       @products = Product.category_ordered(@category)
     else
-      @products = Product.ordered
+      @products = Product.ordered.featured
     end
   end
   
