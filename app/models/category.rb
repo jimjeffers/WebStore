@@ -21,6 +21,9 @@ class Category < ActiveRecord::Base
     :include => {:products => {:variations => :garment_size}} }
   }
   
+  named_scope :all_with_sale_items, { :conditions => ['products.on_sale=? AND products.aasm_state=?',true,'in_stock'],
+                                      :include => :products }
+  
   # Returns a whitespace free slug for markup or SEO purposes.
   def slug
     name.split(' ').join('-')
