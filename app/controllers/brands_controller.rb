@@ -3,9 +3,6 @@ class BrandsController < ApplicationController
   require_role :manager
   layout 'admin'
   
-  
-  caches_action :index, :edit, :show
-  
   # GET /brands
   # GET /brands.xml
   def index
@@ -48,9 +45,6 @@ class BrandsController < ApplicationController
   # POST /brands.xml
   def create
     @brand = Brand.new(params[:brand])
-    
-    # Clear cache
-    expire_action :action => :index, :edit
     
     respond_to do |format|
       if @brand.save
