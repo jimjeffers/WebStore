@@ -4,7 +4,6 @@ class StoreController < ApplicationController
   before_filter :get_segmented_categories
   before_filter :get_categories_by_method
   before_filter :hide_newsletter_form, :only => [:checkout,:confirm]
-  filter_parameter_logging :card_number, :verification_number, :expiration_month, :expiration_year
   
   # Displays default storefront.
   def index
@@ -57,7 +56,6 @@ class StoreController < ApplicationController
   # Removes a specific line item from the current user's cart.
   def remove_from_cart
     @line_item = LineItem.find(params[:id])
-    debugger
     if @cart and @cart.line_items.include?(@line_item)
       @cart.remove_line_item(@line_item)
     end
@@ -136,23 +134,27 @@ class StoreController < ApplicationController
   
   # Returns segmented categories for navigation purposes.
   def get_segmented_categories
-    @guys_categories = Category.all_with_gender(Store::METHODS[:guys])
-    @girls_categories = Category.all_with_gender(Store::METHODS[:girls])
-    @kids_categories = Category.all_with_gender(Store::METHODS[:kids])
-    @pets_categories = Category.all_with_gender(Store::METHODS[:pets])
-    @gifts_categories = Category.all_with_gender(Store::METHODS[:gifts])
-    @brands = Brand.all
+    unless  fragment_exist?(:controller => 'layout', :action => 'store', :action_suffix => "store_layout_search_and_nav") && 
+            fragment_exist?(:controller => 'layout', :action => 'store', :action_suffix => "store_layout_footer") &&
+            fragment_exist?(:controller => 'layout', :action => 'store', :action_suffix => "section_navigation")
+      @guys_categories = Category.all_with_gender(Store::METHODS[:guys]) 
+      @girls_categories = Category.all_with_gender(Store::METHODS[:girls])
+      @kids_categories = Category.all_with_gender(Store::METHODS[:kids])
+      @pets_categories = Category.all_with_gender(Store::METHODS[:pets])
+      @gifts_categories = Category.all_with_gender(Store::METHODS[:gifts])
+      @brands = Brand.all
+    end
   end
   
   # Returns a list of categories dependent on the search method (a string) stored in @method
   def get_categories_by_method
     @categories = case @method
-      when Store::METHODS[:guys]  then @guys_categories
-      when Store::METHODS[:girls] then @girls_categories
-      when Store::METHODS[:kids]  then @kids_categories
-      when Store::METHODS[:pets]  then @pets_categories
-      when Store::METHODS[:gifts] then @gifts_categories
-      when Store::METHODS[:brand] then Brand.all
+      when Store::METHODS[:guys]  then @guys_categories || Category.all_with_gender(Store::METHODS[:guys]) 
+      when Store::METHODS[:girls] then @girls_categories || Category.all_with_gender(Store::METHODS[:girls])
+      when Store::METHODS[:kids]  then @kids_categories || Category.all_with_gender(Store::METHODS[:kids])
+      when Store::METHODS[:pets]  then @pets_categories || Category.all_with_gender(Store::METHODS[:pets])
+      when Store::METHODS[:gifts] then @gifts_categories || Category.all_with_gender(Store::METHODS[:gifts])
+      when Store::METHODS[:brand] then @brands || Brand.all
       when nil then Category.all
     end
   end

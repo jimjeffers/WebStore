@@ -26,4 +26,10 @@ Rails::Initializer.run do |config|
   # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
   # Run "rake -D time" for a list of tasks for finding time zone names.
   config.time_zone = 'UTC'
+  
+  # Setup memcache store.
+  config.cache_store = :mem_cache_store, "localhost"
+  
+  # Add custom load paths for specialized objects outside of the MVC.
+  config.load_paths << "#{RAILS_ROOT}/app/sweepers"
 end

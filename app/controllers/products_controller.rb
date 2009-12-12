@@ -1,8 +1,9 @@
 class ProductsController < ApplicationController
+  layout 'admin'
   before_filter :login_required
   require_role :user
-  
-  layout 'admin'
+  cache_sweeper :categorization_sweeper
+  cache_sweeper :showcase_sweeper, :only => [:sort, :toggle_featured, :toggle_availability]
   
   # GET /products
   # GET /products.xml

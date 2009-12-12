@@ -612,6 +612,14 @@ and Sumo Creations.
       width: 142px;
    }
    
+   ul.section_nav.pets li.pets,
+   ul.section_nav.kids li.kids,
+   ul.section_nav.gifts li.gifts,
+   ul.section_nav.girls li.girls,
+   ul.section_nav.guys li.guys {
+      display: none;
+   }
+   
    #secondary_navigation li.section .sub_navigation li a {
       background: #ccc;
       border-radius:3px;

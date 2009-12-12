@@ -12,9 +12,9 @@ class ApplicationController < ActionController::Base
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
   # Scrub sensitive parameters from your log
-  # filter_parameter_logging :password
+  filter_parameter_logging :password, :card_number, :verification_number, :expiration_month, :expiration_year
   
-  protected
+  private
   def get_site_settings
     @site_settings = SiteSetting.first
   end

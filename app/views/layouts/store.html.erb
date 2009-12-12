@@ -27,6 +27,7 @@
       <span class="count"><%= (@cart.nil?) ? 0 : @cart.item_count %></span> <span class="description">items in your cart<span></span></span>
       <a href="<%= cart_path %>" class="checkout_button">Checkout<span></span></a>
     </p>
+    <% cache(:controller => 'layout', :action => 'store', :action_suffix => "store_layout_search_and_nav") do %>
     <%= render :partial => 'layouts/search_form', :locals => {:form_id => 'primary_search'} %>
     <ul id="primary_navigation">
       <% if !@guys_categories.blank? %>
@@ -109,6 +110,7 @@
       </li>
       <% end %>
     </ul>
+    <% end %>
     
     <div id="primary_content">
       <%= yield :layout %>
@@ -126,6 +128,8 @@
       <%= RedCloth.new(@optimized_content).to_html %>
     </div>
     <% end %>
+    
+    <% cache(:controller => 'layout', :action => 'store', :action_suffix => "store_layout_footer") do %>
     <div id="external_page_content">
       <h2 id="follow_up"><img src="/images/sub_didnt_see_what_your_looking_for.png" width="269" height="17" alt="Didn't See What You Were Looking For?"/></h2>
       <%= render :partial => 'layouts/search_form', :locals => {:form_id => 'secondary_search'} %>
@@ -179,6 +183,7 @@
         <li id="copyright">&copy; 2009, Cactus Sports. All designs Copyright by owner.</li>
       </ul>
     </div>
+    <% end %>
     <%= javascript_include_tag 'jquery-1-1.3.2.min', 'jquery.fancybox-1.2.5.pack.js','application.js', :cache => 'front_end' %>
     <%= yield :foot %>
     <% if ENV["RAILS_ENV"] == "development" %>

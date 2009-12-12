@@ -96,6 +96,7 @@ class Product < ActiveRecord::Base
     if !category_id.nil? && !(category = Category.find(category_id)).nil?
       categories.delete(category)
     end
+    self.update_attribute(:updated_at,Time.now)
   end
   
   # Adds a category associated to this particular product.
