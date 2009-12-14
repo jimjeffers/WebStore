@@ -1,7 +1,7 @@
 class Category < ActiveRecord::Base
   # Plugins
   acts_as_taggable
-  has_guid :name
+  has_guid :name, :deleted_at
   
   # Relationships
   has_many :products, :through => :categorizations
@@ -10,7 +10,6 @@ class Category < ActiveRecord::Base
   # Validations
   validates_presence_of :name
   validates_uniqueness_of :name, :scope => :deleted_at
-  validates_uniqueness_of :guid, :scope => :deleted_at
   
   # Scopes
   default_scope :conditions => ["categories.deleted_at IS ?",nil]

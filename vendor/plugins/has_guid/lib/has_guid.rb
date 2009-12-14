@@ -7,11 +7,11 @@ module ActiveRecord
       end
       
       module ClassMethods
-        def has_guid(field)
+        def has_guid(field,scope=nil)
           unless included_modules.include? InstanceMethods
             include ActiveRecord::Has::Guid::InstanceMethods
             class_inheritable_accessor :has_guid_field
-            validates_uniqueness_of :guid
+            validates_uniqueness_of :guid, :scope => scope
           end
           self.has_guid_field = field.to_sym
           define_method("#{has_guid_field.to_s}=".to_sym) do |method_name, *args|
