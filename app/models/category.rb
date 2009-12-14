@@ -8,8 +8,9 @@ class Category < ActiveRecord::Base
   has_many :categorizations, :dependent => :destroy
   
   # Validations
-  validates_presence_of :name, :scope => :deleted_at
+  validates_presence_of :name
   validates_uniqueness_of :name, :scope => :deleted_at
+  validates_uniqueness_of :guid, :scope => :deleted_at
   
   # Scopes
   default_scope :conditions => ["categories.deleted_at IS ?",nil]
