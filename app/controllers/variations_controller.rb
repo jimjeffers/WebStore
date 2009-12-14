@@ -2,7 +2,7 @@ class VariationsController < ApplicationController
   before_filter :get_product
   before_filter :login_required
   
-  require_role :products
+  require_role [:user,:manager]
   
   layout 'admin'
   

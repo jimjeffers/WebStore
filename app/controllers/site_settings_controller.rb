@@ -2,6 +2,7 @@ class SiteSettingsController < ApplicationController
   layout 'admin'
   before_filter :login_required
   require_role :manager
+  
   cache_sweeper :showcase_sweeper, :only => [:update]
   
   def edit

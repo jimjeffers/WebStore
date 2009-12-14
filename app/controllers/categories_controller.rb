@@ -1,7 +1,7 @@
 class CategoriesController < ApplicationController
   layout  'admin'
   before_filter :login_required
-  require_role :categories
+  require_role [:user,:manager]
   
   before_filter :set_body_id
   
