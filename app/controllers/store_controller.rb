@@ -18,15 +18,19 @@ class StoreController < ApplicationController
   
   # Displays a specific product.
   def product
-    # Incase you're confused about @product it's happening with a before filter: get_items_from_params
-    if @method == Store::METHODS[:brand]
-      @products = @category.products.sellable.limited(5)
-      @variations = @product.variations.not_deleted.available
+    if @category.nil? || @product.nil?
+      render_404
     else
-      @products = @category.products.all_with_gender(@method).sellable.limited(5)
-      @variations = @product.variations.not_deleted.available.all_with_gender(@method)
+      # Incase you're confused about @product it's happening with a before filter: get_items_from_params
+      if @method == Store::METHODS[:brand]
+        @products = @category.products.sellable.limited(5)
+        @variations = @product.variations.not_deleted.available
+      else
+        @products = @category.products.all_with_gender(@method).sellable.limited(5)
+        @variations = @product.variations.not_deleted.available.all_with_gender(@method)
+      end
+      @line_item = LineItem.new
     end
-    @line_item = LineItem.new
   end
   
   # Displays all products of a specific category.
@@ -110,6 +114,10 @@ class StoreController < ApplicationController
       render :action => "confirm"
       @seo_content_toggle, @newsletter_toggle = [true,true]
     end
+  end
+  
+  def not_found
+    render_404
   end
   
   protected

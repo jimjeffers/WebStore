@@ -57,4 +57,5 @@ ActionController::Routing::Routes.draw do |map|
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
   map.connect '/', :controller => 'store', :action => 'index'
+  map.connect '*path', :controller => 'store', :action => 'not_found' unless ::ActionController::Base.consider_all_requests_local
 end

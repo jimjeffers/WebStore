@@ -14,6 +14,22 @@ class ApplicationController < ActionController::Base
   # Scrub sensitive parameters from your log
   filter_parameter_logging :password, :card_number, :verification_number, :expiration_month, :expiration_year
   
+  def render_404 
+    respond_to do |format| 
+      format.html { render :file => "#{RAILS_ROOT}/public/404.html", :status => '404 Not Found' } 
+      format.xml  { render :nothing => true, :status => '404 Not Found' } 
+    end 
+    true 
+  end 
+   
+  def rescue_action_in_public(e) 
+    case e when ActiveRecord::RecordNotFound 
+      render_404 
+    else 
+      super 
+    end 
+  end
+  
   private
   def get_site_settings
     @site_settings = SiteSetting.first
