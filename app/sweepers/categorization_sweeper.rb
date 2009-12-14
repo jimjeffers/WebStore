@@ -14,14 +14,8 @@ class CategorizationSweeper < ActionController::Caching::Sweeper
   end
   
   def expire_cache()
-    puts "0"*1000
-    puts fragment_exist?(:controller => 'layout', :action => 'store', :action_suffix =>"store_layout_search_and_nav")
     expire_fragment(:controller => 'layout', :action => 'store', :action_suffix =>"store_layout_search_and_nav")
-    
-    puts fragment_exist?(:controller => 'layout', :action => 'store', :action_suffix =>"store_layout_footer")
     expire_fragment(:controller => 'layout', :action => 'store', :action_suffix =>"store_layout_footer")
-    
-    puts fragment_exist?(:controller => 'layout', :action => 'store', :action_suffix => "section_navigation")
     expire_fragment(:controller => 'layout', :action => 'store', :action_suffix => "section_navigation")
   end
 end
