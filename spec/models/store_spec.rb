@@ -22,8 +22,8 @@ describe Store do
     it "should return $6 if $15 is ordered." do
       Store.calculate_shipping_cost(15).should be(6)
     end
-    it "should return $8 if $50 is ordered." do
-      Store.calculate_shipping_cost(15).should be(6)
+    it "should return $8 if $48 is ordered." do
+      Store.calculate_shipping_cost(48).should be(8)
     end
     it "should return $18 if $250 is ordered." do
       Store.calculate_shipping_cost(250).should be(18)
