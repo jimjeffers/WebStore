@@ -89,6 +89,12 @@ $(document).ready(function() {
       return false;
    });
    
+   // Handle print links...
+   $('.print_page').click(function() {
+      window.print();
+      return false;
+   });
+   
    // Handle inline editing of categories.
    $('.edit_link').hide();
    $('#categories li').hover(function(event){

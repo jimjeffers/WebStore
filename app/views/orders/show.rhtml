@@ -123,10 +123,17 @@
         <%= f.text_field :tracking_number %>
         <%= f.label :shipping_service, "Shipping Service" %>
         <%= f.select :shipping_service, [""]+Store::TRACKING_SITES.keys %>
-        <ul>
+        <ul class="order_actions">
            <li class="process_order"><%= f.submit "Process Order" %></li>
            <!-- <li class="print_order"><a href="#">Print Order</a></li> -->
            <!-- <li class="cancel_order"><a href="#">Cancel This Order</a></li> -->
+        </ul>
+     </div>
+     <% else %>
+     <div id="print_order" class="no_print">
+        <h2 class="panel_name">Print Order</h2>
+        <ul class="order_actions">
+          <li class="print_order"><a href="#" class="print_page">Print As Packing Slip</a></li>
         </ul>
      </div>
      <% end %>

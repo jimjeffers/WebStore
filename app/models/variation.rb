@@ -10,7 +10,7 @@ class Variation < ActiveRecord::Base
   # Validations
   validates_uniqueness_of :color_id, :scope => [:product_id, :garment_size_id]
   validates_uniqueness_of :garment_size_id, :scope => [:product_id, :color_id]
-  validates_uniqueness_of :sku
+  validates_uniqueness_of :sku, :scope => :deleted_at
   validates_presence_of :sku
   
   # Scopes
