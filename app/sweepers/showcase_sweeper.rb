@@ -1,5 +1,5 @@
 class ShowcaseSweeper < ActionController::Caching::Sweeper
-  observe :categorization, :product, :site_setting
+  observe :categorization, :product, :site_setting, :category
   
   def after_save(categorization)
     expire_cache()

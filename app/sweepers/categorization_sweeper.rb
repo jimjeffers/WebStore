@@ -1,5 +1,5 @@
 class CategorizationSweeper < ActionController::Caching::Sweeper
-  observe :categorization, :product, :variation
+  observe :categorization, :product, :variation, :category
   
   def after_save(categorization)
     expire_cache()
