@@ -22,7 +22,11 @@ class Store
   SHIPPING_COSTS = {"standard" => 0, "2nd day" => 18}
   SHIPPING_MINIMUM = 6
   SHIPPING_RATES = [[25,8],[50,9],[70,11],[100,13],[150,15],[200,18]]
-  
+  TRACKING_SITES = {
+    :ups => "http://www.ups.com/tracking/tracking.html",
+    :usps => "http://www.usps.com/shipping/trackandconfirm.htm",
+    :fedex => "http://fedex.com/Tracking?cntry_code=us"
+  }
   # Calculates the shipping cost based on the sub total.
   def self.calculate_shipping_cost(sub_total,method="standard")
     shipping_cost = SHIPPING_MINIMUM

@@ -5,8 +5,14 @@ We just wanted to inform you that your order has been shipped to the following a
 <%= @order.shipping_1 %><%= "\n#{@order.shipping_2}" unless @order.shipping_2.nil? %>
 <%= @order.shipping_city %>, <%= @order.shipping_state %> <%= @order.shipping_zip %>
 
-Order Details:
-<% if !@line_items.blank? %><% for line_item in @line_items %>
+**************************************
+Track Your Order @ <%= @order.shipping_service.upcase %>
+
+Tracking Number: <%= @order.tracking_number %>
+Tracking Website: <%= Store::TRACKING_SITES[@order.shipping_service.to_sym] %>
+**************************************
+
+Order Details:<% if !@line_items.blank? %><% for line_item in @line_items %>
 ---------------------------------------
 <%= line_item.quantity %>x <%= line_item.variation.product.name %> 
 [$<%= format("%.2f",line_item.price) %> a piece]

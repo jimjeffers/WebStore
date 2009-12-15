@@ -19,7 +19,7 @@ class OrdersController < ApplicationController
   def ship
     @order = Order.find(params[:id])
     @order.update_attributes(params[:order])
-    if !@order.tracking_number.blank?
+    if !@order.tracking_number.blank? && !@order.shipping_service.blank?
       if @order.order_shipped!
         CRM.deliver_order_tracking(@order)
       end

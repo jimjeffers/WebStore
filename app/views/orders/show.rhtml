@@ -15,10 +15,10 @@
      <dd class="order_item_count"><%= @order.cart.item_count %></dd>
   </dl>
   <div id="order_status" class="open_status">
-      <% if @order.aasm_state == "" %>
+     <% if @order.aasm_state != "shipped" %>
      <h2>This order needs to be processed; it has not shipped and is currently <span class="open"><%= @order.aasm_state %></span>.</h2>
      <% else %>
-     <h2>This order has been shipped.</h2>
+     <h2>This order has been shipped. Track it with: "<%= @order.tracking_number %>" (at <%= link_to @order.shipping_service, Store::TRACKING_SITES[@order.shipping_service.to_sym] %>)</h2>
      <% end %>
      <!-- <a href="#" class="cancel_order">You may <strong>cancel</strong> this order if you do not wish to process it.</a> -->
   </div>
@@ -116,15 +116,19 @@
            </div>
         </div>
      </div>
+     <% if @order.aasm_state != "shipped" %>
      <div id="order_processing" class="panel">
         <h2 class="panel_name">Process This Order</h2>
         <%= f.label :tracking_number, "Tracking Number" %>
         <%= f.text_field :tracking_number %>
+        <%= f.label :shipping_service, "Shipping Service" %>
+        <%= f.select :shipping_service, [""]+Store::TRACKING_SITES.keys %>
         <ul>
            <li class="process_order"><%= f.submit "Process Order" %></li>
            <!-- <li class="print_order"><a href="#">Print Order</a></li> -->
            <!-- <li class="cancel_order"><a href="#">Cancel This Order</a></li> -->
         </ul>
      </div>
+     <% end %>
   <% end -%>
 </div>
