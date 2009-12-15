@@ -1,0 +1,53 @@
+/* =HIDDEN_CONTENT
+   ------------------------------------------------------ */
+   #site_name,
+   #primary_navigation,
+   #site_settings_navigation,
+   #search_panel,
+   #order_status,
+   #contact_information,
+   #order_processing,
+   .no_print {
+      display: none !important;
+   }
+   
+   #order_detail {
+      padding-top: 12em;
+   }
+   
+   #address,
+   #shipping_information,
+   #billing_information {
+      position: absolute;
+   }
+   
+   #address {
+      border: none;
+      left: 0em;
+      top: 1em;
+      margin: 0;
+      padding: 0;
+      width: 20em;
+   }
+   
+   #address h3,
+   #address h4 {
+      display: block !important;
+      font-size: 1.5em;
+      line-height: 1.5em;
+   }
+   
+   #address h4 {
+      font-size: 0.75em;
+   }
+   
+   #billing_information,
+   #shipping_information {
+      width: 20em;
+      left: 12em;
+      top: 2em;
+   }
+   
+   #billing_information {
+      left: 34em;
+   }

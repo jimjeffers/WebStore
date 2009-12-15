@@ -1100,6 +1100,7 @@
    #sort h2.active {
       background: #000 url(../images/admin_side_pointer.png) no-repeat;
    }
+   
 /* =LOGIN
    ------------------------------------------------------ */
    #login_form {
@@ -1132,4 +1133,22 @@
    /* Super specific as to avoid using !important */
    html body form input[type="hidden"] {
       display: none;
+   }
+
+/* =ADDRESS
+   ------------------------------------------------------ */
+   div#address {
+      border-top: 1px solid #000;
+      margin: 1em;
+      padding: 1em 0 ;
+      width: 860px;
+   }
+   
+   div#address h1,
+   div#address h2,
+   div#address h3,
+   div#address h4 {
+      display: inline;
+      font-size: 0.875em;
+      line-height: 1.5em;
    }

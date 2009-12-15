@@ -1,5 +1,5 @@
 <div id="order_detail" class="panel">
-  <h2 class="panel_name">Currently Viewing Order: <%= @order.id %> <%= link_to "Return to order list &gt;&gt;", orders_path, :class => 'secondary' %></h2>
+  <h2 class="panel_name no_print">Currently Viewing Order: <%= @order.id %> <%= link_to "Return to order list &gt;&gt;", orders_path, :class => 'secondary' %></h2>
   <dl class="order">
      <dt class="order_id">ID</dt>
      <dd class="order_id"><strong><%= @order.id %></strong></dd>

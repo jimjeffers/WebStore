@@ -3,13 +3,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
    <head>
       <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
-      <title>Cactus Sports</title>
+      <title>Cactus Sports > <%= controller.controller_name.capitalize %> > <%= controller.action_name.capitalize %></title>
       <meta name="keywords" content="cactus sports, admin"/>
       <meta name="description" content="Administrative template for cactus sports."/>
-      <link rel="stylesheet" href="/stylesheets/reset.css" type="text/css" media="screen" charset="utf-8"/>
-      <link rel="stylesheet" href="/stylesheets/admin.css" type="text/css" media="screen" charset="utf-8"/>
+      <link rel="stylesheet" href="/stylesheets/reset.css" type="text/css" media="screen,print" charset="utf-8"/>
+      <link rel="stylesheet" href="/stylesheets/admin.css" type="text/css" media="screen,print" charset="utf-8"/>
       <link rel="stylesheet" href="/stylesheets/colorpicker.css" type="text/css" media="screen" charset="utf-8"/>
       <link rel="stylesheet" href="/stylesheets/jquery.Jcrop.css" type="text/css" media="screen" charset="utf-8"/>
+      <link rel="stylesheet" href="/stylesheets/admin_print.css" type="text/css" media="print" charset="utf-8"/>
       <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
    </head>
    <body id="<%= @body_id || controller.controller_name %>">
@@ -42,6 +43,12 @@
       </ul>
       <div id="primary_content">
          <%= yield :layout %>
+      </div>
+      <div id="address">
+        <h3>Cactus Sports</h3>
+        <h4>401 S Mill Ave # 106,</h4>
+        <h4>Tempe, AZ  85281</h4>
+        <h3>480.921.1278</h3>
       </div>
       <script type="text/javascript" charset="utf-8" src="/javascripts/jquery-1-1.3.2.min.js"></script>
       <script type="text/javascript" charset="utf-8" src="/javascripts/jquery-ui-1.7.2.custom.min.js"></script>
