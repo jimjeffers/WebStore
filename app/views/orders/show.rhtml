@@ -18,7 +18,7 @@
      <% if @order.aasm_state != "shipped" %>
      <h2>This order needs to be processed; it has not shipped and is currently <span class="open"><%= @order.aasm_state %></span>.</h2>
      <% else %>
-     <h2>This order has been shipped. Track it with: "<%= @order.tracking_number %>" (at <%= link_to @order.shipping_service, Store::TRACKING_SITES[@order.shipping_service.to_sym] %>)</h2>
+     <h2>This order has been shipped. Track it with: "<%= @order.tracking_number %>" <% if !@order.shipping_service.nil? %>(at <%= link_to @order.shipping_service, Store::TRACKING_SITES[@order.shipping_service.to_sym] %>)<% end %></h2>
      <% end %>
      <!-- <a href="#" class="cancel_order">You may <strong>cancel</strong> this order if you do not wish to process it.</a> -->
   </div>
@@ -148,7 +148,7 @@
           <h2>PayPal Transaction: <%= transaction.reference %></h2>
           <dl>
             <dt>Amount:</dt>
-            <dd><%= number_to_currency(transaction.amount/100) %></dd>
+            <dd><%= number_to_currency(transaction.amount/100.to_f) %></dd>
             <dt>Action:</dt>
             <dd><%= transaction.action %></dd>
             <dt>Message:</dt>
