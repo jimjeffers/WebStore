@@ -47,7 +47,7 @@
       </li>
       <li class="short">
         <%= f.label :shipping_state, "State" %>
-        <%= state_select(:order, :shipping_state, :country => 'US', :options => {:include_blank => true}) %>
+        <%= state_select(:order, :shipping_state, {:country => "US_ABBREV_STATES"}, {:include_blank => true}) %>
       </li>
       <li class="short">
         <%= f.label :shipping_zip, "Zip" %>
@@ -84,7 +84,7 @@
       </li>
       <li class="short">
         <%= f.label :billing_state, "State" %>
-        <%= state_select(:order, :billing_state) %>
+        <%= state_select(:order, :billing_state, {:country => "US_ABBREV_STATES"}) %>
       </li>
       <li class="short">
         <%= f.label :billing_zip, "Zip" %>
@@ -97,7 +97,7 @@
     <ul class="form">
       <li class="medium">
         <%= f.label :shipping_method, "Shipping Method" %>
-        <%= f.select :shipping_method, Store::SHIPPING_METHODS %>
+        <%= f.select :shipping_method, Store.shipping_options_with_costs(@order.sub_total,@cart.additional_shipping_total) %>
       </li>
     </ul>
   </fieldset>

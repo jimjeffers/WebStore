@@ -9,6 +9,8 @@
           <dd><%= @product.name %></dd>
           <dt>Price:</dt>
           <dd><%= currency(@product.price) %></dd>
+          <dt>Additional Shipping:</dt>
+          <dd><%= currency(@product.additional_shipping_cost) %></dd>
           <dt>Keywords:</dt>
           <dd><%= @product.tag_list %>&nbsp;</dd>
         </dl>
@@ -19,6 +21,8 @@
           <dd><%= @product.title %>&nbsp;</dd>
           <dt>SEO Description:</dt>
           <dd><%= @product.description %>&nbsp;</dd>
+          <dt>SEO Custom URL:</dt>
+          <dd><%= @product.guid %>&nbsp;</dd>
         </dl>
       </li>
     </ul>

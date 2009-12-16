@@ -812,6 +812,10 @@
        width: 520px;
     }
     
+    #product_details_display dd {
+       padding-left: 200px;
+    }
+    
     .line_item_list li {
        border-top: 1px solid #000;
        display: block;

@@ -1,8 +1,8 @@
 <div id="order_detail" class="panel">
-  <h2 class="panel_name no_print">Currently Viewing Order: <%= @order.id %> <%= link_to "Return to order list &gt;&gt;", orders_path, :class => 'secondary' %></h2>
+  <h2 class="panel_name no_print">Currently Viewing Order: CS-<%= @order.ref_number %> <%= link_to "Return to order list &gt;&gt;", orders_path, :class => 'secondary' %></h2>
   <dl class="order">
      <dt class="order_id">ID</dt>
-     <dd class="order_id"><strong><%= @order.id %></strong></dd>
+     <dd class="order_id"><strong><%= @order.ref_number %></strong></dd>
      <dt class="order_customer">Customer</dt>
      <dd class="order_customer"><%= @order.shipping_first %> <%= @order.shipping_last %></dd>
      <dt class="order_shipping">Shipping Method</dt>
@@ -137,5 +137,20 @@
         </ul>
      </div>
      <% end %>
+     <div id="order_authorization_log" class="no_print">
+        <% for transaction in @order.transactions.ordered('created_at ASC') %>
+        <div id="transaction_<%= transaction.id %>_details" class="transaction">
+          <h2>Transaction: <%= transaction.reference %></h2>
+          <dl>
+            <dt>Amount:</dt>
+            <dd><%= number_to_currency(transaction.amount/100) %></dd>
+            <dt>Action:</dt>
+            <dd><%= transaction.action %></dd>
+            <dt>Message:</dt>
+            <dd><%= transaction.message %></dd>
+          </dl>
+        </div>
+        <% end %>
+     </div>
   <% end -%>
 </div>

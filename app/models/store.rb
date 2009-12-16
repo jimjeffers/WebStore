@@ -27,12 +27,19 @@ class Store
     :usps => "http://www.usps.com/shipping/trackandconfirm.htm",
     :fedex => "http://fedex.com/Tracking?cntry_code=us"
   }
+  
   # Calculates the shipping cost based on the sub total.
-  def self.calculate_shipping_cost(sub_total,method="standard")
+  def self.calculate_shipping_cost(sub_total,method="standard",additional_from_products=0)
     shipping_cost = SHIPPING_MINIMUM
     SHIPPING_RATES.each do |rate,cost|
       shipping_cost = cost if sub_total.to_f > rate
     end
-    return shipping_cost + SHIPPING_COSTS[method]
+    return shipping_cost + SHIPPING_COSTS[method] + additional_from_products
+  end
+  
+  # Show shipping costs dynamically
+  def self.shipping_options_with_costs(sub_total,additional_from_products=0)
+    [ ["Standard ($#{self.calculate_shipping_cost(sub_total,"standard",additional_from_products)})", "standard"], 
+      ["2nd Day  ($#{self.calculate_shipping_cost(sub_total,"2nd day",additional_from_products)})", "2nd day"]]
   end
 end

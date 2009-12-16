@@ -98,12 +98,12 @@ class Order < ActiveRecord::Base
     if terms.length > 1
       Order.find(:all, :conditions => ['billing_first LIKE ? AND billing_last LIKE ?',"%#{terms[0]}%","%#{terms[1]}%"])
     else
-      if !(term =~ /CS\-/).nil?
-        search_order_id = term.gsub('CS-','').to_i
+      if !(term.upcase =~ /CS\-/).nil?
+        search_order_id = term.upcase.gsub('CS-','').to_i
         search_order_id += ORDER_NUMBER_START if search_order_id < ORDER_NUMBER_START
         Order.find(:all, :conditions => ['cs_number=?',search_order_id])
       else
-        Order.find(:all, :conditions => ['billing_first LIKE ? OR billing_last LIKE ?',"%#{term}%","%#{term}%"])
+        Order.find(:all, :conditions => ['billing_first LIKE ? OR billing_last LIKE ? or id=? or cs_number=?',"%#{term}%","%#{term}%",term,term])
       end
     end
   end
@@ -227,7 +227,7 @@ class Order < ActiveRecord::Base
     else
       self.sales_tax = 0
     end
-    self.shipping_cost = (Store.calculate_shipping_cost(self.sub_total/100.to_f,self.shipping_method)*100).to_i
+    self.shipping_cost = (Store.calculate_shipping_cost(self.sub_total/100.to_f,self.shipping_method,cart.additional_shipping_total)*100).to_i
     self.amount = self.sub_total + self.sales_tax + self.shipping_cost
   end
   

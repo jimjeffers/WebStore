@@ -10,7 +10,7 @@
         <li>
             <dl class="order">
                <dt class="order_id">ID</dt>
-               <dd class="order_id"><%= link_to order.id, order %></dd>
+               <dd class="order_id"><%= link_to "#{order.ref_number}", order %></dd>
                <dt class="order_customer">Customer</dt>
                <dd class="order_customer"><%= order.billing_first %> <%= order.billing_last %></dd>
                <dt class="order_shipping">Shipping Method</dt>

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091216054959) do
+ActiveRecord::Schema.define(:version => 20091216075300) do
 
   create_table "brands", :force => true do |t|
     t.string   "name"
@@ -179,12 +179,13 @@ ActiveRecord::Schema.define(:version => 20091216054959) do
     t.datetime "photo_updated_at"
     t.string   "guid"
     t.datetime "deleted_at"
-    t.string   "aasm_state",         :default => "in_stock"
-    t.integer  "position",           :default => 0
+    t.string   "aasm_state",               :default => "in_stock"
+    t.integer  "position",                 :default => 0
     t.text     "optimized_content"
-    t.boolean  "featured",           :default => false
+    t.boolean  "featured",                 :default => false
     t.float    "sale_price"
-    t.boolean  "on_sale",            :default => false
+    t.boolean  "on_sale",                  :default => false
+    t.float    "additional_shipping_cost", :default => 0.0
   end
 
   add_index "products", ["aasm_state"], :name => "index_products_on_aasm_state"

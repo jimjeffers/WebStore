@@ -44,14 +44,20 @@ describe Order do
       @order_both_out.sales_tax.should be(0)
     end
     
-    it "should have a shipping cost of 800" do
+    it "should have a shipping cost of 900" do
       @order.calculate_cart(@cart)
       @order.shipping_cost.should be(900)
     end
     
-    it "should have a shipping cost of 2600 if 2nd day was chosen" do
+    it "should have a shipping cost of 2700 if 2nd day was chosen" do
       @order_with_second_day.calculate_cart(@cart)
       @order_with_second_day.shipping_cost.should be(2700)
+    end
+    
+    it "should have a shipping cost of 3150 if shirts has an additional shipping cost of $4.50" do
+      @shirt.update_attribute(:additional_shipping_cost,4.5)
+      @order_with_second_day.calculate_cart(@cart)
+      @order_with_second_day.shipping_cost.should be(3150)
     end
   end
 end

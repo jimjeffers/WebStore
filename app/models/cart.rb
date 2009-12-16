@@ -57,6 +57,11 @@ class Cart < ActiveRecord::Base
     end
   end
   
+  # Calculates the sum of the additional shipping costs from line items.
+  def additional_shipping_total
+    self.line_items.inject(0) { |total,line_item| total + line_item.variation.product.additional_shipping_cost }
+  end
+  
   protected
   # Takes a set of arguments and generates a SHA1 hash.
   def secure_digest(*args)
