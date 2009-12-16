@@ -4,7 +4,7 @@
 </ol>
 <div id="cart">
     <% if !@line_items.blank? %>
-    <h2>Your confirmation number is: CS-<%= @order.id %></h2>
+    <h2>Your confirmation number is: CS-<%= @order.ref_number %></h2>
     
     <div id="order_addresses">
       <ul class="address_list">
