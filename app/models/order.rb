@@ -242,6 +242,7 @@ class Order < ActiveRecord::Base
       if self.paid?
         @cart.close!
         @cart.line_items.not_deleted.each { |i| i.close! }
+        self.update_attribute(:card_reference, "**** **** **** #{card_number[-4..-1]}") unless card_number.nil?
         return true
       else
         return false

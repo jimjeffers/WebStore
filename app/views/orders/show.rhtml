@@ -84,6 +84,11 @@
            <td colspan="3">Total:</td>
            <td colspan="2"><%= currency(@order.amount / 100.to_f) %></td>
         </tr>
+        <% unless @order.card_reference.nil? %>
+        <tr class="ledger">
+           <td colspan="5">Billed to: <%= @order.card_reference %></td>
+        </tr>
+        <% end %>
      </table>
      <div id="contact_information" class="panel">
          <h2 class="panel_name">Contact Information<!-- <a href="#" class="secondary">Modify shipping address.</a> --></h2>

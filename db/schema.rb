@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091216075300) do
+ActiveRecord::Schema.define(:version => 20091216092146) do
 
   create_table "brands", :force => true do |t|
     t.string   "name"
@@ -158,6 +158,7 @@ ActiveRecord::Schema.define(:version => 20091216075300) do
     t.string   "phone"
     t.string   "shipping_service"
     t.integer  "cs_number"
+    t.string   "card_reference"
   end
 
   add_index "orders", ["aasm_state"], :name => "index_orders_on_aasm_state"

@@ -27,6 +27,9 @@ Order Details:
 [$<%= format("%.2f",line_item.price*line_item.quantity.to_f) %> total]<% end %><% end %>
 
 ---------------------------------------
+Billed to account:
+<%= @order.card_reference %>
+---------------------------------------
 Subtotal: $<%= format("%.2f",@order.sub_total/100.to_f) %>
 ---------------------------------------
 Sales Tax: $<%= format("%.2f",@order.sales_tax/100.to_f) %>
