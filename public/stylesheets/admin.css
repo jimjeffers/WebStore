@@ -495,6 +495,10 @@
         margin-top: 1em;
     }
     
+    #order_authorization_log {
+       margin-top: 4em;
+    }
+    
 /*  =SEARCH_FORM
     ------------------------------------------------------ */
     form.search_form {

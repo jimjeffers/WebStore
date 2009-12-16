@@ -16,7 +16,7 @@ class CRM < ActionMailer::Base
     subject "[Cactus Sports] Order ##{order.id} - Shipping Confirmation"
     recipients order.email
     from "site@cactussports.com"
-    bcc ["cactussports1@gmail.com", "tlscoma@gmail.com"]
+    bcc ["cactussports1@gmail.com", "tlscoma@gmail.com"] unless ENV["RAILS_ENV"] == "development"
     reply_to "cactussports1@gmail.com"
     sent_on Time.now
     
