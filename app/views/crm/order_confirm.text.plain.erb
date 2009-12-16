@@ -30,7 +30,7 @@ Order Details:
 Subtotal: $<%= format("%.2f",@order.sub_total/100.to_f) %>
 ---------------------------------------
 Sales Tax: $<%= format("%.2f",@order.sales_tax/100.to_f) %>
-Shipping: $<%= format("%.2f",@order.sales_tax/100.to_f) %>
+Shipping: $<%= format("%.2f",@order.shipping_amount/100.to_f) %>
 ---------------------------------------
 Total: $<%= format("%.2f",@order.amount/100.to_f) %>
 ---------------------------------------
