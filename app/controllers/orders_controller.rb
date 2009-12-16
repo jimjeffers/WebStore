@@ -32,7 +32,6 @@ class OrdersController < ApplicationController
   def search
     @search = params[:order_term]
     @orders = Order.search(@search)
-    
     render :action => 'index'
   end
 end

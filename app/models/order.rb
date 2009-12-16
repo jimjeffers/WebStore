@@ -4,25 +4,31 @@ class Order < ActiveRecord::Base
   belongs_to :cart
   
   # Validations
-  validates_presence_of :email
-  validates_presence_of :shipping_first
-  validates_presence_of :shipping_last
-  validates_presence_of :shipping_1
-  validates_presence_of :shipping_city
-  validates_presence_of :shipping_state
-  validates_presence_of :shipping_zip
-  validates_presence_of :billing_first
-  validates_presence_of :billing_last
-  validates_presence_of :billing_1
-  validates_presence_of :billing_city
-  validates_presence_of :billing_state
-  validates_presence_of :billing_zip
-  validates_presence_of :phone
+  validates_presence_of     :email
+  validates_length_of       :email,    :within => 6..100 #r@a.wk
+  validates_format_of       :email,    :with => /[\w\.%\+\-]+/, :message => 'should be a valid email address.'
+  
+  validates_presence_of     :shipping_first
+  validates_presence_of     :shipping_last
+  validates_presence_of     :shipping_1
+  validates_presence_of     :shipping_city
+  validates_presence_of     :shipping_state
+  validates_presence_of     :shipping_zip
+  
+  validates_presence_of     :billing_first
+  validates_presence_of     :billing_last
+  validates_presence_of     :billing_1
+  validates_presence_of     :billing_city
+  validates_presence_of     :billing_state
+  validates_presence_of     :billing_zip
+  
+  validates_presence_of     :phone
+  validates_length_of       :phone, :within => 7..15
+  
   validates_presence_of :card_number, :if => :ready_for_processing?
   validates_presence_of :verification_number, :if => :ready_for_processing?
   validates_presence_of :expiration_month, :if => :ready_for_processing?
   validates_presence_of :expiration_year, :if => :ready_for_processing?
-  validates_length_of :phone, :within => 7..15
   
   # Named Scope
   named_scope :currently, lambda { |state| {
@@ -32,6 +38,9 @@ class Order < ActiveRecord::Base
   
   # Accessors
   attr_accessor :verification_number, :card_number, :card_type, :same_as_billing, :expiration_month, :expiration_year, :credit_card, :first_name, :last_name
+  
+  # Constants
+  ORDER_NUMBER_START = 18438
   
   # AASM States
   include AASM
@@ -83,14 +92,30 @@ class Order < ActiveRecord::Base
                       :billing_first,:billing_last,:billing_1,:billing_2,:billing_city,:billing_state,:billing_zip,
                       :shipping_method ]
     
-  # Searches orders
+  # Searches orders.
   def self.search(term)
     terms = term.split(" ")
     if terms.length > 1
       Order.find(:all, :conditions => ['billing_first LIKE ? AND billing_last LIKE ?',"%#{terms[0]}%","%#{terms[1]}%"])
     else
-      Order.find(:all, :conditions => ['billing_first LIKE ? OR billing_last LIKE ? OR id=?',"%#{term}%","%#{term}%",term.gsub('CS-','')])
+      if !(term =~ /CS\-/).nil?
+        search_order_id = term.gsub('CS-','').to_i
+        search_order_id += ORDER_NUMBER_START if search_order_id < ORDER_NUMBER_START
+        Order.find(:all, :conditions => ['cs_number=?',search_order_id])
+      else
+        Order.find(:all, :conditions => ['billing_first LIKE ? OR billing_last LIKE ?',"%#{term}%","%#{term}%"])
+      end
     end
+  end
+  
+  # Sets the cs_number in the database to match the order number.
+  def after_save
+    update_attribute(:cs_number, ref_number) if cs_number != ref_number
+  end
+  
+  # Calculates the reference number based off the item id.
+  def ref_number
+    id + ORDER_NUMBER_START
   end
   
   # Boolean test to determine if a given set of attributes are throwing errors on the order.
