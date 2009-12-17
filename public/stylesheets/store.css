@@ -1278,7 +1278,7 @@ and Sumo Creations.
       top: 0;
    }
    
-   #newsletter_signup form#newsletter_signup_form {
+   #newsletter_signup form#mc-embedded-subscribe-form {
       background: #B33A04;
       border-color: #B33A04;
       position: absolute;
@@ -1287,7 +1287,7 @@ and Sumo Creations.
       width: 515px;
    }
    
-   #newsletter_signup form#newsletter_signup_form label {
+   #newsletter_signup form#mc-embedded-subscribe-form label {
       color: #B33A04;
       display: block;
       font-size: 0.875em;
@@ -1298,15 +1298,32 @@ and Sumo Creations.
       left: 0;
    }
    
-   #newsletter_signup form#newsletter_signup_form input[type="text"] {
+   #newsletter_signup form#mc-embedded-subscribe-form input[type="text"] {
       background: #fff;
       padding: 6px;
    }
    
-   #newsletter_signup form#newsletter_signup_form input[type="submit"] {
+   #newsletter_signup form#mc-embedded-subscribe-form input[type="submit"] {
       background: #810101;
       color: #fff;
       width: 150px;
+   }
+   
+   #newsletter_signup div.mce_inline_error {
+      font-size:1.25em;
+      font-weight:bold;
+      line-height:1.25em;
+      position:absolute;
+      top:35px;
+   }
+   
+   #newsletter_signup div#mce-success-response {
+      background: #fff;
+      left: -5px;
+      padding: 0 5px;
+      position: absolute;
+      top: -20px;
+      z-index: 100;
    }
    
    ul.form li input[type="submit"].confirmation {

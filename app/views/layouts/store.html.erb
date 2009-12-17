@@ -2,13 +2,13 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
   <head>
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
     <title>
     <%= (@product.title unless @product.nil? || @product.title.blank?) || (@category.title unless @category.nil? || @category.title.blank?) || @site_settings.site_title %>
     </title>
     <meta name="keywords" content="<%= (@product.tag_list.join(", ") unless @product.nil? || @product.tags.blank?) || (@category.tags.join(", ") unless @category.nil? || @category.tags.blank?) || @site_settings.seo_keywords %>"/>
     <meta name="description" content="<%= (@product.description unless @product.nil? || @product.description.blank?) || (@category.description unless @category.nil? || @category.description.blank?) || @site_settings.seo_description %>"/>
-    <%= stylesheet_link_tag 'reset','store','jquery.fancybox-1.2.5.css', :cache => 'store_front' %>
+    <%= stylesheet_link_tag 'reset','store','jquery.fancybox-1.2.5.css' %>
     <%= javascript_include_tag 'modernizr.js', :cache => 'dom_tools' %>
     <%= yield :head %>
     <!--[if lt IE 7]>
@@ -115,10 +115,11 @@
     <div id="primary_content">
       <%= yield :layout %>
     </div>
+    
     <% if @newsletter_toggle.blank? %>
     <div id="newsletter_signup">
       <img src="/images/tag_get_the_best_deals.png" width="240" height="57" alt="Get The Best Deals!" id="tag_get_best_deals"/>
-      <%= render :partial => 'layouts/newsletter_form', :locals => {:form_id => 'newsletter_signup_form'} %>
+      <%= render :partial => 'layouts/newsletter_form' %>
       <img src="/images/tag_on_sale.png" width="160" height="57" alt="Find Items On Sale" id="tag_items_on_sale"/>
     </div>
     <% end %>

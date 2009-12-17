@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091216092146) do
+ActiveRecord::Schema.define(:version => 20091217054325) do
 
   create_table "brands", :force => true do |t|
     t.string   "name"
@@ -209,7 +209,7 @@ ActiveRecord::Schema.define(:version => 20091216092146) do
     t.string   "site_title"
     t.string   "seo_keywords"
     t.string   "seo_description"
-    t.string   "optimized_content"
+    t.text     "optimized_content", :limit => 255
     t.integer  "products_per_page"
     t.datetime "created_at"
     t.datetime "updated_at"
