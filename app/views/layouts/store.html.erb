@@ -117,17 +117,19 @@
     </div>
     
     <% if @newsletter_toggle.blank? %>
-    <div id="newsletter_signup">
-      <img src="/images/tag_get_the_best_deals.png" width="240" height="57" alt="Get The Best Deals!" id="tag_get_best_deals"/>
-      <%= render :partial => 'layouts/newsletter_form' %>
-      <img src="/images/tag_on_sale.png" width="160" height="57" alt="Find Items On Sale" id="tag_items_on_sale"/>
-    </div>
+      <% cache(:controller => 'layout', :action => 'store', :action_suffix => "newsletter") do %>
+        <div id="newsletter_signup">
+          <img src="/images/tag_get_the_best_deals.png" width="240" height="57" alt="Get The Best Deals!" id="tag_get_best_deals"/>
+          <%= render :partial => 'layouts/newsletter_form' %>
+          <img src="/images/tag_on_sale.png" width="160" height="57" alt="Find Items On Sale" id="tag_items_on_sale"/>
+        </div>
+      <% end %>
     <% end %>
     <% if @seo_content_toggle.blank? %>
-    <div id="company_specific_content">
-      <% @optimized_content = (@product.optimized_content unless @product.nil? || @product.optimized_content.blank?) || (@category.optimized_content unless @category.nil? || @category.optimized_content.blank?) || @site_settings.optimized_content %>
-      <%= RedCloth.new(@optimized_content).to_html %>
-    </div>
+      <div id="company_specific_content">
+        <% @optimized_content = (@product.optimized_content unless @product.nil? || @product.optimized_content.blank?) || (@category.optimized_content unless @category.nil? || @category.optimized_content.blank?) || @site_settings.optimized_content %>
+        <%= RedCloth.new(@optimized_content).to_html %>
+      </div>
     <% end %>
     
     <% cache(:controller => 'layout', :action => 'store', :action_suffix => "store_layout_footer") do %>
