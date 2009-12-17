@@ -27,3 +27,15 @@ ol.product_showcase li.product_name {
 ol.product_showcase li.product_sale {
    height: 20px;
 }
+
+#product_details {
+   margin-right: 30px;
+}
+
+#cart ol > li > ul {
+   height: 70px;
+}
+
+div#checkout_cart li.footer ul.line_item {
+   height: 20px;
+}

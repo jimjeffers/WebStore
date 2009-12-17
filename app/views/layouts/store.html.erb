@@ -163,6 +163,26 @@
           </ul>
         </li>
         <% end %>
+        <% if !@kids_categories.blank? %>
+        <li class="kids">
+          <h2><a href="<%= browse_category_path(Store::METHODS[:kids],@kids_categories.first.guid) %>"><img src="/images/sub_small_heading_kids.png" width="31" height="14" alt="Kids"/></a></h2>
+          <ul>
+            <% for category in @kids_categories %>
+              <li><%= link_to category.name, browse_category_path(Store::METHODS[:kids],category.guid) %></li>
+            <% end %>
+          </ul>
+        </li>
+        <% end %>
+        <% if !@gifts_categories.blank? %>
+        <li class="gifts">
+          <h2><a href="<%= browse_category_path(Store::METHODS[:gifts],@gifts_categories.first.guid) %>"><img src="/images/sub_small_heading_gifts.png" width="31" height="14" alt="Gifts"/></a></h2>
+          <ul>
+            <% for category in @gifts_categories %>
+              <li><%= link_to category.name, browse_category_path(Store::METHODS[:gifts],category.guid) %></li>
+            <% end %>
+          </ul>
+        </li>
+        <% end %>
         <% if !@brands.blank? %>
         <li class="brands">
           <h2><a href="<%= browse_category_path(Store::METHODS[:brand],@brands.first.guid) %>"><img src="/images/sub_small_heading_brands.png" width="48" height="14" alt="Brands"/></a></h2>
