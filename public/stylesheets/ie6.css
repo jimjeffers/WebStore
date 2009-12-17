@@ -19,3 +19,11 @@ ol#breadcrumb {
 ol#category_showcase {
    width: 700px;
 }
+
+ol.product_showcase li.product_name {
+   width: 160px;
+}
+
+ol.product_showcase li.product_sale {
+   height: 20px;
+}

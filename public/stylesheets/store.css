@@ -388,6 +388,7 @@ and Sumo Creations.
    #cart_status a.checkout_button span {
       background: url(../images/button_checkout.png) no-repeat;
       height: 20px;
+      overflow: hidden;
       width: 106px;
    }
    
@@ -1249,11 +1250,11 @@ and Sumo Creations.
    }
    
    ol.product_showcase li.product_name {
-      bottom: -42px;
+      bottom: -62px;
       font-size: 0.75em;
       font-weight: bold;
       line-height: 1.5em;
-      height: 40px;
+      height: 60px;
       position: absolute;
       overflow: hidden;
       width: 100%;
