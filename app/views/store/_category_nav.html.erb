@@ -1,18 +1,18 @@
 <ul id="secondary_navigation">
-  <% cache(:controller => 'layout', :action => 'store', :action_suffix => "section_navigation") do %>
   <li class="section">
     <a class="current_section" href="#"><span class="leading_text">Currently in</span> <%= method.capitalize %><span class="drop_arrow"></span></a>
     <ul class="section_nav sub_navigation <%= method %>">
-        <li class="<%= Store::METHODS[:guys] %>"><a href="<%= browse_category_path(Store::METHODS[:guys],guys_categories.first.guid) unless guys_categories.first.nil? %>"><span class="leading_text">clothes for</span> Guys</a></li>
-        <li class="<%= Store::METHODS[:girls] %>"><a href="<%= browse_category_path(Store::METHODS[:girls],girls_categories.first.guid) unless girls_categories.first.nil? %>"><span class="leading_text">clothes for</span> Girls</a></li>
-        <li class="<%= Store::METHODS[:kids] %>"><a href="<%= browse_category_path(Store::METHODS[:kids],kids_categories.first.guid) unless kids_categories.first.nil? %>"><span class="leading_text">stuff for</span> Kids</a></li>
-        <li class="<%= Store::METHODS[:gifts] %>"><a href="<%= browse_category_path(Store::METHODS[:gifts],gifts_categories.first.guid) unless gifts_categories.first.nil? %>"><span class="leading_text">great for</span> Gifts</a></li>
-        <li class="<%= Store::METHODS[:pets] %>"><a href="<%= browse_category_path(Store::METHODS[:pets],pets_categories.first.guid) unless pets_categories.first.nil? %>"><span class="leading_text">just for</span> Pets</a></li>
-        <li class="<%= Store::METHODS[:brand] %>"><a href="<%= browse_category_path(Store::METHODS[:brand],brands.first.guid) unless brands.first.nil? %>"><span class="leading_text">browse all</span> Brands</a></li>
+        <% cache(:controller => 'layout', :action => 'store', :action_suffix => "section_navigation") do %>
+        <% unless guys_categories.first.nil? %><li class="<%= Store::METHODS[:guys] %>"><a href="<%= browse_category_path(Store::METHODS[:guys],guys_categories.first.guid) unless guys_categories.first.nil? %>"><span class="leading_text">clothes for</span> Guys</a></li><% end %>
+        <% unless girls_categories.first.nil? %><li class="<%= Store::METHODS[:girls] %>"><a href="<%= browse_category_path(Store::METHODS[:girls],girls_categories.first.guid) unless girls_categories.first.nil? %>"><span class="leading_text">clothes for</span> Girls</a></li><% end %>
+        <% unless kids_categories.first.nil? %><li class="<%= Store::METHODS[:kids] %>"><a href="<%= browse_category_path(Store::METHODS[:kids],kids_categories.first.guid) unless kids_categories.first.nil? %>"><span class="leading_text">stuff for</span> Kids</a></li><% end %>
+        <% unless gifts_categories.first.nil? %><li class="<%= Store::METHODS[:gifts] %>"><a href="<%= browse_category_path(Store::METHODS[:gifts],gifts_categories.first.guid) unless gifts_categories.first.nil? %>"><span class="leading_text">great for</span> Gifts</a></li><% end %>
+        <% unless pets_categories.first.nil? %><li class="<%= Store::METHODS[:pets] %>"><a href="<%= browse_category_path(Store::METHODS[:pets],pets_categories.first.guid) unless pets_categories.first.nil? %>"><span class="leading_text">just for</span> Pets</a></li><% end %>
+        <% unless brands.first.nil? %><li class="<%= Store::METHODS[:brand] %>"><a href="<%= browse_category_path(Store::METHODS[:brand],brands.first.guid) unless brands.first.nil? %>"><span class="leading_text">browse all</span> Brands</a></li><% end %>
         <!-- <li><a href="#"><span class="leading_text">see what's on</span> Sale</a></li> -->
+        <% end %>
     </ul>
   </li>
-  <% end %>
   <li class="category">
     <ul class="categories_nav">
       <% if !@categories.blank? %>
