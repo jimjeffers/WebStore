@@ -5,7 +5,6 @@
    #site_settings_navigation,
    #search_panel,
    #order_status,
-   #contact_information,
    #order_processing,
    .no_print {
       display: none !important;
@@ -50,4 +49,12 @@
    
    #billing_information {
       left: 34em;
+   }
+   
+   #contact_information {
+      margin-top: 2em;
+   }
+   
+   #contact_information span {
+      display: block;
    }
