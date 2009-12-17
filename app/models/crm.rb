@@ -1,7 +1,7 @@
 class CRM < ActionMailer::Base
 
   def order_confirm(order)
-    subject "[Cactus Sports] Order ##{order.id}"
+    subject "[Cactus Sports] Order ##{order.ref_numbder}"
     recipients order.email
     from "site@cactussports.com"
     bcc ["cactussports1@gmail.com", "tlscoma@gmail.com"]
@@ -13,7 +13,7 @@ class CRM < ActionMailer::Base
   end
   
   def order_tracking(order)
-    subject "[Cactus Sports] Order ##{order.id} - Shipping Confirmation"
+    subject "[Cactus Sports] Order ##{order.ref_number} - Shipping Confirmation"
     recipients order.email
     from "site@cactussports.com"
     bcc ["cactussports1@gmail.com", "tlscoma@gmail.com"] unless ENV["RAILS_ENV"] == "development"
