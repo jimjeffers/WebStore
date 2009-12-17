@@ -1,7 +1,7 @@
 class CRM < ActionMailer::Base
 
   def order_confirm(order)
-    subject "[Cactus Sports] Order ##{order.ref_numbder}"
+    subject "[Cactus Sports] Order ##{order.ref_number}"
     recipients order.email
     from "site@cactussports.com"
     bcc ["cactussports1@gmail.com", "tlscoma@gmail.com"]

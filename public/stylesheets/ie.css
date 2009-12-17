@@ -1,0 +1,23 @@
+ul.form li {
+   background: transparent;
+   margin-top: 0 !important;
+   padding: 2px 5px;
+}
+
+form.checkout ul.form label {
+   display: inline-block;
+   left: auto;
+   margin: 0 !important;
+   padding: 0 !important;
+   position: relative;
+   top: auto;
+}
+
+form.checkout ul.form li input {
+   border: 1px solid #FD9408;
+   margin: 0;
+}
+
+.pagination {
+   margin-top: 30px;
+}

@@ -1,0 +1,21 @@
+#secondary_navigation li.section {
+   display: none;
+}
+
+ul.categories_nav > li.current {
+   background: #FD9408;
+   margin-left: 0;
+}
+
+ul.categories_nav > li.current a {
+   margin-left: 0;
+   padding-left: 0;
+}
+
+ol#breadcrumb {
+   height: 22px;
+}
+
+ol#category_showcase {
+   width: 700px;
+}

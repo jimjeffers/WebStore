@@ -145,7 +145,6 @@ $(document).ready(function() {
          var list = $(this);
          list.css("opacity",0.25);
          var current = $(event.target);
-         console.log(current.sortable('serialize'));
          $.post('/'+current.attr('id')+'/update_order', current.sortable('serialize'),
             function(data) {
                alert(data);
