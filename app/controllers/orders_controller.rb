@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
   layout 'admin'
   
   def index
-    @orders = Order.currently('paid').ordered('created_at ASC')
+    @orders = Order.currently('paid').ordered('created_at ASC')+Order.currently('authorized')
   end
   
   def show
@@ -14,6 +14,12 @@ class OrdersController < ApplicationController
   def capture
     @order = @order.find(params[:id])
     @order.update_attributes(params[:order])
+  end
+  
+  def cancel
+    @order = Order.find(params[:id])
+    @order.order_canceled!
+    redirect_to order_path(@order)
   end
   
   def ship

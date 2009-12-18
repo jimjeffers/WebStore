@@ -15,12 +15,14 @@
      <dd class="order_item_count"><%= @order.cart.item_count %></dd>
   </dl>
   <div id="order_status" class="open_status">
-     <% if @order.aasm_state != "shipped" %>
+     <% if @order.canceled? %>
+     <h2>This order has been <span class="open"><%= @order.aasm_state %></span>.</h2>
+     <% elsif !@order.shipped? %>
      <h2>This order needs to be processed; it has not shipped and is currently <span class="open"><%= @order.aasm_state %></span>.</h2>
+     <% if !@order.canceled? %><a href="<%= cancel_order_path(@order.id) %>" class="cancel_order">You may <strong>cancel</strong> this order if you do not wish to process it.</a><% end %>
      <% else %>
      <h2>This order has been shipped. Track it with: "<%= @order.tracking_number %>" <% if !@order.shipping_service.nil? %>(at <%= link_to @order.shipping_service, Store::TRACKING_SITES[@order.shipping_service.to_sym] %>)<% end %></h2>
      <% end %>
-     <!-- <a href="#" class="cancel_order">You may <strong>cancel</strong> this order if you do not wish to process it.</a> -->
   </div>
   <!-- <div id="add_item">
        <p>If you need to make alterations to this order you may: <a href="#">Add Another Line Item</a></p>
@@ -121,7 +123,7 @@
            </div>
         </div>
      </div>
-     <% if @order.aasm_state != "shipped" %>
+     <% unless @order.shipped? || @order.canceled? %>
      <div id="order_processing" class="panel">
         <h2 class="panel_name">Process This Order</h2>
         <%= f.label :tracking_number, "Tracking Number" %>

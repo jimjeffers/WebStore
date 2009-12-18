@@ -23,9 +23,9 @@ end
 config.to_prepare do
   OrderTransaction.gateway = 
     ActiveMerchant::Billing::PaypalGateway.new(
-      :login    => 'jim_1247017987_biz_api1.sumocreations.com',
-      :password => '1247017994',
-      :signature => 'ANvXwog7Kwq3lTkwtkscvaGLRuOVABeesC2ctzu38Pfsfe9GwUH83Ths'
+      :login    => 'test_1261052303_biz_api1.sumocreations.com',
+      :password => '1261052310',
+      :signature => 'A--8MSCLabuvN8L.-MHjxC9uypBtAkqKQ7InO9rWRAV1ThB1O4nmdRk0'
     )
 end
 

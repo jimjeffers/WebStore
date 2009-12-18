@@ -21,6 +21,18 @@ class OrderTransaction < ActiveRecord::Base
       end
     end
     
+    def credit(amount, capture, options = {})
+      process('credit', amount) do |gw|
+        gw.credit(amount, capture,options)
+      end
+    end
+    
+    def void(amount, capture)
+      process('void', amount) do |gw|
+        gw.void(amount, capture)
+      end
+    end
+    
     private
     def process(action, amount = nil)
       result = OrderTransaction.new

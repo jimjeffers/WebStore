@@ -67,12 +67,12 @@ class Order < ActiveRecord::Base
   end
   
   aasm_event :order_shipped do
-    transitions :from => :paid,
+    transitions :from => [:authorized,:paid],
                 :to => :shipped
   end
   
   aasm_event :order_canceled do
-    transitions :from => :paid,
+    transitions :from => [:authorized,:paid],
                 :to => :canceled
   end
   
@@ -188,10 +188,39 @@ class Order < ActiveRecord::Base
     end
   end
 
-  # Retrieves the latest uthorization reference stored for the current order.
+  # Retrieves the latest authorization reference stored for the current order.
   def authorization_reference
     if authorization = transactions.find_by_action_and_success('authorization', true, :order => 'id ASC')
       authorization.reference
+    end
+  end
+  
+  # Retrieves the capture reference stored for the current order.
+  def capture_reference
+    if capture = transactions.find_by_action_and_success('capture', true, :order => 'id ASC')
+      capture.reference
+    end
+  end
+  
+  def refund!(options = {:ip => '127.0.0.1'})
+    transaction do
+      refund = OrderTransaction.credit(amount, capture_reference)
+      transactions.push(refund)
+      if refund.success?
+        order_canceled!
+      end
+      refund
+    end
+  end
+  
+  def void!(options = {:ip => '127.0.0.1'})
+    transaction do
+      refund = OrderTransaction.void(amount, capture_reference)
+      transactions.push(refund)
+      if refund.success?
+        order_canceled!
+      end
+      refund
     end
   end
   
@@ -238,15 +267,10 @@ class Order < ActiveRecord::Base
     self.save
     self.authorize_payment
     if authorized?
-      self.capture_payment
-      if self.paid?
-        @cart.close!
-        @cart.line_items.not_deleted.each { |i| i.close! }
-        self.update_attribute(:card_reference, "**** **** **** #{card_number[-4..-1]}") unless card_number.nil?
-        return true
-      else
-        return false
-      end
+      @cart.close!
+      @cart.line_items.not_deleted.each { |i| i.close! }
+      self.update_attribute(:card_reference, "**** **** **** #{card_number[-4..-1]}") unless card_number.nil?
+      return true
     else
       return false
     end
