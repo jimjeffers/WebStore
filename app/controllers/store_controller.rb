@@ -18,9 +18,12 @@ class StoreController < ApplicationController
   
   # Displays a specific product.
   def product
-    if @category.nil? || @product.nil?
+    if @product.nil?
       render_404
     else
+      if @category.nil?
+        @category = @product.categories.first
+      end
       # Incase you're confused about @product it's happening with a before filter: get_items_from_params
       if @method == Store::METHODS[:brand]
         @products = @category.products.sellable.limited(5)
