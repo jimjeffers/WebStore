@@ -54,8 +54,14 @@ class Variation < ActiveRecord::Base
     self.with_exclusive_scope { find(:all, :conditions => ["deleted_at IS NOT ?",nil]) }
   end
   
+  # Finds itself even if it has been deleted.
   def self.find_even_if_deleted(id)
     self.with_exclusive_scope { find(id) }
+  end
+  
+  # It should find a product even if it's been deleted
+  def product
+    Product.find_even_if_deleted(product_id)
   end
   
   # ----------------------------------------------------------

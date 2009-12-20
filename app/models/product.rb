@@ -88,6 +88,11 @@ class Product < ActiveRecord::Base
     self.with_exclusive_scope { find(:all, :conditions => ["deleted_at IS NOT ?",nil]) }
   end
   
+  # Find a product by id even if it's been deleted.
+  def self.find_even_if_deleted(id)
+    self.with_exclusive_scope { find(id) }
+  end
+  
   # ----------------------------------------------------------
   # Instance Methods
   
