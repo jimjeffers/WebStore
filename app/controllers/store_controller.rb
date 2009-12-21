@@ -25,7 +25,7 @@ class StoreController < ApplicationController
         @category = @product.categories.first
       end
       # Incase you're confused about @product it's happening with a before filter: get_items_from_params
-      if @method == Store::METHODS[:brand]
+      if @method == Store::METHODS[:brand] || @method == Store::METHODS[:sales]
         @products = @category.products.sellable.limited(5)
         @variations = @product.variations.not_deleted.available
       else
