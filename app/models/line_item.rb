@@ -66,6 +66,13 @@ class LineItem < ActiveRecord::Base
     end
   end
   
+  # Performs a destroy unless the item belongs to an order that has already shipped.
+  def late_destroy
+    unless cart.order.shipped?
+      self.update_attribute(:deleted_at, Time.now.utc)
+    end
+  end
+  
   # Returns true if the line item is not closed but is missing a variation.
   def invalid?
     (new? && variation.nil?)

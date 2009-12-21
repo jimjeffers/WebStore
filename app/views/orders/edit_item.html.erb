@@ -1,0 +1,23 @@
+<div class="panel" id="#">
+  <h2 class="panel_name no_print">Currently Editing Line Item <%= link_to "Return to order #{@order.ref_number} &gt;&gt;", @order, :class => 'secondary' %></h2>
+</div>
+
+<div class="panel" id="">
+  <% form_for @line_item, :url => update_order_line_item_path(@order,@line_item) do |f| -%>
+    <ul class="form">
+      <li>
+        <%= f.label :variation_id, "Size/Color:" %>
+        <%= f.select :variation_id, @variations.map { |v| 
+              ["#{v.color.name} // #{v.garment_size.gender} // #{v.garment_size.name}",v.id]
+        } %>
+      </li>
+      <li>
+        <%= f.label :quantity, "Quantity:" %>
+        <%= f.select :quantity, (1..Store::MAX_QUANTITY).to_a %>
+      </li>
+      <li>
+        <%= submit_tag 'Update Item' %>
+      </li>
+    </ul>
+  <% end -%>
+</div>

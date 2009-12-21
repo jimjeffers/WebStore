@@ -40,4 +40,27 @@ class OrdersController < ApplicationController
     @orders = Order.search(@search)
     render :action => 'index'
   end
+  
+  def remove_item
+    @order = Order.find(params[:order_id])
+    @order.remove_line_item(params[:id])
+    redirect_to @order
+  end
+  
+  def edit_item
+    @order = Order.find(params[:order_id])
+    @line_item = @order.cart.line_items.find(params[:id])
+    @variations = @line_item.variation.product.variations
+  end
+  
+  def update_item
+    @order = Order.find(params[:order_id])
+    @line_item = @order.cart.line_items.find(params[:id])
+    unless @order.shipped?
+      @line_item.update_attributes(params[:line_item])
+      @order.calculate_amount
+      @order.save
+    end
+    redirect_to @order
+  end
 end

@@ -1,0 +1,432 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <style type="text/css" media="screen">
+      /*  =RESET
+          ------------------------------------------------------ */
+          /* http://meyerweb.com/eric/thoughts/2008/01/15/resetting-again/ */
+          html, body, div, span, applet, object, iframe,
+          h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+          a, abbr, acronym, address, big, cite, code,
+          del, dfn, em, font, img, ins, kbd, q, s, samp,
+          small, strike, strong, sub, sup, tt, var,
+          b, u, i, center,
+          dl, dt, dd, ol, ul, li,
+          fieldset, form, label, legend,
+          table, caption, tbody, tfoot, thead, tr, th, td {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            outline: 0;
+            font-size: 100%;
+            vertical-align: baseline;
+            background: transparent;
+          }
+          body {
+            line-height: 1;
+          }
+          ol, ul {
+            list-style: none;
+          }
+          blockquote, q {
+            quotes: none;
+          }
+
+          /* remember to define focus styles! */
+          :focus {
+            outline: 0;
+          }
+
+          /* remember to highlight inserts somehow! */
+          ins {
+            text-decoration: none;
+          }
+          del {
+            text-decoration: line-through;
+          }
+
+          /* tables still need 'cellspacing="0"' in the markup */
+          table {
+            border-collapse: collapse;
+            border-spacing: 0;
+          }
+          
+      /*  =OPEN_ORDERS
+          ------------------------------------------------------ */
+          body {
+            width: 720px;
+            padding: 1em 0 0 1em;
+          }
+          
+          div#open_orders .order_amount,
+          div#open_orders .order_date {
+              font-size: 0.75em;
+              position: absolute;
+          }
+
+          div#open_orders .order_amount {
+              font-weight: bold;
+              left: 18.5em;
+          }
+
+          div#open_orders .order_date {
+              left: 25em;
+          }
+
+          div#open_orders li.action a {
+              border-bottom: none;
+              font-weight: bold;
+              text-align: right;
+              padding-left: 14em;
+          }
+
+          dl.order dt {
+              display: none;
+              text-transform: lowercase;
+          }
+
+          dl.order dd {
+              display: block;
+          }
+
+          dl.order dd.order_id {
+              font-weight: bold;
+          }
+
+          dl.order dd.order_customer,
+          dl.order dd.order_shipping,
+          dl.order dd.order_amount,
+          dl.order dd.order_date,
+          dl.order dd.order_item_count,
+          dl.order dt {
+              position: absolute;
+              top: 0.25em;
+          }
+
+          dl.order dd.order_customer {
+              left: 13.5em;
+          }
+
+          dl.order dd.order_shipping {
+              left: 48em;
+          }
+
+          dl.order dd.order_amount {
+              left: 5em;
+          }
+
+          dl.order dd.order_date {
+              left: 27.25em;
+          }
+
+          dl.order dd.order_item_count {
+              left: 41.25em;
+          }
+
+          dl.order dt.order_item_count {
+              display: block;
+              left: 43em;
+          }
+          
+          h2 {
+            font-size: 1.25em;
+            margin: 0.5em 0;
+          }
+        
+      /*  =ORDER_DETAIL
+          ------------------------------------------------------ */
+          div#order_detail dl.order {
+              border-bottom: 0.15em solid;
+              display: block;
+              margin-bottom: 2em;
+              padding-top: 0.25em;
+              position: relative;
+              top: 1em;
+          }
+
+          div#order_detail dl.order dt {
+              color: #999;
+              font-size: 0.875em;
+              display: block !important;
+              top: -1em;
+          }
+
+          div#order_detail dl.order dt.order_customer {
+              left: 15.4em;
+          }
+
+          div#order_detail dl.order dt.order_shipping {
+              left: 54em;
+          }
+
+          div#order_detail dl.order dd.order_shipping {
+              left: 47.25em !important;
+          }
+
+          div#order_detail dl.order dt.order_amount {
+              left: 5.75em;
+          }
+
+          div#order_detail dl.order dt.order_date {
+              left: 31.25em;
+          }
+
+          div#order_detail dl.order dt.order_item_count {
+              left: 47.25em;
+          }
+
+          table#order_items th {
+              text-align: left;
+          }
+
+          table#order_items tr {
+              border-bottom: 0.1em solid #000;
+              padding: 0.25em 0;
+          }
+
+          table#order_items td {
+              padding: 0.25em 0;
+          }
+
+          table#order_items th.order_item_quantity {
+              width: 5em;
+          }
+
+          table#order_items th.order_item_description {
+              width: 22.25em;
+          }
+
+          table#order_items th.order_item_price {
+              width: 7em;
+          }
+
+          table#order_items th.order_item_extended {
+              width: 6.5em;
+          }
+
+          table#order_items th.order_item_actions {
+              width: 6em;
+          }
+
+          table#order_items td span.item_number {
+              color: #999;
+              font-size: 0.75em;
+          }
+
+          table#order_items tr.ledger td {
+              font-weight: bold;
+              position: relative;
+          }
+
+          table#order_items tr.ledger select {
+              float: left;
+          }
+
+          table#order_items ul.actions li {
+              border: none;
+              display: inline;
+              font-size: 0.75em;
+          }
+
+          table#order_items ul.description_details li {
+              border: none;
+              display: block;
+              line-height: 1em;
+              min-height: 0 !important;
+          }
+
+          table#order_items ul.description_details li.item_number,
+          table#order_items ul.description_details li.size,
+          table#order_items ul.description_details li.color {
+              font-size: 0.75em;
+              border-right: 0.1em solid #999;
+              display: inline;
+              padding: 0 0.5em 0 0.25em;
+          }
+
+          table#order_items ul.description_details li.item_number {
+              padding-left: 0;
+          }
+
+          table#order_items ul.description_details li.color {
+              border-right: none;
+          }
+
+          table#order_items label {
+              float: left;
+              margin-right: 1em;
+          }
+
+          div#billing_information,
+          div#shipping_information,
+          div#order_processing {
+              margin-top: 1em;
+          }
+
+          #order_authorization_log {
+             margin-top: 4em;
+          }
+          
+          span.fn {
+            display: block;
+          }
+          
+          div.panel {
+            margin: 0.5em 0;
+          }
+          
+          #profile_information td {
+            width: 230px;
+          }
+          
+          #profile_information {
+            margin: 1em 0;
+          }
+          
+          div {
+            line-height: 1.25em;
+          }
+          
+          div#address {
+            margin: 1em 0;
+          }
+          
+    </style>
+  </head>
+  <body>
+    <div id="order_detail" class="panel">
+      <h2 class="panel_name no_print">Order Confirmation: CS-<%= @order.ref_number %></h2>
+      <dl class="order">
+         <dt class="order_id">ID</dt>
+         <dd class="order_id"><strong><%= @order.ref_number %></strong></dd>
+         <dt class="order_customer">Customer</dt>
+         <dd class="order_customer"><%= @order.shipping_first %> <%= @order.shipping_last %></dd>
+         <dt class="order_shipping">Shipping Method</dt>
+         <dd class="order_shipping"><%= @order.shipping_method %></dd>
+         <dt class="order_amount">Amount</dt>
+         <dd class="order_amount"><strong><%= currency(@order.amount/100.to_f) %></strong></dd>
+         <dt class="order_date">Date</dt>
+         <dd class="order_date"><%= @order.created_at.strftime("%h, %d %Y") %></dd>
+         <dt class="order_item_count">Items</dt>
+         <dd class="order_item_count"><%= @order.cart.item_count %></dd>
+      </dl>
+      
+      <div id="order_status" class="open_status">
+         <% if !@order.shipped? %>
+         <h2>This order needs to be processed; it has not shipped - <span class="open">you will be notified when it does</span>.</h2>
+         <% else %>
+         <h2>This order has been shipped. Track it with: "<%= @order.tracking_number %>" <% if !@order.shipping_service.nil? %>(at <%= link_to @order.shipping_service, Store::TRACKING_SITES[@order.shipping_service.to_sym] %>)<% end %></h2>
+         <% end %>
+      </div>
+      
+      <table border="0" id="profile_information">
+        <tr>
+          <td>
+            <div id="contact_information" class="panel">
+                 <h2 class="panel_name">Contact Information</h2>
+                 <div id="hcard-<%= @order.shipping_first %>-<%= @order.shipping_last %>-contact" class="vcard">
+                    <span class="fn"><%= link_to @order.email, "mailto:#{@order.email}" %></span>
+                    <span class="fn"><%= @order.phone %></span>
+                 </div>
+              </div>
+          </td>
+          <td>
+            <div id="shipping_information" class="panel">
+                <h2 class="panel_name">Shipping Information</h2>
+                <div id="hcard-<%= @order.shipping_first %>-<%= @order.shipping_last %>" class="vcard">
+                   <span class="fn"><%= @order.shipping_first %> <%= @order.shipping_last %></span>
+                    <div class="adr">
+                       <div class="street-address"><%= @order.shipping_1 %><%= "<br/>#{@order.shipping_2}" unless @order.shipping_2.nil? %></div>
+                       <span class="locality"><%= @order.shipping_city %></span>, 
+                       <span class="region"><%= @order.shipping_state %></span>, 
+                       <span class="postal-code"><%= @order.shipping_zip %></span>
+                    </div>
+                </div>
+             </div>
+          </td>
+          <td>
+            <div id="billing_information" class="panel">
+                <h2 class="panel_name">Billing Information</h2>
+                <div id="hcard-<%= @order.billing_first %>-<%= @order.billing_last %>-billing" class="vcard">
+                   <span class="fn"><%= @order.billing_first %> <%= @order.billing_last %></span>
+                   <div class="adr">
+                      <div class="street-address"><%= @order.billing_1 %><%= "<br/>#{@order.billing_2}" unless @order.billing_2.nil? %></div>
+                      <span class="locality"><%= @order.billing_city %></span>, 
+                      <span class="region"><%= @order.billing_state %></span>, 
+                      <span class="postal-code"><%= @order.billing_zip %></span>
+                   </div>
+                </div>
+             </div>
+          </td>
+        </tr>
+       </table>
+       
+        <table border="0" id="order_items">
+            <tr>
+               <th class="order_item_quantity">Quantity</th> 
+               <th class="order_item_description">Description</th>
+               <th class="order_item_price">Price</th>
+               <th class="order_item_extended">Extended</th>
+               <th class="order_item_actions">&nbsp;</th>
+            </tr>
+              <% if !@order.cart.line_items.blank? %>
+                <% for line_item in @order.cart.line_items %>
+                <tr>
+                  <td><%= line_item.quantity %></td>
+                   <td>
+                      <ul class="description_details">
+                         <li><%= line_item.variation.product.name %></li>
+                         <li class="item_number"><%= line_item.variation.sku %></li>
+                         <li class="size"><%= line_item.variation.garment_size.name %> (<%= line_item.variation.garment_size.gender %>)
+                         </li>
+                         <li class="color"><%= line_item.variation.color.name %></li>
+                      </ul>
+                   </td>
+                   <td><%= currency(line_item.price) %></td>
+                   <td><%= currency(line_item.price*line_item.quantity.to_f) %></td>
+                </tr>
+                <% end %>
+              <% else %>
+                <tr>
+                  <td colspan="4">No line items found for this order!</td>
+                </tr>
+              <% end %>
+            <tr class="ledger">
+               <td colspan="3">Subtotal:</td>
+               <td colspan="2"><%= currency(@order.sub_total/100.to_f) %></td>
+            </tr>
+            <tr class="ledger">
+               <td colspan="3">Sales Tax:</td>
+               <td colspan="2">
+                 <%= currency(@order.sales_tax/100.to_f) %>
+               </td>
+            </tr>
+            <tr class="ledger">
+               <td colspan="3">
+                  <label for="order_shipping_method"><%= @order.shipping_method.capitalize %> Shipping:</label>
+               </td>
+               <td colspan="2">
+                  <%= currency(@order.shipping_cost/100.to_f) %>
+               </td>
+            </tr>
+            <tr class="ledger">
+               <td colspan="3">Total:</td>
+               <td colspan="2"><%= currency(@order.amount / 100.to_f) %></td>
+            </tr>
+            <% unless @order.card_reference.nil? %>
+            <tr class="ledger">
+               <td colspan="5">Billed to: <%= @order.card_reference %></td>
+            </tr>
+            <% end %>
+         </table>
+         
+         <div id="address">
+           <h3>Cactus Sports</h3>
+           <h4>401 S Mill Ave., Ste 106,</h4>
+           <h4>Tempe, AZ  85281</h4>
+           <h3>480.921.1278</h3>
+           <h3><a href="mailto:cactussports1@gmail.com">cactussports1@gmail.com</a></h3>
+         </div>
+    </div>
+  </body>
+</html>

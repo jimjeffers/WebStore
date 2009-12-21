@@ -52,10 +52,12 @@
                <td><%= currency(line_item.price) %></td>
                <td><%= currency(line_item.price*line_item.quantity.to_f) %></td>
                <td>
-                  <!-- <ul class="actions">
-                     <li><a href="#edit">edit</a></li>
-                     <li><a href="#edit">remove</a></li>
-                  </ul> -->
+                 <% unless @order.shipped? || @order.canceled? %>
+                  <ul class="actions">
+                     <li><%= link_to 'edit', edit_order_line_item_path(@order,line_item) %></li>
+                     <li><%= link_to 'remove', remove_order_line_item_path(@order,line_item), :confirm => "Are you sure? (cannot be undone)" %></li>
+                  </ul>
+                  <% end %>
                </td>
             </tr>
             <% end %>

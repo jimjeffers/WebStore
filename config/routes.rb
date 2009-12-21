@@ -23,6 +23,9 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :garment_sizes
   map.resources :orders
   
+  map.remove_order_line_item '/orders/:order_id/remove_item/:id', :controller => 'orders', :action => 'remove_item'
+  map.edit_order_line_item '/orders/:order_id/edit_item/:id', :controller => 'orders', :action => 'edit_item'
+  map.update_order_line_item '/orders/:order_id/update_item/:id', :controller => 'orders', :action => 'update_item'
   map.cancel_order '/orders/cancel/:id', :controller => 'orders', :action => 'cancel'
   map.capture_order '/orders/capture/:id', :controller => 'orders', :action => 'capture'
   map.ship_order '/orders/ship/:id', :controller => 'orders', :action => 'ship'

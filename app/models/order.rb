@@ -282,7 +282,18 @@ class Order < ActiveRecord::Base
     calculate_amount
   end
   
+  # Determins if order has been assigned to a cart yet.
   def ready_for_processing?
-    !self.cart.nil?
+    !self.cart.nil? && self.pending?
+  end
+  
+  # Removes a given line item from an order.
+  def remove_line_item(id)
+    return false if self.shipped?
+    line_item = self.cart.line_items.find(id)
+    puts line_item.to_yaml
+    line_item.late_destroy
+    self.calculate_amount
+    self.save
   end
 end
