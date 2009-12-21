@@ -8,7 +8,8 @@ class Store
     :guys => "guys", 
     :gifts => "gifts", 
     :kids => "kids",
-    :pets => "pets"
+    :pets => "pets",
+    :sales => "sales"
   }
   ROW_SIZE = {
     :home => 5,

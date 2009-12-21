@@ -618,6 +618,7 @@ and Sumo Creations.
    ul.section_nav.kids li.kids,
    ul.section_nav.gifts li.gifts,
    ul.section_nav.girls li.girls,
+   ul.section_nav.sales li.sales,
    ul.section_nav.guys li.guys {
       display: none;
    }
@@ -1356,7 +1357,7 @@ and Sumo Creations.
       float: left;
       font-size: 0.7em;
       line-height: 1.5em;
-      width: 100px;
+      width: 90px;
    }
    
    ul#inline_sitemap > li a {

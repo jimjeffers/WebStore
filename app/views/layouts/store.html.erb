@@ -100,17 +100,15 @@
           </ul>
       </li>
       <% end %>
-      <% if !@sales.blank? %>
+      <% if !@sale_categories.blank? %>
       <li class="on_sale">
-        <a href="#">On Sale!<span></span></a>
+        <a href="<%= browse_category_path(Store::METHODS[:sales],@sale_categories.first.guid) %>">On Sale!<span></span></a>
         <span class="border"></span>
-        <% if !@guys_categories.blank? %>
           <ul class="sub_navigation">
-            <% for category in @guys_categories %>
-              <li><%= link_to category.name, category %></li>
+            <% for category in @sale_categories %>
+              <li><%= link_to category.name, browse_category_path(Store::METHODS[:sales],category.guid) %></li>
             <% end %>
           </ul>
-        <% end %>
       </li>
       <% end %>
     </ul>
@@ -193,17 +191,16 @@
           </ul>
         </li>
         <% end %>
+        <% if !@sale_categories.blank? %>
         <li class="sale">
-          <% if !@sales.blank? %>
           <h2><a href="#"><img src="/images/sub_small_heading_sale.png" width="62" height="14" alt="On Sale"/></a></h2>
           <ul>
-            <li><a href="#">Category</a></li>
-            <li><a href="#">Category</a></li>
-            <li><a href="#">Category</a></li>
-            <li><a href="#">Category</a></li>
+            <% for sale in @sale_categories %>
+              <li><%= link_to sale.name, browse_category_path(Store::METHODS[:sales],sale.guid) %></li>
+            <% end %>
           </ul>
-          <% end %>
         </li>
+        <% end %>
       </ul>
       <ul id="footnotes">
         <li id="address">Cactus Sports - 401 S Mill Ave # 106, Tempe, AZ  85281 <a href="http://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=Cactus+Sports,+401+South+Mill+Avenue,+Tempe,+AZ+85281&sll=33.426893,-111.939611&sspn=0.010512,0.019419&g=401+South+Mill+Avenue,+Tempe,+AZ+85281&ie=UTF8&hq=Cactus+Sports,&hnear=401+S+Mill+Ave,+Tempe,+AZ+85281&ll=33.426602,-111.939601&spn=0.002628,0.004855&z=18&iwloc=A" class="button">Map / Directions</a></li>

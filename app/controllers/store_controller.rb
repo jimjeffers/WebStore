@@ -38,10 +38,12 @@ class StoreController < ApplicationController
   
   # Displays all products of a specific category.
   def category
-    unless @method == Store::METHODS[:brand]
-      @products = Product.category_ordered(@category).all_with_gender(@method).sellable.paginate :page => params[:page], :per_page => @site_settings.products_per_page * Store::ROW_SIZE[:category]
+    if @method == Store::METHODS[:brand]
+      @products = @category.products.ordered.sellable.paginate(:page => params[:page], :per_page => @site_settings.products_per_page * Store::ROW_SIZE[:brand])
+    elsif @method == Store::METHODS[:sales]
+      @products = Product.category_ordered(@category).on_sale.sellable.paginate(:page => params[:page], :per_page => @site_settings.products_per_page * Store::ROW_SIZE[:category])
     else
-      @products = @category.products.ordered.sellable.paginate :page => params[:page], :per_page => @site_settings.products_per_page * Store::ROW_SIZE[:brand]
+      @products = Product.category_ordered(@category).all_with_gender(@method).sellable.paginate(:page => params[:page], :per_page => @site_settings.products_per_page * Store::ROW_SIZE[:category])
     end
   end
   
@@ -153,6 +155,7 @@ class StoreController < ApplicationController
       @kids_categories = Category.all_with_gender(Store::METHODS[:kids])
       @pets_categories = Category.all_with_gender(Store::METHODS[:pets])
       @gifts_categories = Category.all_with_gender(Store::METHODS[:gifts])
+      @sale_categories = Category.all_with_sale_items
       @brands = Brand.all
     end
   end
@@ -166,6 +169,7 @@ class StoreController < ApplicationController
       when Store::METHODS[:pets]  then @pets_categories || Category.all_with_gender(Store::METHODS[:pets])
       when Store::METHODS[:gifts] then @gifts_categories || Category.all_with_gender(Store::METHODS[:gifts])
       when Store::METHODS[:brand] then @brands || Brand.all
+      when Store::METHODS[:sales] then @sale_categories || Category.all_with_sale_items
       when nil then Category.all
     end
   end

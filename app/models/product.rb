@@ -57,6 +57,10 @@ class Product < ActiveRecord::Base
     :include => [:categorizations, :variations]
   }
   
+  named_scope :on_sale, {
+    :conditions => ['products.on_sale=?',true]
+  }
+  
   # States (via aasm)
   aasm_initial_state :in_stock
   aasm_state :in_stock
