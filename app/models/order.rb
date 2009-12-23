@@ -36,6 +36,8 @@ class Order < ActiveRecord::Base
     }
   }
   
+  named_scope :to_be_processed, { :conditions => 'aasm_state IN ("paid","authorized")', :order => "created_at ASC" }
+  
   # Accessors
   attr_accessor :verification_number, :card_number, :card_type, :same_as_billing, :expiration_month, :expiration_year, :credit_card, :first_name, :last_name
   

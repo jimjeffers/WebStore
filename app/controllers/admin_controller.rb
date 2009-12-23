@@ -11,7 +11,7 @@ class AdminController < ApplicationController
   def dashboard
     @products = Product.all
     @categories = Category.all
-    @orders = Order.currently('paid').ordered('updated_at ASC')
+    @orders = Order.to_be_processed
   end
   
 end

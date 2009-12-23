@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
   layout 'admin'
   
   def index
-    @orders = Order.currently('paid').ordered('created_at ASC')+Order.currently('authorized')
+    @orders = Order.to_be_processed
   end
   
   def show
